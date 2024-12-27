@@ -8,7 +8,19 @@ This repository contains a Bash script designed to install and configure the AWS
 - `-r, --region`: AWS Region (optional).
 - `-h, --help`: Display help message and exit.
 
+Before running the script, make sure to grant execute permissions:
+```bash
+chmod +x script.sh
+```
+
 ### Example
+
+For awscli installation.
+```
+./script.sh
+```
+
+[optional] configure AWS profile with AWS access key and secret access key
 ```
 ./script.sh -k YOUR_ACCESS_KEY -sk YOUR_SECRET_KEY -r us-east-1
 ```
