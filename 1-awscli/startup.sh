@@ -20,12 +20,15 @@ install_aws_cli() {
     case "$ID" in
         ubuntu|debian)
             sudo apt update && sudo apt upgrade -y
+            sudo apt install -y unzip
             ;;
         centos|rhel|almalinux|rocky|amazon)
             sudo yum update -y
+            sudo yum install -y unzip
             ;;
         sles|opensuse-leap)
             sudo zypper refresh && sudo zypper update -y
+            sudo zypper install -y unzip
             ;;
         *)
             echo "Unsupported Linux distribution: $ID."
