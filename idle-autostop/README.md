@@ -2,7 +2,6 @@
 
 This repository contains resources for deploying and managing an AWS Lambda function designed to optimize EC2 instance usage. The function scans for idle instances, sends notifications, and takes actions to prevent unnecessary costs.
 
-## Features
 
 ### 1. **Instance Scanning**
 - Scans all EC2 instances in the account, identifying those with **1-2% usage over 2-3 hours**.
