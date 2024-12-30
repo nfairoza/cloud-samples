@@ -4,15 +4,9 @@
 
 This guide provides AWS CLI commands for managing AMD-based EC2 instances.
 
-## Table of Contents
 
-- [Instance Management](#instance-management)
-- [CPU Configuration](#cpu-configuration)
-- [Memory Management](#memory-management)
-- [Storage Management](#storage-management)
-- [Hardware Monitoring](#hardware-monitoring)
-- [Resource Management](#resource-management)
-- [Best Practices](#best-practices)
+## Notes
+- Replace placeholder values (ami-12345678, i-1234567890, my-sg etc.) with your actual resource IDs
 
 ## Instance Management
 
@@ -152,7 +146,3 @@ aws cloudwatch put-metric-alarm \
     --comparison-operator GreaterThanThreshold \
     --statistic Average
 ```
-
-## Notes
-
-- Replace placeholder values (ami-12345678, i-1234567890, my-sg etc.) with your actual resource IDs
