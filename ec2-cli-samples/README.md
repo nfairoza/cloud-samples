@@ -5,7 +5,7 @@
 This guide provides AWS CLI commands for managing AMD-based EC2 instances.
 
 
-## Notes
+#### Notes
 - Replace placeholder values (ami-12345678, i-1234567890, my-sg etc.) with your actual resource IDs
 
 ## Instance Management
