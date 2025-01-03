@@ -1,0 +1,13 @@
+project:
+  name: cpu-stress-test
+
+
+tests:
+  turbostat-test:
+    template: ./turbostat.yaml
+    regions:
+      - us-east-2
+    parameters:
+      TargetInstanceId: i-067d785dc64f10139
+      StressNGDuration: 300
+      StressNGCPULoad: 80

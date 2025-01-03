@@ -39,3 +39,14 @@ This shows many hardware power management features are not exposed to the EC2 VM
 Even though the AMD EPYC processor physically supports more C-states (C3-C6), the AWS hypervisor abstracts these away and presents a simplified model with just POLL, C1, and C2.
 
 These limitations are intentional design choices in the AWS virtualization infrastructure.
+
+```bash
+aws cloudformation create-stack \
+--stack-name cpu-stress-test \
+--template-body file://turbostat.yaml \
+--capabilities CAPABILITY_IAM \
+--parameters \
+  ParameterKey=TargetInstanceId,ParameterValue=i-067d785dc64f10139 \
+  ParameterKey=StepInterval,ParameterValue=30 \
+  ParameterKey=StressNGCPUs,ParameterValue=96
+```
