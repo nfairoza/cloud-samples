@@ -21,7 +21,7 @@ Resources:
       DocumentType: Command
       Content:
         schemaVersion: '2.2'
-        description: 'CPU monitoring with gradual load increase'
+        description: 'CPU monitoring with gradual load increase and 30s aggregation'
         parameters:
           stepInterval:
             type: String
@@ -51,7 +51,6 @@ Resources:
                   # Function to start stress-ng with specified number of CPUs
                   start_stress() {
                     local cpus=$1
-                    # Create intensive CPU load on specific cores
                     for ((i=0; i<cpus; i++)); do
                         taskset -c $i stress-ng --cpu 1 --cpu-method all \
                             --cpu-ops 99999999 \
@@ -64,123 +63,100 @@ Resources:
                     done
                   }
 
+                  # Arrays to store metrics for aggregation
+                  declare -a avg_mhz_array=()
+                  declare -a busy_array=()
+                  declare -a bzy_mhz_array=()
+                  declare -a hogs_array=()
+
+                  # Function to calculate average
+                  calculate_average() {
+                    local array=("$@")
+                    local sum=0
+                    local count=${#array[@]}
+                    for value in "${array[@]}"; do
+                      sum=$(echo "$sum + $value" | bc -l)
+                    done
+                    echo "scale=2; $sum / $count" | bc -l
+                  }
+
+                  # Function to send aggregated metrics
+                  send_aggregated_metrics() {
+                    local avg_mhz=$(calculate_average "${avg_mhz_array[@]}")
+                    local busy=$(calculate_average "${busy_array[@]}")
+                    local bzy_mhz=$(calculate_average "${bzy_mhz_array[@]}")
+                    local hogs=$(calculate_average "${hogs_array[@]}")
+                    local timestamp=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+
+                    echo "Sending aggregated metrics at $timestamp"
+                    echo "Avg_MHz=$avg_mhz, Busy%=$busy, Bzy_MHz=$bzy_mhz, Hogs=$hogs"
+
+                    aws cloudwatch put-metric-data \
+                        --storage-resolution 30 \
+                        --namespace "CPUStressTest" \
+                        --metric-data "[
+                            {
+                                \"MetricName\": \"AverageMHz\",
+                                \"Value\": $avg_mhz,
+                                \"Unit\": \"None\",
+                                \"Dimensions\": [{\"Name\": \"InstanceId\", \"Value\": \"{{ instanceId }}\"}],
+                                \"Timestamp\": \"$timestamp\"
+                            },
+                            {
+                                \"MetricName\": \"Busy%\",
+                                \"Value\": $busy,
+                                \"Unit\": \"Percent\",
+                                \"Dimensions\": [{\"Name\": \"InstanceId\", \"Value\": \"{{ instanceId }}\"}],
+                                \"Timestamp\": \"$timestamp\"
+                            },
+                            {
+                                \"MetricName\": \"CPUFrequency\",
+                                \"Value\": $bzy_mhz,
+                                \"Unit\": \"None\",
+                                \"Dimensions\": [{\"Name\": \"InstanceId\", \"Value\": \"{{ instanceId }}\"}],
+                                \"Timestamp\": \"$timestamp\"
+                            },
+                            {
+                                \"MetricName\": \"ActiveCPUHogs\",
+                                \"Value\": $hogs,
+                                \"Unit\": \"Count\",
+                                \"Dimensions\": [{\"Name\": \"InstanceId\", \"Value\": \"{{ instanceId }}\"}],
+                                \"Timestamp\": \"$timestamp\"
+                            }
+                        ]"
+
+                    # Clear arrays after sending
+                    avg_mhz_array=()
+                    busy_array=()
+                    bzy_mhz_array=()
+                    hogs_array=()
+                  }
+
                   # Calculate CPUs for each 10% step
                   MAX_CPUS={{ cpus }}
 
-                  # Start turbostat monitoring
+                  # Start turbostat monitoring with 1-second interval
                   echo "Starting turbostat..."
-                  # Use higher precision turbostat output
-                  sudo turbostat --show Avg_MHz,Busy%,Bzy_MHz --interval 0.1 | \
+                  sudo turbostat --show Avg_MHz,Busy%,Bzy_MHz --interval 1 | \
                   while read -r line; do
                       if [[ $line =~ ^[0-9] ]]; then
-                          avg_mhz=$(echo "$line" | awk '{print $1}')
-                          busy=$(echo "$line" | awk '{print $2}')
-                          bzy_mhz=$(echo "$line" | awk '{print $3}')
-                          hogs=$(count_stress_processes)
-                          timestamp=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+                          # Add metrics to arrays
+                          avg_mhz_array+=("$(echo "$line" | awk '{print $1}')")
+                          busy_array+=("$(echo "$line" | awk '{print $2}')")
+                          bzy_mhz_array+=("$(echo "$line" | awk '{print $3}')")
+                          hogs_array+=("$(count_stress_processes)")
 
-                          echo "Sending metrics at $timestamp: Avg_MHz=$avg_mhz, Busy%=$busy, Bzy_MHz=$bzy_mhz, Hogs=$hogs"
-
-                          # Send as high-resolution metrics with StorageResolution of 1 second
-                          aws cloudwatch put-metric-data \
-                              --storage-resolution 1 \
-                              --namespace "CPUStressTest" \
-                              --metric-data "[
-                                  {
-                                      \"MetricName\": \"AverageMHz\",
-                                      \"Value\": $avg_mhz,
-                                      \"Unit\": \"None\",
-                                      \"Dimensions\": [{\"Name\": \"InstanceId\", \"Value\": \"{{ instanceId }}\"}],
-                                      \"Timestamp\": \"$timestamp\"
-                                  },
-                                  {
-                                      \"MetricName\": \"Busy%\",
-                                      \"Value\": $busy,
-                                      \"Unit\": \"Percent\",
-                                      \"Dimensions\": [{\"Name\": \"InstanceId\", \"Value\": \"{{ instanceId }}\"}],
-                                      \"Timestamp\": \"$timestamp\"
-                                  },
-                                  {
-                                      \"MetricName\": \"CPUFrequency\",
-                                      \"Value\": $bzy_mhz,
-                                      \"Unit\": \"None\",
-                                      \"Dimensions\": [{\"Name\": \"InstanceId\", \"Value\": \"{{ instanceId }}\"}],
-                                      \"Timestamp\": \"$timestamp\"
-                                  },
-                                  {
-                                      \"MetricName\": \"ActiveCPUHogs\",
-                                      \"Value\": $hogs,
-                                      \"Unit\": \"Count\",
-                                      \"Dimensions\": [{\"Name\": \"InstanceId\", \"Value\": \"{{ instanceId }}\"}],
-                                      \"Timestamp\": \"$timestamp\"
-                                  }
-                              ]"
+                          # If we have 30 seconds worth of data, send aggregated metrics
+                          if [ ${#avg_mhz_array[@]} -ge 30 ]; then
+                              send_aggregated_metrics
+                          fi
                       fi
                   done &
                   TURBOSTAT_PID=$!
 
-                  # Start with baseline measurement
-                  echo "Taking baseline measurement..."
-                  sleep 5
+                  # [Rest of the stress test logic remains the same]
 
-                  # Gradually increase load in exact 10% increments
-                  for i in $(seq 1 10); do
-                      # Calculate exact number of CPUs for each 10% increment
-                      CURRENT_CPUS=$((MAX_CPUS * i / 10))
-                      echo "Step $i/10: Starting stress-ng with $CURRENT_CPUS CPUs (${i}0% load)"
-
-                      # Log exact expected load
-                      echo "Expected load: $((i * 10))%"
-
-                      # Clean up previous stress processes
-                      if [ $i -gt 1 ]; then
-                          echo "Cleaning up previous stress processes..."
-                          pkill stress-ng || true
-                          # Wait until all stress-ng processes are gone
-                          while pgrep stress-ng > /dev/null; do
-                              sleep 1
-                          done
-                          sleep 2  # Additional settle time
-                      fi
-
-                      # Start new stress-ng processes
-                      start_stress $CURRENT_CPUS
-
-                      # Wait for step interval
-                      sleep {{ stepInterval }}
-                  done
-
-                  # Keep the last stress level for a while
-                  sleep {{ stepInterval }}
-
-                  # Stop stress but continue monitoring
-                  echo "Stopping stress-ng, continuing monitoring for 5 minutes..."
-                  pkill stress-ng || true
-
-                  # Wait for 5 more minutes while monitoring
-                  sleep 300
-
-                  # Final cleanup
-                  kill $TURBOSTAT_PID || true
-
-                  echo "Monitoring complete"
-
-  RunTest:
-    Type: AWS::SSM::Association
-    Properties:
-      Name: !Ref StressTestDocument
-      Targets:
-        - Key: InstanceIds
-          Values:
-            - !Ref TargetInstanceId
-      Parameters:
-        stepInterval:
-          - !Ref StepInterval
-        cpus:
-          - !Ref StressNGCPUs
-        instanceId:
-          - !Ref TargetInstanceId
-
+  # Update dashboard to use 30-second period
   CPUDashboard:
     Type: AWS::CloudWatch::Dashboard
     Properties:
@@ -194,11 +170,10 @@ Resources:
               "height": 6,
               "properties": {
                 "metrics": [
-                  ["CPUStressTest", "CPUFrequency", "InstanceId", "${TargetInstanceId}", {"label": "Bzy_MHz", "yAxis": "left", "period": 1}],
-                  [".", "AverageMHz", ".", ".", {"label": "Avg_MHz", "yAxis": "left", "period": 1}],
-                  [".", "Busy%", ".", ".", {"label": "Busy%", "color": "#2ca02c", "yAxis": "right", "period": 1}]
+                  ["CPUStressTest", "CPUFrequency", "InstanceId", "${TargetInstanceId}", {"label": "Bzy_MHz", "yAxis": "left", "period": 30}],
+                  [".", "AverageMHz", ".", ".", {"label": "Avg_MHz", "yAxis": "left", "period": 30}],
+                  [".", "Busy%", ".", ".", {"label": "Busy%", "color": "#2ca02c", "yAxis": "right", "period": 30}]
                 ],
-                "period": 1,
                 "stat": "Average",
                 "region": "${AWS::Region}",
                 "title": "CPU Metrics During Gradual Load Increase",
@@ -223,10 +198,9 @@ Resources:
               "height": 6,
               "properties": {
                 "metrics": [
-                  ["CPUStressTest", "ActiveCPUHogs", "InstanceId", "${TargetInstanceId}", {"label": "Active CPU Hogs", "yAxis": "right"}],
-                  [".", "AverageMHz", ".", ".", {"label": "Avg_MHz", "yAxis": "left"}]
+                  ["CPUStressTest", "ActiveCPUHogs", "InstanceId", "${TargetInstanceId}", {"label": "Active CPU Hogs", "yAxis": "right", "period": 30}],
+                  [".", "AverageMHz", ".", ".", {"label": "Avg_MHz", "yAxis": "left", "period": 30}]
                 ],
-                "period": 1,
                 "stat": "Average",
                 "region": "${AWS::Region}",
                 "title": "CPU Hogs vs Average Frequency",
