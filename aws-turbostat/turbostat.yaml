@@ -57,7 +57,7 @@ Resources:
 
                   # Calculate CPUs for each 10% step
                   MAX_CPUS={{ cpus }}
-                  STEP_CPUS=$((MAX_CPUS / 10))
+                  # STEP_CPUS=$((MAX_CPUS / 10))
 
                   # Start turbostat monitoring
                   echo "Starting turbostat..."
@@ -110,7 +110,7 @@ Resources:
 
                   # Gradually increase load
                   for i in $(seq 1 10); do
-                      CURRENT_CPUS=$((i * STEP_CPUS))
+                      CURRENT_CPUS=$(((MAX_CPUS * i) / 10))
                       echo "Starting stress-ng with $CURRENT_CPUS CPUs (${i}0% load)"
 
                       if [ $i -gt 1 ]; then
@@ -164,9 +164,9 @@ Resources:
               "height": 6,
               "properties": {
                 "metrics": [
-                  ["CPUStressTest", "CPUFrequency", "InstanceId", "${TargetInstanceId}", {"label": "Bzy_MHz"}],
-                  [".", "AverageMHz", ".", ".", {"label": "Avg_MHz"}],
-                  [".", "CPUBusy", ".", ".", {"label": "CPU%", "yAxis": "right"}]
+                  ["CPUStressTest", "CPUFrequency", "InstanceId", "${TargetInstanceId}", {"label": "Bzy_MHz", "yAxis": "right"}],
+                  [".", "AverageMHz", ".", ".", {"label": "Avg_MHz", "yAxis": "left"}],
+                  [".", "CPUBusy", ".", ".", {"label": "CPU%", "color": "#2ca02c"}]
                 ],
                 "period": 1,
                 "stat": "Average",
@@ -175,14 +175,14 @@ Resources:
                 "view": "timeSeries",
                 "yAxis": {
                   "left": {
-                    "min": 2000,
-                    "max": 4000,
-                    "label": "MHz"
+                    "min": 0,
+                    "max": 1000,
+                    "label": "Avg MHz"
                   },
                   "right": {
-                    "min": 0,
-                    "max": 100,
-                    "label": "CPU %"
+                    "min": 2000,
+                    "max": 4000,
+                    "label": "Bzy MHz"
                   }
                 }
               }
@@ -194,7 +194,7 @@ Resources:
               "properties": {
                 "metrics": [
                   ["CPUStressTest", "ActiveCPUHogs", "InstanceId", "${TargetInstanceId}", {"label": "Active CPU Hogs", "yAxis": "right"}],
-                  [".", "AverageMHz", ".", ".", {"label": "Avg_MHz"}]
+                  [".", "AverageMHz", ".", ".", {"label": "Avg_MHz", "yAxis": "left"}]
                 ],
                 "period": 1,
                 "stat": "Average",
@@ -203,9 +203,9 @@ Resources:
                 "view": "timeSeries",
                 "yAxis": {
                   "left": {
-                    "min": 2000,
-                    "max": 4000,
-                    "label": "MHz"
+                    "min": 0,
+                    "max": 1000,
+                    "label": "Avg MHz"
                   },
                   "right": {
                     "min": 0,
