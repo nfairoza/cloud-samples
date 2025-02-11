@@ -1,0 +1,320 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'CPU Stress Test with Gradual Load Increase'
+
+Parameters:
+  TargetInstanceId:
+    Type: String
+    Description: ID of the existing EC2 instance to run tests on
+  StepInterval:
+    Type: Number
+    Default: 30
+    Description: Seconds between each 10% load increase
+  StressNGCPUs:
+    Type: Number
+    Default: 96
+    Description: Maximum number of CPUs to stress
+
+Resources:
+  StressTestDocument:
+    Type: AWS::SSM::Document
+    Properties:
+      DocumentType: Command
+      Content:
+        schemaVersion: '2.2'
+        description: 'CPU monitoring with gradual load increase'
+        parameters:
+          stepInterval:
+            type: String
+            default: '30'
+          cpus:
+            type: String
+            default: '96'
+          instanceId:
+            type: String
+            description: "EC2 Instance ID"
+        mainSteps:
+          - action: aws:runShellScript
+            name: MonitorCPU
+            inputs:
+              runCommand:
+                - |
+                  #!/bin/bash
+                  set -ex
+                  if [ -f /etc/os-release ]; then
+                      . /etc/os-release
+                      case $ID in
+                          "amzn"|"rhel"|"centos")
+                              sudo yum install -y turbostat stress-ng
+                              ;;
+                          "ubuntu"|"debian")
+                              sudo apt-get update
+                              sudo apt-get install -y linux-tools-common linux-tools-generic msr-tools stress-ng
+                              sudo modprobe msr
+                              sudo chmod o+r /dev/cpu/*/msr 2>/dev/null || true
+                              ;;
+                      esac
+                  fi
+                  lsmod | grep -q '^msr' || sudo modprobe msr
+
+                  echo "Starting monitoring for instance {{ instanceId }}"
+
+                  # Function to count stress-ng processes
+                  count_stress_processes() {
+                    ps aux | grep '[s]tress-ng' | grep -v grep | wc -l
+                  }
+
+                  # Function to start stress-ng with specified number of CPUs
+                  start_stress() {
+                    local cpus=$1
+                    # Create intensive CPU load on specific cores
+                    for ((i=0; i<cpus; i++)); do
+                        taskset -c $i stress-ng --cpu 1 --cpu-method all \
+                            --cpu-ops 99999999 \
+                            --cpu-load 100 \
+                            --sched fifo \
+                            --sched-prio 95 \
+                            --metrics-brief \
+                            --abort \
+                            --aggressive &
+                    done
+                  }
+
+                  # Calculate CPUs for each 10% step
+                  MAX_CPUS={{ cpus }}
+
+                  # Start turbostat monitoring
+                  echo "Starting turbostat..."
+                  sudo turbostat --show Avg_MHz,Busy%,Bzy_MHz,POLL%,C1%,C2% --interval 1 | \
+                  while read -r line; do
+                      if [[ $line =~ ^[0-9] ]]; then
+                          avg_mhz=$(echo "$line" | awk '{print $1}')
+                          busy=$(echo "$line" | awk '{print $2}')
+                          bzy_mhz=$(echo "$line" | awk '{print $3}')
+                          hogs=$(count_stress_processes)
+                          poll_pct=$(echo "$line" | awk '{print $4}')
+                          c1_pct=$(echo "$line" | awk '{print $5}')
+                          c2_pct=$(echo "$line" | awk '{print $6}')
+                          timestamp=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+
+                          aws cloudwatch put-metric-data \
+                              --storage-resolution 1 \
+                              --namespace "CPUStressTest" \
+                              --metric-data "[
+                                  {
+                                      \"MetricName\": \"AverageMHz\",
+                                      \"Value\": $avg_mhz,
+                                      \"Unit\": \"None\",
+                                      \"Dimensions\": [{\"Name\": \"InstanceId\", \"Value\": \"{{ instanceId }}\"}],
+                                      \"Timestamp\": \"$timestamp\"
+                                  },
+                                  {
+                                      \"MetricName\": \"Busy%\",
+                                      \"Value\": $busy,
+                                      \"Unit\": \"Percent\",
+                                      \"Dimensions\": [{\"Name\": \"InstanceId\", \"Value\": \"{{ instanceId }}\"}],
+                                      \"Timestamp\": \"$timestamp\"
+                                  },
+                                  {
+                                      \"MetricName\": \"CPUFrequency\",
+                                      \"Value\": $bzy_mhz,
+                                      \"Unit\": \"None\",
+                                      \"Dimensions\": [{\"Name\": \"InstanceId\", \"Value\": \"{{ instanceId }}\"}],
+                                      \"Timestamp\": \"$timestamp\"
+                                  },
+                                  {
+                                      \"MetricName\": \"POLL_Percent\",
+                                      \"Value\": $poll_pct,
+                                      \"Unit\": \"Percent\",
+                                      \"Dimensions\": [{\"Name\": \"InstanceId\", \"Value\": \"{{ instanceId }}\"}],
+                                      \"Timestamp\": \"$timestamp\"
+                                  },
+                                  {
+                                      \"MetricName\": \"C1_Percent\",
+                                      \"Value\": $c1_pct,
+                                      \"Unit\": \"Percent\",
+                                      \"Dimensions\": [{\"Name\": \"InstanceId\", \"Value\": \"{{ instanceId }}\"}],
+                                      \"Timestamp\": \"$timestamp\"
+                                  },
+                                  {
+
+                                      \"MetricName\": \"ActiveCPUHogs\",
+                                      \"Value\": $hogs,
+                                      \"Unit\": \"Count\",
+                                      \"Dimensions\": [{\"Name\": \"InstanceId\", \"Value\": \"{{ instanceId }}\"}],
+                                      \"Timestamp\": \"$timestamp\"
+                                  },
+                                  {
+                                      \"MetricName\": \"C2_Percent\",
+                                      \"Value\": $c2_pct,
+                                      \"Unit\": \"Percent\",
+                                      \"Dimensions\": [{\"Name\": \"InstanceId\", \"Value\": \"{{ instanceId }}\"}],
+                                      \"Timestamp\": \"$timestamp\"
+                                  }
+                              ]"
+                      fi
+                  done &
+                  TURBOSTAT_PID=$!
+
+                  # Start with baseline measurement
+                  echo "Taking baseline measurement..."
+                  sleep 5
+
+                  # Gradually increase load in exact 10% increments
+                  for i in $(seq 1 10); do
+                      # Calculate exact number of CPUs for each 10% increment
+                      CURRENT_CPUS=$((MAX_CPUS * i / 10))
+                      echo "Step $i/10: Starting stress-ng with $CURRENT_CPUS CPUs (${i}0% load)"
+
+                      # Clean up previous stress processes
+                      if [ $i -gt 1 ]; then
+                          echo "Cleaning up previous stress processes..."
+                          pkill stress-ng || true
+                          # Wait until all stress-ng processes are gone
+                          while pgrep stress-ng > /dev/null; do
+                              sleep 1
+                          done
+                          sleep 2  # Additional settle time
+                      fi
+
+                      # Start new stress-ng processes
+                      start_stress $CURRENT_CPUS
+
+                      # Wait for step interval
+                      sleep {{ stepInterval }}
+                  done
+
+                  # Keep the last stress level for a while
+                  sleep {{ stepInterval }}
+
+                  # Stop stress but continue monitoring
+                  echo "Stopping stress-ng, continuing monitoring for 5 minutes..."
+                  pkill stress-ng || true
+
+                  # Wait for 5 more minutes while monitoring
+                  sleep 300
+
+                  # Final cleanup
+                  kill $TURBOSTAT_PID || true
+
+                  echo "Monitoring complete"
+
+  RunTest:
+    Type: AWS::SSM::Association
+    Properties:
+      Name: !Ref StressTestDocument
+      Targets:
+        - Key: InstanceIds
+          Values:
+            - !Ref TargetInstanceId
+      Parameters:
+        stepInterval:
+          - !Ref StepInterval
+        cpus:
+          - !Ref StressNGCPUs
+        instanceId:
+          - !Ref TargetInstanceId
+
+  CPUDashboard:
+    Type: AWS::CloudWatch::Dashboard
+    Properties:
+      DashboardName: !Sub ${AWS::StackName}-monitoring
+      DashboardBody: !Sub |
+        {
+          "widgets": [
+            {
+              "type": "metric",
+              "width": 24,
+              "height": 6,
+              "properties": {
+                "metrics": [
+                  ["CPUStressTest", "CPUFrequency", "InstanceId", "${TargetInstanceId}", {"label": "Bzy_MHz", "yAxis": "left", "period": 30}],
+                  [".", "AverageMHz", ".", ".", {"label": "Avg_MHz", "yAxis": "left", "period": 30}],
+                  [".", "Busy%", ".", ".", {"label": "Busy%", "color": "#2ca02c", "yAxis": "right", "period": 30}]
+                ],
+                "period": 30,
+                "stat": "Average",
+                "region": "${AWS::Region}",
+                "title": "CPU Metrics During Gradual Load Increase",
+                "view": "timeSeries",
+                "yAxis": {
+                  "left": {
+                    "min": 0,
+                    "max": 4000,
+                    "label": "MHz"
+                  },
+                  "right": {
+                    "min": 0,
+                    "max": 100,
+                    "label": "Busy %"
+                  },
+                  "legend": {
+                    "position": "right"
+                  }
+                }
+              }
+            },
+            {
+              "type": "metric",
+              "width": 24,
+              "height": 6,
+              "properties": {
+                "metrics": [
+                  ["CPUStressTest", "ActiveCPUHogs", "InstanceId", "${TargetInstanceId}", {"label": "Active CPU Hogs", "yAxis": "right"}],
+                  [".", "AverageMHz", ".", ".", {"label": "Avg_MHz", "yAxis": "left"}]
+                ],
+                "period": 1,
+                "stat": "Average",
+                "region": "${AWS::Region}",
+                "title": "CPU Hogs vs Average Frequency",
+                "view": "timeSeries",
+                "yAxis": {
+                  "left": {
+                    "min": 0,
+                    "max": 4000,
+                    "label": "MHz"
+                  },
+                  "right": {
+                    "min": 0,
+                    "max": 150,
+                    "label": "Number of CPU Hogs"
+                  },
+                  "legend": {
+                    "position": "right"
+                  }
+                }
+              }
+            },
+            {
+              "type": "metric",
+              "width": 24,
+              "height": 6,
+              "properties": {
+                "metrics": [
+                  ["CPUStressTest", "C2_Percent", "InstanceId", "${TargetInstanceId}", {"label": "C2 State %", "color": "#2ca02c"}],
+                  [".", "C1_Percent", ".", ".", {"label": "C1 State %", "color": "#ff7f0e"}],
+                  [".", "POLL_Percent", ".", ".", {"label": "POLL State %", "color": "#1f77b4"}]
+                ],
+                "period": 1,
+                "stat": "Average",
+                "region": "${AWS::Region}",
+                "title": "CPU Power States Distribution",
+                "view": "timeSeries",
+                "yAxis": {
+                  "left": {
+                    "min": 0,
+                    "max": 100,
+                    "label": "Percentage"
+                  }
+                },
+                "legend": {
+                  "position": "right"
+                }
+              }
+            }
+          ]
+        }
+
+Outputs:
+  DashboardURL:
+    Description: URL for the CPU Monitoring Dashboard
+    Value: !Sub https://${AWS::Region}.console.aws.amazon.com/cloudwatch/home?region=${AWS::Region}#dashboards:name=${AWS::StackName}-monitoring
