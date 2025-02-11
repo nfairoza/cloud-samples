@@ -53,10 +53,7 @@ echo "Using table: $TABLE_NAME"
 echo "Running query..."
 QUERY="SELECT
    'AWS' as Cloud,
-   CONCAT(
-    SPLIT_PART(line_item_availability_zone, '-', 1), '-',
-    SPLIT_PART(line_item_availability_zone, '-', 2), '-',
-    SPLIT_PART(line_item_availability_zone, '-', 3)) as Region,
+   REGEXP_REPLACE(line_item_availability_zone, '[a-z]$', '') as Region,
    product_instance_type as Size,
    COUNT(DISTINCT line_item_resource_id) as Quantity,
    CAST(SUM(line_item_usage_amount) as INTEGER) as \"Total number of hours per month\",
