@@ -2,7 +2,7 @@
 "AWS","us-east-2","m7a.24xlarge","1","1","On-Demand"
 "AWS","us-west-2","m7a.24xlarge","1","27","On-Demand"
 "AWS","us-east-2","m7a.48xlarge","1","20","On-Demand"
-"AWS","us-east-2","m7a.8xlarge","2","376","On-Demand"
+"AWS","us-east-2","m7a.8xlarge","2","484","On-Demand"
 "AWS","us-west-2","m7a.8xlarge","1","0","On-Demand"
 "AWS","us-east-2","m7a.metal-48xl","1","19","On-Demand"
 "AWS","us-west-2","m7i.24xlarge","1","12","On-Demand"

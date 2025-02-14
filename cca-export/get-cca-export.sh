@@ -11,9 +11,7 @@ ROLE_NAME="AWSGlueServiceRole-crawler"
 echo "Deleting existing crawler..."
 aws glue delete-crawler --name "$CRAWLER_NAME" --region $REGION || true
 
-
 ROLE_ARN=$(aws iam get-role --role-name "$ROLE_NAME" --query 'Role.Arn' --output text)
-
 
 echo "Creating crawler with correct S3 path..."
 aws glue create-crawler \
@@ -39,16 +37,18 @@ while true; do
 done
 
 echo "Getting table name..."
-TABLES=$(aws glue get-tables --database-name $DATABASE_NAME --region $REGION --query 'TableList[?!contains(Name, `metadata`)].Name' --output text)
-TABLE_NAME=$(echo "$TABLES" | tr -s ' ' '\n' | grep "data_" | head -n 1)
+TABLES=$(aws glue get-tables --database-name $DATABASE_NAME --region $REGION --query 'TableList[*].Name' --output text)
+echo "Available tables: $TABLES"
 
-if [ -z "$TABLE_NAME" ]; then
-    echo "No data table found"
+
+if echo "$TABLES" | grep -q "\bdata\b"; then
+    TABLE_NAME="data"
+else
+    echo "No 'data' table found. Available tables: $TABLES"
     exit 1
 fi
 
 echo "Using table: $TABLE_NAME"
-
 
 echo "Running query..."
 QUERY="SELECT
