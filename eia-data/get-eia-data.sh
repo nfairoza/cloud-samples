@@ -95,8 +95,8 @@ echo "Downloading query results..."
 RESULTS_LOCATION=$(aws athena get-query-execution --query-execution-id "$EXECUTION_ID" --region $REGION --query 'QueryExecution.ResultConfiguration.OutputLocation' --output text)
 aws s3 cp "$RESULTS_LOCATION" "./cur_temp.csv" --region $REGION
 
-echo "Creating resource analysis CSV..."
-echo "uuid,cloud_csp,instance_type,region,max_cpu%,max_mem_used,max_network_bw,max_disk_bw_used,max_iops" > "resource_analysis.csv"
+echo "Creating EIA data CSV..."
+echo "uuid,cloud_csp,instance type,region,max cpu%,max mem used,max network bw,max disk bw used,max iops" > "eia_data.csv"
 
 echo "Processing instances..."
 while IFS=',' read -r uuid instance_type region; do
@@ -144,14 +144,14 @@ while IFS=',' read -r uuid instance_type region; do
     max_iops_total=$(echo "$max_iops_read $max_iops_write" | awk '{printf "%.0f", $1+$2}')
 
     printf "%s,AWS,%s,%s,%.2f,%.2f,%d,%d,%d\n" \
-        "$uuid" "$instance_type" "$region" "$max_cpu" "$max_mem" "$max_net" "$max_disk_total" "$max_iops_total" >> "resource_analysis.csv"
+        "$uuid" "$instance_type" "$region" "$max_cpu" "$max_mem" "$max_net" "$max_disk_total" "$max_iops_total" >> "eia_data.csv"
 done < <(tail -n +2 cur_temp.csv)
 
 echo "Displaying results..."
-cat resource_analysis.csv
+cat eia_data.csv
 
 echo "Cleaning up resources..."
 aws glue delete-crawler --name "$CRAWLER_NAME" --region $REGION
 rm -f "./cur_temp.csv"
 
-echo "Script completed successfully and you can fine resource_analysis.csv in current directory"
+echo "Script completed successfully and you can find eia_data.csv in current directory"
