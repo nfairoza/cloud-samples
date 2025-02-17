@@ -1,9 +1,0 @@
-uuid,cloud_csp,instance type,region,max cpu%,max mem used,max network bw,max disk bw used,max iops
-i-0cb90cacbcce4ab8d,AWS,m7a.8xlarge,us-east-2,26.52,0.52,5,2142,39328
-i-088deea3ba2d532d6,AWS,g4ad.2xlarge,eu-central-1,2.31,0.00,0,400,8394
-i-0c435dfe8ef631ac2,AWS,m7a.8xlarge,us-east-2,92.13,0.00,4,1619,31723
-i-0badef87fcbd353c1,AWS,m7a.48xlarge,us-east-2,47.78,0.00,5,1565,33729
-i-08ba47b7891d73ce1,AWS,m7a.8xlarge,us-west-2,1.13,0.00,0,398,7986
-i-0fa3eb9b3437755ef,AWS,m7a.24xlarge,us-east-2,0.44,0.00,0,368,8099
-i-038b98b302dd10eaf,AWS,m7a.metal-48xl,us-east-2,50.00,0.00,5,2098,49560
-i-00e291abe7e795414,AWS,m7a.24xlarge,us-west-2,91.89,0.00,7,14304,161516
