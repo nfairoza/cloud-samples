@@ -48,7 +48,7 @@ chmod +x get-eia-data.sh
 
 ## Output Format and Metric Details
 
-The script generates a CSV file named `resource_analysis.csv` with the following columns:
+The script generates a CSV file named `eia_data.csv` with the following columns:
 
 - uuid: Instance ID (CUR: line_item_resource_id)
 - cloud_csp: Cloud provider ("AWS")
