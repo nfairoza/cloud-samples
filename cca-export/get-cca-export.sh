@@ -8,9 +8,6 @@ S3_PATH="s3://noortestdata/cur/cur-cca/data/"
 S3_OUTPUT="s3://noortestdata/query_results/"
 ROLE_NAME="AWSGlueServiceRole-crawler"
 
-echo "Deleting existing crawler..."
-aws glue delete-crawler --name "$CRAWLER_NAME" --region $REGION || true
-
 ROLE_ARN=$(aws iam get-role --role-name "$ROLE_NAME" --query 'Role.Arn' --output text)
 
 echo "Creating crawler with correct S3 path..."
@@ -115,6 +112,10 @@ RESULTS_LOCATION=$(aws athena get-query-execution \
     --region $REGION \
     --query 'QueryExecution.ResultConfiguration.OutputLocation' \
     --output text)
+
+
+echo "Clean up: Deleting existing crawler..."
+aws glue delete-crawler --name "$CRAWLER_NAME" --region $REGION || true
 
 aws s3 cp "$RESULTS_LOCATION" "./cur_results.csv" --region $REGION
 echo "Results downloaded to cur_results.csv"
