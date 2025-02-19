@@ -11,7 +11,7 @@ ROLE_NAME="AWSGlueServiceRole-crawler"
 ROLE_ARN=$(aws iam get-role --role-name "$ROLE_NAME" --query 'Role.Arn' --output text)
 
 if ! aws glue get-crawler --name "$CRAWLER_NAME" --region "$REGION" &>/dev/null; then
-    echo "Creating crawler with correct S3 path..."
+    echo "Creating crawler with given S3 path..."
     aws glue create-crawler \
         --name $CRAWLER_NAME \
         --role "$ROLE_ARN" \
