@@ -10,16 +10,20 @@ ROLE_NAME="AWSGlueServiceRole-crawler"
 
 ROLE_ARN=$(aws iam get-role --role-name "$ROLE_NAME" --query 'Role.Arn' --output text)
 
-echo "Creating crawler with correct S3 path..."
-aws glue create-crawler \
-    --name $CRAWLER_NAME \
-    --role "$ROLE_ARN" \
-    --database-name $DATABASE_NAME \
-    --targets "{\"S3Targets\": [{\"Path\": \"$S3_PATH\", \"Exclusions\": []}]}" \
-    --schema-change-policy "{\"UpdateBehavior\": \"UPDATE_IN_DATABASE\", \"DeleteBehavior\": \"LOG\"}" \
-    --recrawl-policy "{\"RecrawlBehavior\": \"CRAWL_EVERYTHING\"}" \
-    --configuration "{\"Version\":1.0,\"CrawlerOutput\":{\"Partitions\":{\"AddOrUpdateBehavior\":\"InheritFromTable\"},\"Tables\":{\"AddOrUpdateBehavior\":\"MergeNewColumns\"}}}" \
-    --region $REGION
+if ! aws glue get-crawler --name "$CRAWLER_NAME" --region "$REGION" &>/dev/null; then
+    echo "Creating crawler with correct S3 path..."
+    aws glue create-crawler \
+        --name $CRAWLER_NAME \
+        --role "$ROLE_ARN" \
+        --database-name $DATABASE_NAME \
+        --targets "{\"S3Targets\": [{\"Path\": \"$S3_PATH\", \"Exclusions\": []}]}" \
+        --schema-change-policy "{\"UpdateBehavior\": \"UPDATE_IN_DATABASE\", \"DeleteBehavior\": \"LOG\"}" \
+        --recrawl-policy "{\"RecrawlBehavior\": \"CRAWL_EVERYTHING\"}" \
+        --configuration "{\"Version\":1.0,\"CrawlerOutput\":{\"Partitions\":{\"AddOrUpdateBehavior\":\"InheritFromTable\"},\"Tables\":{\"AddOrUpdateBehavior\":\"MergeNewColumns\"}}}" \
+        --region $REGION
+else
+    echo "Crawler already exists, skipping creation..."
+fi
 
 echo "Starting crawler..."
 aws glue start-crawler --name $CRAWLER_NAME --region $REGION
