@@ -5,28 +5,26 @@ This script automates the collection and analysis of EC2 instance metrics from A
 ## Prerequisites
 
 - AWS CLI installed and configured where the script is run.
-- AWS CUR 2.0 data with resource ids in Parquet format stored in S3 bucket
 - Required AWS IAM permissions:
-  - AWS Glue (crawler operations)
-  - Amazon Athena (query execution)
-  - Amazon S3 (read/write access)
   - CloudWatch permissions:
     - cloudwatch:GetMetricStatistics
     - cloudwatch:GetMetricData
   - IAM role operations
+  - EC2 permissions:
+    - ec2:DescribeInstances
+    - ec2:DescribeInstanceTypes
 - jq installed for JSON processing
 
 ## Configuration
 
-Update these variables in the script according to your environment:
+Optionally you can change these variables in the script according to your environment:
 
 ```bash
-REGION="us-east-2"                                    # AWS region
-DATABASE_NAME="cur_reports"                           # Glue database name
-S3_OUTPUT="s3://noortestdata/query_results/"         # Query results output path
-S3_PATH="s3://noortestdata/cur/cur-cca/data/"       # Source CUR data path
-ROLE_NAME="AWSGlueServiceRole-crawler"               # IAM role for Glue crawler
-START_TIME="2023-01-01T00:00:00"                     # Metrics collection start time
+# Time range
+DAYS_LOOKBACK=5                 # 5 days lookback because 1440 datapoint for cloudwatch to not hit API limits. If you need to go further back you need to change the duratio to 1 hour.
+# CloudWatch period (in seconds)
+HIGH_RES_PERIOD=300             # 5 minutes in seconds
+                    # Metrics collection start time
 ```
 
 ## Usage
@@ -50,15 +48,15 @@ chmod +x get-eia-data.sh
 
 The script generates a CSV file named `eia_data.csv` with the following columns:
 
-- uuid: Instance ID (CUR: line_item_resource_id)
-- cloud_csp: Cloud provider ("AWS")
-- instance_type: EC2 instance type (CUR: product_instance_type)
-- region: AWS region (CUR: line_item_availability_zone)
-- max_cpu%: Maximum CPU utilization (CloudWatch: AWS/EC2 namespace, CPUUtilization metric)
-- max_mem_used: Memory usage (requires CloudWatch agent setup, if not configured 0)
-- max_network_bw: Maximum network bandwidth in MB (CloudWatch: AWS/EC2 namespace, NetworkOut metric)
-- max_disk_bw_used: Maximum disk bandwidth in MB (CloudWatch: AWS/EC2 namespace, sum of EBSReadBytes and EBSWriteBytes)
-- max_iops: Maximum IOPS (CloudWatch: AWS/EC2 namespace, sum of EBSReadOps and EBSWriteOps)
+- uuid: Instance ID (EC2 instance identifier)
+- cloud_csp: Cloud provider (hardcoded as "AWS")
+- instance_type: EC2 instance type (from EC2 describe-instances)
+- region: AWS region (extracted from availability zone)
+- max_cpu%: Maximum CPU utilization percentage (CloudWatch: AWS/EC2 namespace, CPUUtilization metric, Maximum statistic)
+- max_mem_used: Maximum memory usage in GB (CloudWatch: CWAgent namespace, mem_used metric, Maximum statistic)
+- max_network_bw: Maximum network bandwidth in Mbps calculated as (NetworkIn + NetworkOut) × 8 / (300 × 10^6) (CloudWatch: AWS/EC2 namespace, NetworkIn and NetworkOut metrics)
+- max_disk_bw_used: Maximum disk bandwidth in MB calculated as (EBSReadBytes + EBSWriteBytes)/1024/1024 (CloudWatch: AWS/EC2 namespace, EBSReadBytes and EBSWriteBytes metrics)
+- max_iops: Maximum IOPS calculated as EBSReadOps + EBSWriteOps (CloudWatch: AWS/EC2 namespace, EBSReadOps and EBSWriteOps metrics)
 
 ## Memory Metric Requirements
 
@@ -114,3 +112,17 @@ sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a start
 The script automatically:
 - Removes the Glue crawler after execution
 - Cleans up temporary query results
+
+## Notes
+
+CloudWatch has different retention periods for different resolution metrics. By default:
+
+5-minute data (high resolution) is typically retained for 15 days
+1-hour data is retained for 63 days
+Daily data is retained for 455 days (15 months)
+
+aws ec2 describe-instances only returns instances in the following states:
+running
+pending
+stopping
+stopped

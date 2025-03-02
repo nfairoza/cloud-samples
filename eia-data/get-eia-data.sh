@@ -1,157 +1,98 @@
 #!/bin/bash
 set -e
+# Time range
+DAYS_LOOKBACK=5                 # 5 days lookback because 1440 datapoint for cloudwatch to not hit API limits. If you need to go further back you need to change the duratio to 1 hour.
+# CloudWatch period (in seconds)
+HIGH_RES_PERIOD=300             # 5 minutes in seconds
 
-REGION="us-east-2"
-DATABASE_NAME="cur_reports"
-S3_OUTPUT="s3://noortestdata/query_results/"
-START_TIME="2023-01-01T00:00:00"
+# Calculate timestamps
+HIGH_RES_START_TIME=$(date -u -d "$DAYS_LOOKBACK days ago" +"%Y-%m-%dT%H:%M:%SZ")
 END_TIME=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
-CRAWLER_NAME="cur_report_crawler"
-ROLE_NAME="AWSGlueServiceRole-crawler"
-S3_PATH="s3://noortestdata/cur/cur-cca/data/"
 
-echo "Checking if crawler exists..."
-CRAWLER_EXISTS=$(aws glue get-crawler --name "$CRAWLER_NAME" --region $REGION 2>/dev/null || echo "false")
-
-if [ "$CRAWLER_EXISTS" = "false" ]; then
-    echo "Creating new crawler..."
-    ROLE_ARN=$(aws iam get-role --role-name "$ROLE_NAME" --query 'Role.Arn' --output text)
-
-    aws glue create-crawler \
-        --name "$CRAWLER_NAME" \
-        --role "$ROLE_ARN" \
-        --database-name "$DATABASE_NAME" \
-        --targets '{"S3Targets": [{"Path": "'"$S3_PATH"'", "Exclusions": []}]}' \
-        --schema-change-policy '{"UpdateBehavior": "UPDATE_IN_DATABASE", "DeleteBehavior": "LOG"}' \
-        --recrawl-policy '{"RecrawlBehavior": "CRAWL_EVERYTHING"}' \
-        --configuration '{"Version":1.0,"CrawlerOutput":{"Partitions":{"AddOrUpdateBehavior":"InheritFromTable"},"Tables":{"AddOrUpdateBehavior":"MergeNewColumns"}}}' \
-        --region "$REGION"
-fi
-
-echo "Starting crawler..."
-aws glue start-crawler --name $CRAWLER_NAME --region $REGION >/dev/null
-
-while true; do
-    STATUS=$(aws glue get-crawler --name $CRAWLER_NAME --region $REGION --query 'Crawler.State' --output text)
-    echo "Crawler status: $STATUS"
-    if [ "$STATUS" = "READY" ]; then
-        break
-    fi
-    sleep 10
-done
-
-echo "Getting table name..."
-TABLES=$(aws glue get-tables --database-name $DATABASE_NAME --region $REGION --query 'TableList[*].Name' --output text)
-if [ -z "$TABLES" ]; then
-    echo "No tables found in database $DATABASE_NAME"
-    exit 1
-fi
-
-echo "Available tables: $TABLES"
-if echo "$TABLES" | grep -w "data" >/dev/null; then
-    TABLE_NAME="data"
-    echo "Found preferred table 'data'"
-else
-    TABLE_NAME=$(echo $TABLES | awk '{print $1}')
-    echo "Preferred table 'data' not found, using first available table: $TABLE_NAME"
-fi
-
-echo "Running query..."
-QUERY="WITH ranked_instances AS (
-    SELECT
-        line_item_resource_id as uuid,
-        product_instance_type,
-        REGEXP_REPLACE(line_item_availability_zone, '[a-z]$', '') as region,
-        ROW_NUMBER() OVER (PARTITION BY line_item_resource_id ORDER BY line_item_usage_start_date DESC) as rn
-    FROM
-        ${DATABASE_NAME}.${TABLE_NAME}
-    WHERE
-        line_item_product_code = 'AmazonEC2'
-        AND line_item_usage_type LIKE '%BoxUsage%'
-        AND line_item_resource_id LIKE 'i-%'
-)
-SELECT uuid, product_instance_type, region
-FROM ranked_instances
-WHERE rn = 1"
-
-EXECUTION_ID=$(aws athena start-query-execution \
-    --query-string "$QUERY" \
-    --work-group "primary" \
-    --query-execution-context "Database=${DATABASE_NAME},Catalog=AwsDataCatalog" \
-    --result-configuration "OutputLocation=${S3_OUTPUT}" \
-    --region $REGION \
-    --output text)
-
-echo "Waiting for query completion..."
-while true; do
-    STATUS=$(aws athena get-query-execution --query-execution-id "$EXECUTION_ID" --region $REGION --query 'QueryExecution.Status.State' --output text)
-    echo "Query status: $STATUS"
-    if [ "$STATUS" = "SUCCEEDED" ]; then break; fi
-    if [ "$STATUS" = "FAILED" ] || [ "$STATUS" = "CANCELLED" ]; then exit 1; fi
-    sleep 5
-done
-
-echo "Downloading query results..."
-RESULTS_LOCATION=$(aws athena get-query-execution --query-execution-id "$EXECUTION_ID" --region $REGION --query 'QueryExecution.ResultConfiguration.OutputLocation' --output text)
-aws s3 cp "$RESULTS_LOCATION" "./cur_temp.csv" --region $REGION
+echo "Using 5-minute resolution for all metrics for the past $DAYS_LOOKBACK days"
 
 echo "Creating EIA data CSV..."
 echo "uuid,cloud_csp,instance type,region,max cpu%,max mem used,max network bw,max disk bw used,max iops" > "eia_data.csv"
 
-echo "Processing instances..."
-while IFS=',' read -r uuid instance_type region; do
-    uuid=$(echo "$uuid" | tr -d '"')
-    instance_type=$(echo "$instance_type" | tr -d '"')
-    region=$(echo "$region" | tr -d '"')
+echo "Getting list of all AWS regions..."
+REGIONS=$(aws ec2 describe-regions --query "Regions[].RegionName" --output text)
 
-    echo "Processing instance: $uuid"
+for REGION in $REGIONS; do
+    echo "Processing region: $REGION"
 
-    get_max_metric() {
-        local namespace=$1
-        local metric_name=$2
-        aws cloudwatch get-metric-statistics \
-            --namespace "$namespace" \
-            --metric-name "$metric_name" \
-            --dimensions Name=InstanceId,Value="$uuid" \
-            --start-time "$START_TIME" \
-            --end-time "$END_TIME" \
-            --period 86400 \
-            --statistics Maximum \
-            --region "$region" 2>/dev/null | \
-        jq -r '.Datapoints[].Maximum | select(. != null)' | sort -rn | head -1
-    }
+    echo "Getting instances from EC2 in $REGION..."
+    INSTANCES=$(aws ec2 describe-instances --region $REGION --query 'Reservations[*].Instances[*].[InstanceId,InstanceType,Placement.AvailabilityZone]' --output text)
 
-    max_cpu=$(get_max_metric "AWS/EC2" "CPUUtilization")
-    max_cpu=${max_cpu:-0}
+    if [ -z "$INSTANCES" ]; then
+        echo "****************** No instances found in region $REGION"
+        continue
+    fi
 
-    max_mem=$(get_max_metric "CWAgent" "mem_used_percent")
-    max_mem=${max_mem:-0}
+    echo "****************** Processing instances in $REGION ******************"
+    while read -r uuid instance_type az; do
+        region=$(echo "$az" | sed 's/[a-z]$//')
 
-    max_net=$(get_max_metric "AWS/EC2" "NetworkOut")
-    max_net=$(echo "$max_net" | awk '{printf "%.0f", $1/1024/1024}')
-    max_net=${max_net:-0}
+        echo "...||| Processing instance: $uuid in $region |||..."
 
-    max_disk_read=$(get_max_metric "AWS/EC2" "EBSReadBytes")
-    max_disk_write=$(get_max_metric "AWS/EC2" "EBSWriteBytes")
-    max_disk_read=${max_disk_read:-0}
-    max_disk_write=${max_disk_write:-0}
-    max_disk_total=$(echo "$max_disk_read $max_disk_write" | awk '{printf "%.0f", ($1+$2)/1024/1024}')
+        get_metrics() {
+            local namespace=$1
+            local metric_name=$2
+            local data=$(aws cloudwatch get-metric-statistics \
+                --namespace "$namespace" \
+                --metric-name "$metric_name" \
+                --dimensions Name=InstanceId,Value="$uuid" \
+                --start-time "$HIGH_RES_START_TIME" \
+                --end-time "$END_TIME" \
+                --period $HIGH_RES_PERIOD \
+                --statistics Maximum \
+                --region "$region" 2>/dev/null || echo '{"Datapoints":[]}')
 
-    max_iops_read=$(get_max_metric "AWS/EC2" "EBSReadOps")
-    max_iops_write=$(get_max_metric "AWS/EC2" "EBSWriteOps")
-    max_iops_read=${max_iops_read:-0}
-    max_iops_write=${max_iops_write:-0}
-    max_iops_total=$(echo "$max_iops_read $max_iops_write" | awk '{printf "%.0f", $1+$2}')
+            local max_value=$(echo "$data" | jq -r '.Datapoints[].Maximum | select(. != null)' | sort -rn | head -1 || echo "0")
+            echo "${max_value:-0}"
+        }
 
-    printf "%s,AWS,%s,%s,%.2f,%.2f,%d,%d,%d\n" \
-        "$uuid" "$instance_type" "$region" "$max_cpu" "$max_mem" "$max_net" "$max_disk_total" "$max_iops_total" >> "eia_data.csv"
-done < <(tail -n +2 cur_temp.csv)
 
-echo "Displaying results..."
-cat eia_data.csv
+        max_cpu=$(get_metrics "AWS/EC2" "CPUUtilization")
+        echo "  CPU max: $max_cpu% (from 5-minute resolution data)"
 
-echo "Cleaning up resources..."
-aws glue delete-crawler --name "$CRAWLER_NAME" --region $REGION
-rm -f "./cur_temp.csv"
+        mem_used_bytes=$(get_metrics "CWAgent" "mem_used")
+
+        if [ -n "$mem_used_bytes" ] && [ "$mem_used_bytes" != "0" ]; then
+            # Used 2 decimal points for memory in GB
+            max_mem=$(echo "$mem_used_bytes" | awk '{printf "%.2f", $1/(1024*1024*1024)}')
+            echo "  Memory used: $max_mem GB (from raw bytes: $mem_used_bytes, 5-minute resolution)"
+        else
+                max_mem="0.00"
+                echo "  No memory metrics available for this instance. Please configure CloudWatch to publish Memory metrics in namespace CWAgent"
+
+        fi
+
+
+        # Formula : Total Network Bandwidth (Mbps) = (NetworkIn + NetworkOut) × 8 / (time period in seconds × 10^6)
+        # Get network usage (5-minute resolution)
+        max_net_bytes_out=$(get_metrics "AWS/EC2" "NetworkOut")
+        max_net_bytes_in=$(get_metrics "AWS/EC2" "NetworkIn")
+        max_net=$(echo "$max_net_bytes_out $max_net_bytes_in" | awk '{printf "%.8f", (($1 + $2) * 8) / (300 * 1000000)}')
+
+
+        echo "  Network max burst: $max_net Mbps (from 5-minute period, raw bytes out: $max_net_bytes_out, raw bytes in: $max_net_bytes_in)"
+
+        max_disk_read=$(get_metrics "AWS/EC2" "EBSReadBytes")
+        max_disk_write=$(get_metrics "AWS/EC2" "EBSWriteBytes")
+        max_disk_total=$(echo "$max_disk_read $max_disk_write" | awk '{printf "%.0f", ($1+$2)/1024/1024}')
+        echo "  Disk bandwidth: $max_disk_total MB (from 5-minute resolution data)"
+
+        max_iops_read=$(get_metrics "AWS/EC2" "EBSReadOps")
+        max_iops_write=$(get_metrics "AWS/EC2" "EBSWriteOps")
+        max_iops_total=$(echo "$max_iops_read $max_iops_write" | awk '{printf "%.0f", $1+$2}')
+        echo "  IOPS: $max_iops_total (from 5-minute resolution data)"
+
+        printf "%s,AWS,%s,%s,%.2f,%.2f,%.8f,%d,%d\n" \
+            "$uuid" "$instance_type" "$region" "$max_cpu" "$max_mem" "$max_net" "$max_disk_total" "$max_iops_total" >> "eia_data.csv"
+    done <<< "$INSTANCES"
+done
+
+# echo "Displaying results..."
+# cat eia_data.csv
 
 echo "Script completed successfully and you can find eia_data.csv in current directory"
