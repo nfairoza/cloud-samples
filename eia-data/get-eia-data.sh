@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 # Time range
-DAYS_LOOKBACK=5                 # 5 days lookback because 1440 datapoint for cloudwatch to not hit API limits. If you need to go further back you need to change the duratio to 1 hour.
+DAYS_LOOKBACK=5                # 5 days lookback because 1440 datapoint for cloudwatch to not hit API limits. If you need to go further back you need to change the duratio to 1 hour.
 # CloudWatch period (in seconds)
 HIGH_RES_PERIOD=300             # 5 minutes in seconds
 

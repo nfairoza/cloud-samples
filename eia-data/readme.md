@@ -115,14 +115,14 @@ The script automatically:
 
 ## Notes
 
-CloudWatch has different retention periods for different resolution metrics. By default:
-
-5-minute data (high resolution) is typically retained for 15 days
-1-hour data is retained for 63 days
-Daily data is retained for 455 days (15 months)
+CloudWatch retains metric data as follows:
+* Data points with a period of less than 60 seconds are available for 3 hours. These data points are high-resolution custom metrics.(extra config and charge)
+* Data points with a period of 60 seconds (1 minute) are available for 15 days
+* Data points with a period of 300 seconds (5 minutes) are available for 63 days
+* Data points with a period of 3600 seconds (1 hour) are available for 455 days (15 months)
 
 aws ec2 describe-instances only returns instances in the following states:
-running
-pending
-stopping
-stopped
+* running
+* pending
+* stopping
+* stopped

@@ -61,7 +61,8 @@ QUERY="SELECT
    CASE
        WHEN pricing_purchase_option = 'Reserved' THEN 'Reserved'
        WHEN pricing_purchase_option = 'Spot' THEN 'Spot'
-       ELSE 'On-Demand'
+       WHEN pricing_purchase_option = 'On-Demand'
+       ELSE 'not supported'
    END as \"Pricing Model\"
 FROM
    ${DATABASE_NAME}.${TABLE_NAME}
