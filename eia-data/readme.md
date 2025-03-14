@@ -87,9 +87,13 @@ sudo tee /opt/aws/amazon-cloudwatch-agent/bin/config.json << 'EOF'
         "metrics_collected": {
             "mem": {
                 "measurement": [
-                    "used",
-                    "used_percent",
-                    "total"
+                  "used",
+                  "used_percent",
+                  "total",
+                  "cached",
+                  "buffered",
+                  "slab",
+                  "available"
                 ]
             }
         },

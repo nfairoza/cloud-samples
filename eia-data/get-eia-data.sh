@@ -1,9 +1,9 @@
 #!/bin/bash
 set -e
 # Time range
-DAYS_LOOKBACK=5                # 5 days lookback because 1440 datapoint for cloudwatch to not hit API limits. If you need to go further back you need to change the duratio to 1 hour.
+DAYS_LOOKBACK=1                # 5 days lookback because 1440 datapoint for cloudwatch to not hit API limits. If you need to go further back you need to change the duratio to 1 hour.
 # CloudWatch period (in seconds)
-HIGH_RES_PERIOD=300             # 5 minutes in seconds
+HIGH_RES_PERIOD=60             # 5 minutes in seconds
 
 # Calculate timestamps
 HIGH_RES_START_TIME=$(date -u -d "$DAYS_LOOKBACK days ago" +"%Y-%m-%dT%H:%M:%SZ")
@@ -53,14 +53,20 @@ for REGION in $REGIONS; do
 
 
         max_cpu=$(get_metrics "AWS/EC2" "CPUUtilization")
-        echo "  CPU max: $max_cpu% (from 5-minute resolution data)"
+        echo "  CPU max: $max_cpu% "
+
 
         mem_used_bytes=$(get_metrics "CWAgent" "mem_used")
+        mem_cached_bytes=$(get_metrics "CWAgent" "mem_cached")
+        mem_buffered_bytes=$(get_metrics "CWAgent" "mem_buffered")
+        mem_slab_bytes=$(get_metrics "CWAgent" "mem_slab")
+
+        total_used_bytes=$(echo "$mem_used_bytes $mem_cached_bytes $mem_buffered_bytes $mem_slab_bytes" | awk '{print $1 + $2 + $3 + $4}')
 
         if [ -n "$mem_used_bytes" ] && [ "$mem_used_bytes" != "0" ]; then
-            # Used 2 decimal points for memory in GB
-            max_mem=$(echo "$mem_used_bytes" | awk '{printf "%.2f", $1/(1024*1024*1024)}')
-            echo "  Memory used: $max_mem GB (from raw bytes: $mem_used_bytes, 5-minute resolution)"
+            # Used 2 decimal points for memory
+            max_mem=$(echo "$total_used_bytes" | awk '{printf "%.2f", $1/(1024*1024*1024)}')
+            echo "  Memory used: $max_mem GB (from raw bytes: $total_used_bytes)"
         else
                 max_mem="0.00"
                 echo "  No memory metrics available for this instance. Please configure CloudWatch to publish Memory metrics in namespace CWAgent"
@@ -69,30 +75,46 @@ for REGION in $REGIONS; do
 
 
         # Formula : Total Network Bandwidth (Mbps) = (NetworkIn + NetworkOut) × 8 / (time period in seconds × 10^6)
-        # Get network usage (5-minute resolution)
+        # Get network metrics
         max_net_bytes_out=$(get_metrics "AWS/EC2" "NetworkOut")
         max_net_bytes_in=$(get_metrics "AWS/EC2" "NetworkIn")
-        max_net=$(echo "$max_net_bytes_out $max_net_bytes_in" | awk '{printf "%.8f", (($1 + $2) * 8) / (300 * 1000000)}')
 
 
-        echo "  Network max burst: $max_net Mbps (from 5-minute period, raw bytes out: $max_net_bytes_out, raw bytes in: $max_net_bytes_in)"
+        if [[ "$max_net_bytes_out" == "0" && "$max_net_bytes_in" == "0" ]]; then
+            max_net="0.00"
+        else
+            max_net=$(echo "$max_net_bytes_out $max_net_bytes_in $HIGH_RES_PERIOD" | \
+                      awk '{printf "%.8f", (($1 + $2) * 8) / ($3 * 1000000)}')
+        fi
 
+        echo "  Network max burst: $max_net Mbps (from ${HIGH_RES_PERIOD}-second period, raw bytes out: $max_net_bytes_out, raw bytes in: $max_net_bytes_in)"
+
+
+        # Get disk metrics
         max_disk_read=$(get_metrics "AWS/EC2" "EBSReadBytes")
         max_disk_write=$(get_metrics "AWS/EC2" "EBSWriteBytes")
-        max_disk_total=$(echo "$max_disk_read $max_disk_write" | awk '{printf "%.0f", ($1+$2)/1024/1024}')
-        echo "  Disk bandwidth: $max_disk_total MB (from 5-minute resolution data)"
 
+        # Calculate disk bandwidth in MB/s
+        max_disk_total=$(echo "$max_disk_read $max_disk_write $HIGH_RES_PERIOD" | \
+                        awk '{printf "%.2f", ($1 + $2) / (1024 * 1024 * $3)}')
+
+        echo "  Disk bandwidth: $max_disk_total MB/s (from ${HIGH_RES_PERIOD}-second period)"
+
+        # Get IOPS metrics
         max_iops_read=$(get_metrics "AWS/EC2" "EBSReadOps")
         max_iops_write=$(get_metrics "AWS/EC2" "EBSWriteOps")
-        max_iops_total=$(echo "$max_iops_read $max_iops_write" | awk '{printf "%.0f", $1+$2}')
-        echo "  IOPS: $max_iops_total (from 5-minute resolution data)"
 
-        printf "%s,AWS,%s,%s,%.2f,%.2f,%.8f,%d,%d\n" \
-            "$uuid" "$instance_type" "$region" "$max_cpu" "$max_mem" "$max_net" "$max_disk_total" "$max_iops_total" >> "eia_data.csv"
+
+        max_iops_total=$(echo "$max_iops_read $max_iops_write $HIGH_RES_PERIOD" | \
+                        awk '{printf "%.0f", ($1 + $2) / $3}')
+
+        echo "  IOPS: $max_iops_total (operations per second, from ${HIGH_RES_PERIOD}-second period)"
+
+
+        printf "%s,AWS,%s,%s,%.2f,%.2f,%.8f,%.2f,%d\n" \
+    "$uuid" "$instance_type" "$region" "$max_cpu" "$max_mem" "$max_net" "$max_disk_total" "$max_iops_total" >> "eia_data.csv"
     done <<< "$INSTANCES"
 done
-
-# echo "Displaying results..."
-# cat eia_data.csv
-
+echo "Displaying results..."
+cat eia_data.csv
 echo "Script completed successfully and you can find eia_data.csv in current directory"
