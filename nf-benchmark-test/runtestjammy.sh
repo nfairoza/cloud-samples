@@ -10,6 +10,7 @@ echo "Starting benchmark environment setup..."
 HOME_DIR="/home/ubuntu"
 CLDPERF_DIR="$HOME_DIR/cldperf-nflx-lab-benchmarks-main"
 AUTOBENCH_DIR="$CLDPERF_DIR/autobench"
+#/home/ubuntu/cldperf-nflx-lab-benchmarks-main/autobench
 S3_PATH="s3://netflix-files-us-west2/cldperf-nflx-lab-benchmarks-main/"
 GIT_REPO="https://github.com/nfairoza/cloud-samples.git"
 GIT_SUBDIR="nf-benchmark-test"
@@ -180,6 +181,6 @@ sudo chmod -R +x "$AUTOBENCH_DIR/binaries" 2>/dev/null || true
 
 echo "Changing ownership to bnetflix..."
 sudo chown -R bnetflix:bnetflix "$CLDPERF_DIR"
-
+sudo mv $AUTOBENCH_DIR/run-benchmarks $AUTOBENCH_DIR/run-benchmarks.sh
 echo "Setup complete! You can now run benchmarks."
 echo "To run benchmarks, execute: sudo -u bnetflix $AUTOBENCH_DIR/run-benchmarks.sh"
