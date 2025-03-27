@@ -16,7 +16,7 @@ THREADS_PER_CORE=$(lscpu | grep "Thread(s) per core" | awk '{print $4}')
 TOTAL_CORES=$((CORES_PER_SOCKET * SOCKETS))
 export VCPUS=$((TOTAL_CORES * THREADS_PER_CORE))
 echo "vCPUs: $VCPUS (${CORES_PER_SOCKET} cores/socket × ${SOCKETS} sockets × ${THREADS_PER_CORE} threads/core)"
-
+export PYTHONWARNINGS="ignore"
 # xtract instance size for heap determination
 INSTANCE_SIZE=$(echo "$EC2_INSTANCE_TYPE" | cut -d. -f2)
 # Mapping model name to CPU family

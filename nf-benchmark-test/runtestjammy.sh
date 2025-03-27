@@ -41,6 +41,7 @@ sudo apt install -y \
     python3 \
     g++ \
     git \
+    tree
 
    #  nvidia-headless-570
 
