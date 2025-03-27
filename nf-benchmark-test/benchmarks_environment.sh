@@ -3,17 +3,22 @@
 #   Benchmark Environment Variables
 #   --------------------------------
 #
-MODEL_NAME=$(lscpu | grep "Model name" | awk -F': ' '{print $2}')
+
+# Get instance type directly from EC2 metadata service
+TOKEN=$(curl -s -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600")
+EC2_INSTANCE_TYPE=$(curl -s -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/instance-type)
+echo "Detected EC2 instance type: $EC2_INSTANCE_TYPE"
+
+# Extract CPU topology more accurately
 CORES_PER_SOCKET=$(lscpu | grep "Core(s) per socket" | awk '{print $4}')
 SOCKETS=$(lscpu | grep "Socket(s)" | awk '{print $2}')
+THREADS_PER_CORE=$(lscpu | grep "Thread(s) per core" | awk '{print $4}')
 TOTAL_CORES=$((CORES_PER_SOCKET * SOCKETS))
-export VCPUS=$((TOTAL_CORES * 2))  # Assuming hyperthreading is enabled
+export VCPUS=$((TOTAL_CORES * THREADS_PER_CORE))
+echo "vCPUs: $VCPUS (${CORES_PER_SOCKET} cores/socket × ${SOCKETS} sockets × ${THREADS_PER_CORE} threads/core)"
 
-if [[ -z "$INSTANCE_SIZE" ]]; then
-    #INSTANCE_SIZE=$((TOTAL_CORES / 2))  # Match AWS convention (half of physical cores)
-    INSTANCE_SIZE="metal-$((TOTAL_CORES / 2))xl"  # Match AWS convention (half of physical cores)
-fi
-
+# xtract instance size for heap determination
+INSTANCE_SIZE=$(echo "$EC2_INSTANCE_TYPE" | cut -d. -f2)
 # Mapping model name to CPU family
 if echo "$MODEL_NAME" | grep -qi "EPYC 9[0-9][0-9][0-9]"; then
     FAMILY="Genoa"
@@ -25,21 +30,7 @@ else
     FAMILY="Unknown"
 fi
 
-case "${INSTANCE_SIZE}" in
-    xlarge) INSTANCE_TYPE="xlarge" ;;
-    2xlarge) INSTANCE_TYPE="2xlarge" ;;
-    4xlarge) INSTANCE_TYPE="4xlarge" ;;
-    8xlarge) INSTANCE_TYPE="8xlarge" ;;
-    12xlarge) INSTANCE_TYPE="12xlarge" ;;
-    16xlarge) INSTANCE_TYPE="16xlarge" ;;
-    24xlarge) INSTANCE_TYPE="24xlarge" ;;
-    32xlarge) INSTANCE_TYPE="32xlarge" ;;
-    metal-48xl) INSTANCE_TYPE="metal48xl" ;;
-    *) INSTANCE_TYPE="unknown" ;;
-esac
-
-# Export the final instance type
-export EC2_INSTANCE_TYPE="${FAMILY}-${INSTANCE_TYPE}"
+# Export the instance identifier (used -)
 export INSTANCE=$(echo "$EC2_INSTANCE_TYPE" | sed -e 's/\./-/')
 
 echo "Exported INSTANCE: $INSTANCE"
@@ -69,7 +60,6 @@ export TS=`echo $(date '+%m-%d-%Y_%s')`
 UNAME=`uname -r`
 KERNEL=`echo $UNAME|sed -e 's/\.//g'`
 BASEOS=$(grep "VERSION_CODENAME" /etc/os-release | cut -d '=' -f2)
-#JVM=`java -version 2>&1|grep Server|sed 's/(//g'| sed 's/)//g'|awk '{print $5$6}'|cut -d . -f 1`
 export JVM="OpenJDK$(java --version | awk 'NR==1 {print $2}' | cut -d. -f1)"
 export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
 #-------
@@ -77,71 +67,36 @@ export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
 # Change GC environment variable here to run specjbb2015 with different Garbage Collector: ex: export GC='ShenandoahGC"
 #-------
 export GC='G1GC'
-# C6 and C7 instances have less memory to allocate in Heap
-if [[ $EC2_INSTANCE_TYPE =~ "c6i.xlarge" ]] || [[ $EC2_INSTANCE_TYPE =~ "c6a.xlarge" ]]; then
-  export Heap='2g'
-elif [[ $EC2_INSTANCE_TYPE =~ "c6i.2xlarge" ]] || [[ $EC2_INSTANCE_TYPE =~ "c6a.2xlarge" ]]; then
-  export Heap='4g'
-elif [[ $EC2_INSTANCE_TYPE =~ "c6i.4xlarge" ]] || [[ $EC2_INSTANCE_TYPE =~ "c6a.4xlarge" ]]; then
-  export Heap='4g'
-elif [[ $EC2_INSTANCE_TYPE =~ "c6i.8xlarge" ]] || [[ $EC2_INSTANCE_TYPE =~ "c6a.8xlarge" ]]; then
+
+# Set heap size based on instance type
+if [[ $INSTANCE_TYPE =~ "metal48xl" || $INSTANCE_SIZE =~ "metal" || $INSTANCE_SIZE =~ "metal-48xl" ]]; then
+  export Heap='96g'
+elif [[ $INSTANCE_SIZE =~ "48xlarge" ]]; then
+  export Heap='96g'
+elif [[ $INSTANCE_SIZE =~ "32xlarge" ]]; then
+  export Heap='96g'
+elif [[ $INSTANCE_SIZE =~ "24xlarge" ]]; then
+  export Heap='64g'
+elif [[ $INSTANCE_SIZE =~ "16xlarge" ]]; then
+  export Heap='64g'
+elif [[ $INSTANCE_SIZE =~ "12xlarge" ]]; then
+  export Heap='32g'
+elif [[ $INSTANCE_SIZE =~ "8xlarge" ]]; then
+  export Heap='32g'
+elif [[ $INSTANCE_SIZE =~ "4xlarge" ]]; then
   export Heap='16g'
-elif [[ $EC2_INSTANCE_TYPE =~ "c6i.12xlarge" ]] || [[ $EC2_INSTANCE_TYPE =~ "c6a.12xlarge" ]]; then
-  export Heap='32g'
-elif [[ $EC2_INSTANCE_TYPE =~ "c6i.16xlarge" ]] || [[ $EC2_INSTANCE_TYPE =~ "c6a.16xlarge" ]]; then
-  export Heap='32g'
-elif [[ $EC2_INSTANCE_TYPE =~ "c6i.24xlarge" ]] || [[ $EC2_INSTANCE_TYPE =~ "c6a.24xlarge" ]]; then
-  export Heap='32g'
-elif [[ $EC2_INSTANCE_TYPE =~ "c6i.32xlarge" ]] || [[ $EC2_INSTANCE_TYPE =~ "c6a.32xlarge" ]]; then
-  export Heap='64g'
-elif [[ $EC2_INSTANCE_TYPE =~ "c6i.metal" ]] || [[ $EC2_INSTANCE_TYPE =~ "c6a.metal" ]]; then
-  export Heap='64g'
-# C7 instances
-elif [[ $EC2_INSTANCE_TYPE =~ "c7i.xlarge" ]] || [[ $EC2_INSTANCE_TYPE =~ "c7a.xlarge" ]]; then
-  export Heap='2g'
-elif [[ $EC2_INSTANCE_TYPE =~ "c7i.2xlarge" ]] || [[ $EC2_INSTANCE_TYPE =~ "c7a.2xlarge" ]]; then
-  export Heap='4g'
-elif [[ $EC2_INSTANCE_TYPE =~ "c7i.4xlarge" ]] || [[ $EC2_INSTANCE_TYPE =~ "c7a.4xlarge" ]]; then
-  export Heap='4g'
-elif [[ $EC2_INSTANCE_TYPE =~ "c7i.8xlarge" ]] || [[ $EC2_INSTANCE_TYPE =~ "c7a.8xlarge" ]]; then
-  export Heap='16g'
-elif [[ $EC2_INSTANCE_TYPE =~ "c7i.12xlarge" ]] || [[ $EC2_INSTANCE_TYPE =~ "c7a.12xlarge" ]]; then
-  export Heap='32g'
-elif [[ $EC2_INSTANCE_TYPE =~ "c7i.16xlarge" ]] || [[ $EC2_INSTANCE_TYPE =~ "c7a.16xlarge" ]]; then
-  export Heap='32g'
-elif [[ $EC2_INSTANCE_TYPE =~ "c7i.24xlarge" ]] || [[ $EC2_INSTANCE_TYPE =~ "c7a.24xlarge" ]]; then
-  export Heap='64g'
-elif [[ $EC2_INSTANCE_TYPE =~ "c7i.metal-24xl" ]] || [[ $EC2_INSTANCE_TYPE =~ "c7a.24xlarge" ]]; then
-  export Heap='64g'
-elif [[ $EC2_INSTANCE_TYPE =~ "c7i.48xlarge" ]] || [[ $EC2_INSTANCE_TYPE =~ "c7a.48xlarge" ]]; then
-  export Heap='96g'
-elif [[ $EC2_INSTANCE_TYPE =~ "c7i.metal" ]] || [[ $EC2_INSTANCE_TYPE =~ "c7a.metal" ]]; then
-  export Heap='96g'
-elif [[ $EC2_INSTANCE_TYPE =~ "c7i.metal-48xl" ]] || [[ $EC2_INSTANCE_TYPE =~ "c7a.metal-48xl" ]]; then
-  export Heap='96g'
-# Other type of instances
-elif [[ $EC2_INSTANCE_TYPE =~ "medium" ]]; then
-  export Heap='250m'
-elif [[ $EC2_INSTANCE_TYPE =~ "large" ]]; then
-  export Heap='2g'
-elif [[ $EC2_INSTANCE_TYPE =~ "xlarge" ]]; then
-  export Heap='4g'
-elif [[ $EC2_INSTANCE_TYPE =~ "2xlarge" ]]; then
+elif [[ $INSTANCE_SIZE =~ "2xlarge" ]]; then
   export Heap='8g'
-elif [[ $EC2_INSTANCE_TYPE =~ "4xlarge" ]]; then
-  export Heap='16g'
-elif [[ $EC2_INSTANCE_TYPE =~ "8xlarge" ]]; then
-  export Heap='32g'
-elif [[ $EC2_INSTANCE_TYPE =~ "12xlarge" ]]; then
-  export Heap='64g'
-elif [[ $EC2_INSTANCE_TYPE =~ "16xlarge" ]]; then
-  export Heap='64g'
-elif [[ $EC2_INSTANCE_TYPE =~ "24xlarge" ]]; then
-  export Heap='96g'
-elif [[ $EC2_INSTANCE_TYPE =~ "32xlarge" ]]; then
-  export Heap='96g'
-elif [[ $EC2_INSTANCE_TYPE =~ "metal" ]]; then
-  export Heap='128g'
+elif [[ $INSTANCE_SIZE =~ "xlarge" ]]; then
+  export Heap='4g'
+elif [[ $INSTANCE_SIZE =~ "large" ]]; then
+  export Heap='2g'
+elif [[ $INSTANCE_SIZE =~ "medium" ]]; then
+  export Heap='250m'
+else
+  # Default: calculate based on available memory
+  TOTAL_MEM=$(free -g | awk '/^Mem:/ {print $2}')
+  export Heap="$((TOTAL_MEM / 2))g"  # Use half of system memory
 fi
 
 # If GROUP is set, use it for results directory
@@ -188,21 +143,6 @@ set -x
 exec &>> >(tee -a "${LOG_FILE}")
 
 echo "DATE: " $DATE &>> $DIR/INFO
-# Genoa-metal48xl
-#EC2_INSTANCE_TYPE="${FAMILY}-metal${INSTANCE_SIZE}xl"
-EC2_LOCAL_IPV4=$(hostname -I | awk '{print $1}')
-EC2_INSTANCE_ID="$(hostname)-$(hostid)"
-EC2_ACCOUNT_ID="521597827845"
-EC2_ROLE="perfeng_lab_role"
-DISTRIB_RELEASE=$(grep "VERSION_ID" /etc/os-release | cut -d '"' -f2)
-DISTRIB_DESCRIPTION=$(grep "PRETTY_NAME" /etc/os-release | cut -d '"' -f2)
-DISTRIB_CODENAME=$(grep "VERSION_CODENAME" /etc/os-release | cut -d '=' -f2)
-LAB_LOCATION="San Jose"
-ENV="sjclab"
-REGION="sjc002"
-APPNAME="benchmarkHarness"
-CLUSTER="benchmarkHarness"
-ASG="benchmarkHarness-v000"
 # Detect if running inside a container (CPU and MEMORY should be set)
 if [[ -n "$CPUS" && -n "$MEMORY" ]]; then
     # Running inside a container
@@ -233,6 +173,7 @@ echo "Heap:" $Heap &>> $DIR/INFO
 echo "EC2_LOCAL_IPV4:" $EC2_LOCAL_IPV4 &>> $DIR/INFO
 echo "EC2_INSTANCE_ID:" $EC2_INSTANCE_ID &>> $DIR/INFO
 echo "EC2_INSTANCE_TYPE:" $EC2_INSTANCE_TYPE &>> $DIR/INFO
+echo "DETECTED_INSTANCE_TYPE:" $INSTANCE_TYPE &>> $DIR/INFO
 echo "EC2_ACCOUNT_ID:" $EC2_ACCOUNT_ID &>> $DIR/INFO
 echo "EC2_ROLE:" $EC2_ROLE &>> $DIR/INFO
 echo "DISTRIB_RELEASE:" $DISTRIB_RELEASE &>> $DIR/INFO
