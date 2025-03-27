@@ -1,27 +1,24 @@
 #!/bin/bash
 #
 # Benchmark Environment Setup Script
-# This script sets up the environment for running benchmarks based on the provided Dockerfile
-# and integrates functionality from runtest.sh to download benchmark files from S3 and GitHub
+# This script sets up the environment for running benchmarks and downloads necessary files
 #
 
 echo "Starting benchmark environment setup..."
 
-# Check if running as root or with sudo
-if [ "$(id -u)" -ne 0 ]; then
-    echo "Some operations in this script require root privileges."
-    echo "We'll use sudo for those specific operations only."
-    SUDO="sudo"
-else
-    SUDO=""
-fi
+# Define variables and paths
+HOME_DIR="/home/ubuntu"
+WORKDIR="$HOME_DIR/benchmarks"
+S3_PATH="s3://netflix-files-us-west2/cldperf-nflx-lab-benchmarks-main/"
+CLDPERF_DIR="$HOME_DIR/cldperf-nflx-lab-benchmarks-main"
+GIT_REPO="https://github.com/nfairoza/cloud-samples.git"
+GIT_SUBDIR="nf-benchmark-test"
+TEMP_DIR="$HOME_DIR/temp_git_clone"
 
-echo "Setting non-interactive mode for package installation..."
-export DEBIAN_FRONTEND=noninteractive
-
+# Update packages
 echo "Updating package lists and installing required packages..."
-$SUDO apt update
-$SUDO apt install -y \
+sudo apt update
+sudo apt install -y \
     sudo \
     openjdk-17-jre-headless \
     openjdk-17-jdk-headless \
@@ -35,192 +32,231 @@ $SUDO apt install -y \
     python3-pip \
     python3 \
     g++ \
-    git \
-    awscli
+    git
 
+
+install_aws_cli() {
+        echo "Installing AWS CLI..."
+
+        . /etc/os-release
+        arch=$(uname -m)
+
+        case "$ID" in
+            ubuntu|debian)
+                sudo apt update && sudo apt upgrade -y
+                sudo apt install -y unzip
+                ;;
+            centos|rhel|almalinux|rocky|amazon)
+                sudo yum update -y
+                sudo yum install -y unzip
+                ;;
+            sles|opensuse-leap)
+                sudo zypper refresh && sudo zypper update -y
+                sudo zypper install -y unzip
+                ;;
+            *)
+                echo "Unsupported Linux distribution: $ID."
+                exit 1
+                ;;
+        esac
+
+        if [[ "$arch" == "x86_64" ]]; then
+            curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+        elif [[ "$arch" == "aarch64" ]]; then
+            curl "https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip" -o "awscliv2.zip"
+        else
+            echo "Unsupported architecture: $arch"
+            exit 1
+        fi
+
+        unzip awscliv2.zip
+        sudo ./aws/install
+        rm -rf awscliv2.zip aws
+    }
+# Check if AWS CLI is installed, install if not
+if ! aws --version &>/dev/null; then
+        echo "AWS CLI not found. Installing..."
+        install_aws_cli
+fi
 echo "Cleaning up package cache..."
-$SUDO apt clean
+sudo apt clean
 
 echo "Creating necessary directories..."
-$SUDO mkdir -p /mnt
-$SUDO chmod 777 /mnt
+sudo mkdir -p /mnt
+sudo chmod 777 /mnt
 
-# Create the target directories with proper permissions first
-mkdir -p "$TARGET_DIR/cldperf-nflx-lab-benchmarks-main/autobench"
-mkdir -p "$WORKDIR"
+# Create and setup directories with proper permissions
+sudo mkdir -p $WORKDIR
+sudo chmod -R 777 $WORKDIR
 
-echo "Creating user 'bnetflix' with sudo privileges..."
-id -u bnetflix &>/dev/null || $SUDO useradd -m -s /bin/bash bnetflix
-echo "bnetflix ALL=(ALL) NOPASSWD: ALL" | $SUDO tee /etc/sudoers.d/bnetflix >/dev/null
-$SUDO chmod 440 /etc/sudoers.d/bnetflix
+# Check if cldperf directory exists, download from S3 if needed
+echo "Checking for benchmark files..."
+if [ ! -d "$CLDPERF_DIR" ]; then
+    echo "Directory $CLDPERF_DIR does not exist. Attempting to download from S3..."
 
-echo "Setting up Java environment variables..."
-export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
-export PATH="$JAVA_HOME/bin:$PATH"
-
-# Add environment variables to bnetflix's .bashrc
-if [ "$USER" = "bnetflix" ]; then
-    cat << EOF >> $HOME/.bashrc
-export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
-export PATH="\$JAVA_HOME/bin:\$PATH"
-EOF
-else
-    $SUDO bash -c "cat << EOF >> /home/bnetflix/.bashrc
-export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
-export PATH="\\\$JAVA_HOME/bin:\\\$PATH"
-EOF"
-fi
-
-echo "Setting up the working directory..."
-WORKDIR="$HOME/benchmarks"
-mkdir -p $WORKDIR
-cd $WORKDIR
-
-# Set variables for downloading benchmark files
-S3_PATH="s3://netflix-files-us-west2/cldperf-nflx-lab-benchmarks-main/"
-TARGET_DIR="$HOME/cldperf-nflx-lab-benchmarks-main"
-AUTOBENCH_DIR="$TARGET_DIR/cldperf-nflx-lab-benchmarks-main/autobench"
-GIT_REPO="https://github.com/nfairoza/cloud-samples.git"
-GIT_SUBDIR="nf-benchmark-test"
-TEMP_DIR="$HOME/temp_git_clone"
-
-echo "Downloading benchmark files from S3 and GitHub..."
-
-# Check if the target directory exists and download from S3 if needed
-if [ ! -d "$TARGET_DIR" ]; then
-    echo "Target directory $TARGET_DIR does not exist. Downloading from S3..."
-    sudo -u bnetflix aws s3 cp "$S3_PATH" "$TARGET_DIR" --recursive
+    # Now that we've ensured AWS CLI is available, try the S3 download
+    aws s3 cp "$S3_PATH" "$CLDPERF_DIR" --recursive
 
     if [ $? -ne 0 ]; then
-        echo "S3 download failed. Creating empty directory for GitHub files."
-        mkdir -p "$TARGET_DIR/autobench"
+        echo "S3 download failed or aws CLI not configured properly."
     else
         echo "S3 download complete!"
     fi
 else
-    echo "Target directory $TARGET_DIR already exists. Proceeding with updates..."
+    echo "Directory $CLDPERF_DIR already exists. Using existing files."
+    # No need to create the directory as it already exists
 fi
 
-# Download files from GitHub
+echo "Creating user 'bnetflix' with sudo privileges..."
+if ! id -u bnetflix &>/dev/null; then
+    sudo useradd -m -s /bin/bash bnetflix
+fi
+
+# Ensure the sudoers entry is correctly set
+echo "Setting up passwordless sudo for bnetflix..."
+echo "bnetflix ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/bnetflix >/dev/null
+sudo chmod 440 /etc/sudoers.d/bnetflix
+
+# Verify sudo works without password
+echo "Verifying passwordless sudo setup..."
+sudo -u bnetflix sudo -n true
+if [ $? -ne 0 ]; then
+    echo "WARNING: Passwordless sudo for bnetflix is not working properly."
+    echo "You may be prompted for a password when running benchmarks."
+else
+    echo "Passwordless sudo for bnetflix is configured correctly."
+fi
+
+echo "Setting up Java environment variables..."
+sudo bash -c "cat << EOF >> /home/bnetflix/.bashrc
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+export PATH="\$JAVA_HOME/bin:\$PATH"
+EOF"
+
+echo "Setting up the working directory..."
+cd $HOME_DIR
+
 echo "Downloading files from GitHub repository..."
-mkdir -p "$TEMP_DIR"
+if [ -d "$TEMP_DIR" ]; then
+    sudo rm -rf "$TEMP_DIR"
+fi
 
 # Clone the repository
 git clone --depth 1 "$GIT_REPO" "$TEMP_DIR"
 
 if [ $? -ne 0 ]; then
     echo "Failed to clone the GitHub repository."
-    rm -rf "$TEMP_DIR"
+    exit 1
 else
-    # Create autobench directory if it doesn't exist
-    mkdir -p "$AUTOBENCH_DIR"
+    # Clone the repository
+git clone --depth 1 "$GIT_REPO" "$TEMP_DIR"
 
-    # Copy all files from GitHub to autobench
-    echo "Copying all files to $AUTOBENCH_DIR..."
-    cp "$TEMP_DIR/$GIT_SUBDIR"/* "$AUTOBENCH_DIR/" 2>/dev/null || echo "Warning: No files found or couldn't be copied"
+if [ $? -ne 0 ]; then
+    echo "Failed to clone the GitHub repository."
+    exit 1
+else
+    # Files should be in cldperf-nflx-lab-benchmarks-main/autobench directory
+    AUTOBENCH_DIR="$CLDPERF_DIR/autobench"
 
-    # Make all files executable
-    echo "Making all files executable..."
-    chmod +x "$AUTOBENCH_DIR"/*
+    # Copy files from GitHub to augment what we have, but don't create autobench if it doesn't exist
+    if [ -d "$AUTOBENCH_DIR" ]; then
+        echo "Found autobench directory at $AUTOBENCH_DIR"
+        echo "Copying files from GitHub to $AUTOBENCH_DIR..."
+        sudo cp -f "$TEMP_DIR/$GIT_SUBDIR"/* "$AUTOBENCH_DIR/" 2>/dev/null || echo "Warning: No files found or couldn't be copied"
+
+        # Make all files executable
+        echo "Making all files executable..."
+        sudo chmod -R +x "$AUTOBENCH_DIR"
+    else
+        echo "Warning: autobench directory not found at $AUTOBENCH_DIR"
+        echo "Files won't be copied from GitHub to autobench"
+    fi
 
     # Clean up the temporary directory
-    rm -rf "$TEMP_DIR"
+    sudo rm -rf "$TEMP_DIR"
 
-    echo "GitHub files have been downloaded and copied to $AUTOBENCH_DIR."
+    echo "GitHub repository processing complete."
+fi
 fi
 
 echo "Setting up main benchmark scripts..."
 
-# Copy necessary files from the downloaded repositories
-mkdir -p $WORKDIR/benchmarks
-mkdir -p $WORKDIR/binaries
+# Create benchmark directories
+sudo mkdir -p $WORKDIR/benchmarks
+sudo mkdir -p $WORKDIR/binaries
 
 # Copy benchmark environment script
 if [ -f "$AUTOBENCH_DIR/benchmarks_environment.sh" ]; then
-    cp "$AUTOBENCH_DIR/benchmarks_environment.sh" $WORKDIR/
+    sudo cp "$AUTOBENCH_DIR/benchmarks_environment.sh" $WORKDIR/
 else
     echo "Warning: Could not find benchmarks_environment.sh in downloaded files"
 fi
 
 # Copy run-benchmarks script
 if [ -f "$AUTOBENCH_DIR/run-benchmarks.sh" ]; then
-    cp "$AUTOBENCH_DIR/run-benchmarks.sh" $WORKDIR/run-benchmarks.sh
+    sudo cp "$AUTOBENCH_DIR/run-benchmarks.sh" $WORKDIR/
 else
     echo "Warning: Could not find run-benchmarks.sh in downloaded files"
 fi
 
-# Copy benchmark files
+# Copy launch containers script
+if [ -f "$AUTOBENCH_DIR/launch_containers-concurrent.sh" ]; then
+    sudo cp "$AUTOBENCH_DIR/launch_containers-concurrent.sh" $WORKDIR/
+else
+    echo "Warning: Could not find launch_containers-concurrent.sh in downloaded files"
+fi
+
+# Copy benchmark files if directory exists
 if [ -d "$AUTOBENCH_DIR/benchmarks" ]; then
-    cp -r "$AUTOBENCH_DIR/benchmarks"/* $WORKDIR/benchmarks/ 2>/dev/null || echo "Warning: No benchmark files found"
+    sudo cp -r "$AUTOBENCH_DIR/benchmarks"/* $WORKDIR/benchmarks/ 2>/dev/null || echo "Warning: Could not copy benchmark files"
 else
     echo "Warning: Could not find benchmarks directory in downloaded files"
 fi
 
-# Copy binary files
+# Copy binary files if directory exists
 if [ -d "$AUTOBENCH_DIR/binaries" ]; then
-    cp -r "$AUTOBENCH_DIR/binaries"/* $WORKDIR/binaries/ 2>/dev/null || echo "Warning: No binary files found"
+    sudo cp -r "$AUTOBENCH_DIR/binaries"/* $WORKDIR/binaries/ 2>/dev/null || echo "Warning: Could not copy binary files"
 else
     echo "Warning: Could not find binaries directory in downloaded files"
 fi
 
 # Create encode_home and vmf_home directories if they exist in source
 if [ -d "$AUTOBENCH_DIR/encode_home" ]; then
-    mkdir -p $WORKDIR/encode_home
-    cp -r "$AUTOBENCH_DIR/encode_home"/* $WORKDIR/encode_home/ 2>/dev/null
+    sudo mkdir -p $WORKDIR/encode_home
+    sudo cp -r "$AUTOBENCH_DIR/encode_home"/* $WORKDIR/encode_home/ 2>/dev/null
 fi
 
 if [ -d "$AUTOBENCH_DIR/vmf_home" ]; then
-    mkdir -p $WORKDIR/vmf_home
-    cp -r "$AUTOBENCH_DIR/vmf_home"/* $WORKDIR/vmf_home/ 2>/dev/null
+    sudo mkdir -p $WORKDIR/vmf_home
+    sudo cp -r "$AUTOBENCH_DIR/vmf_home"/* $WORKDIR/vmf_home/ 2>/dev/null
 fi
 
 echo "Setting correct permissions..."
-chmod +x $WORKDIR/run-benchmarks.sh
-chmod +x $WORKDIR/benchmarks_environment.sh
-chmod -R +x $WORKDIR/benchmarks
-chmod -R +x $WORKDIR/binaries
-# Create symbolic links to files in systemctl-service if needed
-if [ -d "$TARGET_DIR/cldperf-nflx-lab-benchmarks-main/systemctl-service" ]; then
-    SYSTEMCTL_DIR="$TARGET_DIR/cldperf-nflx-lab-benchmarks-main/systemctl-service"
+sudo chmod +x $WORKDIR/run-benchmarks.sh 2>/dev/null || true
+sudo chmod +x $WORKDIR/benchmarks_environment.sh 2>/dev/null || true
+sudo chmod +x $WORKDIR/launch_containers-concurrent.sh 2>/dev/null || true
+sudo chmod -R +x $WORKDIR/benchmarks 2>/dev/null || true
+sudo chmod -R +x $WORKDIR/binaries 2>/dev/null || true
 
-    # Install packages if packages-installed.sh exists
-    if [ -f "$SYSTEMCTL_DIR/packages-installed.sh" ]; then
-        echo "Found packages-installed.sh, executing..."
-        chmod +x "$SYSTEMCTL_DIR/packages-installed.sh"
-        "$SYSTEMCTL_DIR/packages-installed.sh"
-    fi
+echo "Changing ownership to bnetflix..."
+sudo chown -R bnetflix:bnetflix $WORKDIR
 
-    # Copy sudo-no-passwd if it exists
-    if [ -f "$SYSTEMCTL_DIR/sudo-no-passwd" ]; then
-        echo "Configuring sudo-no-passwd settings..."
-        $SUDO cp "$SYSTEMCTL_DIR/sudo-no-passwd" /etc/sudoers.d/
-        $SUDO chmod 440 /etc/sudoers.d/sudo-no-passwd
-    fi
-fi
-
-echo "Changing ownership to bnetflix if needed..."
-if [ "$USER" != "bnetflix" ]; then
-    $SUDO chown -R bnetflix:bnetflix $WORKDIR
-fi
-
-echo "Setup complete! You can now run benchmarks as the bnetflix user."
-echo "To run benchmarks, execute: sudo -u bnetflix $WORKDIR/run-benchmarks"
+echo "Setup complete! You can now run benchmarks."
+echo "To run benchmarks, execute: sudo -u bnetflix $WORKDIR/run-benchmarks.sh"
 
 # Optional: Run benchmarks immediately
 read -p "Do you want to run benchmarks now? (y/n): " choice
 if [[ "$choice" == "y" || "$choice" == "Y" ]]; then
-    echo "Running benchmarks as bnetflix user..."
+    echo "Running benchmarks..."
     cd $WORKDIR
-    su - bnetflix -c "$WORKDIR/run-benchmarks.sh"
+    sudo -u bnetflix $WORKDIR/run-benchmarks.sh
 
     # Optionally launch container benchmarks if available
     read -p "Would you like to run container-based benchmarks? (y/n): " container_choice
     if [[ "$container_choice" == "y" || "$container_choice" == "Y" ]]; then
-        if [ -f "$AUTOBENCH_DIR/launch_containers-concurrent.sh" ]; then
+        if [ -f "$WORKDIR/launch_containers-concurrent.sh" ]; then
             echo "Launching container benchmarks..."
-            cp "$AUTOBENCH_DIR/launch_containers-concurrent.sh" $WORKDIR/
-            chmod +x $WORKDIR/launch_containers-concurrent.sh
-            su - bnetflix -c "$WORKDIR/launch_containers-concurrent.sh 2xlarge 4xlarge"
+            sudo -u bnetflix $WORKDIR/launch_containers-concurrent.sh 2xlarge 4xlarge
         else
             echo "Container launch script not found."
         fi
