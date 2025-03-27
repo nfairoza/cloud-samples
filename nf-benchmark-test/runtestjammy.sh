@@ -19,6 +19,9 @@ TEMP_DIR="$HOME_DIR/temp_git_clone"
 # Update packages
 echo "Updating package lists and installing required packages..."
 sudo apt update
+sudo add-apt-repository -y ppa:graphics-drivers/ppa
+sudo apt update
+sudo ubuntu-drivers autoinstall
 sudo apt install -y \
     sudo \
     openjdk-17-jre-headless \
@@ -33,7 +36,8 @@ sudo apt install -y \
     python3-pip \
     python3 \
     g++ \
-    git
+    git \
+    nvidia-headless-570
 
 
 install_aws_cli() {
@@ -167,7 +171,7 @@ else
     echo "GitHub repository processing complete."
 fi
 
-sudo mv $AUTOBENCH_DIR/run-benchmarks $AUTOBENCH_DIR/run-benchmarks.sh
+
 sudo chmod +x "$AUTOBENCH_DIR/run-benchmarks.sh" 2>/dev/null || true
 sudo chmod +x "$AUTOBENCH_DIR/benchmarks_environment.sh" 2>/dev/null || true
 sudo chmod +x "$AUTOBENCH_DIR/launch_containers-concurrent.sh" 2>/dev/null || true

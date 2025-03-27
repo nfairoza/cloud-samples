@@ -193,3 +193,5 @@ echo "CPUS:" $CPUS &>> $DIR/INFO
 echo "GPUS:" $GPUS &>> $DIR/INFO
 echo "MEM:" $MEM &>> $DIR/INFO
 echo "GPUMODEL:" $GPUMODEL &>> $DIR/INFO
+
+echo "................................benchmark environment setup complete.............................."
