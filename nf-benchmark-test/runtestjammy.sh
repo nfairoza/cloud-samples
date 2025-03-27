@@ -99,13 +99,11 @@ echo "Setting up the working directory..."
 cd $HOME_DIR
 
 echo "Downloading files from GitHub repository..."
-# Ensure temp directory is clean before cloning
-if [ -d "$TEMP_DIR" ]; then
-    echo "Removing existing temporary directory..."
-    sudo rm -rf "$TEMP_DIR"
-fi
+# Generate a unique temporary directory name using timestamp
+TEMP_DIR="$HOME_DIR/temp_git_clone_$(date +%s)"
+echo "Using temporary directory: $TEMP_DIR"
 
-# Clone the repository
+# Clone the repository to the new unique directory
 git clone --depth 1 "$GIT_REPO" "$TEMP_DIR"
 
 if [ $? -ne 0 ]; then
