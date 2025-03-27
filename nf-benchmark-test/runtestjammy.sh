@@ -87,6 +87,8 @@ sudo apt clean
 echo "Creating necessary directories..."
 sudo mkdir -p /mnt
 sudo chmod 777 /mnt
+sudo chown -R bnetflix:bnetflix "$LOCAL_RESULTS_DIR"
+sudo chmod -R 755 "$LOCAL_RESULTS_DIR"
 
 # Check if cldperf directory exists, download from S3 if needed
 echo "Checking for benchmark files..."
@@ -145,8 +147,7 @@ if [ $? -ne 0 ]; then
     echo "Failed to clone the GitHub repository."
     exit 1
 else
-    # Files should be in cldperf-nflx-lab-benchmarks-main/autobench directory
-    # Copy files from GitHub to augment what we have, but don't create autobench if it doesn't exist
+
     if [ -d "$AUTOBENCH_DIR" ]; then
         echo "Found autobench directory at $AUTOBENCH_DIR"
         echo "Copying files from GitHub to $AUTOBENCH_DIR..."
@@ -166,13 +167,7 @@ else
     echo "GitHub repository processing complete."
 fi
 
-# Make sure all necessary directories exist within autobench
-sudo mkdir -p "$AUTOBENCH_DIR/benchmarks"
-sudo mkdir -p "$AUTOBENCH_DIR/binaries"
-sudo mkdir -p "$AUTOBENCH_DIR/encode_home"
-sudo mkdir -p "$AUTOBENCH_DIR/vmf_home"
-
-# Make sure all scripts in autobench are executable
+sudo mv $AUTOBENCH_DIR/run-benchmarks $AUTOBENCH_DIR/run-benchmarks.sh
 sudo chmod +x "$AUTOBENCH_DIR/run-benchmarks.sh" 2>/dev/null || true
 sudo chmod +x "$AUTOBENCH_DIR/benchmarks_environment.sh" 2>/dev/null || true
 sudo chmod +x "$AUTOBENCH_DIR/launch_containers-concurrent.sh" 2>/dev/null || true
@@ -181,6 +176,6 @@ sudo chmod -R +x "$AUTOBENCH_DIR/binaries" 2>/dev/null || true
 
 echo "Changing ownership to bnetflix..."
 sudo chown -R bnetflix:bnetflix "$CLDPERF_DIR"
-sudo mv $AUTOBENCH_DIR/run-benchmarks $AUTOBENCH_DIR/run-benchmarks.sh
+
 echo "Setup complete! You can now run benchmarks."
 echo "To run benchmarks, execute: sudo -u bnetflix $AUTOBENCH_DIR/run-benchmarks.sh"

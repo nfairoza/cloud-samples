@@ -100,11 +100,20 @@ else
 fi
 
 # If GROUP is set, use it for results directory
+# if [[ -n "$GROUP" ]]; then
+#     RESULTS="/efs/html/AUTOBENCH/LAB_RESULTS/$GROUP"
+# else
+#     RESULTS="/efs/html/AUTOBENCH/LAB_RESULTS"
+# fi
+
+LOCAL_RESULTS_DIR="/home/ubuntu/benchmark_results"
+sudo mkdir -p "$LOCAL_RESULTS_DIR"
 if [[ -n "$GROUP" ]]; then
-    RESULTS="/efs/html/AUTOBENCH/LAB_RESULTS/$GROUP"
+    RESULTS="$LOCAL_RESULTS_DIR/$GROUP"
 else
-    RESULTS="/efs/html/AUTOBENCH/LAB_RESULTS"
+    RESULTS="$LOCAL_RESULTS_DIR"
 fi
+
 export RESULTS
 export DIR="$RESULTS/$INSTANCE-$BASEOS-$KERNEL-$JVM-$GC-$Heap-$TS"
 export LDIR="$RESULTS/$INSTANCE-LATEST"
