@@ -34,50 +34,6 @@ sudo apt install -y \
     g++ \
     git
 
-
-install_aws_cli() {
-        echo "Installing AWS CLI..."
-
-        . /etc/os-release
-        arch=$(uname -m)
-
-        case "$ID" in
-            ubuntu|debian)
-                sudo apt update && sudo apt upgrade -y
-                sudo apt install -y unzip
-                ;;
-            centos|rhel|almalinux|rocky|amazon)
-                sudo yum update -y
-                sudo yum install -y unzip
-                ;;
-            sles|opensuse-leap)
-                sudo zypper refresh && sudo zypper update -y
-                sudo zypper install -y unzip
-                ;;
-            *)
-                echo "Unsupported Linux distribution: $ID."
-                exit 1
-                ;;
-        esac
-
-        if [[ "$arch" == "x86_64" ]]; then
-            curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-        elif [[ "$arch" == "aarch64" ]]; then
-            curl "https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip" -o "awscliv2.zip"
-        else
-            echo "Unsupported architecture: $arch"
-            exit 1
-        fi
-
-        unzip awscliv2.zip
-        sudo ./aws/install
-        rm -rf awscliv2.zip aws
-    }
-# Check if AWS CLI is installed, install if not
-if ! aws --version &>/dev/null; then
-        echo "AWS CLI not found. Installing..."
-        install_aws_cli
-fi
 echo "Cleaning up package cache..."
 sudo apt clean
 
@@ -93,6 +49,12 @@ sudo chmod -R 777 $WORKDIR
 echo "Checking for benchmark files..."
 if [ ! -d "$CLDPERF_DIR" ]; then
     echo "Directory $CLDPERF_DIR does not exist. Attempting to download from S3..."
+
+    # Check if AWS CLI is installed, install if not
+    if ! aws --version &>/dev/null; then
+        echo "AWS CLI not found. Installing..."
+        install_aws_cli
+    fi
 
     # Now that we've ensured AWS CLI is available, try the S3 download
     aws s3 cp "$S3_PATH" "$CLDPERF_DIR" --recursive
@@ -137,7 +99,9 @@ echo "Setting up the working directory..."
 cd $HOME_DIR
 
 echo "Downloading files from GitHub repository..."
+# Ensure temp directory is clean before cloning
 if [ -d "$TEMP_DIR" ]; then
+    echo "Removing existing temporary directory..."
     sudo rm -rf "$TEMP_DIR"
 fi
 
