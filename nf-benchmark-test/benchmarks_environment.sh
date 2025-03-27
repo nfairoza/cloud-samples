@@ -107,7 +107,8 @@ fi
 # fi
 
 LOCAL_RESULTS_DIR="/home/ubuntu/benchmark_results"
-sudo mkdir -p "$LOCAL_RESULTS_DIR"
+export LOCAL_RESULTS_DIR=$(echo "$LOCAL_RESULTS_DIR")
+
 if [[ -n "$GROUP" ]]; then
     RESULTS="$LOCAL_RESULTS_DIR/$GROUP"
 else

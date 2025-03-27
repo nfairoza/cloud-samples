@@ -15,8 +15,11 @@ S3_PATH="s3://netflix-files-us-west2/cldperf-nflx-lab-benchmarks-main/"
 GIT_REPO="https://github.com/nfairoza/cloud-samples.git"
 GIT_SUBDIR="nf-benchmark-test"
 TEMP_DIR="$HOME_DIR/temp_git_clone"
-LOCAL_RESULTS_DIR="/home/ubuntu/benchmark_results"
-# Update packages
+LOCAL_RESULTS_DIR="$HOME_DIR/benchmark_results"
+
+sudo mkdir -p "$LOCAL_RESULTS_DIR"
+export LOCAL_RESULTS_DIR=$(echo "$LOCAL_RESULTS_DIR")
+
 echo "Updating package lists and installing required packages..."
 sudo apt update
 
