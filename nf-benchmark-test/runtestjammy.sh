@@ -147,10 +147,10 @@ if [ $? -ne 0 ]; then
     echo "Failed to clone the GitHub repository."
     exit 1
 else
-# Files should be in cldperf-nflx-lab-benchmarks-main/autobench directory
-AUTOBENCH_DIR="$CLDPERF_DIR/autobench"
-# Copy files from GitHub to augment what we have, but don't create autobench if it doesn't exist
-if [ -d "$AUTOBENCH_DIR" ]; then
+    # Files should be in cldperf-nflx-lab-benchmarks-main/autobench directory
+    AUTOBENCH_DIR="$CLDPERF_DIR/autobench"
+    # Copy files from GitHub to augment what we have, but don't create autobench if it doesn't exist
+    if [ -d "$AUTOBENCH_DIR" ]; then
         echo "Found autobench directory at $AUTOBENCH_DIR"
         echo "Copying files from GitHub to $AUTOBENCH_DIR..."
         sudo cp -f "$TEMP_DIR/$GIT_SUBDIR"/* "$AUTOBENCH_DIR/" 2>/dev/null || echo "Warning: No files found or couldn't be copied"
@@ -158,16 +158,15 @@ if [ -d "$AUTOBENCH_DIR" ]; then
         # Make all files executable
         echo "Making all files executable..."
         sudo chmod -R +x "$AUTOBENCH_DIR"
-else
+    else
         echo "Warning: autobench directory not found at $AUTOBENCH_DIR"
         echo "Files won't be copied from GitHub to autobench"
-fi
+    fi
 
-# Clean up the temporary directory
-sudo rm -rf "$TEMP_DIR"
+    # Clean up the temporary directory
+    sudo rm -rf "$TEMP_DIR"
 
-echo "GitHub repository processing complete."
-fi
+    echo "GitHub repository processing complete."
 fi
 
 echo "Setting up main benchmark scripts..."
