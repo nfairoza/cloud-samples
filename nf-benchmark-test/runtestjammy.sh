@@ -72,7 +72,8 @@ install_aws_cli() {
         unzip awscliv2.zip
         sudo ./aws/install
         rm -rf awscliv2.zip aws
-    }
+}
+
 # Check if AWS CLI is installed, install if not
 if ! aws --version &>/dev/null; then
         echo "AWS CLI not found. Installing..."
@@ -162,10 +163,7 @@ else
         echo "Warning: autobench directory not found at $AUTOBENCH_DIR"
         echo "Files won't be copied from GitHub to autobench"
     fi
-
-    # Clean up the temporary directory
     sudo rm -rf "$TEMP_DIR"
-
     echo "GitHub repository processing complete."
 fi
 
