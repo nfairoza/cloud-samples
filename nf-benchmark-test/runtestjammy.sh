@@ -179,6 +179,7 @@ sudo chmod -R +x "$AUTOBENCH_DIR/binaries" 2>/dev/null || true
 
 # echo "Changing ownership to bnetflix..."
 # sudo chown -R bnetflix:bnetflix "$CLDPERF_DIR"
-
+cd $AUTOBENCH_DIR
 echo "Setup complete! You can now run benchmarks."
-echo "To run benchmarks, execute: sudo -u bnetflix $AUTOBENCH_DIR/run-benchmarks.sh"
+echo "To run benchmarks, execute: sudo ./run-benchmarks.sh"
+echo "................................Initial binaries and scripts setup complete.............................."
