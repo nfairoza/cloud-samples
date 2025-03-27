@@ -49,9 +49,9 @@ APPNAME="benchmarkHarness"
 CLUSTER="benchmarkHarness"
 ASG="benchmarkHarness-v000"
 CPUs=$(lscpu | grep "^CPU(s):" | awk '{print $2}')
-GPUS=$(nvidia-smi -L | wc -l 2>/dev/null || echo "none")
+# GPUS=$(nvidia-smi -L | wc -l 2>/dev/null || echo "none")
 MEM=$(free -g | awk '/^Mem:/ {print $2}')
-GPUMODEL=$(nvidia-smi --query-gpu=name --format=csv,noheader | uniq || echo "None")
+# GPUMODEL=$(nvidia-smi --query-gpu=name --format=csv,noheader | uniq || echo "None")
 #-------
 export DATE=$(date '+%m-%d-%Y_%H-%M')
 export TS=`echo $(date '+%m-%d-%Y_%s')`
@@ -161,10 +161,10 @@ else
     export CPUS=$(lscpu | grep "^CPU(s):" | awk '{print $2}')
     export MEM=$(free -g | awk '/^Mem:/ {print $2}')
 fi
-if [[ -z "$GROUP" ]]; then
-	GPUS=$(nvidia-smi -L | wc -l 2>/dev/null || echo "none")
-	GPUMODEL=$(nvidia-smi --query-gpu=name --format=csv,noheader | uniq || echo "None")
-fi
+# if [[ -z "$GROUP" ]]; then
+# 	GPUS=$(nvidia-smi -L | wc -l 2>/dev/null || echo "none")
+# 	GPUMODEL=$(nvidia-smi --query-gpu=name --format=csv,noheader | uniq || echo "None")
+# fi
 ## log it into INFO File
 echo "ENV:" $ENV  &>> $DIR/INFO
 echo "REGION:" $REGION &>> $DIR/INFO

@@ -15,10 +15,11 @@ S3_PATH="s3://netflix-files-us-west2/cldperf-nflx-lab-benchmarks-main/"
 GIT_REPO="https://github.com/nfairoza/cloud-samples.git"
 GIT_SUBDIR="nf-benchmark-test"
 TEMP_DIR="$HOME_DIR/temp_git_clone"
-
+LOCAL_RESULTS_DIR="/home/ubuntu/benchmark_results"
 # Update packages
 echo "Updating package lists and installing required packages..."
 sudo apt update
+
 sudo add-apt-repository -y ppa:graphics-drivers/ppa
 sudo apt update
 sudo ubuntu-drivers autoinstall
@@ -37,7 +38,8 @@ sudo apt install -y \
     python3 \
     g++ \
     git \
-    nvidia-headless-570
+
+   #  nvidia-headless-570
 
 
 install_aws_cli() {
@@ -88,9 +90,6 @@ fi
 echo "Cleaning up package cache..."
 sudo apt clean
 
-
-
-
 # Check if cldperf directory exists, download from S3 if needed
 echo "Checking for benchmark files..."
 if [ ! -d "$CLDPERF_DIR" ]; then
@@ -108,31 +107,31 @@ else
     echo "Directory $CLDPERF_DIR already exists. Using existing files."
 fi
 
-echo "Creating user 'bnetflix' with sudo privileges..."
-if ! id -u bnetflix &>/dev/null; then
-    sudo useradd -m -s /bin/bash bnetflix
-fi
-sudo chown -R bnetflix:bnetflix "$LOCAL_RESULTS_DIR"
-sudo chmod -R 755 "$LOCAL_RESULTS_DIR"
-sudo -u bnetflix  mv $AUTOBENCH_DIR/run-benchmarks $AUTOBENCH_DIR/run-benchmarks.sh
-
-# Ensure the sudoers entry is correctly set
-echo "Setting up passwordless sudo for bnetflix..."
-echo "bnetflix ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/bnetflix >/dev/null
-sudo chmod 440 /etc/sudoers.d/bnetflix
-
-# Verify sudo works without password
-echo "Verifying passwordless sudo setup..."
-sudo -u bnetflix sudo -n true
-if [ $? -ne 0 ]; then
-    echo "WARNING: Passwordless sudo for bnetflix is not working properly."
-    echo "You may be prompted for a password when running benchmarks."
-else
-    echo "Passwordless sudo for bnetflix is configured correctly."
-fi
+# echo "Creating user 'bnetflix' with sudo privileges..."
+# if ! id -u bnetflix &>/dev/null; then
+#     sudo useradd -m -s /bin/bash bnetflix
+# fi
+# sudo chown -R bnetflix:bnetflix "$LOCAL_RESULTS_DIR"
+# sudo chmod -R 755 "$LOCAL_RESULTS_DIR"
+#
+# # Ensure the sudoers entry is correctly set
+# echo "Setting up passwordless sudo for bnetflix..."
+# echo "bnetflix ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/bnetflix >/dev/null
+# sudo chmod 440 /etc/sudoers.d/bnetflix
+#
+# # Verify sudo works without password
+# echo "Verifying passwordless sudo setup..."
+# sudo -u bnetflix sudo -n true
+# if [ $? -ne 0 ]; then
+#     echo "WARNING: Passwordless sudo for bnetflix is not working properly."
+#     echo "You may be prompted for a password when running benchmarks."
+# else
+#     echo "Passwordless sudo for bnetflix is configured correctly."
+# fi
 
 echo "Setting up Java environment variables..."
-sudo bash -c "cat << EOF >> /home/bnetflix/.bashrc
+# sudo bash -c "cat << EOF >> /home/bnetflix/.bashrc
+sudo bash -c "cat << EOF >> /home/ubuntu/.bashrc
 export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 export PATH="\$JAVA_HOME/bin:\$PATH"
 EOF"
@@ -178,8 +177,8 @@ sudo chmod +x "$AUTOBENCH_DIR/launch_containers-concurrent.sh" 2>/dev/null || tr
 sudo chmod -R +x "$AUTOBENCH_DIR/benchmarks" 2>/dev/null || true
 sudo chmod -R +x "$AUTOBENCH_DIR/binaries" 2>/dev/null || true
 
-echo "Changing ownership to bnetflix..."
-sudo chown -R bnetflix:bnetflix "$CLDPERF_DIR"
+# echo "Changing ownership to bnetflix..."
+# sudo chown -R bnetflix:bnetflix "$CLDPERF_DIR"
 
 echo "Setup complete! You can now run benchmarks."
 echo "To run benchmarks, execute: sudo -u bnetflix $AUTOBENCH_DIR/run-benchmarks.sh"
