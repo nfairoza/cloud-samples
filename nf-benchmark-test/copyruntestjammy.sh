@@ -8,9 +8,9 @@ echo "Starting benchmark environment setup..."
 
 # Define variables and paths
 HOME_DIR="/home/ubuntu"
-CLDPERF_DIR="$HOME_DIR/cldperf-nflx-lab-benchmarks-main"
-AUTOBENCH_DIR="$CLDPERF_DIR/autobench"
+WORKDIR="$HOME_DIR/benchmarks"
 S3_PATH="s3://netflix-files-us-west2/cldperf-nflx-lab-benchmarks-main/"
+CLDPERF_DIR="$HOME_DIR/cldperf-nflx-lab-benchmarks-main"
 GIT_REPO="https://github.com/nfairoza/cloud-samples.git"
 GIT_SUBDIR="nf-benchmark-test"
 TEMP_DIR="$HOME_DIR/temp_git_clone"
@@ -87,6 +87,10 @@ echo "Creating necessary directories..."
 sudo mkdir -p /mnt
 sudo chmod 777 /mnt
 
+# Create and setup directories with proper permissions
+sudo mkdir -p $WORKDIR
+sudo chmod -R 777 $WORKDIR
+
 # Check if cldperf directory exists, download from S3 if needed
 echo "Checking for benchmark files..."
 if [ ! -d "$CLDPERF_DIR" ]; then
@@ -145,6 +149,7 @@ if [ $? -ne 0 ]; then
     exit 1
 else
     # Files should be in cldperf-nflx-lab-benchmarks-main/autobench directory
+    AUTOBENCH_DIR="$CLDPERF_DIR/autobench"
     # Copy files from GitHub to augment what we have, but don't create autobench if it doesn't exist
     if [ -d "$AUTOBENCH_DIR" ]; then
         echo "Found autobench directory at $AUTOBENCH_DIR"
@@ -156,30 +161,73 @@ else
         sudo chmod -R +x "$AUTOBENCH_DIR"
     else
         echo "Warning: autobench directory not found at $AUTOBENCH_DIR"
-        echo "Creating autobench directory and copying files from GitHub..."
-        sudo mkdir -p "$AUTOBENCH_DIR"
-        sudo cp -f "$TEMP_DIR/$GIT_SUBDIR"/* "$AUTOBENCH_DIR/" 2>/dev/null
-        sudo chmod -R +x "$AUTOBENCH_DIR"
+        echo "Files won't be copied from GitHub to autobench"
     fi
     sudo rm -rf "$TEMP_DIR"
     echo "GitHub repository processing complete."
 fi
 
-# Make sure all necessary directories exist within autobench
-sudo mkdir -p "$AUTOBENCH_DIR/benchmarks"
-sudo mkdir -p "$AUTOBENCH_DIR/binaries"
-sudo mkdir -p "$AUTOBENCH_DIR/encode_home"
-sudo mkdir -p "$AUTOBENCH_DIR/vmf_home"
+echo "Setting up main benchmark scripts..."
 
-# Make sure all scripts in autobench are executable
-sudo chmod +x "$AUTOBENCH_DIR/run-benchmarks.sh" 2>/dev/null || true
-sudo chmod +x "$AUTOBENCH_DIR/benchmarks_environment.sh" 2>/dev/null || true
-sudo chmod +x "$AUTOBENCH_DIR/launch_containers-concurrent.sh" 2>/dev/null || true
-sudo chmod -R +x "$AUTOBENCH_DIR/benchmarks" 2>/dev/null || true
-sudo chmod -R +x "$AUTOBENCH_DIR/binaries" 2>/dev/null || true
+# Create benchmark directories
+sudo mkdir -p $WORKDIR/benchmarks
+sudo mkdir -p $WORKDIR/binaries
+
+# Copy benchmark environment script
+if [ -f "$AUTOBENCH_DIR/benchmarks_environment.sh" ]; then
+    sudo cp "$AUTOBENCH_DIR/benchmarks_environment.sh" $WORKDIR/
+else
+    echo "Warning: Could not find benchmarks_environment.sh in downloaded files"
+fi
+
+# Copy run-benchmarks script
+if [ -f "$AUTOBENCH_DIR/run-benchmarks.sh" ]; then
+    sudo cp "$AUTOBENCH_DIR/run-benchmarks.sh" $WORKDIR/
+else
+    echo "Warning: Could not find run-benchmarks.sh in downloaded files"
+fi
+
+# Copy launch containers script
+if [ -f "$AUTOBENCH_DIR/launch_containers-concurrent.sh" ]; then
+    sudo cp "$AUTOBENCH_DIR/launch_containers-concurrent.sh" $WORKDIR/
+else
+    echo "Warning: Could not find launch_containers-concurrent.sh in downloaded files"
+fi
+
+# Copy benchmark files if directory exists
+if [ -d "$AUTOBENCH_DIR/benchmarks" ]; then
+    sudo cp -r "$AUTOBENCH_DIR/benchmarks"/* $WORKDIR/benchmarks/ 2>/dev/null || echo "Warning: Could not copy benchmark files"
+else
+    echo "Warning: Could not find benchmarks directory in downloaded files"
+fi
+
+# Copy binary files if directory exists
+if [ -d "$AUTOBENCH_DIR/binaries" ]; then
+    sudo cp -r "$AUTOBENCH_DIR/binaries"/* $WORKDIR/binaries/ 2>/dev/null || echo "Warning: Could not copy binary files"
+else
+    echo "Warning: Could not find binaries directory in downloaded files"
+fi
+
+# Create encode_home and vmf_home directories if they exist in source
+if [ -d "$AUTOBENCH_DIR/encode_home" ]; then
+    sudo mkdir -p $WORKDIR/encode_home
+    sudo cp -r "$AUTOBENCH_DIR/encode_home"/* $WORKDIR/encode_home/ 2>/dev/null
+fi
+
+if [ -d "$AUTOBENCH_DIR/vmf_home" ]; then
+    sudo mkdir -p $WORKDIR/vmf_home
+    sudo cp -r "$AUTOBENCH_DIR/vmf_home"/* $WORKDIR/vmf_home/ 2>/dev/null
+fi
+
+echo "Setting correct permissions..."
+sudo chmod +x $WORKDIR/run-benchmarks.sh 2>/dev/null || true
+sudo chmod +x $WORKDIR/benchmarks_environment.sh 2>/dev/null || true
+sudo chmod +x $WORKDIR/launch_containers-concurrent.sh 2>/dev/null || true
+sudo chmod -R +x $WORKDIR/benchmarks 2>/dev/null || true
+sudo chmod -R +x $WORKDIR/binaries 2>/dev/null || true
 
 echo "Changing ownership to bnetflix..."
-sudo chown -R bnetflix:bnetflix "$CLDPERF_DIR"
+sudo chown -R bnetflix:bnetflix $WORKDIR
 
 echo "Setup complete! You can now run benchmarks."
-echo "To run benchmarks, execute: sudo -u bnetflix $AUTOBENCH_DIR/run-benchmarks.sh"
+echo "To run benchmarks, execute: sudo -u bnetflix $WORKDIR/run-benchmarks.sh"
