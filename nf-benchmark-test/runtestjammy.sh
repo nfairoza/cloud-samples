@@ -1,4 +1,9 @@
 #!/bin/bash
+#
+# Benchmark Environment Setup Script
+# This script sets up the environment for running benchmarks based on the provided Dockerfile
+# and integrates functionality from runtest.sh to download benchmark files from S3 and GitHub
+#
 
 echo "Starting benchmark environment setup..."
 
@@ -40,9 +45,14 @@ echo "Creating necessary directories..."
 $SUDO mkdir -p /mnt
 $SUDO chmod 777 /mnt
 
+# Create the target directories with proper permissions first
+mkdir -p "$TARGET_DIR/cldperf-nflx-lab-benchmarks-main/autobench"
+mkdir -p "$WORKDIR"
+
 echo "Creating user 'bnetflix' with sudo privileges..."
 id -u bnetflix &>/dev/null || $SUDO useradd -m -s /bin/bash bnetflix
 echo "bnetflix ALL=(ALL) NOPASSWD: ALL" | $SUDO tee /etc/sudoers.d/bnetflix >/dev/null
+$SUDO chmod 440 /etc/sudoers.d/bnetflix
 
 echo "Setting up Java environment variables..."
 export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
@@ -65,7 +75,7 @@ echo "Setting up the working directory..."
 WORKDIR="$HOME/benchmarks"
 mkdir -p $WORKDIR
 cd $WORKDIR
-##################################runtest.sh############################################
+
 # Set variables for downloading benchmark files
 S3_PATH="s3://netflix-files-us-west2/cldperf-nflx-lab-benchmarks-main/"
 TARGET_DIR="$HOME/cldperf-nflx-lab-benchmarks-main"
