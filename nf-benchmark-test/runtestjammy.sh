@@ -84,11 +84,8 @@ fi
 echo "Cleaning up package cache..."
 sudo apt clean
 
-echo "Creating necessary directories..."
-sudo mkdir -p /mnt
-sudo chmod 777 /mnt
-sudo chown -R bnetflix:bnetflix "$LOCAL_RESULTS_DIR"
-sudo chmod -R 755 "$LOCAL_RESULTS_DIR"
+
+
 
 # Check if cldperf directory exists, download from S3 if needed
 echo "Checking for benchmark files..."
@@ -111,6 +108,9 @@ echo "Creating user 'bnetflix' with sudo privileges..."
 if ! id -u bnetflix &>/dev/null; then
     sudo useradd -m -s /bin/bash bnetflix
 fi
+sudo chown -R bnetflix:bnetflix "$LOCAL_RESULTS_DIR"
+sudo chmod -R 755 "$LOCAL_RESULTS_DIR"
+sudo -u bnetflix  mv $AUTOBENCH_DIR/run-benchmarks $AUTOBENCH_DIR/run-benchmarks.sh
 
 # Ensure the sudoers entry is correctly set
 echo "Setting up passwordless sudo for bnetflix..."
