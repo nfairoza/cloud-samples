@@ -9,6 +9,7 @@ TOKEN=$(curl -s -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-m
 EC2_INSTANCE_TYPE=$(curl -s -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/instance-type)
 echo "Detected EC2 instance type: $EC2_INSTANCE_TYPE"
 
+export EC2_INSTANCE_TYPE=$(echo "$EC2_INSTANCE_TYPE")
 # Extract CPU topology more accurately
 CORES_PER_SOCKET=$(lscpu | grep "Core(s) per socket" | awk '{print $4}')
 SOCKETS=$(lscpu | grep "Socket(s)" | awk '{print $2}')

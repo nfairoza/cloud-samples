@@ -111,27 +111,6 @@ else
     echo "Directory $CLDPERF_DIR already exists. Using existing files."
 fi
 
-# echo "Creating user 'bnetflix' with sudo privileges..."
-# if ! id -u bnetflix &>/dev/null; then
-#     sudo useradd -m -s /bin/bash bnetflix
-# fi
-# sudo chown -R bnetflix:bnetflix "$LOCAL_RESULTS_DIR"
-# sudo chmod -R 755 "$LOCAL_RESULTS_DIR"
-#
-# # Ensure the sudoers entry is correctly set
-# echo "Setting up passwordless sudo for bnetflix..."
-# echo "bnetflix ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/bnetflix >/dev/null
-# sudo chmod 440 /etc/sudoers.d/bnetflix
-#
-# # Verify sudo works without password
-# echo "Verifying passwordless sudo setup..."
-# sudo -u bnetflix sudo -n true
-# if [ $? -ne 0 ]; then
-#     echo "WARNING: Passwordless sudo for bnetflix is not working properly."
-#     echo "You may be prompted for a password when running benchmarks."
-# else
-#     echo "Passwordless sudo for bnetflix is configured correctly."
-# fi
 
 echo "Setting up Java environment variables..."
 # sudo bash -c "cat << EOF >> /home/bnetflix/.bashrc

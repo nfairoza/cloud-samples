@@ -91,24 +91,32 @@ for REGION in $REGIONS; do
 
 
         # Get disk metrics
-        max_disk_read=$(get_metrics "AWS/EC2" "EBSReadBytes")
-        max_disk_write=$(get_metrics "AWS/EC2" "EBSWriteBytes")
+        max_ebs_read=$(get_metrics "AWS/EC2" "EBSReadBytes")
+        max_ebs_write=$(get_metrics "AWS/EC2" "EBSWriteBytes")
+        max_disk_read=$(get_metrics "AWS/EC2" "DiskReadBytes")
+        max_disk_write=$(get_metrics "AWS/EC2" "DiskWriteBytes")
 
-        # Calculate disk bandwidth in MB/s
-        max_disk_total=$(echo "$max_disk_read $max_disk_write $HIGH_RES_PERIOD" | \
-                        awk '{printf "%.2f", ($1 + $2) / (1024 * 1024 * $3)}')
+        # Sum all disk metrics
+        max_disk_bytes_total=$(echo "$max_ebs_read $max_ebs_write $max_disk_read $max_disk_write" | \
+                           awk '{print $1 + $2 + $3 + $4}')
 
-        echo "  Disk bandwidth: $max_disk_total MB/s (from ${HIGH_RES_PERIOD}-second period)"
+        # Convert to MB/s using Datadog formula and divide by duration
+        max_disk_total=$(echo "$max_disk_bytes_total $HIGH_RES_PERIOD" | \
+                        awk '{printf "%.2f", $1 / (1024 * 1024 * $2)}')
+
+        echo "  Disk bandwidth: $max_disk_total MB/s (from combined EBS and Disk metrics, divided by ${HIGH_RES_PERIOD}-second period)"
 
         # Get IOPS metrics
-        max_iops_read=$(get_metrics "AWS/EC2" "EBSReadOps")
-        max_iops_write=$(get_metrics "AWS/EC2" "EBSWriteOps")
+        max_ebs_read_ops=$(get_metrics "AWS/EC2" "EBSReadOps")
+        max_ebs_write_ops=$(get_metrics "AWS/EC2" "EBSWriteOps")
+        max_disk_read_ops=$(get_metrics "AWS/EC2" "DiskReadOps")
+        max_disk_write_ops=$(get_metrics "AWS/EC2" "DiskWriteOps")
 
+        # Sum all IOPS metrics and divide by duration
+        max_iops_total=$(echo "$max_ebs_read_ops $max_ebs_write_ops $max_disk_read_ops $max_disk_write_ops $HIGH_RES_PERIOD" | \
+                        awk '{printf "%.0f", ($1 + $2 + $3 + $4) / $5}')
 
-        max_iops_total=$(echo "$max_iops_read $max_iops_write $HIGH_RES_PERIOD" | \
-                        awk '{printf "%.0f", ($1 + $2) / $3}')
-
-        echo "  IOPS: $max_iops_total (operations per second, from ${HIGH_RES_PERIOD}-second period)"
+        echo "  IOPS: $max_iops_total (operations per second, combined from EBS and Disk metrics, divided by ${HIGH_RES_PERIOD}-second period)"
 
 
         printf "%s,AWS,%s,%s,%.2f,%.2f,%.8f,%.2f,%d\n" \
