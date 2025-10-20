@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sysbench-default
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: sysbench-test
+  template:
+    metadata:
+      labels:
+        app: sysbench-test
+    spec:
+      containers:
+      - name: sysbench-runner
+        image: ubuntu:latest
+        command: ["/bin/bash", "-c"]
+        args:
+        - "apt-get update && apt-get install -y sysbench && sysbench cpu --cpu-max-prime=20000 --threads=4 run & sleep 3600"
+        resources:
+          limits:
+            cpu: "4"         # Guaranteed QoS
+            memory: "1Gi"
+          requests:
+            cpu: "4"
+            memory: "1Gi"
+# kubectl apply -f sysbench-default-48.yaml
+# kubectl get pods -o wide
+# kubectl delete deployment sysbench-default

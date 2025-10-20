@@ -1,11 +1,16 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: 'EKS Cluster (K8s 1.34) with 2 m7a.4xlarge worker nodes running Amazon Linux 2023 in us-east-2. Final Configuration.'
+Description: 'EKS Cluster (K8s 1.34) with 2 m7a.large worker nodes running Amazon Linux 2023 in us-east-2. Final Configuration.'
 
 Parameters:
   ClusterName:
     Type: String
     Default: my-eks-cluster
     Description: Name of the EKS cluster
+
+  KeyName:
+    Type: AWS::EC2::KeyPair::KeyName
+    Default: noor-ohio
+    Description: EC2 Key Pair for SSH access to worker nodes
 
 Resources:
   ## Networking Resources ##
@@ -187,10 +192,24 @@ Resources:
     Properties:
       LaunchTemplateName: !Sub '${ClusterName}-al2023-template'
       LaunchTemplateData:
+        KeyName: !Ref KeyName
         SecurityGroupIds:
           - !Ref NodeSecurityGroup
+        UserData:
+          Fn::Base64:
+            Fn::Sub: |
+              MIME-Version: 1.0
+              Content-Type: multipart/mixed; boundary="==BOUNDARY=="
 
-  ## EKS Node Group (Relying on EKS to choose the latest working AMI) ##
+              --==BOUNDARY==
+              Content-Type: text/x-shellscript; charset="us-ascii"
+
+              #!/bin/bash
+              set -ex
+              /etc/eks/bootstrap.sh ${ClusterName} --kubelet-extra-args '--cpu-manager-policy=static'
+              --==BOUNDARY==--
+ # /etc/eks/bootstrap.sh ${ClusterName} --kubelet-extra-args '--cpu-manager-policy=static --cpu-manager-policy-options="prefer-align-cpus-by-uncore-cache=true"'
+  ## EKS Node Group ##
   NodeGroup:
     Type: AWS::EKS::Nodegroup
     DependsOn: EKSCluster
@@ -206,7 +225,7 @@ Resources:
         MaxSize: 2
         DesiredSize: 2
       InstanceTypes:
-        - m7a.4xlarge
+        - m7a.12xlarge
       # FIX: Corrected AMI Type case. EKS will find the latest 1.34 AL2023 AMI.
       AmiType: AL2023_x86_64_STANDARD
 
