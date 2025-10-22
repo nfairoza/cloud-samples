@@ -34,13 +34,21 @@ aws eks delete-cluster \
      --name my-eks-cluster \
      --region us-east-2
 
+ami-03290691a4d2c6df9
 
 kubectl get nodes
+
+kubectl get configmap aws-auth -n kube-system
+
+aws ec2 get-console-output \
+  --instance-id i-05a6ba81246f7d004 \
+  --region us-east-2 \
+  --output text | tail -200
 
 
 Phase 1:
 kubectl get nodes
-kubectl apply -f sysbench.yaml
+kubectl apply -f sysbench-default-48.yaml
 kubectl get pods -o wide
 
 
@@ -48,8 +56,63 @@ The kubectl top node and kubectl top pod commands rely entirely on the Metrics S
 
 kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
 kubectl get pods -n kube-system -l k8s-app=metrics-server
+................
+
+Phase 2
+
+# 1. Create/Update the CloudFormation stack
+aws cloudformation create-stack \
+  --stack-name my-eks-stack \
+  --template-body file://test-setup-cfn.yaml \
+  --capabilities CAPABILITY_IAM \
+  --region us-east-2
+
+# Wait for completion
+aws cloudformation wait stack-create-complete \
+  --stack-name my-eks-stack \
+  --region us-east-2
+
+# 2. Configure kubectl
+aws eks update-kubeconfig --name my-eks-cluster --region us-east-2
+
+# 3. Deploy the CPU Manager configurator DaemonSet
+kubectl apply -f cpu-manager-configurator.yaml
+
+# 4. Watch it configure all nodes
+kubectl logs -n system-config -l app=cpu-manager-configurator -f
+
+# Check DaemonSet status
+kubectl get daemonset -n system-config
+
+# Check that pods ran successfully on all nodes
+kubectl get pods -n system-config -o wide
+
+# Verify CPU Manager is active
+NODE_NAME=$(kubectl get nodes --no-headers | awk 'NR==1{print $1}')
+kubectl debug node/$NODE_NAME --image=ubuntu -- chroot /host cat /var/lib/kubelet/cpu_manager_state
 
 
+# Delete the old DaemonSet
+kubectl delete daemonset cpu-manager-configurator -n system-config
+
+# Apply the fixed version
+kubectl apply -f cpu-manager-configurator.yaml
+
+# Watch it work
+kubectl logs -n system-config -l app=cpu-manager-configurator -c configure-cpu-manager -f
+
+# 1. Get the name of an inspector pod on one of your worker nodes (e.g., ip-10-0-1-92)
+INSPECTOR_POD=$(kubectl get pods -n kube-system -l name=cpu-inspector --field-selector spec.nodeName=ip-10-0-1-92.us-east-2.compute.internal -o jsonpath='{.items[0].metadata.name}')
+
+# 2. Execute a command inside the privileged inspector pod to read the Kubelet config:
+kubectl exec -n kube-system $INSPECTOR_POD -- cat /etc/kubernetes/kubelet/config.json.d/40-nodeadm.conf
+
+# Check YOUR cluster's service CIDR
+aws eks describe-cluster \
+  --name my-eks-cluster \
+  --region us-east-2 \
+  --query 'cluster.kubernetesNetworkConfig.serviceIpv4Cidr' \
+  --output text
 ..................
 proof
 

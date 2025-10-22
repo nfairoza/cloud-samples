@@ -1,0 +1,147 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: system-config
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: cpu-manager-configurator
+  namespace: system-config
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: cpu-manager-configurator
+  namespace: system-config
+  labels:
+    app: cpu-manager-configurator
+spec:
+  selector:
+    matchLabels:
+      app: cpu-manager-configurator
+  template:
+    metadata:
+      labels:
+        app: cpu-manager-configurator
+    spec:
+      serviceAccountName: cpu-manager-configurator
+      hostPID: true
+      hostNetwork: true
+      tolerations:
+        - operator: Exists
+      initContainers:
+        - name: configure-cpu-manager
+          image: public.ecr.aws/amazonlinux/amazonlinux:2023
+          securityContext:
+            privileged: true
+          command:
+            - /bin/bash
+            - -c
+            - |
+              set -ex
+
+              echo "[INFO] Installing dependencies..."
+              yum install -y jq procps-ng 2>&1 | tail -5
+
+              echo "[INFO] Checking CPU Manager configuration..."
+
+              # Check if already configured
+              if grep -q '"cpuManagerPolicy": "static"' /host/etc/kubernetes/kubelet/kubelet-config.json 2>/dev/null; then
+                echo "[INFO] CPU Manager already configured as static"
+
+                if [ -f /host/var/lib/kubelet/cpu_manager_state ]; then
+                  echo "[SUCCESS] CPU Manager state file exists:"
+                  cat /host/var/lib/kubelet/cpu_manager_state
+                  exit 0
+                fi
+              fi
+
+              echo "[INFO] CPU Manager not configured. Applying configuration..."
+
+              # Get kubelet PID
+              KUBELET_PID=$(pgrep -f '/usr/bin/kubelet' || echo "")
+
+              if [ -n "$KUBELET_PID" ]; then
+                echo "[INFO] Stopping kubelet (PID: $KUBELET_PID)..."
+                kill -9 $KUBELET_PID || true
+                sleep 5
+              fi
+
+              # Remove old CPU manager state
+              rm -f /host/var/lib/kubelet/cpu_manager_state
+
+              # Backup original config
+              cp /host/etc/kubernetes/kubelet/kubelet-config.json \
+                 /host/etc/kubernetes/kubelet/kubelet-config.json.backup-$(date +%s)
+
+              # Add CPU manager configuration using jq
+              jq '. + {
+                "cpuManagerPolicy": "static",
+                "cpuManagerReconcilePeriod": "10s",
+                "reservedSystemCPUs": "0-1"
+              }' /host/etc/kubernetes/kubelet/kubelet-config.json > /tmp/kubelet-config.json
+
+              # Verify the JSON is valid
+              if ! jq empty /tmp/kubelet-config.json 2>/dev/null; then
+                echo "[ERROR] Generated invalid JSON"
+                exit 1
+              fi
+
+              # Apply new configuration
+              cp /tmp/kubelet-config.json /host/etc/kubernetes/kubelet/kubelet-config.json
+
+              echo "[SUCCESS] Configuration file updated:"
+              grep cpuManager /host/etc/kubernetes/kubelet/kubelet-config.json
+
+              echo "[INFO] Kubelet will restart automatically via systemd..."
+              echo "[INFO] Waiting for kubelet to create CPU manager state file..."
+
+              # Wait for state file (kubelet restarts automatically)
+              for i in {1..60}; do
+                if [ -f /host/var/lib/kubelet/cpu_manager_state ]; then
+                  echo "[SUCCESS] CPU Manager initialized after $((i*2)) seconds:"
+                  cat /host/var/lib/kubelet/cpu_manager_state
+                  exit 0
+                fi
+                sleep 2
+              done
+
+              echo "[WARNING] CPU Manager state file not created after 120 seconds"
+              echo "[INFO] Configuration applied, but state file pending. This may be normal."
+              exit 0
+          volumeMounts:
+            - name: host-root
+              mountPath: /host
+            - name: host-proc
+              mountPath: /proc
+      containers:
+        - name: keepalive
+          image: public.ecr.aws/amazonlinux/amazonlinux:2023
+          command: ["/bin/bash", "-c", "echo 'CPU Manager configured'; sleep infinity"]
+          resources:
+            requests:
+              cpu: 10m
+              memory: 32Mi
+            limits:
+              cpu: 10m
+              memory: 32Mi
+      volumes:
+        - name: host-root
+          hostPath:
+            path: /
+            type: Directory
+        - name: host-proc
+          hostPath:
+            path: /proc
+            type: Directory
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cpu-manager-status
+  namespace: system-config
+data:
+  description: |
+    This DaemonSet ensures CPU Manager is configured on all nodes.
+    Check logs: kubectl logs -n system-config -l app=cpu-manager-configurator -c configure-cpu-manager
