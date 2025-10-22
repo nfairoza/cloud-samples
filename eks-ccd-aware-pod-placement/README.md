@@ -63,7 +63,7 @@ Phase 2
 # 1. Create/Update the CloudFormation stack
 aws cloudformation create-stack \
   --stack-name my-eks-stack \
-  --template-body file://test-setup-cfn.yaml \
+  --template-body file://test-setup-cfn-selfmanaged.yaml \
   --capabilities CAPABILITY_IAM \
   --region us-east-2
 
@@ -101,11 +101,7 @@ kubectl apply -f cpu-manager-configurator.yaml
 # Watch it work
 kubectl logs -n system-config -l app=cpu-manager-configurator -c configure-cpu-manager -f
 
-# 1. Get the name of an inspector pod on one of your worker nodes (e.g., ip-10-0-1-92)
-INSPECTOR_POD=$(kubectl get pods -n kube-system -l name=cpu-inspector --field-selector spec.nodeName=ip-10-0-1-92.us-east-2.compute.internal -o jsonpath='{.items[0].metadata.name}')
 
-# 2. Execute a command inside the privileged inspector pod to read the Kubelet config:
-kubectl exec -n kube-system $INSPECTOR_POD -- cat /etc/kubernetes/kubelet/config.json.d/40-nodeadm.conf
 
 # Check YOUR cluster's service CIDR
 aws eks describe-cluster \

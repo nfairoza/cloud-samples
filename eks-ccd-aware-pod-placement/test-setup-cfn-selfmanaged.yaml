@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: 'EKS Cluster with Self-Managed AL2023 Nodes - CPU Manager via nodeadm'
+Description: 'EKS Cluster with Self-Managed AL2023 Nodes - CPU Manager via nodeadm (CANONICAL VERSION)'
 
 Parameters:
   ClusterName:
@@ -234,12 +234,12 @@ Resources:
               #!/bin/bash
               set -ex
               systemctl stop nodeadm-config.service || true
-              systemctl disable nodeadm-config.service || true
-              systemctl stop nodeadm-run.service || true
-              systemctl disable nodeadm-run.service || true
-              # Write nodeadm configuration
+              systemctl disable nodeadm-config.service || true
+              systemctl stop nodeadm-run.service || true
+              systemctl disable nodeadm-run.service || true
+
               mkdir -p /etc/eks
-              cat > /etc/eks/nodeadm.yaml <<EOF
+              cat > /etc/eks/nodeadm.yaml <<'NODEADM_EOF'
               ---
               apiVersion: node.eks.aws/v1alpha1
               kind: NodeConfig
@@ -255,14 +255,11 @@ Resources:
                     cpuManagerPolicy: static
                     cpuManagerReconcilePeriod: 10s
                     systemReserved:
-                      cpu: 4
-                    kubeReserved:
-                      cpu: 0
-                  # flags:
-                  #   - --reserved-cpus=0-3
-              EOF
+                      cpu: "4"
+                    kubeReserved:
+                      cpu: "0"
+              NODEADM_EOF
 
-              # Initialize the node with nodeadm
               /usr/bin/nodeadm init --config-source file:///etc/eks/nodeadm.yaml
 
   NodeAutoScalingGroup:
