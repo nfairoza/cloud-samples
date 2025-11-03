@@ -54,22 +54,26 @@ spec:
         - operator: Exists
       containers:
         - name: ccd-labeller
-          image: public.ecr.aws/amazonlinux/amazonlinux:2
+          image: public.ecr.aws/amazonlinux/amazonlinux:2023
           securityContext:
             privileged: true
           command:
             - /bin/bash
             - -c
             - |
-              set -e
+              set -ex
               echo "[INFO] Detecting CCD/L3 cache groups..."
               yum install -y hwloc lscpu jq curl >/dev/null 2>&1 || true
 
               # Try hwloc-ls first (most accurate)
-              CCDS=$(hwloc-ls --no-io --no-bridges | grep "L3" | wc -l)
+              CCDS=$(hwloc-ls --no-io --no-bridges 2>/dev/null | grep "L3" | wc -l)
               if [ "$CCDS" -eq 0 ]; then
-                CCDS=$(lscpu -e | awk '{print $7}' | grep -v "L3" | sort -u | wc -l)
+                CCDS=$(lscpu -e 2>/dev/null | awk '{print $4}' | grep -v "L3" | sort -u | wc -l)
               fi
+              if [ "$CCDS" -eq 0 ]; then
+                CCDS=6  # Default for m7a.12xlarge
+              fi
+
               echo "[INFO] Found $CCDS CCD/L3 groups"
 
               HOSTNAME=$(cat /etc/hostname)
@@ -77,32 +81,57 @@ spec:
               TOKEN=$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)
               CACERT="/var/run/secrets/kubernetes.io/serviceaccount/ca.crt"
 
+              # Test API connectivity first
+              echo "[INFO] Testing API connectivity..."
+              HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 \
+                --cacert $CACERT -H "Authorization: Bearer $TOKEN" \
+                $API/api/v1/nodes/$HOSTNAME)
+
+              if [ "$HTTP_CODE" != "200" ]; then
+                echo "[ERROR] Cannot access Kubernetes API. HTTP code: $HTTP_CODE"
+                echo "[ERROR] Check RBAC permissions and service account"
+                exit 1
+              fi
+              echo "[INFO] API access OK (HTTP $HTTP_CODE)"
+
+              # Apply labels
               for ((i=0;i<CCDS;i++)); do
                 LABEL="custom.io/ccd-group-$i=true"
                 echo "[INFO] Labeling node $HOSTNAME with $LABEL"
-                curl -s --cacert $CACERT -H "Authorization: Bearer $TOKEN" \
+
+                RESULT=$(curl -s --max-time 10 --cacert $CACERT \
+                  -H "Authorization: Bearer $TOKEN" \
+                  -H "Content-Type: application/json-patch+json" \
                   -X PATCH \
-                  -H "Content-Type: application/merge-patch+json" \
                   $API/api/v1/nodes/$HOSTNAME \
-                  -d "{\"metadata\":{\"labels\":{\"custom.io/ccd-group-$i\":\"true\"}}}"
+                  -d "[{\"op\":\"add\",\"path\":\"/metadata/labels/custom.io~1ccd-group-$i\",\"value\":\"true\"}]" \
+                  -w "\nHTTP_CODE:%{http_code}")
+
+                HTTP_CODE=$(echo "$RESULT" | grep "HTTP_CODE:" | cut -d: -f2)
+
+                if [ "$HTTP_CODE" = "200" ] || [ "$HTTP_CODE" = "201" ]; then
+                  echo "[SUCCESS] Label applied (HTTP $HTTP_CODE)"
+                else
+                  echo "[ERROR] Failed to apply label. HTTP code: $HTTP_CODE"
+                  echo "[ERROR] Response: $RESULT"
+                fi
               done
 
               echo "[INFO] Done labeling node with CCD groups."
+
+              # Verify
+              echo "[INFO] Verifying labels..."
+              curl -s --cacert $CACERT -H "Authorization: Bearer $TOKEN" \
+                $API/api/v1/nodes/$HOSTNAME | \
+                jq -r '.metadata.labels | keys[] | select(contains("ccd-group"))' || \
+                echo "[WARN] Could not verify labels (jq might not be available)"
+
               sleep infinity
           volumeMounts:
             - name: host-sys
               mountPath: /host-sys
               readOnly: true
-            - name: ca-certs
-              mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-              readOnly: true
       volumes:
         - name: host-sys
           hostPath:
             path: /sys
-        - name: ca-certs
-          projected:
-            sources:
-              - serviceAccountToken:
-                  path: token
-                  expirationSeconds: 3600

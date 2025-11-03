@@ -1,38 +1,63 @@
 # AWS CUR Export Script for Cloud Cost Assessment
 
-This script automates the extraction and analysis of AWS Cost and Usage Report (CUR) data, for Cloud Cost Assessment (CCA) template requirements for cost advice.
+This script automates the extraction and analysis of AWS Cost and Usage Report (CUR) data for Cloud Cost Assessment (CCA) template requirements for cost advice.
 
-## Notes
+## Overview
 
-- The script uses Data exports CUR 2.0 data is in Parquet format with Resource Ids
-- Usage hours are calculated from `line_item_usage_amount`
-- Instance counts are based on unique resource IDs
-- Calculates usage hours by SKU
-- Generate CSV output to upload with CCA Portfolio Template
+Two versions are available depending on your CUR configuration:
+
+- **CUR 2.0 (Data Exports)**: Uses modern Parquet format with Resource IDs
+- **Legacy CUR**: Uses traditional Athena-based CUR tables
+
+## Version Comparison
+
+| Feature | Legacy CUR | CUR 2.0 (Data Exports) |
+|---------|------------|------------------------|
+| Format | CSV/Gzip files | Parquet files |
+| Resource IDs | Optional | Included by default |
+| Script | `get-cca-export-cur-legacy.sh` | `get-cca-export.sh` |
+| Query File | `cca-cur-query-legacy.sql` | `cca-cur-query.sql` |
+| Approach | Glue Crawler + Athena | Glue Crawler + Athena |
 
 ## Prerequisites
 
-- AWS CLI installed and configured where the script is run.
-- Appropriate AWS IAM permissions for s3 and Glue crawler
-- AWS CUR 2.0 data with resource ids in Parquet format stored in S3 bucket
+- AWS CLI installed and configured
+- Appropriate AWS IAM permissions for S3, Glue, and Athena
+- Active CUR configured in your AWS account
+- Data stored in S3 bucket
+
+### For CUR 2.0:
+- CUR 2.0 data exports with resource IDs enabled
+- Data in Parquet format
+
+### For Legacy CUR:
+- Legacy CUR reports configured
+- Data in CSV/Gzip format
 
 ## Configuration
 
 Update these variables in the script according to your environment:
 
+### CUR Script Configuration for both CUR 2.0 and Legacy CUR
 ```bash
 REGION="us-east-2"                        # AWS region
-S3_PATH="s3://your_bucket_name/your_cur _prefix/data/"  # Source CUR data path
-S3_OUTPUT="s3://your_bucket_name/query_results/"    # Query results output path
-ROLE_NAME="AWSGlueServiceRole-crawler"    # IAM role name, if already exists
+DATABASE_NAME="cur_reports"               # Glue database name OPTIONAL
+CRAWLER_NAME="cur_crawler"                # Glue crawler name OPTIONAL
+S3_PATH="s3://your-bucket-name/your-cur-prefix/data/"  # Source CUR data path
+S3_OUTPUT="s3://your-bucket-name/query_results/"       # Query results output path
+ROLE_NAME="AWSGlueServiceRole-crawler"    # IAM role name OPTIONAL
 ```
+
 
 ## Usage
 
+### Option 1: CUR 2.0 (Recommended for new deployments)
+
 1. Download the script:
 ```bash
-Wget https://raw.githubusercontent.com/nfairoza/cloud-samples/refs/heads/main/cca-export/get-cca-export.sh
+wget https://raw.githubusercontent.com/nfairoza/cloud-samples/refs/heads/main/cca-export/aws/get-cca-export.sh
 ```
+
 2. Make the script executable:
 ```bash
 chmod +x get-cca-export.sh
@@ -43,9 +68,58 @@ chmod +x get-cca-export.sh
 ./get-cca-export.sh
 ```
 
-#### Data exports CUR 2.0 line items
-There are all the line items available in the CUR 2.0 from documentation
-```bash
-{"QueryStatement":"SELECT bill_bill_type, bill_billing_entity, bill_billing_period_end_date, bill_billing_period_start_date, bill_invoice_id, bill_invoicing_entity, bill_payer_account_id, bill_payer_account_name, cost_category, discount, discount_bundled_discount, discount_total_discount, identity_line_item_id, identity_time_interval, line_item_availability_zone, line_item_blended_cost, line_item_blended_rate, line_item_currency_code, line_item_legal_entity, line_item_line_item_description, line_item_line_item_type, line_item_net_unblended_cost, line_item_net_unblended_rate, line_item_normalization_factor, line_item_normalized_usage_amount, line_item_operation, line_item_product_code, line_item_tax_type, line_item_unblended_cost, line_item_unblended_rate, line_item_usage_account_id, line_item_usage_account_name, line_item_usage_amount, line_item_usage_end_date, line_item_usage_start_date, line_item_usage_type, pricing_currency, pricing_lease_contract_length, pricing_offering_class, pricing_public_on_demand_cost, pricing_public_on_demand_rate, pricing_purchase_option, pricing_rate_code, pricing_rate_id, pricing_term, pricing_unit, product, product_comment, product_fee_code, product_fee_description, product_from_location, product_from_location_type, product_from_region_code, product_instance_family, product_instance_type, product_instancesku, product_location, product_location_type, product_operation, product_pricing_unit, product_product_family, product_region_code, product_servicecode, product_sku, product_to_location, product_to_location_type, product_to_region_code, product_usagetype, reservation_amortized_upfront_cost_for_usage, reservation_amortized_upfront_fee_for_billing_period, reservation_availability_zone, reservation_effective_cost, reservation_end_time, reservation_modification_status, reservation_net_amortized_upfront_cost_for_usage, reservation_net_amortized_upfront_fee_for_billing_period, reservation_net_effective_cost, reservation_net_recurring_fee_for_usage, reservation_net_unused_amortized_upfront_fee_for_billing_period, reservation_net_unused_recurring_fee, reservation_net_upfront_value, reservation_normalized_units_per_reservation, reservation_number_of_reservations, reservation_recurring_fee_for_usage, reservation_reservation_a_r_n, reservation_start_time, reservation_subscription_id, reservation_total_reserved_normalized_units, reservation_total_reserved_units, reservation_units_per_reservation, reservation_unused_amortized_upfront_fee_for_billing_period, reservation_unused_normalized_unit_quantity, reservation_unused_quantity, reservation_unused_recurring_fee, reservation_upfront_value, resource_tags, savings_plan_amortized_upfront_commitment_for_billing_period, savings_plan_end_time, savings_plan_instance_type_family, savings_plan_net_amortized_upfront_commitment_for_billing_period, savings_plan_net_recurring_commitment_for_billing_period, savings_plan_net_savings_plan_effective_cost, savings_plan_offering_type, savings_plan_payment_option, savings_plan_purchase_term, savings_plan_recurring_commitment_for_billing_period, savings_plan_region, savings_plan_savings_plan_a_r_n, savings_plan_savings_plan_effective_cost, savings_plan_savings_plan_rate, savings_plan_start_time, savings_plan_total_commitment_to_date, savings_plan_used_commitment FROM COST_AND_USAGE_REPORT"}
+### Option 2: Legacy CUR
 
-{"TableConfigurations":{"COST_AND_USAGE_REPORT":{"INCLUDE_RESOURCES":"FALSE","INCLUDE_SPLIT_COST_ALLOCATION_DATA":"FALSE","TIME_GRANULARITY":"HOURLY"}}}```
+1. Download the legacy script:
+```bash
+wget https://raw.githubusercontent.com/nfairoza/cloud-samples/refs/heads/main/cca-export/aws/get-cca-export-cur-legacy.sh
+```
+
+2. Make the script executable:
+```bash
+chmod +x get-cca-export-cur-legacy.sh
+```
+
+3. Run the script:
+```bash
+./get-cca-export-cur-legacy.sh
+```
+
+## Output
+
+Both scripts generate a CSV file containing:
+- Usage hours calculated from `line_item_usage_amount`
+- Instance counts based on unique resource IDs (CUR 2.0) or usage patterns (Legacy)
+- Usage hours aggregated by SKU
+- Data formatted for CCA Portfolio Template upload
+
+## Notes
+
+- **Both scripts** use Glue crawler to catalog data, then query with Athena
+- **CUR 2.0**: Works with Parquet format data from Data Exports
+- **Legacy CUR**: Works with CSV/Gzip format from traditional CUR reports
+- Both scripts download results locally and clean up intermediate files
+- Ensure your IAM role has necessary permissions for S3, Athena, and Glue
+
+## Choosing the Right Version
+
+**Use CUR 2.0** if:
+- You're setting up CUR for the first time
+- You need resource-level tracking
+- You want faster query performance with Parquet format
+
+**Use Legacy CUR** if:
+- You have existing CUR configured with Athena
+- You're not ready to migrate to CUR 2.0
+- Your organization has standardized on legacy CUR
+
+## Additional Resources
+
+- [AWS Cost and Usage Reports Documentation](https://docs.aws.amazon.com/cur/latest/userguide/)
+- [CUR 2.0 Migration Guide](https://docs.aws.amazon.com/cur/latest/userguide/cur-data-exports.html)
+
+## Support Files
+
+- `cca-cur-query.sql` - Athena query for CUR 2.0
+- `cca-cur-query-legacy.sql` - Athena query for Legacy CUR
+- `cur-setup.xlsx` - Configuration reference spreadsheet

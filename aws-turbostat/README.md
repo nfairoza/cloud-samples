@@ -64,7 +64,7 @@ aws cloudformation create-stack \
 --template-body file://turbostat.yaml \
 --capabilities CAPABILITY_IAM \
 --parameters \
-  ParameterKey=TargetInstanceId,ParameterValue=i-067d785dc64f10139 \
+  ParameterKey=TargetInstanceId,ParameterValue=i-056b7852970664b80 \
   ParameterKey=StepInterval,ParameterValue=30 \
   ParameterKey=StressNGCPUs,ParameterValue=96
 ```

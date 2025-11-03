@@ -1,0 +1,6 @@
+# AMI checker result files
+amd_compatible_amis.csv
+incompatible_amis.csv
+
+# Optional: ignore all CSV files in this directory
+*.csv

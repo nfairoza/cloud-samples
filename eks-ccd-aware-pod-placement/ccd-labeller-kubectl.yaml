@@ -1,0 +1,149 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: node-feature-discovery
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: nfd-ccd-labeller
+  namespace: node-feature-discovery
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: nfd-ccd-labeller
+rules:
+  - apiGroups: [""]
+    resources: ["nodes"]
+    verbs: ["get", "patch", "update"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: nfd-ccd-labeller
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: nfd-ccd-labeller
+subjects:
+  - kind: ServiceAccount
+    name: nfd-ccd-labeller
+    namespace: node-feature-discovery
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: nfd-ccd-labeller
+  namespace: node-feature-discovery
+  labels:
+    app: nfd-ccd-labeller
+spec:
+  selector:
+    matchLabels:
+      app: nfd-ccd-labeller
+  template:
+    metadata:
+      labels:
+        app: nfd-ccd-labeller
+    spec:
+      serviceAccountName: nfd-ccd-labeller
+      hostPID: true
+      hostNetwork: true
+      tolerations:
+        - operator: Exists
+      containers:
+        - name: ccd-labeller
+          image: bitnami/kubectl:latest
+          securityContext:
+            privileged: true
+          command:
+            - /bin/bash
+            - -c
+            - |
+              set -ex
+              echo "[INFO] Installing detection tools..."
+              apt-get update && apt-get install -y hwloc util-linux || \
+              apk add --no-cache hwloc util-linux || true
+
+              echo "[INFO] Detecting CCD/L3 cache groups..."
+
+              # Method 1: Count L3 cache OBJECTS (not cores!) with hwloc
+              CCDS=$(hwloc-ls --no-io --no-bridges 2>/dev/null | grep -E "^\s*L3" | wc -l || echo 0)
+              echo "[INFO] hwloc detected $CCDS L3 cache domains"
+
+              # Method 2: Count unique L3 cache IDs with lscpu
+              if [ "$CCDS" -eq 0 ]; then
+                CCDS=$(lscpu -e=L3CACHE 2>/dev/null | tail -n +2 | sort -u | wc -l || echo 0)
+                echo "[INFO] lscpu detected $CCDS unique L3 caches"
+              fi
+
+              # Method 3: Check /sys filesystem
+              if [ "$CCDS" -eq 0 ]; then
+                CCDS=$(find /sys/devices/system/cpu/cpu*/cache/index3/ -name "id" 2>/dev/null | \
+                       xargs cat 2>/dev/null | sort -u | wc -l || echo 0)
+                echo "[INFO] /sys detected $CCDS unique L3 cache IDs"
+              fi
+
+              # Sanity check: m7a.12xlarge should have ~6 CCDs
+              if [ "$CCDS" -gt 10 ]; then
+                echo "[ERROR] Detected $CCDS CCDs - this seems wrong (expected ~6)"
+                echo "[WARN] Falling back to hardcoded value of 6"
+                CCDS=6
+              fi
+
+              if [ "$CCDS" -eq 0 ]; then
+                echo "[WARN] Could not detect CCDs, defaulting to 6 for m7a.12xlarge"
+                CCDS=6
+              fi
+
+              echo "[SUCCESS] Final CCD count: $CCDS"
+
+              NODE_NAME=$(cat /etc/hostname)
+              echo "[INFO] Node name: $NODE_NAME"
+
+              # Test kubectl connectivity
+              if ! kubectl get node $NODE_NAME >/dev/null 2>&1; then
+                echo "[ERROR] Cannot access node via kubectl"
+                echo "[ERROR] Checking cluster access..."
+                kubectl cluster-info || true
+                exit 1
+              fi
+
+              echo "[INFO] kubectl access OK"
+
+              # Clean up old incorrect labels (remove labels 0-50)
+              echo "[INFO] Cleaning up any old incorrect labels..."
+              for i in {0..50}; do
+                kubectl label node $NODE_NAME custom.io/ccd-group-$i- 2>/dev/null || true
+              done
+
+              # Apply correct labels using kubectl
+              for ((i=0;i<CCDS;i++)); do
+                LABEL_KEY="custom.io/ccd-group-$i"
+                echo "[INFO] Applying label: $LABEL_KEY=true"
+
+                if kubectl label node $NODE_NAME $LABEL_KEY=true --overwrite; then
+                  echo "[SUCCESS] Label $LABEL_KEY applied"
+                else
+                  echo "[ERROR] Failed to apply label $LABEL_KEY"
+                fi
+              done
+
+              echo "[SUCCESS] All CCD labels applied"
+
+              # Verify labels
+              echo "[INFO] Verifying labels on node..."
+              kubectl get node $NODE_NAME --show-labels | grep -o "custom.io/ccd-group-[0-9]*=true" || \
+                echo "[WARN] Could not verify labels"
+
+              echo "[INFO] Labeling complete. Sleeping..."
+              sleep infinity
+          volumeMounts:
+            - name: host-sys
+              mountPath: /host-sys
+              readOnly: true
+      volumes:
+        - name: host-sys
+          hostPath:
+            path: /sys

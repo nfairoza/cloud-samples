@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sysbench-ccd-aware
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: sysbench-ccd-aware
+  template:
+    metadata:
+      labels:
+        app: sysbench-ccd-aware
+    spec:
+      # Two-level topology spread for proper CCD-aware placement
+      topologySpreadConstraints:
+        # Constraint 1 (High Priority): Spread across NODES first
+        # This ensures 5 pods per node (even distribution across Node A and Node B)
+        - maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: ScheduleAnyway
+          labelSelector:
+            matchLabels:
+              app: sysbench-ccd-aware
+
+        # Constraint 2 (Lower Priority): Spread across CCDs within each node
+        # This ensures pods use different CCD groups (0-5) before reusing
+        - maxSkew: 1
+          topologyKey: custom.io/ccd-group
+          whenUnsatisfiable: ScheduleAnyway
+          labelSelector:
+            matchLabels:
+              app: sysbench-ccd-aware
+
+      containers:
+      - name: sysbench-runner
+        image: ubuntu:latest
+        command: ["/bin/bash", "-c"]
+        args:
+        - "apt-get update && apt-get install -y sysbench && sysbench cpu --cpu-max-prime=20000 --threads=4 run & sleep 3600"
+        resources:
+          limits:
+            cpu: "4"         # Guaranteed QoS - triggers CPU pinning
+            memory: "1Gi"
+          requests:
+            cpu: "4"
+            memory: "1Gi"

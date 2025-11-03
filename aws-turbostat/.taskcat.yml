@@ -8,6 +8,4 @@ tests:
     regions:
       - us-east-2
     parameters:
-      TargetInstanceId: i-067d785dc64f10139
-      StressNGDuration: 300
-      StressNGCPULoad: 80
+      TargetInstanceId: i-056b7852970664b80

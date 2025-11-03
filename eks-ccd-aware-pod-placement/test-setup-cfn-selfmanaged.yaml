@@ -254,6 +254,9 @@ Resources:
                   config:
                     cpuManagerPolicy: static
                     cpuManagerReconcilePeriod: 10s
+                    cpuManagerPolicyOptions:
+                      prefer-align-cpus-by-uncorecache: "true"
+                    topologyManagerPolicy: restricted
                     systemReserved:
                       cpu: "4"
                     kubeReserved:

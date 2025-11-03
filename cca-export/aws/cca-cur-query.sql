@@ -1,27 +1,25 @@
 SELECT
    'AWS' as Cloud,
-   REGEXP_REPLACE(availability_zone, '[a-z]$', '') as Region,
+   REGEXP_REPLACE(line_item_availability_zone, '[a-z]$', '') as Region,
    product_instance_type as Size,
-   COUNT(DISTINCT resource_id) as Quantity,
-   CAST(SUM(usage_amount) as INTEGER) as "Total number of hours per month",
+   COUNT(DISTINCT line_item_resource_id) as Quantity,
+   CAST(SUM(line_item_usage_amount) as INTEGER) as "Total number of hours per month",
    CASE
-       WHEN purchase_option = 'Reserved' THEN 'Reserved'
-       WHEN purchase_option = 'Spot' THEN 'Spot'
-       WHEN purchase_option = 'On-Demand' THEN 'On-Demand'
-       ELSE 'not supported'
+       WHEN pricing_purchase_option = 'Reserved' THEN 'Reserved'
+       WHEN pricing_purchase_option = 'Spot' THEN 'Spot'
+       ELSE 'On-Demand'
    END as "Pricing Model"
 FROM
-   your_database.your_cur_table
+   ${DATABASE_NAME}.${TABLE_NAME}
 WHERE
-   record_type = 'LineItem'
-   AND product_code = 'AmazonEC2'
-   AND usage_type LIKE '%BoxUsage%'
-   AND product_instance_type LIKE '%a.%'
+   line_item_line_item_type = 'Usage'
+   AND line_item_product_code = 'AmazonEC2'
+   AND line_item_usage_type LIKE '%BoxUsage%'
 GROUP BY
-   availability_zone,
+   line_item_availability_zone,
    product_instance_type,
-   purchase_option
+   pricing_purchase_option
 ORDER BY
    Size,
    Region,
-   "Pricing Model"
+   "Pricing Model";
