@@ -1,0 +1,296 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'EKS Cluster with Self-Managed AL2023 Nodes - CPU Manager via nodeadm (CANONICAL VERSION)'
+
+Parameters:
+  ClusterName:
+    Type: String
+    Default: none-my-eks-cluster
+    Description: Name of the EKS cluster
+
+Resources:
+  ## Networking Resources ##
+  VPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.0.0.0/16
+      EnableDnsHostnames: true
+      EnableDnsSupport: true
+      Tags:
+        - Key: Name
+          Value: !Sub '${ClusterName}-vpc'
+
+  InternetGateway:
+    Type: AWS::EC2::InternetGateway
+    Properties:
+      Tags:
+        - Key: Name
+          Value: !Sub '${ClusterName}-igw'
+
+  VPCGatewayAttachment:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId: !Ref VPC
+      InternetGatewayId: !Ref InternetGateway
+
+  PublicSubnet1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      CidrBlock: 10.0.1.0/24
+      AvailabilityZone: us-east-2a
+      MapPublicIpOnLaunch: true
+      Tags:
+        - Key: Name
+          Value: !Sub '${ClusterName}-public-subnet-1'
+        - Key: kubernetes.io/role/elb
+          Value: '1'
+        - Key: !Sub 'kubernetes.io/cluster/${ClusterName}'
+          Value: owned
+
+  PublicSubnet2:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      CidrBlock: 10.0.2.0/24
+      AvailabilityZone: us-east-2b
+      MapPublicIpOnLaunch: true
+      Tags:
+        - Key: Name
+          Value: !Sub '${ClusterName}-public-subnet-2'
+        - Key: kubernetes.io/role/elb
+          Value: '1'
+        - Key: !Sub 'kubernetes.io/cluster/${ClusterName}'
+          Value: owned
+
+  PublicRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref VPC
+      Tags:
+        - Key: Name
+          Value: !Sub '${ClusterName}-public-rt'
+
+  PublicRoute:
+    Type: AWS::EC2::Route
+    DependsOn: VPCGatewayAttachment
+    Properties:
+      RouteTableId: !Ref PublicRouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId: !Ref InternetGateway
+
+  PublicSubnet1RouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref PublicSubnet1
+      RouteTableId: !Ref PublicRouteTable
+
+  PublicSubnet2RouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref PublicSubnet2
+      RouteTableId: !Ref PublicRouteTable
+
+  ## Security Groups ##
+  ClusterSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Security group for EKS cluster control plane
+      VpcId: !Ref VPC
+      Tags:
+        - Key: Name
+          Value: !Sub '${ClusterName}-cluster-sg'
+
+  NodeSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Security group for EKS worker nodes
+      VpcId: !Ref VPC
+      Tags:
+        - Key: Name
+          Value: !Sub '${ClusterName}-node-sg'
+
+  NodeSecurityGroupEgress:
+    Type: AWS::EC2::SecurityGroupEgress
+    Properties:
+      GroupId: !Ref NodeSecurityGroup
+      IpProtocol: -1
+      CidrIp: 0.0.0.0/0
+
+  NodeToControlPlaneIngress:
+    Type: AWS::EC2::SecurityGroupIngress
+    Properties:
+      GroupId: !Ref ClusterSecurityGroup
+      IpProtocol: -1
+      SourceSecurityGroupId: !Ref NodeSecurityGroup
+
+  ClusterControlPlaneToNodeIngress:
+    Type: AWS::EC2::SecurityGroupIngress
+    Properties:
+      GroupId: !Ref NodeSecurityGroup
+      IpProtocol: -1
+      SourceSecurityGroupId: !Ref ClusterSecurityGroup
+
+  NodeSecurityGroupSelfIngress:
+    Type: AWS::EC2::SecurityGroupIngress
+    Properties:
+      GroupId: !Ref NodeSecurityGroup
+      IpProtocol: -1
+      SourceSecurityGroupId: !Ref NodeSecurityGroup
+
+  ## IAM Roles ##
+  EKSClusterRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: eks.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AmazonEKSClusterPolicy
+        - arn:aws:iam::aws:policy/AmazonEKSVPCResourceController
+
+  NodeInstanceRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: ec2.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy
+        - arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
+        - arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly
+        - arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore
+
+  NodeInstanceProfile:
+    Type: AWS::IAM::InstanceProfile
+    Properties:
+      Roles:
+        - !Ref NodeInstanceRole
+
+  ## EKS Cluster ##
+  EKSCluster:
+    Type: AWS::EKS::Cluster
+    Properties:
+      Name: !Ref ClusterName
+      Version: '1.34'
+      RoleArn: !GetAtt EKSClusterRole.Arn
+      ResourcesVpcConfig:
+        SecurityGroupIds:
+          - !Ref ClusterSecurityGroup
+        SubnetIds:
+          - !Ref PublicSubnet1
+          - !Ref PublicSubnet2
+        EndpointPublicAccess: true
+        PublicAccessCidrs:
+          - 0.0.0.0/0
+      AccessConfig:
+        AuthenticationMode: API_AND_CONFIG_MAP
+
+  ## EKS Access Entry for Nodes ##
+  NodeAccessEntry:
+    Type: AWS::EKS::AccessEntry
+    DependsOn: EKSCluster
+    Properties:
+      ClusterName: !Ref ClusterName
+      PrincipalArn: !GetAtt NodeInstanceRole.Arn
+      Type: EC2_LINUX
+
+  ## Self-Managed Nodes with nodeadm ##
+  NodeLaunchTemplate:
+    Type: AWS::EC2::LaunchTemplate
+    DependsOn: EKSCluster
+    Properties:
+      LaunchTemplateName: !Sub '${ClusterName}-node-template'
+      LaunchTemplateData:
+        ImageId: ami-03290691a4d2c6df9
+        InstanceType: m7a.12xlarge
+        IamInstanceProfile:
+          Arn: !GetAtt NodeInstanceProfile.Arn
+        SecurityGroupIds:
+          - !Ref NodeSecurityGroup
+        BlockDeviceMappings:
+          - DeviceName: /dev/xvda
+            Ebs:
+              VolumeSize: 20
+              VolumeType: gp3
+              DeleteOnTermination: true
+        TagSpecifications:
+          - ResourceType: instance
+            Tags:
+              - Key: Name
+                Value: !Sub '${ClusterName}-node'
+              - Key: !Sub 'kubernetes.io/cluster/${ClusterName}'
+                Value: owned
+        UserData:
+          Fn::Base64:
+            !Sub |
+              #!/bin/bash
+              set -ex
+              systemctl stop nodeadm-config.service || true
+              systemctl disable nodeadm-config.service || true
+              systemctl stop nodeadm-run.service || true
+              systemctl disable nodeadm-run.service || true
+
+              mkdir -p /etc/eks
+              cat > /etc/eks/nodeadm.yaml <<'NODEADM_EOF'
+              ---
+              apiVersion: node.eks.aws/v1alpha1
+              kind: NodeConfig
+              spec:
+                cluster:
+                  name: ${ClusterName}
+                  region: ${AWS::Region}
+                  apiServerEndpoint: ${EKSCluster.Endpoint}
+                  certificateAuthority: ${EKSCluster.CertificateAuthorityData}
+                  cidr: 172.20.0.0/16
+              NODEADM_EOF
+
+              /usr/bin/nodeadm init --config-source file:///etc/eks/nodeadm.yaml
+
+  NodeAutoScalingGroup:
+    Type: AWS::AutoScaling::AutoScalingGroup
+    DependsOn:
+      - EKSCluster
+      - NodeAccessEntry
+    Properties:
+      AutoScalingGroupName: !Sub '${ClusterName}-asg'
+      LaunchTemplate:
+        LaunchTemplateId: !Ref NodeLaunchTemplate
+        Version: !GetAtt NodeLaunchTemplate.LatestVersionNumber
+      MinSize: 2
+      MaxSize: 2
+      DesiredCapacity: 2
+      VPCZoneIdentifier:
+        - !Ref PublicSubnet1
+        - !Ref PublicSubnet2
+      Tags:
+        - Key: Name
+          Value: !Sub '${ClusterName}-node'
+          PropagateAtLaunch: true
+        - Key: !Sub 'kubernetes.io/cluster/${ClusterName}'
+          Value: owned
+          PropagateAtLaunch: true
+
+Outputs:
+  ClusterName:
+    Description: EKS Cluster Name
+    Value: !Ref EKSCluster
+
+  ClusterEndpoint:
+    Description: EKS Cluster Endpoint
+    Value: !GetAtt EKSCluster.Endpoint
+
+  AutoScalingGroupName:
+    Description: Auto Scaling Group Name
+    Value: !Ref NodeAutoScalingGroup
+
+  NodeInstanceRoleArn:
+    Description: Node Instance Role ARN
+    Value: !GetAtt NodeInstanceRole.Arn

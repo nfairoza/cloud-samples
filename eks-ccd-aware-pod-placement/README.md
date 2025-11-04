@@ -161,8 +161,7 @@ kubectl get nodes
 Verify the CPU Manager is configured correctly:
 
 ```bash
-NODE_NAME=$(kubectl get nodes --no-headers | awk 'NR==1{print $1}')
-kubectl debug node/$NODE_NAME --image=ubuntu -- chroot /host cat /var/lib/kubelet/config.yaml | grep -A2 cpuManager
+kubectl debug node/$(kubectl get nodes --no-headers | awk 'NR==1{print $1}') --image=ubuntu -- chroot /host cat /var/lib/kubelet/config.yaml | grep -A2 cpuManager
 ```
 
 Expected output:
@@ -279,9 +278,9 @@ kubectl get nodes
 Verify the uncore cache option is enabled:
 
 ```bash
-NODE_NAME=$(kubectl get nodes --no-headers | awk 'NR==1{print $1}')
-kubectl debug node/$NODE_NAME --image=ubuntu -- chroot /host cat /var/lib/kubelet/config.yaml | grep -A3 cpuManagerPolicyOptions
+kubectl debug node/$(kubectl get nodes --no-headers | awk 'NR==1{print $1}') --image=ubuntu -- chroot /host cat /var/lib/kubelet/config.yaml | grep -A3 cpuManagerPolicyOptions
 ```
+
 
 ### Step 3: Deploy 6-CPU Workload
 
@@ -337,8 +336,7 @@ kubectl get pods -o wide
 To understand the CCD structure of your nodes, run:
 
 ```bash
-NODE_NAME=$(kubectl get nodes --no-headers | awk 'NR==1{print $1}')
-kubectl debug node/$NODE_NAME -it --image=ubuntu -- bash -c "
+kubectl debug node/$(kubectl get nodes --no-headers | awk 'NR==1{print $1}') -it --image=ubuntu -- bash -c "
   echo 'CPU -> L3 Cache ID mapping:'
   for cpu in /host/sys/devices/system/cpu/cpu[0-9]*; do
     cpunum=\$(basename \$cpu | sed 's/cpu//')
@@ -361,13 +359,6 @@ This shows which CPUs share the same L3 cache (CCD).
 2. **Static Policy**: Provides CPU pinning and eliminates thread migration, but allocates cores sequentially without regard for CCD boundaries.
 
 3. **Static + Uncore Cache Alignment**: The optimal configuration for AMD EPYC. Keeps pod threads within the same L3 cache domain, minimizing cross-chiplet latency and maximizing cache efficiency.
-
-## Performance Impact
-
-The difference between these configurations can be substantial:
-- **Cache Locality**: Threads stay within the same L3 cache, reducing latency
-- **Bandwidth Contention**: Pods don't compete for the same L3 cache and memory controllers
-- **Performance Stability**: More predictable performance across identical pods
 
 ## Clean Up
 
