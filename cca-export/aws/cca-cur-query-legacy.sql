@@ -17,6 +17,8 @@ WHERE
    AND product_code = 'AmazonEC2'
    AND usage_type LIKE '%BoxUsage%'
    AND product_instance_type LIKE '%a.%'
+   AND year = CAST(YEAR(DATE_ADD('month', -1, CURRENT_DATE)) AS VARCHAR)
+   AND month = LPAD(CAST(MONTH(DATE_ADD('month', -1, CURRENT_DATE)) AS VARCHAR), 2, '0')
 GROUP BY
    availability_zone,
    product_instance_type,
