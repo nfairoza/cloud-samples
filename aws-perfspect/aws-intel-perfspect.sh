@@ -46,7 +46,7 @@ collect_perfspect() {
 
 
     echo ".................Starting report for ${load_level}................."
-    sudo ./perfspect report --duration 30
+    sudo ./perfspect report 
 
     echo ".................Running metrics for ${load_level}................."
     sudo ./perfspect metrics --duration 30
