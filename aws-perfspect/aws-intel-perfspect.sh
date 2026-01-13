@@ -37,16 +37,10 @@ cd perfspect
 
 collect_perfspect() {
     local load_level=$1
-    if [ -d "perfspect" ]; then
-      sudo rm -rf perfspect
-    fi
-
-
+  
     OLD_DIRS=$(ls -d perfspect_* 2>/dev/null)
-
-
     echo ".................Starting report for ${load_level}................."
-    sudo ./perfspect report 
+    sudo ./perfspect report
 
     echo ".................Running metrics for ${load_level}................."
     sudo ./perfspect metrics --duration 30
