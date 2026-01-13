@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 S3_BUCKET="noortestdata"
 S3_PREFIX="perfspect/intel-runs"
 
@@ -43,17 +44,21 @@ collect_perfspect() {
 
     OLD_DIRS=$(ls -d perfspect_* 2>/dev/null)
 
-    sudo ./perfspect collect --duration 30
+
     echo ".................Starting report for ${load_level}................."
-    sudo ./perfspect report
+    sudo ./perfspect report --duration 30
+
     echo ".................Running metrics for ${load_level}................."
-    sudo ./perfspect metrics
+    sudo ./perfspect metrics --duration 30
+
     echo ".................Generating flame graph for ${load_level}................."
-    sudo ./perfspect flame
+    sudo ./perfspect flame --duration 30
+
     echo ".................Collecting telemetry for ${load_level}................."
     sudo ./perfspect telemetry --duration 30
+
     echo ".................Running lock for ${load_level}................."
-    sudo ./perfspect lock
+    sudo ./perfspect lock --duration 30
 
     NEW_DIRS=$(comm -13 <(echo "$OLD_DIRS" | sort) <(ls -d perfspect_* 2>/dev/null | sort))
 
