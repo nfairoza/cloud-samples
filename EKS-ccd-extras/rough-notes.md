@@ -39,6 +39,13 @@ kubectl get nodes
 NODE_NAME=$(kubectl get nodes --no-headers | awk 'NR==1{print $1}')
 kubectl debug node/$NODE_NAME --image=ubuntu -- chroot /host cat /var/lib/kubelet/config.yaml | grep -A2 topologyManager
 
+
+kubectl get nodes | grep debugger | awk '{print $1}' | xargs -r kubectl delete node ; \
+kubectl get pods -A | grep debug | awk '{print $2 " -n " $1}' | xargs -r -I{} sh -c 'kubectl delete pod {}'
+
+kubectl get pods -A | grep node-debugger | awk '{print $2 " -n " $1}' | xargs -r -I{} sh -c 'kubectl delete pod {}'
+
+
 # 10. Redeploy the CCD labeler
 kubectl apply -f ccd-labeller-kubectl.yaml
 
@@ -87,6 +94,14 @@ Adds authentication settings that use your AWS credentials to authenticate with 
 
 `aws eks update-kubeconfig --name my-eks-cluster --region us-east-2`
 
+`aws eks update-kubeconfig --name none-my-eks-cluster --region us-east-2`
+
+kubectl apply -f sysbench-default-48.yaml
+
+kubectl get pods -o wide
+
+./eks-check-pod-placement.sh
+
 
 aws eks delete-cluster \
      --name my-eks-cluster \
@@ -96,7 +111,7 @@ ami-03290691a4d2c6df9
 
 kubectl get nodes
 
-kubectl get configmap aws-auth -n kube-system
+
 
 aws ec2 get-console-output \
   --instance-id i-05a6ba81246f7d004 \
@@ -130,6 +145,7 @@ aws cloudformation wait stack-create-complete \
 
 # 2. Configure kubectl
 aws eks update-kubeconfig --name my-eks-cluster --region us-east-2
+aws eks update-kubeconfig --name none-my-eks-cluster --region us-east-2
 
 # 3. Deploy the CPU Manager configurator DaemonSet
 kubectl apply -f cpu-manager-configurator.yaml
@@ -244,3 +260,11 @@ kubectl debug node/$NODE_NAME -it --image=ubuntu --target=host \
   done
   echo \"---------------------------------------------------\"
 "
+.............................
+
+kubectl debug node/$(kubectl get nodes -o jsonpath='{.items[0].metadata.name}') -it --profile=general --image=ubuntu -- \
+bash -lc 'chroot /host grep -RniE \
+"(^(\\s*)?(cpuManager|topologyManager|memoryManager)|cpuManagerPolicy|cpuManagerPolicyOptions|cpuManagerReconcilePeriod|topologyManagerPolicy|topologyManagerScope|memoryManagerPolicy|eviction(Hard|Soft|PressureTransitionPeriod)|systemReserved|kubeReserved|featureGates|maxPods|podsPerCore|failSwapOn|kubeAPI(QPS|Burst))" \
+/etc/kubernetes/kubelet /var/lib/kubelet 2>/dev/null || echo "No matches found"'
+
+this command worksed to see the
