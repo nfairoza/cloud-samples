@@ -192,7 +192,7 @@ taskset -c 0-63 ./dgemm_avx512 4096 60
 ```bash
 cd processwatch
 # Basic instruction monitoring
-sudo ./processwatch -p $(pgrep -n dgemm_avx512) -f SSE -f AVX -f AVX2 -f AVX512 -f AMX_TILE 2>/dev/null
+sudo ./processwatch -p $(pgrep -f dgemm_avx512) -f SSE -f AVX -f AVX2 -f AVX512 -f AMX_TILE 2>/dev/null
 ```
 
 
