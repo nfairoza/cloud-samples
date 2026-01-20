@@ -190,9 +190,9 @@ taskset -c 0-63 ./dgemm_avx512 4096 60
 
 **Terminal 2:** Monitor with ProcessWatch
 ```bash
+cd processwatch
 # Basic instruction monitoring
-sudo ./processwatch/processwatch -p $(pgrep -n dgemm_avx512) \
-  -f SSE -f AVX -f AVX2 -f AVX512 -f AMX_TILE 2>/dev/null
+sudo ./processwatch -p $(pgrep -n dgemm_avx512) -f SSE -f AVX -f AVX2 -f AVX512 -f AMX_TILE 2>/dev/null
 ```
 
 
@@ -280,14 +280,16 @@ Status: PASS ✓
 
 Example output:
 ```
-PID: 12345
-AVX512: 87.3%
-AVX2:   10.2%
-AVX:     2.1%
-SSE:     0.4%
+PID      NAME             SSE      AVX      AVX2     AVX512   AMX_TILE %TOTAL   TOTAL
+ALL      ALL              0.00     0.00     0.00     0.12     0.00     100.00   93383
+732074   dgemm_avx512     0.00     0.00     0.00     0.12     0.00     100.00   93383
+
+PID      NAME             SSE      AVX      AVX2     AVX512   AMX_TILE %TOTAL   TOTAL
+ALL      ALL              0.00     0.00     0.00     0.16     0.00     100.00   98356
+732074   dgemm_avx512     0.00     0.00     0.00     0.16     0.00     100.00   98356
+
+
 ```
 
-**Interpretation:**
-- **High AVX512% (>80%)**: Excellent - OpenBLAS is using optimized kernels
-- **High AVX2% (>50%)**: Good - Using 256-bit SIMD instructions
-- **High SSE% (>30%)**: Poor - Not utilizing modern instruction sets
+AVX512: The decimal (e.g., 0.12) represents the percentage of instructions using AVX-512 (12%).
+TOTAL: The raw number of instructions processed in that specific sample.
