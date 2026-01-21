@@ -183,9 +183,23 @@ ProcessWatch allows real-time monitoring of instruction set usage.
 
 **Terminal 1:** Run the benchmark depending on your target system
 ```bash
-export OPENBLAS_NUM_THREADS=64
-export OMP_NUM_THREADS=64
-taskset -c 0-63 ./dgemm_avx512 4096 60
+# 1. Gather hardware topology
+CORES_PER_SOCKET=$(lscpu | grep "Core(s) per socket" | awk '{print $4}')
+SOCKETS=$(lscpu | grep "Socket(s)" | awk '{print $2}')
+THREADS_PER_CORE=$(lscpu | grep "Thread(s) per core" | awk '{print $4}')
+
+# 2. Calculate totals
+TOTAL_PHYSICAL_CORES=$((CORES_PER_SOCKET * SOCKETS))
+TOTAL_VCPUS=$((TOTAL_PHYSICAL_CORES * THREADS_PER_CORE))
+
+# 3. Set threads to Physical Cores for best AVX-512 performance
+export OPENBLAS_NUM_THREADS=$TOTAL_VCPUS
+export OMP_NUM_THREADS=$TOTAL_VCPUS
+
+echo "System Info: $TOTAL_PHYSICAL_CORES Physical Cores, $TOTAL_VCPUS vCPUs"
+echo "Optimization: Using $OPENBLAS_NUM_THREADS threads (1 per Physical Core) to maximize AVX-512 throughput."
+
+./dgemm_avx512 4096 60
 ```
 
 **Terminal 2:** Monitor with ProcessWatch
