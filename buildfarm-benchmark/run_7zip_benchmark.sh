@@ -19,7 +19,6 @@ echo " Date:     $(date)"
 echo "============================================"
 
 # ---- PREREQS ----
-# p7zip-rar does not exist on Ubuntu 24 - only install p7zip-full
 echo ""
 echo ">>> Installing prerequisites..."
 sudo apt-get update -qq
@@ -92,34 +91,44 @@ done
 BENCH_END=$(date +%s)
 ELAPSED=$(( BENCH_END - BENCH_START ))
 
-# ---- SUMMARY (only parse benchmark output lines, not header) ----
+# ---- SUMMARY ----
+# NOTE: In this version of p7zip:
+#   Tot: line = compression only  -> col $4 = compress Rating MIPS
+#   Avr: line = both sides        -> col $4 = compress, col $8 = decompress Rating MIPS
+
 echo "" | tee -a "$OUTFILE"
 echo "============================================" | tee -a "$OUTFILE"
 echo " SUMMARY - $INSTANCE_TYPE" | tee -a "$OUTFILE"
 echo "============================================" | tee -a "$OUTFILE"
 echo "" | tee -a "$OUTFILE"
 
-# Extract Tot lines - per-run totals from 7z b output
 TOT_LINES=$(grep "^Tot:" "$OUTFILE" || true)
+AVR_LINES=$(grep "^Avr:" "$OUTFILE" || true)
 
 BEST_COMP=0
 BEST_DECOMP=0
+AVG_COMP=0
+AVG_DECOMP=0
 
 if [[ -n "$TOT_LINES" ]]; then
-  RUN=1
-  while IFS= read -r line; do
-    COMP=$(echo "$line"   | awk '{print $4}')
-    DECOMP=$(echo "$line" | awk '{print $8}')
-    echo "  Run $RUN => Compress: ${COMP} MIPS | Decompress: ${DECOMP} MIPS" | tee -a "$OUTFILE"
-    (( RUN++ ))
-  done <<< "$TOT_LINES"
+  # Load into arrays so we can pair Tot (compress) with Avr (decompress) per run
+  TOT_ARR=()
+  AVR_ARR=()
+  while IFS= read -r line; do TOT_ARR+=("$line"); done <<< "$TOT_LINES"
+  while IFS= read -r line; do AVR_ARR+=("$line"); done <<< "$AVR_LINES"
+
+  for idx in "${!TOT_ARR[@]}"; do
+    COMP=$(echo "${TOT_ARR[$idx]}"   | awk '{print $4}')
+    DECOMP=$(echo "${AVR_ARR[$idx]}" | awk '{print $8}')
+    echo "  Run $((idx+1)) => Compress: ${COMP} MIPS | Decompress: ${DECOMP} MIPS" | tee -a "$OUTFILE"
+  done
 
   echo "" | tee -a "$OUTFILE"
 
   BEST_COMP=$(echo "$TOT_LINES"   | awk '{print $4}' | sort -n | tail -1)
-  BEST_DECOMP=$(echo "$TOT_LINES" | awk '{print $8}' | sort -n | tail -1)
+  BEST_DECOMP=$(echo "$AVR_LINES" | awk '{print $8}' | sort -n | tail -1)
   AVG_COMP=$(echo "$TOT_LINES"    | awk '{sum+=$4; n++} END {printf "%d", sum/n}')
-  AVG_DECOMP=$(echo "$TOT_LINES"  | awk '{sum+=$8; n++} END {printf "%d", sum/n}')
+  AVG_DECOMP=$(echo "$AVR_LINES"  | awk '{sum+=$8; n++} END {printf "%d", sum/n}')
 
   echo "  Best  => Compress: ${BEST_COMP} MIPS | Decompress: ${BEST_DECOMP} MIPS" | tee -a "$OUTFILE"
   echo "  Avg   => Compress: ${AVG_COMP} MIPS  | Decompress: ${AVG_DECOMP} MIPS"  | tee -a "$OUTFILE"
