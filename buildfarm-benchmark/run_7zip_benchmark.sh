@@ -119,7 +119,7 @@ if [[ -n "$TOT_LINES" ]]; then
 
   for idx in "${!TOT_ARR[@]}"; do
     COMP=$(echo "${TOT_ARR[$idx]}"   | awk '{print $4}')
-    DECOMP=$(echo "${AVR_ARR[$idx]}" | awk '{print $8}')
+    DECOMP=$(echo "${AVR_ARR[$idx]}" | awk '{print $10}')
     echo "  Run $((idx+1)) => Compress: ${COMP} MIPS | Decompress: ${DECOMP} MIPS" | tee -a "$OUTFILE"
   done
 
