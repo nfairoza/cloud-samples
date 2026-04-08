@@ -126,9 +126,9 @@ if [[ -n "$TOT_LINES" ]]; then
   echo "" | tee -a "$OUTFILE"
 
   BEST_COMP=$(echo "$TOT_LINES"   | awk '{print $4}' | sort -n | tail -1)
-  BEST_DECOMP=$(echo "$AVR_LINES" | awk '{print $8}' | sort -n | tail -1)
   AVG_COMP=$(echo "$TOT_LINES"    | awk '{sum+=$4; n++} END {printf "%d", sum/n}')
-  AVG_DECOMP=$(echo "$AVR_LINES"  | awk '{sum+=$8; n++} END {printf "%d", sum/n}')
+  BEST_DECOMP=$(echo "$AVR_LINES" | awk '{print $10}' | sort -n | tail -1)
+  AVG_DECOMP=$(echo "$AVR_LINES"  | awk '{sum+=$10; n++} END {printf "%d", sum/n}')
 
   echo "  Best  => Compress: ${BEST_COMP} MIPS | Decompress: ${BEST_DECOMP} MIPS" | tee -a "$OUTFILE"
   echo "  Avg   => Compress: ${AVG_COMP} MIPS  | Decompress: ${AVG_DECOMP} MIPS"  | tee -a "$OUTFILE"
