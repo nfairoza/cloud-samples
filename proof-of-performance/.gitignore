@@ -1,0 +1,9 @@
+# Python
+__pycache__/
+*.pyc
+
+# Generated outputs
+*_pop_long.csv
+pop_report.xlsx
+skus.json
+exports/
