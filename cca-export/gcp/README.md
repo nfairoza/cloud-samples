@@ -170,6 +170,26 @@ Notes:
 
 ---
 
+## Get this data from the portal (no CLI)
+
+### Option A — Cloud Asset Inventory (instant snapshot, no billing setup)
+1. Console → **IAM & Admin → Asset Inventory** (enable the Cloud Asset API if prompted).
+2. On the **Resources** tab, filter **Asset type = `compute.googleapis.com/Instance`**.
+3. Click **Export** (CSV or to BigQuery). Gives current instances (zone/machine type) → Quantity by region/size; hours are estimated at 730 like the script.
+
+### Option B — BigQuery Studio (precise; needs billing export)
+1. Console → **BigQuery → Studio** (SQL editor in the browser).
+2. Paste the `SELECT ... FROM \`project.dataset.table\`` query from `get-cca-export.sh`, set your table, and **Run**.
+3. **Save results → CSV / Google Sheets** → paste into `AWS_AZURE_GCP.xlsx`.
+
+**Quick CLI equivalent** (inventory, no billing export):
+```bash
+gcloud compute instances list \
+  --format="csv(zone.basename(), machineType.basename(), status)"
+```
+
+---
+
 ## Limitations
 
 - **Hours are estimated at `count x 730`.** GCP bills per vCPU/GB, not per instance-hour, so a true per-instance-hour value isn't directly available.

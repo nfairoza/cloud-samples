@@ -134,6 +134,24 @@ CloudShell already has the AWS CLI, `python3`, and `git`. You're auto-authentica
 
 > If a script fails with `bad interpreter: ^M` (Windows line endings), run `sed -i 's/\r$//' get-pop-export.sh` and retry.
 
+## Get this data from the portal (no CLI)
+
+### Option A — Athena query editor (precise; needs CUR)
+1. Console → **Athena → Query editor** (set a results S3 location once under **Settings**).
+2. Select the database that holds your CUR table.
+3. Paste the query from [`pop-query.sql`](pop-query.sql), replacing `${DATABASE_NAME}.${TABLE_NAME}`, and **Run**. It returns `cloud,year,month,region,arch,family,vcpu_hours` for the last 12 months.
+4. **Download results** as CSV, then build the Excel:
+   ```bash
+   python3 ../build_report.py <downloaded>.csv -o pop_report.xlsx
+   ```
+
+### Option B — Cost Explorer (quick migration eyeball; zero setup)
+No CUR needed — a fast Intel-vs-AMD-vs-Graviton trend (usage hours, not vCPU-weighted).
+1. Console → **Cost Management → Cost Explorer**.
+2. Filter **Usage Type** contains `BoxUsage`, granularity **Monthly**, range **Last 12 months**.
+3. **Group by = Instance Type**, then **Download CSV**.
+4. Bucket the families yourself: `*a` = AMD, `*g` = Graviton/ARM, else Intel. Shows the migration direction without the exact vCPU math the script does.
+
 ## Limitations
 
 - **GPU/accelerator families** (some `g`/`p`/`inf`/`trn`) can be misclassified because their names don't follow the vendor-letter convention (e.g. `g5` is AMD-based but named `g5`). These are usually a small slice; tell me if you need an explicit override table.

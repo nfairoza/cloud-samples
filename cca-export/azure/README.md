@@ -136,6 +136,30 @@ Notes:
 
 ---
 
+## Get this data from the portal (no CLI)
+
+Azure's **Resource Graph Explorer** runs the same query in the browser — the fastest option of any cloud (Reader access only, no install, no Cloud Shell).
+
+1. In the [portal](https://portal.azure.com), search for **Resource Graph Explorer**.
+2. Paste this KQL (it emits the CCA columns directly, hours estimated at 730):
+   ```kql
+   Resources
+   | where type =~ 'microsoft.compute/virtualmachines'
+   | extend Size = tostring(properties.hardwareProfile.vmSize)
+   | extend priority = tostring(properties.priority)
+   | extend PricingModel = iff(priority =~ 'Spot', 'Spot', 'On-Demand')
+   | summarize Quantity = count() by Region = location, Size, PricingModel
+   | extend Cloud = 'Azure', ['Total number of hours per month'] = Quantity * 730
+   | project Cloud, Region, Size, Quantity, ['Total number of hours per month'], PricingModel
+   | order by Size asc, Region asc
+   ```
+3. Set the scope (a subscription, or "Directory" for all) in the top bar, then click **Run query**.
+4. Click **Download as CSV** → paste into `AWS_AZURE_GCP.xlsx`.
+
+> Same data as `get-cca-export.sh` — use whichever you prefer. For real billing hours instead of the 730 estimate, see [Advanced](#advanced-billing-accurate-hours).
+
+---
+
 ## How it works
 
 1. Verifies `az` / `jq` are installed and that you're logged in.

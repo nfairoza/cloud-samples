@@ -136,6 +136,21 @@ Cloud Shell has `az`, `python3`, and `git`, and you're auto-authenticated.
 
 Because there's no shell script here, there are **no line-ending issues** to worry about on Windows.
 
+## Get this data from the portal (no CLI)
+
+Azure has **no instant portal query for vCPU-hours** (there's no billing table to query like Athena/BigQuery), but there are two useful portal paths:
+
+### Option A — Cost analysis (quick migration eyeball; zero setup)
+Shows the AMD-vs-Intel trend by VM series over time — no export, no script.
+1. Portal → **Cost Management → Cost analysis**.
+2. Set granularity to **Monthly**, range **Last 12 months**.
+3. Add filter **Service name = Virtual Machines**.
+4. **Group by = Meter subcategory** (e.g. `Dasv5 Series` = AMD, `Dsv5 Series` = Intel, `Dpsv5 Series` = ARM/Ampere).
+5. Switch the chart to **Column (stacked)** and **Download**. You'll see the series mix shift month by month. This is cost/usage, not vCPU-weighted — for exact vCPU numbers use Option B.
+
+### Option B — precise vCPU-hours (needs an export)
+There's no portal shortcut for exact vCPU-hours on Azure. Set up a **Cost Management export** (see [Step-by-step](#step-by-step) above), then run `get-pop-export.py`. That's the only way to get true `hours × vCPUs` per region/family.
+
 ## Limitations & validation
 
 - **Column names vary by export type.** The script handles the common legacy and FOCUS names; if your export uses different headers it will warn — send me the header row and I'll extend it.

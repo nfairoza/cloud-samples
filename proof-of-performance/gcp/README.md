@@ -136,6 +136,23 @@ Cloud Shell already has `gcloud`, `bq`, `python3`, and `git`, and you're auto-au
 
 > If you see `bad interpreter: ^M` (Windows line endings), run `sed -i 's/\r$//' get-pop-export.sh` and retry.
 
+## Get this data from the portal (no CLI)
+
+### Option A — BigQuery Studio (precise; needs billing export)
+The portal equivalent of Athena — the easiest precise option on GCP.
+1. Console → **BigQuery → Studio**.
+2. Paste the `SELECT ... FROM \`project.dataset.table\`` query embedded in `get-pop-export.sh`, set your table name, and **Run**. It returns `cloud,year,month,region,arch,family,vcpu_hours`.
+3. **Save results → CSV** (or Google Sheets), then:
+   ```bash
+   python3 ../build_report.py <downloaded>.csv -o pop_report.xlsx
+   ```
+
+### Option B — Billing Reports (quick eyeball; zero query)
+1. Console → **Billing → Reports**.
+2. Filter **Service = Compute Engine**, and **SKU** contains `Core` (that usage *is* vCPU-hours).
+3. **Group by = SKU**, range last 12 months, monthly. **Download CSV**.
+4. The Core SKUs name the family (N2D/C2D = AMD, T2A/C4A = ARM, else Intel) — eyeball the vendor trend over time.
+
 ## Limitations
 
 - **E2** shared-core / mixed-vendor families are reported as Intel (Google doesn't guarantee the vendor).

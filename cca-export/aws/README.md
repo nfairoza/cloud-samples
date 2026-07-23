@@ -165,6 +165,47 @@ Notes:
 - Unlike the Azure/GCP inventory scripts, this requires a working CUR + S3 + Glue + Athena setup and an IAM role for the crawler — CloudShell does not remove those requirements.
 - If you see a `bad interpreter: ^M` error (Windows line endings), run `sed -i 's/\r$//' get-cca-export.sh` and retry.
 
+## Get this data from the portal (no CLI)
+
+Prefer clicking to scripting? Three console-only ways, from most precise to fastest-to-start.
+
+### Option A — Athena query editor (most accurate; needs CUR)
+Same result as the script, in the browser.
+1. Console → **Athena → Query editor** (set a query-results S3 location once under **Settings**).
+2. Select the database that holds your CUR table (create it once via **Glue → Crawlers** pointed at your CUR S3 path if needed).
+3. Paste the query from [`cca-cur-query.sql`](cca-cur-query.sql), replacing `${DATABASE_NAME}.${TABLE_NAME}` with your database/table, and **Run**.
+4. Click **Download results** → paste into `AWS_AZURE_GCP.xlsx`.
+
+### Option B — Cost Explorer (fastest, zero setup; usage only)
+No CUR/Glue needed — good for a quick pass.
+1. Console → **Cost Management → Cost Explorer**.
+2. Filter **Service = EC2 - Compute** and **Usage Type** contains `BoxUsage`.
+3. **Group by = Instance Type** (run again with **Group by = Region** for regions), granularity **Monthly**.
+4. **Download CSV**. Note: Cost Explorer groups by one dimension at a time and won't give exact per-instance counts or a clean Reserved/Spot split like Athena.
+
+### Option C — AWS Config Advanced Query (instant inventory; no CUR)
+Best when CUR isn't set up and you only need current counts by type/region.
+1. Console → **AWS Config → Advanced queries** (use an aggregator for multi-account/region).
+2. Paste and **Run**:
+   ```sql
+   SELECT
+     configuration.instanceType,
+     availabilityZone,
+     COUNT(*)
+   WHERE
+     resourceType = 'AWS::EC2::Instance'
+     AND configuration.state.name = 'running'
+   GROUP BY configuration.instanceType, availabilityZone
+   ```
+3. **Export** the results. Inventory only — no hours/pricing (hours would be estimated, like the Azure/GCP inventory approach).
+
+**Quick CLI equivalent** (AWS CLI, no CUR):
+```bash
+aws ec2 describe-instances \
+  --query 'Reservations[].Instances[].[InstanceType,Placement.AvailabilityZone,State.Name]' \
+  --output text
+```
+
 ## Output
 
 Both scripts generate a CSV file containing:
