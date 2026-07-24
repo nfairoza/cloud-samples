@@ -20,16 +20,15 @@ A single Excel workbook (`pop_report.xlsx`) with these sheets:
 | **Family-Detail** | per cloud/region/month/arch/family | Drill-down to instance family (m7a, c7g, n2d, D2as…) |
 
 Each sheet reports **two metrics per bucket**:
-- **vCPU-hrs** — `SUM(instance-hours × vCPUs per instance)`; the true consumption number.
-- **avg vCPUs** — `vCPU-hrs ÷ hours in the period`; the average number of vCPUs running concurrently (the intuitive "how many vCPUs", automatically prorated for part-month usage).
+- **vCPU-hrs** — `SUM(instance-hours × vCPUs per instance)`; the true consumption number (time-weighted).
+- **Provisioned vCPUs** — `SUM over distinct instances of each instance's vCPUs` (i.e. **count × size**); the real headcount of vCPUs that existed that month, *not* a time-average. On the quarterly sheets this is the **peak month** in the quarter (a snapshot count can't be summed across months).
 
-Plus **AMD %** and **ARM %** of total vCPU-hours per row so the migration trend is obvious.
+Plus **AMD %** and **ARM %** of total **Provisioned vCPUs** per row so the migration trend is obvious.
 
 ### Why two metrics? (the vCPU math)
 - One `m7a.2xlarge` = 8 vCPUs. Running 100 hours → **800 vCPU-hours** (8 × 100). This does **not** double count — the hours already carry the time dimension.
-- If it runs the full month (730h) → 5,840 vCPU-hrs ÷ 730 = **8 avg vCPUs**, i.e. exactly the intuitive count. Run half the month → 4. That's the honest, time-weighted headcount.
-
-> Want *peak* concurrent vCPUs instead of average? That needs CloudWatch/Monitor metrics, not billing data — ask and it can be added.
+- **Provisioned vCPUs** counts each distinct machine **once**, no matter how many billing rows or hours it has: 3 running `m7a.2xlarge` = **24 provisioned vCPUs**, whether they ran 1 hour or all month. It's the real "how many vCPUs do I have on this vendor" number.
+- A machine that appears on 30 daily billing rows is still **one** instance — the scripts dedupe by instance ID (AWS `resource_id`, Azure `ResourceId`, GCP `resource.name`) so it is never counted 30 times.
 
 ---
 
@@ -60,7 +59,7 @@ flowchart TD
     subgraph Azure
         Z1["Cost Management export (CSV)"] --> Z2["Quantity × VCPUs<br/>(from AdditionalInfo / SKU map)"]
     end
-    A2 --> N["Normalized long CSV<br/>cloud,year,month,region,arch,family,vcpu_hours"]
+    A2 --> N["Normalized long CSV<br/>cloud,year,month,region,arch,family,vcpu_hours,vcpus"]
     G2 --> N
     Z2 --> N
     N --> B["build_report.py"]
@@ -82,12 +81,14 @@ python3 build_report.py *_pop_long.csv -o pop_report.xlsx
 Every per-cloud script produces this (one row per group):
 
 ```
-cloud,year,month,region,arch,family,vcpu_hours
-AWS,2025,8,us-east-1,AMD,m7a,146000
-AWS,2025,8,us-east-1,Intel,m6i,730000
-GCP,2025,8,us-central1,AMD,n2d,50000
-Azure,2025,8,eastus,ARM,D2ps,12000
+cloud,year,month,region,arch,family,vcpu_hours,vcpus
+AWS,2025,8,us-east-1,AMD,m7a,146000,200
+AWS,2025,8,us-east-1,Intel,m6i,730000,1000
+GCP,2025,8,us-central1,AMD,n2d,50000,64
+Azure,2025,8,eastus,ARM,D2ps,12000,16
 ```
+
+The trailing **`vcpus`** column is the provisioned-vCPU count (distinct instances × size). It is **optional** — older CSVs without it still build (the report just omits the Provisioned vCPUs columns and falls back to vCPU-hours for the AMD/ARM %).
 
 ---
 
@@ -97,7 +98,7 @@ Azure,2025,8,eastus,ARM,D2ps,12000
    - [`aws/`](aws/README.md) — CUR + Glue + Athena (same method as `../cca-export/aws`)
    - [`gcp/`](gcp/README.md) — BigQuery billing export
    - [`azure/`](azure/README.md) — Cost Management export CSVs
-2. Each script writes a `*_pop_long.csv` and (if `python3` + `openpyxl` are present) builds `pop_report.xlsx` automatically.
+2. Each script writes a `*_pop_long.csv`. The **AWS** and **GCP** scripts then build `pop_report.xlsx` automatically (if `python3` + `openpyxl` are present); the **Azure** parser is pure Python and prints the `python3 ../build_report.py ...` command for you to run as the second step.
 3. To combine clouds, gather the `*_pop_long.csv` files in one folder and run `build_report.py` over all of them.
 
 ### Requirements
@@ -109,6 +110,6 @@ Azure,2025,8,eastus,ARM,D2ps,12000
 
 ## Status / accuracy notes
 
-- **AWS** — most robust: CUR exposes `product_vcpu` directly, so vCPU-hours are exact.
-- **GCP** — robust: GCP prices per vCPU, so the "Core" SKU usage *is* vCPU-hours.
-- **Azure** — needs a Cost Management export configured first (no live billing table exists). vCPUs come from the export's `AdditionalInfo`, or a `az vm list-skus` map. Validate against your data on first run and report back any column-name differences.
+- **AWS** — most robust: CUR exposes `product_vcpu` and `line_item_resource_id` directly, so both vCPU-hours and the provisioned vCPU count are exact.
+- **GCP** — robust for vCPU-hours (the "Core" SKU usage *is* vCPU-hours). The provisioned count needs the **resource-level** export (for the `machine_spec` label + `resource.name`); vCPUs are parsed from the machine type (shared-core shapes like `e2-medium` default to 2).
+- **Azure** — needs a Cost Management export configured first (no live billing table exists). vCPUs come from the export's `AdditionalInfo`, or a `az vm list-skus` map; the provisioned count also needs a **ResourceId** column in the export (else the `vcpus` field is left blank). Validate against your data on first run and report back any column-name differences.

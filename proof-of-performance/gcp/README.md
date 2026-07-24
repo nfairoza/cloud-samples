@@ -1,20 +1,24 @@
 # Proof of Performance — GCP
 
-Reads 12 months of Compute Engine **vCPU (Core) usage** from your **BigQuery billing export**, classifies each machine family as **Intel / AMD / ARM**, and produces vCPU-hours per month/region/family.
+Reads 12 months of Compute Engine usage from your **BigQuery billing export**, classifies each machine family as **Intel / AMD / ARM**, and produces both vCPU-hours and a real provisioned-vCPU count per month/region/family.
 
-## Why this is clean on GCP
+## How vCPUs are derived on GCP
 
-GCP prices compute **per vCPU** (the "Core" SKU) and per GB of RAM separately. The Core SKU's `usage.amount_in_pricing_units` is already measured in **vCPU-hours**, so we just sum the Core SKUs — no machine-size → vCPU lookup is needed.
+- **vCPU-hours** — GCP prices compute **per vCPU** (the "Core" SKU) and per GB RAM separately. The Core SKU's `usage.amount_in_pricing_units` is already in **vCPU-hours**, so summing the Core SKUs gives it directly.
+- **Provisioned vCPUs** (real count) — needs the machine size, which the Core SKU alone doesn't carry. The query reads the machine type from the `compute.googleapis.com/machine_spec` system label (resource-level export only), counts **distinct instances** (`resource.name`), and sums the vCPUs parsed from each machine type name (`n2d-standard-8` → 8). This is why the resource-level export is now required.
 
 ## Output
 
 A normalized CSV (`gcp_pop_long.csv`):
 
 ```
-cloud,year,month,region,arch,family,vcpu_hours
-GCP,2025,8,us-central1,AMD,n2d,50000
-GCP,2025,8,us-central1,Intel,n2,120000
+cloud,year,month,region,arch,family,vcpu_hours,vcpus
+GCP,2025,8,us-central1,AMD,n2d,50000,64
+GCP,2025,8,us-central1,Intel,n2,120000,160
 ```
+
+- **vcpu_hours** = `SUM(Core SKU usage)` — time-weighted consumption.
+- **vcpus** = provisioned vCPUs = `SUM over distinct instances of (vCPUs parsed from machine type)`. A real count (instances × size), deduped by `resource.name`.
 
 If `python3` + `openpyxl` are available, it also builds `pop_report.xlsx` (sheet layout in the [top-level README](../README.md)).
 
@@ -22,20 +26,21 @@ If `python3` + `openpyxl` are available, it also builds `pop_report.xlsx` (sheet
 
 ```mermaid
 flowchart TD
-    A["BigQuery billing export<br/>(detailed usage cost table)"] --> B["bq query:<br/>service = Compute Engine, SKU LIKE '%Core%'<br/>last 12 completed months"]
-    B --> C["classify family from SKU description<br/>-> Intel / AMD / ARM"]
-    C --> D["SUM(Core usage) = vcpu_hours"]
+    A["BigQuery billing export<br/>(RESOURCE-level usage cost table)"] --> B["bq query:<br/>service = Compute Engine, has machine_spec label<br/>last 12 completed months"]
+    B --> C["per instance (resource.name):<br/>arch + vCPUs from machine type<br/>SUM(Core-SKU usage) = its vcpu_hours"]
+    C --> D["per month/region/arch/family:<br/>SUM(vcpu_hours) and SUM(distinct-instance vCPUs)"]
     D --> E["gcp_pop_long.csv"]
     E --> F["../build_report.py -> pop_report.xlsx"]
 ```
 
-- **Arch** is inferred from the SKU description: contains `arm`/`t2a`/`c4a` → ARM; contains `amd`/`n2d`/`c2d`/`t2d`/`c3d` → AMD; else Intel.
+- **Arch** is inferred from the machine type prefix: `t2a`/`c4a` → ARM; `n2d`/`c2d`/`t2d`/`c3d` → AMD; else Intel.
+- **vCPUs per instance** are the integer in the machine type (`…-standard-8`, `…-highcpu-16`, `…-custom-8-…` → 8/16/8). Shared-core shapes (`e2-micro/small/medium`, `f1`, `g1`) carry no number and default to **2** — change `GCP_SHARED_CORE_VCPUS` at the top of the script if needed.
 - **Window**: last **12 completed months** (current partial month excluded).
 
 ## Prerequisites
 
 - Google Cloud SDK (`gcloud`, `bq`) installed and authenticated
-- **Detailed usage cost** billing export to BigQuery configured:
+- **Detailed usage cost (resource-level)** billing export to BigQuery configured — the `..._resource_v1_...` table. Required: the `machine_spec` label used for the provisioned vCPU count only exists in the resource-level export.
   https://cloud.google.com/billing/docs/how-to/export-data-bigquery-setup
 - `roles/bigquery.dataViewer` + `roles/bigquery.jobUser`
 - `python3` + `openpyxl` for the Excel step (optional)
@@ -52,7 +57,7 @@ Edit the top of `get-pop-export.sh`:
 | `LONG_CSV` | `./gcp_pop_long.csv` | Normalized output |
 | `REPORT_XLSX` | `./pop_report.xlsx` | Final Excel (if python3) |
 
-> The standard export works too, but the resource-level (`..._resource_v1_...`) export is recommended for accurate family attribution.
+> The **resource-level** (`..._resource_v1_...`) export is **required** — the standard export lacks the `machine_spec` label and `resource.name` this script needs for the provisioned vCPU count.
 
 ## How to run — pick your environment
 
@@ -141,7 +146,7 @@ Cloud Shell already has `gcloud`, `bq`, `python3`, and `git`, and you're auto-au
 ### Option A — BigQuery Studio (precise; needs billing export)
 The portal equivalent of Athena — the easiest precise option on GCP.
 1. Console → **BigQuery → Studio**.
-2. Paste the `SELECT ... FROM \`project.dataset.table\`` query embedded in `get-pop-export.sh`, set your table name, and **Run**. It returns `cloud,year,month,region,arch,family,vcpu_hours`.
+2. Paste the `SELECT ... FROM \`project.dataset.table\`` query embedded in `get-pop-export.sh`, set your table name, and **Run**. It returns `cloud,year,month,region,arch,family,vcpu_hours,vcpus`.
 3. **Save results → CSV** (or Google Sheets), then:
    ```bash
    python3 ../build_report.py <downloaded>.csv -o pop_report.xlsx
@@ -155,6 +160,8 @@ The portal equivalent of Athena — the easiest precise option on GCP.
 
 ## Limitations
 
+- **Resource-level export required.** Rows without a `machine_spec` label (e.g. non-resource exports, or usage that predates the resource-level export) are skipped — they have no machine size to count vCPUs from.
 - **E2** shared-core / mixed-vendor families are reported as Intel (Google doesn't guarantee the vendor).
-- Family is parsed from the SKU description text; unusual SKUs fall back to `other`.
-- Sole-tenant and some GPU SKUs may not carry a "Core" line and are excluded.
+- **Shared-core vCPU default.** Types with no number in the name (`e2-micro/small/medium`, `f1-micro`, `g1-small`) are counted as `GCP_SHARED_CORE_VCPUS` (default 2). Adjust at the top of the script if your fleet has many of these.
+- **Custom machine types** are read as the vCPU integer after `custom` (`n2-custom-8-16384` → 8); the family shows as `n2`.
+- Sole-tenant and some GPU rows may not carry a Core SKU, so their `vcpu_hours` can be 0 even when the provisioned count is populated.

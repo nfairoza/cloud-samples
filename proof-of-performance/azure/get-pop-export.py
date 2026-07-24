@@ -8,9 +8,13 @@ reliable way to get 12 months of region + VM size + hours history is a
 This script reads those export CSV(s) and produces the normalized long schema
 consumed by ../build_report.py:
 
-    cloud,year,month,region,arch,family,vcpu_hours
+    cloud,year,month,region,arch,family,vcpu_hours,vcpus
 
 vcpu_hours = usage hours (Quantity) x vCPUs per instance.
+vcpus      = provisioned vCPUs that month = sum over DISTINCT instances
+             (by ResourceId) of each instance's vCPUs. A real headcount of the
+             vCPUs that existed that month, not a time-average. Blank if the
+             export has no ResourceId column to identify instances.
   * vCPUs come from the export's AdditionalInfo JSON ("VCPUs") when present.
   * Otherwise they are looked up from the VM size (AdditionalInfo "ServiceType")
     using the optional size->vCPU map file (see --vcpu-map / build it with:
@@ -49,6 +53,7 @@ COLS = {
     "quantity": ["Quantity", "UsageQuantity", "ConsumedQuantity", "quantity"],
     "additional_info": ["AdditionalInfo", "additionalInfo", "x_SkuDetails"],
     "meter_name": ["MeterName", "meterName"],
+    "resource_id": ["ResourceId", "InstanceId", "resourceId", "instanceId"],
 }
 
 
@@ -160,7 +165,13 @@ def main():
     vcpu_map = load_vcpu_map(args.skus, args.vcpu_map)
 
     agg = defaultdict(float)  # (year, month, region, arch, family) -> vcpu_hours
+    # (year, month, region, arch, family) -> {resource_id: vcpus} for the distinct
+    # instance count. A machine's size is fixed, so storing vcpus-per-instance and
+    # summing the values gives provisioned vCPUs without double-counting a VM that
+    # appears on many daily rows.
+    instances = defaultdict(dict)
     rows_seen = rows_used = missing_vcpu = 0
+    saw_resource_id = False
 
     for path in files:
         with open(path, newline="", encoding="utf-8-sig") as fh:
@@ -201,7 +212,13 @@ def main():
                 region = (row[idx["region"]] if idx["region"] is not None else "") or "unknown"
                 arch = classify_arch(size)
                 family = family_of(size)
-                agg[(ym[0], ym[1], region.strip(), arch, family)] += qty * vcpus
+                key = (ym[0], ym[1], region.strip(), arch, family)
+                agg[key] += qty * vcpus
+                rid = row[idx["resource_id"]] if idx["resource_id"] is not None else None
+                if rid:
+                    saw_resource_id = True
+                    # last write wins if a resize occurred mid-month; vcpus is fixed per size
+                    instances[key][rid.strip().lower()] = vcpus
                 rows_used += 1
 
     if not agg:
@@ -210,14 +227,22 @@ def main():
 
     with open(args.output, "w", newline="", encoding="utf-8") as fh:
         w = csv.writer(fh)
-        w.writerow(["cloud", "year", "month", "region", "arch", "family", "vcpu_hours"])
-        for (y, m, region, arch, family), vh in sorted(agg.items()):
-            w.writerow(["Azure", y, m, region, arch, family, round(vh, 2)])
+        w.writerow(["cloud", "year", "month", "region", "arch", "family", "vcpu_hours", "vcpus"])
+        for key, vh in sorted(agg.items()):
+            y, m, region, arch, family = key
+            # provisioned vCPUs = sum of each distinct instance's vCPUs (real count).
+            # Blank if the export carried no ResourceId to identify instances.
+            prov = sum(instances[key].values()) if key in instances else ""
+            w.writerow(["Azure", y, m, region, arch, family, round(vh, 2), prov])
 
     print(f"Wrote {args.output}")
     print(f"  rows scanned: {rows_seen}, VM rows used: {rows_used}, skipped (no vCPU): {missing_vcpu}")
     if missing_vcpu:
         print("  Tip: pass --skus skus.json to resolve sizes missing an AdditionalInfo VCPUs value.")
+    if not saw_resource_id:
+        print("  NOTE: no ResourceId/InstanceId column found, so 'vcpus' (provisioned vCPU")
+        print("        count) is blank. Include ResourceId in the export to get real counts.")
+    print(f"\nNext step - build the Excel report:\n  python3 ../build_report.py {args.output} -o pop_report.xlsx")
 
 
 if __name__ == "__main__":

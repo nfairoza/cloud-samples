@@ -9,11 +9,14 @@ Produces vCPU-hours per month/region/family for Azure VMs, classified as **Intel
 A normalized CSV (`azure_pop_long.csv`):
 
 ```
-cloud,year,month,region,arch,family,vcpu_hours
-Azure,2025,8,eastus,AMD,D2as,1488
-Azure,2025,8,eastus,Intel,D4s,2976
-Azure,2025,9,westeurope,ARM,D2ps,1400
+cloud,year,month,region,arch,family,vcpu_hours,vcpus
+Azure,2025,8,eastus,AMD,D2as,1488,4
+Azure,2025,8,eastus,Intel,D4s,2976,8
+Azure,2025,9,westeurope,ARM,D2ps,1400,2
 ```
+
+- **vcpu_hours** = `usage hours (Quantity) × vCPUs` — time-weighted consumption.
+- **vcpus** = **provisioned vCPUs** that month = sum over **distinct** instances (by `ResourceId`) of each instance's vCPUs. A real headcount (count × size), not a time-average. A VM that appears on 30 daily rows is counted **once**. Left **blank** if the export has no `ResourceId`/`InstanceId` column — include one to get the count.
 
 Then build the Excel with `../build_report.py` (sheet layout in the [top-level README](../README.md)).
 
@@ -22,13 +25,14 @@ Then build the Excel with `../build_report.py` (sheet layout in the [top-level R
 ```mermaid
 flowchart TD
     A["Cost Management export<br/>(Actual cost, monthly, to storage)"] --> B["download CSV(s) locally"]
-    B --> C["get-pop-export.py:<br/>filter MeterCategory = Virtual Machines<br/>read Quantity (hours) + AdditionalInfo (VCPUs/ServiceType)"]
-    C --> D["vcpu_hours = Quantity × VCPUs<br/>arch from size name (a=AMD, p=ARM, else Intel)"]
+    B --> C["get-pop-export.py:<br/>filter MeterCategory = Virtual Machines<br/>read Quantity (hours) + AdditionalInfo (VCPUs/ServiceType) + ResourceId"]
+    C --> D["vcpu_hours = Quantity × VCPUs<br/>vcpus = SUM(distinct ResourceId → its VCPUs)<br/>arch from size name (a=AMD, p=ARM, else Intel)"]
     D --> E["azure_pop_long.csv"]
     E --> F["../build_report.py -> pop_report.xlsx"]
 ```
 
 - **vCPU-hours** = `usage hours (Quantity) × vCPUs`. vCPUs come from the export's `AdditionalInfo` JSON (`"VCPUs"`), or, if absent, from a size→vCPU map built from `az vm list-skus`.
+- **Provisioned vCPUs** (`vcpus`) = sum over **distinct** `ResourceId`s of each instance's vCPUs — the real count of vCPUs running that month, deduped so a VM billed on many daily rows counts once. Needs a `ResourceId`/`InstanceId` column in the export; blank otherwise.
 - **Arch** from the VM size (`AdditionalInfo.ServiceType`, e.g. `Standard_D2as_v5`): a `p` in the sub-family → ARM (Ampere), an `a` → AMD, else Intel.
 
 ## Prerequisites
