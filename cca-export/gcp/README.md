@@ -147,6 +147,8 @@ chmod +x get-cca-export.sh
 ### How it works
 Runs a BigQuery query over the last full calendar month that filters to `Compute Engine`, extracts the machine type from `system_labels`, groups by region/size/pricing, counts distinct instances, and writes the CCA CSV (prefixing each row with `GCP`).
 
+> **Just want the query?** The same SQL is available as a standalone file, [`cca-query.sql`](cca-query.sql), ready to paste into **BigQuery Studio** in the browser — no CLI, `bq`, or Bash needed. Replace the `PROJECT_ID.DATASET.TABLE` placeholder, run it, and download the result as CSV.
+
 ---
 
 ## Run in GCP Cloud Shell (easiest — no local install)
@@ -179,7 +181,7 @@ Notes:
 
 ### Option B — BigQuery Studio (precise; needs billing export)
 1. Console → **BigQuery → Studio** (SQL editor in the browser).
-2. Paste the `SELECT ... FROM \`project.dataset.table\`` query from `get-cca-export.sh`, set your table, and **Run**.
+2. Open [`cca-query.sql`](cca-query.sql), replace the `PROJECT_ID.DATASET.TABLE` placeholder with your billing export table, paste it in, and **Run**. (This is the same query embedded in `get-cca-export.sh`, provided as a standalone file so you don't need the CLI or Bash.)
 3. **Save results → CSV / Google Sheets** → paste into `AWS_AZURE_GCP.xlsx`.
 
 **Quick CLI equivalent** (inventory, no billing export):
