@@ -2,19 +2,22 @@
 set -euo pipefail
 
 # =============================================================================
-# GCP CCA Export - Cloud Asset Inventory (inventory) approach
+# GCP CCA Export - Cloud Asset Inventory (inventory SNAPSHOT) approach
 # =============================================================================
 # Produces a CSV that matches the CCA Portfolio Template columns:
 #
 #   Cloud, Region, Size, Quantity, Total number of hours per month, Pricing Model
 #
-# This is the RECOMMENDED script to start with: it needs no BigQuery billing
-# export and returns exact instance counts, machine types, regions and
-# Spot/Standard status straight from Cloud Asset Inventory.
+# ESTIMATE / FALLBACK. This is a POINT-IN-TIME SNAPSHOT of the instances that
+# exist right now - not the month's actual usage. Instance counts, machine
+# types, regions and Spot/Standard are exact for this instant, but:
+#   * instances created or deleted mid-month are mis-counted or missed, and
+#   * "Total number of hours per month" = count x HOURS_PER_MONTH is a GUESS
+#     (assumes every instance ran 24/7). Inventory has no metered hours.
 #
-# "Total number of hours per month" is estimated as (instance count x
-# HOURS_PER_MONTH) because inventory does not expose actual metered hours.
-# For billing-accurate data use get-cca-export.sh (BigQuery).
+# RECOMMENDED for real data: use the BigQuery billing script get-cca-export.sh -
+# it sees the instances that actually ran during the month. Use this snapshot
+# script only as a quick, no-setup fallback when you lack billing export access.
 # =============================================================================
 
 # ------------------------- Configuration (EDIT ME) ---------------------------
@@ -101,6 +104,14 @@ echo "Preview:"
 echo "----------------------------------------"
 head -n 10 "$OUTPUT_FILE"
 echo ""
-echo "NOTE: 'Total number of hours per month' = instance count x $HOURS_PER_MONTH (estimate)."
-echo "      Committed Use Discounts (Reserved) cannot be detected from inventory;"
-echo "      those instances appear as 'On-Demand'. Spot instances ARE detected."
+echo "============================== READ THIS =============================="
+echo "ESTIMATE ONLY - this is a POINT-IN-TIME SNAPSHOT, not the month's usage."
+echo "  * Counts only VMs that exist RIGHT NOW. VMs created or deleted earlier"
+echo "    this month are mis-counted or missed entirely."
+echo "  * 'Total number of hours per month' = count x $HOURS_PER_MONTH assumes every"
+echo "    VM ran 24/7 all month. It is a guess, not measured data."
+echo "  * Committed Use Discounts (Reserved) appear as 'On-Demand'; Spot IS detected."
+echo ""
+echo "  For REAL data (actual instances that ran during the month), use the"
+echo "  BigQuery billing script: get-cca-export.sh   (see README - recommended)."
+echo "======================================================================"

@@ -2,20 +2,23 @@
 set -euo pipefail
 
 # =============================================================================
-# Azure CCA Export - Resource Graph (inventory) approach
+# Azure CCA Export - Resource Graph (inventory SNAPSHOT) approach
 # =============================================================================
 # Produces a CSV that matches the CCA Portfolio Template columns:
 #
 #   Cloud, Region, Size, Quantity, Total number of hours per month, Pricing Model
 #
-# This is the RECOMMENDED script to start with: it needs no billing/export
-# setup, works across all subscriptions you can see, and returns exact VM
-# counts, sizes, regions and Spot/On-Demand status straight from Azure
-# Resource Graph.
+# ESTIMATE / FALLBACK. This reads Azure Resource Graph, which is a POINT-IN-TIME
+# SNAPSHOT of the VMs that exist right now - not the month's actual usage. VM
+# counts, sizes, regions and Spot/On-Demand are exact for this instant, but:
+#   * VMs created or deleted mid-month are mis-counted or missed entirely, and
+#   * "Total number of hours per month" = VM count x HOURS_PER_MONTH is a GUESS
+#     (assumes every VM ran 24/7). Inventory does not expose metered hours.
 #
-# "Total number of hours per month" is estimated as (VM count x HOURS_PER_MONTH)
-# because inventory does not expose actual metered hours. For billing-accurate
-# hours see the "Advanced" section of README.md.
+# RECOMMENDED for real data: use a Cost Management billing export (real metered
+# hours + the instances that actually ran during the month). See the "Advanced:
+# billing-accurate hours" section of README.md. Use this snapshot script only as
+# a quick, no-setup fallback when you don't have billing/export access.
 # =============================================================================
 
 # ------------------------- Configuration (EDIT ME) ---------------------------
@@ -113,6 +116,15 @@ echo "Preview:"
 echo "----------------------------------------"
 head -n 10 "$OUTPUT_FILE"
 echo ""
-echo "NOTE: 'Total number of hours per month' = VM count x $HOURS_PER_MONTH (estimate)."
-echo "      Reserved Instances cannot be detected from inventory; they appear as"
-echo "      'On-Demand'. See README.md for billing-accurate options."
+echo "============================== READ THIS =============================="
+echo "ESTIMATE ONLY - this is a POINT-IN-TIME SNAPSHOT, not the month's usage."
+echo "  * Counts only VMs that exist RIGHT NOW. VMs created or deleted earlier"
+echo "    this month are mis-counted or missed entirely."
+echo "  * 'Total number of hours per month' = VM count x $HOURS_PER_MONTH assumes every"
+echo "    VM ran 24/7 all month. It is a guess, not measured data."
+echo "  * Reserved Instances appear as 'On-Demand'; Spot IS detected."
+echo ""
+echo "  For REAL data (actual metered hours + instances that ran during the"
+echo "  month), set up a Cost Management billing export - see README.md"
+echo "  ('Advanced: billing-accurate hours'). Billing is the recommended path."
+echo "======================================================================"

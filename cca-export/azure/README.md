@@ -2,6 +2,8 @@
 
 Extracts your Azure Virtual Machine inventory and formats it for the **Cloud Cost Assessment (CCA) Portfolio Template** so it can be pasted straight into `AWS_AZURE_GCP.xlsx`.
 
+> **Real billing data is the recommended path.** `get-cca-export.sh` reads Azure Resource Graph — a fast **point-in-time snapshot** whose hours are only an *estimate* (count × 730). For accurate numbers (real metered hours + the VMs that actually ran during the month), use a **Cost Management billing export** — see [Advanced: billing-accurate hours](#advanced-billing-accurate-hours). Use the snapshot script only when you can't get billing access.
+
 ## Output format
 
 The script writes a CSV with exactly these columns (the CCA template columns):
@@ -51,12 +53,14 @@ flowchart TD
 
 ## Which approach should I use?
 
+**Prefer real billing data.** Cost Management (billing) reports the actual metered hours and the instances that really ran during the month. Use the Resource Graph snapshot only as a quick fallback when you can't get billing/export access.
+
 | Approach | Script | Needs setup? | Accuracy |
 |----------|--------|--------------|----------|
-| **Resource Graph (inventory)** — recommended | `get-cca-export.sh` | None (just `az login`) | Exact VM counts/sizes/regions; hours estimated at 730 |
-| **Cost Management (billing)** — advanced | see [Advanced](#advanced-billing-accurate-hours) | Requires cost data / exports | Real metered hours, but messier sizes/regions |
+| **Cost Management (billing)** — ✅ recommended | see [Advanced](#advanced-billing-accurate-hours) | Requires cost data / exports | **Real metered hours** and the real set of VMs that ran during the month (sizes/regions need a little cleanup) |
+| **Resource Graph (inventory)** — fallback (no billing access) | `get-cca-export.sh` | None (just `az login`) | **Point-in-time snapshot**: exact VM counts/sizes/regions *for this instant*, but hours are **estimated** at ×730. Misses VMs created/deleted mid-month; assumes 24/7. A guess, not measured data. |
 
-Start with `get-cca-export.sh`. It works immediately on any subscription with no billing configuration.
+If you have billing/export access, use **Cost Management** (see [Advanced](#advanced-billing-accurate-hours)). `get-cca-export.sh` is the no-setup fallback — it runs immediately on any subscription, but treat its hours as an estimate.
 
 ---
 
@@ -179,7 +183,8 @@ Azure's **Resource Graph Explorer** runs the same query in the browser — the f
 
 ## Limitations
 
-- **Hours are estimated.** Inventory has no metered runtime, so hours = `count x 730`. For exact hours use the [Advanced](#advanced-billing-accurate-hours) approach.
+- **This is a point-in-time snapshot, not the month.** Resource Graph returns the VMs that exist *at the instant you run it* — a VM deleted before you run it is invisible, and one created today is counted as if it ran all month. For the real set of VMs that ran during the month, use billing ([Advanced](#advanced-billing-accurate-hours)).
+- **Hours are estimated.** Inventory has no metered runtime, so hours = `count x 730` (assumes 24/7). For exact hours use the [Advanced](#advanced-billing-accurate-hours) approach.
 - **Reserved Instances / Savings Plans are invisible here.** They are billing constructs, not VM properties, so reserved VMs show as `On-Demand`. Spot VMs *are* detected (`properties.priority == 'Spot'`).
 - **VM Scale Sets (VMSS) are excluded.** Only standalone `microsoft.compute/virtualmachines` are counted. If you use VMSS heavily, tell me and I'll add `microsoft.compute/virtualmachinescalesets` handling.
 - **1000-row cap.** Resource Graph returns up to 1000 grouped rows per page. The script warns if you exceed it (very unlikely for grouped output).
