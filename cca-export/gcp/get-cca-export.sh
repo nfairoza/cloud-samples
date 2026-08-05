@@ -12,7 +12,7 @@ set -euo pipefail
 # BigQuery configured. It reads real billing data so it can see Spot vs
 # On-Demand accurately and spans the whole project's usage last month.
 #
-# If you do NOT have billing export set up, use get-cca-export-asset-730.sh
+# If you do NOT have billing export set up, use get-cca-inventory-snapshot.sh
 # instead (no setup required).
 # =============================================================================
 

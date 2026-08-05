@@ -69,9 +69,9 @@ flowchart TD
 | Approach | Script | Needs setup? | Accuracy |
 |----------|--------|--------------|----------|
 | **BigQuery billing export** — ✅ recommended | `get-cca-export.sh` | Requires billing export to BigQuery | **Real billing data**: actual instances seen during the month, accurate Spot detection. (Hours are still count×730 — GCP bills per vCPU/GB, not per instance-hour.) |
-| **Cloud Asset Inventory** — fallback (no billing access) | `get-cca-export-asset-730.sh` | None (just `gcloud auth login`) | **Point-in-time snapshot** of VMs that exist *right now*, hours **estimated** at ×730. Misses anything created/deleted mid-month; assumes 24/7 uptime. A guess, not measured data. |
+| **Cloud Asset Inventory** — fallback (no billing access) | `get-cca-inventory-snapshot.sh` | None (just `gcloud auth login`) | **Point-in-time snapshot** of VMs that exist *right now*, hours **estimated** at ×730. Misses anything created/deleted mid-month; assumes 24/7 uptime. A guess, not measured data. |
 
-Start with **`get-cca-export.sh`** (billing) whenever billing export is available. Use `get-cca-export-asset-730.sh` only as a quick, no-setup fallback — and treat its numbers as an estimate.
+Start with **`get-cca-export.sh`** (billing) whenever billing export is available. Use `get-cca-inventory-snapshot.sh` only as a quick, no-setup fallback — and treat its numbers as an estimate.
 
 ---
 
@@ -131,7 +131,7 @@ Runs a BigQuery query over the last full calendar month that filters to `Compute
 
 Use this only when you can't get a BigQuery billing export. It's a **point-in-time snapshot** (VMs that exist right now), and the hours are an **estimate** (`count × 730`) — see the warning below.
 
-### Configuration variables — `get-cca-export-asset-730.sh`
+### Configuration variables — `get-cca-inventory-snapshot.sh`
 
 | Variable | Default | What it does |
 |----------|---------|--------------|
@@ -142,9 +142,9 @@ Use this only when you can't get a BigQuery billing export. It's a **point-in-ti
 
 ### Run it
 ```bash
-chmod +x get-cca-export-asset-730.sh
+chmod +x get-cca-inventory-snapshot.sh
 # edit PROJECT_ID at the top of the file
-./get-cca-export-asset-730.sh
+./get-cca-inventory-snapshot.sh
 ```
 
 ### How it works
@@ -162,19 +162,19 @@ chmod +x get-cca-export-asset-730.sh
 Cloud Shell already has `gcloud`, `bq`, and `jq`, and you're auto-authenticated, so you can skip the Prerequisites entirely.
 
 1. Open [console.cloud.google.com](https://console.cloud.google.com) and click the **`>_`** (Activate Cloud Shell) icon top-right.
-2. Upload the script: Cloud Shell **⋮ (three-dot menu) → Upload** → pick `get-cca-export-asset-730.sh` (or `get-cca-export.sh`).
+2. Upload the script: Cloud Shell **⋮ (three-dot menu) → Upload** → pick `get-cca-inventory-snapshot.sh` (or `get-cca-export.sh`).
 3. Run it:
    ```bash
-   chmod +x get-cca-export-asset-730.sh
-   nano get-cca-export-asset-730.sh   # set PROJECT_ID to your project
-   ./get-cca-export-asset-730.sh
+   chmod +x get-cca-inventory-snapshot.sh
+   nano get-cca-inventory-snapshot.sh   # set PROJECT_ID to your project
+   ./get-cca-inventory-snapshot.sh
    ```
 4. Download the result: Cloud Shell **⋮ → Download** → type `gcp_cca_export.csv`.
 
 Notes:
 - No `gcloud auth login` needed — you're already signed in. Set the project with `gcloud config set project <YOUR_PROJECT_ID>` (or just set `PROJECT_ID` in the script).
 - The script auto-enables the Cloud Asset API if needed.
-- If you see a `bad interpreter: ^M` error (Windows line endings), run `sed -i 's/\r$//' get-cca-export-asset-730.sh` and retry.
+- If you see a `bad interpreter: ^M` error (Windows line endings), run `sed -i 's/\r$//' get-cca-inventory-snapshot.sh` and retry.
 
 ---
 
@@ -201,7 +201,7 @@ gcloud compute instances list \
 ## Limitations
 
 - **Hours are estimated at `count x 730`** in *both* scripts. GCP bills per vCPU/GB, not per instance-hour, so a true per-instance-hour value isn't directly available even from billing. (AWS, by contrast, has real metered hours.)
-- **The Asset Inventory script (`-asset-730`) is a point-in-time snapshot, not the month.** It counts only VMs that exist when you run it — mid-month create/delete is missed, and everything is assumed to run 24/7. The BigQuery script at least sees the real set of instances that ran *during* the month. Prefer billing whenever possible.
+- **The Asset Inventory script (`get-cca-inventory-snapshot.sh`) is a point-in-time snapshot, not the month.** It counts only VMs that exist when you run it — mid-month create/delete is missed, and everything is assumed to run 24/7. The BigQuery script at least sees the real set of instances that ran *during* the month. Prefer billing whenever possible.
 - **Committed Use Discounts (Reserved) are not detected.** CUDs are applied as billing credits, so committed instances appear as `On-Demand`. Spot/Preemptible instances **are** detected.
 - **Asset script scans one project at a time.** For an organization-wide view, run per project (or ask me to switch it to `gcloud asset list --scope=organizations/<ORG_ID>`).
 - **BigQuery script needs the detailed export** (see note above) or the `Size` column will be empty.
