@@ -6,11 +6,13 @@ Each cloud has its own folder with a script, a standalone query, and a detailed 
 
 ## Pick your cloud
 
-| Cloud | Folder | Data source | Real hours? |
-|-------|--------|-------------|-------------|
-| **AWS** | [`aws/`](aws/) | Cost & Usage Report (CUR) via Glue + Athena | ✅ Real metered hours |
-| **Azure** | [`azure/`](azure/) | Resource Graph inventory (billing export optional) | ⚠️ Estimated (`count × 730`) by default |
-| **GCP** | [`gcp/`](gcp/) | BigQuery billing export, or Cloud Asset Inventory | Billing sees the real instance set; hours are `count × 730` |
+Every cloud has **two paths**: a recommended path that uses **real billing data**, and an **estimated fallback** for when you don't have billing access.
+
+| Cloud | Folder | ✅ Recommended (real billing data) | Fallback (estimated) |
+|-------|--------|-----------------------------------|----------------------|
+| **AWS** | [`aws/`](aws/) | Cost & Usage Report (CUR) via Glue + Athena — **real metered hours** | Cost Explorer / AWS Config — inventory, hours estimated |
+| **Azure** | [`azure/`](azure/) | Cost Management billing export — **real metered hours** | Resource Graph snapshot — hours estimated (`count × 730`) |
+| **GCP** | [`gcp/`](gcp/) | BigQuery billing export — **real set of instances** that ran during the month | Cloud Asset Inventory snapshot — hours estimated (`count × 730`) |
 
 > Each folder's README covers prerequisites, configuration, a no-CLI portal path, and a Cloud Shell path. Start there for step-by-step instructions.
 
@@ -31,7 +33,13 @@ All three clouds emit a CSV with the **same CCA template columns**, so the outpu
 
 ## A note on accuracy
 
-Only **AWS CUR** gives true metered hours. Azure and GCP hours are estimated as `count × 730` (a full month at 24/7), because their inventory APIs don't report runtime and they bill per vCPU/GB rather than per instance-hour. Where a **real billing export** is available (Azure Cost Management, GCP BigQuery), the per-cloud README explains how to use it for the accurate set of instances — always prefer billing data over an inventory snapshot when you can get it.
+**Always prefer the billing path when you can get access to it** — it reports the real set of instances that ran during the month, not a guess.
+
+- **AWS** — billing (CUR) gives true metered hours.
+- **Azure** — billing (Cost Management export) gives true metered hours.
+- **GCP** — billing (BigQuery export) sees the real set of instances that ran, but hours are still `count × 730`, because GCP bills per vCPU/GB rather than per instance-hour.
+
+Use the **estimated fallback** (Resource Graph / Cloud Asset Inventory / Cost Explorer) only when billing access isn't available. A fallback is a **point-in-time snapshot**: it counts only the VMs that exist at the instant you run it, assumes each ran 24/7 (`count × 730`), and misses anything created or deleted mid-month.
 
 ## Which path to use
 
