@@ -245,3 +245,35 @@ Both scripts generate a CSV file containing:
 - `cca-cur-query-legacy.sql` - Athena query for Legacy CUR (reference only)
 
 > Note: the standalone `cca-cur-query-legacy.sql` uses slightly different column names (`purchase_option`, `record_type`) than the query actually embedded in `get-cca-export-cur-legacy.sh` (`pricing_term`, `reserved_instance_arn`, `line_item_type`). The embedded query is the one that runs; treat the `.sql` file as a starting point and adjust column names to match your CUR schema.
+
+---
+
+## Already downloaded the CUR? Run it locally (no S3 / Glue / Athena)
+
+If you've **downloaded your CUR as CSV** (from the S3 console, or exported from Cost Explorer) and just want the CCA rows without standing up Glue + Athena, use [`get-cca-export-local.py`](get-cca-export-local.py). It reads the CUR CSV sitting in the same folder and writes `cur_results_local.csv` in the exact same CCA columns as the Athena version — but with **zero AWS setup and no credentials**.
+
+### Prerequisites
+- **Python 3.7+** only. No `pip install`, no AWS CLI, no IAM role. (Runs on Windows, macOS, Linux.)
+- Your CUR exported as **CSV** (or gzipped CSV, `.csv.gz`). Parquet is not supported by this local script — for Parquet use the Athena path above, or re-export the CUR as CSV.
+
+### Usage
+
+1. Put `get-cca-export-local.py` in the **same folder** as your downloaded CUR CSV.
+2. Run it:
+   ```bash
+   python get-cca-export-local.py               # scans the current folder for CUR CSVs
+   python get-cca-export-local.py mycur.csv      # or point at one file
+   python get-cca-export-local.py ./cur_folder/  # or a folder of split CUR part files
+   ```
+3. Open `cur_results_local.csv` and paste the rows into `AWS_AZURE_GCP.xlsx` (or upload the CSV to the CCA portal).
+
+### What it does
+Applies the **same logic as the Athena query** (`cca-cur-query.sql`), in Python:
+- Keeps only EC2 running-compute rows: `line item type = 'Usage'`, `product code = 'AmazonEC2'`, usage type contains `BoxUsage`.
+- Strips the AZ letter so `us-east-1a` → region `us-east-1`.
+- **Quantity** = distinct `resource_id`; **hours** = sum of `usage_amount`; maps purchase option to `Reserved` / `Spot` / `On-Demand`.
+- Groups by region + instance type + pricing and writes the CCA columns, sorted by Size, Region, Pricing Model.
+
+It **auto-detects the column naming**, so the same script handles both CUR 2.0 (underscore columns like `line_item_availability_zone`) and Legacy CUR (slash columns like `lineItem/AvailabilityZone`).
+
+> **When to use which:** use the Athena script (`get-cca-export.sh`) when your CUR lives in S3 and you want it queried in place; use this local script when you've already got the CSV on your machine and just want the numbers. Both produce identical CCA output.
