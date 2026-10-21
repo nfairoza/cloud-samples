@@ -1,0 +1,16 @@
+{
+  "properties": {
+    "displayName": "Enforce AMD where available",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/<MG_ID>/providers/Microsoft.Authorization/policyDefinitions/deny-intel-amd-available",
+    "parameters": {
+      "effect": {
+        "value": "Audit"
+      }
+    },
+    "enforcementMode": "DoNotEnforce",
+    "notScopes": [
+      "/subscriptions/<LEGACY_SUB_ID>",
+      "/subscriptions/<SUB_ID>/resourceGroups/<LEGACY_RG>"
+    ]
+  }
+}

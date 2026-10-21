@@ -1,0 +1,86 @@
+region,instance_family,probe_sku,decision,amd_equivalents
+af-johannesburg-1,vm.standard2,vm.standard2.8,DENY,vm.standard.e5.flex
+af-johannesburg-1,vm.standard3.flex,vm.standard3.flex,DENY,vm.standard.e4.flex.8-64 vm.standard.e5.flex.8-64
+ap-batam-1,vm.standard3.flex,vm.standard3.flex,DENY,vm.standard.e6.flex.8-64
+ap-chuncheon-1,vm.standard2,vm.standard2.8,DENY,vm.standard.e6.flex
+ap-chuncheon-1,vm.standard3.flex,vm.standard3.flex,DENY,vm.standard.e4.flex.8-64 vm.standard.e6.flex.8-64
+ap-hyderabad-1,vm.standard2,vm.standard2.8,DENY,vm.standard.e6.flex
+ap-hyderabad-1,vm.standard3.flex,vm.standard3.flex,DENY,vm.standard.e4.flex.8-64 vm.standard.e6.flex.8-64
+ap-kulai-2,vm.standard3.flex,vm.standard3.flex,DENY,vm.standard.e6.flex.8-64
+ap-melbourne-1,vm.standard2,vm.standard2.8,DENY,vm.standard.e6.flex
+ap-melbourne-1,vm.standard3.flex,vm.standard3.flex,DENY,vm.standard.e4.flex.8-64 vm.standard.e6.flex.8-64
+ap-mumbai-1,vm.standard2,vm.standard2.8,DENY,vm.standard.e6.flex
+ap-mumbai-1,vm.standard3.flex,vm.standard3.flex,DENY,vm.standard.e4.flex.8-64 vm.standard.e6.flex.8-64
+ap-osaka-1,vm.standard2,vm.standard2.8,DENY,vm.standard.e6.flex
+ap-osaka-1,vm.standard3.flex,vm.standard3.flex,DENY,vm.standard.e4.flex.8-64 vm.standard.e6.flex.8-64
+ap-seoul-1,vm.standard2,vm.standard2.8,DENY,vm.standard.e6.flex
+ap-seoul-1,vm.standard3.flex,vm.standard3.flex,DENY,vm.standard.e4.flex.8-64 vm.standard.e6.flex.8-64
+ap-singapore-1,vm.standard2,vm.standard2.8,DENY,vm.standard.e5.flex
+ap-singapore-1,vm.standard3.flex,vm.standard3.flex,DENY,vm.standard.e4.flex.8-64 vm.standard.e5.flex.8-64
+ap-singapore-2,vm.standard3.flex,vm.standard3.flex,DENY,vm.standard.e4.flex.8-64 vm.standard.e6.flex.8-64
+ap-sydney-1,vm.standard.b1,vm.standard.b1.8,DENY,vm.standard.e6.flex
+ap-sydney-1,vm.standard2,vm.standard2.8,DENY,vm.standard.e6.flex
+ap-sydney-1,vm.standard3.flex,vm.standard3.flex,DENY,vm.standard.e4.flex.8-64 vm.standard.e6.flex.8-64
+ap-tokyo-1,vm.standard2,vm.standard2.8,DENY,vm.standard.e6.flex
+ap-tokyo-1,vm.standard3.flex,vm.standard3.flex,DENY,vm.standard.e4.flex.8-64 vm.standard.e6.flex.8-64
+ca-montreal-1,vm.standard2,vm.standard2.8,DENY,vm.standard.e6.flex
+ca-montreal-1,vm.standard3.flex,vm.standard3.flex,DENY,vm.standard.e4.flex.8-64 vm.standard.e6.flex.8-64
+ca-toronto-1,vm.standard.b1,vm.standard.b1.8,DENY,vm.standard.e6.flex
+ca-toronto-1,vm.standard2,vm.standard2.8,DENY,vm.standard.e6.flex
+ca-toronto-1,vm.standard3.flex,vm.standard3.flex,DENY,vm.standard.e4.flex.8-64 vm.standard.e6.flex.8-64
+eu-amsterdam-1,vm.standard2,vm.standard2.8,DENY,vm.standard.e6.flex
+eu-amsterdam-1,vm.standard3.flex,vm.standard3.flex,DENY,vm.standard.e4.flex.8-64 vm.standard.e6.flex.8-64
+eu-frankfurt-1,vm.standard.b1,vm.standard.b1.8,DENY,vm.standard.e6.flex
+eu-frankfurt-1,vm.standard1,vm.standard1.8,DENY,vm.standard.e6.flex
+eu-frankfurt-1,vm.standard2,vm.standard2.8,DENY,vm.standard.e6.flex
+eu-frankfurt-1,vm.standard3.flex,vm.standard3.flex,DENY,vm.standard.e4.flex.8-64 vm.standard.e6.flex.8-64
+eu-madrid-1,vm.standard2,vm.standard2.8,DENY,vm.standard.e6.flex
+eu-madrid-1,vm.standard3.flex,vm.standard3.flex,DENY,vm.standard.e4.flex.8-64 vm.standard.e6.flex.8-64
+eu-madrid-3,vm.standard3.flex,vm.standard3.flex,DENY,vm.standard.e5.flex.8-64
+eu-marseille-1,vm.standard2,vm.standard2.8,DENY,vm.standard.e5.flex
+eu-marseille-1,vm.standard3.flex,vm.standard3.flex,DENY,vm.standard.e4.flex.8-64 vm.standard.e5.flex.8-64
+eu-milan-1,vm.standard2,vm.standard2.8,DENY,vm.standard.e6.flex
+eu-milan-1,vm.standard3.flex,vm.standard3.flex,DENY,vm.standard.e4.flex.8-64 vm.standard.e6.flex.8-64
+eu-paris-1,vm.standard2,vm.standard2.8,DENY,vm.standard.e6.flex
+eu-paris-1,vm.standard3.flex,vm.standard3.flex,DENY,vm.standard.e4.flex.8-64 vm.standard.e6.flex.8-64
+eu-stockholm-1,vm.standard2,vm.standard2.8,DENY,vm.standard.e5.flex
+eu-stockholm-1,vm.standard3.flex,vm.standard3.flex,DENY,vm.standard.e4.flex.8-64 vm.standard.e5.flex.8-64
+eu-zurich-1,vm.standard2,vm.standard2.8,DENY,vm.standard.e5.flex
+eu-zurich-1,vm.standard3.flex,vm.standard3.flex,DENY,vm.standard.e4.flex.8-64 vm.standard.e5.flex.8-64
+il-jerusalem-1,vm.standard2,vm.standard2.8,DENY,vm.standard.e5.flex
+il-jerusalem-1,vm.standard3.flex,vm.standard3.flex,DENY,vm.standard.e4.flex.8-64 vm.standard.e5.flex.8-64
+me-abudhabi-1,vm.standard2,vm.standard2.8,DENY,vm.standard.e5.flex
+me-abudhabi-1,vm.standard3.flex,vm.standard3.flex,DENY,vm.standard.e4.flex.8-64 vm.standard.e5.flex.8-64
+me-dubai-1,vm.standard2,vm.standard2.8,DENY,vm.standard.e6.flex
+me-dubai-1,vm.standard3.flex,vm.standard3.flex,DENY,vm.standard.e4.flex.8-64 vm.standard.e6.flex.8-64
+me-jeddah-1,vm.standard2,vm.standard2.8,DENY,vm.standard.e6.flex
+me-jeddah-1,vm.standard3.flex,vm.standard3.flex,DENY,vm.standard.e4.flex.8-64 vm.standard.e6.flex.8-64
+me-riyadh-1,vm.standard3.flex,vm.standard3.flex,DENY,vm.standard.e4.flex.8-64 vm.standard.e6.flex.8-64
+mx-monterrey-1,vm.standard3.flex,vm.standard3.flex,DENY,vm.standard.e4.flex.8-64 vm.standard.e6.flex.8-64
+mx-queretaro-1,vm.standard2,vm.standard2.8,DENY,vm.standard.e5.flex
+mx-queretaro-1,vm.standard3.flex,vm.standard3.flex,DENY,vm.standard.e4.flex.8-64 vm.standard.e5.flex.8-64
+sa-bogota-1,vm.standard3.flex,vm.standard3.flex,DENY,vm.standard.e4.flex.8-64 vm.standard.e6.flex.8-64
+sa-santiago-1,vm.standard3.flex,vm.standard3.flex,DENY,vm.standard.e4.flex.8-64 vm.standard.e6.flex.8-64
+sa-saopaulo-1,vm.standard2,vm.standard2.8,DENY,vm.standard.e6.flex
+sa-saopaulo-1,vm.standard3.flex,vm.standard3.flex,DENY,vm.standard.e4.flex.8-64 vm.standard.e6.flex.8-64
+sa-valparaiso-1,vm.standard2,vm.standard2.8,DENY,vm.standard.e6.flex
+sa-valparaiso-1,vm.standard3.flex,vm.standard3.flex,DENY,vm.standard.e4.flex.8-64 vm.standard.e6.flex.8-64
+sa-vinhedo-1,vm.standard2,vm.standard2.8,DENY,vm.standard.e6.flex
+sa-vinhedo-1,vm.standard3.flex,vm.standard3.flex,DENY,vm.standard.e4.flex.8-64 vm.standard.e6.flex.8-64
+uk-cardiff-1,vm.standard2,vm.standard2.8,DENY,vm.standard.e5.flex
+uk-cardiff-1,vm.standard3.flex,vm.standard3.flex,DENY,vm.standard.e4.flex.8-64 vm.standard.e5.flex.8-64
+uk-london-1,vm.standard.b1,vm.standard.b1.8,DENY,vm.standard.e6.flex
+uk-london-1,vm.standard2,vm.standard2.8,DENY,vm.standard.e6.flex
+uk-london-1,vm.standard3.flex,vm.standard3.flex,DENY,vm.standard.e4.flex.8-64 vm.standard.e6.flex.8-64
+us-ashburn-1,vm.standard.b1,vm.standard.b1.8,DENY,vm.standard.e6.flex
+us-ashburn-1,vm.standard1,vm.standard1.8,DENY,vm.standard.e6.flex
+us-ashburn-1,vm.standard2,vm.standard2.8,DENY,vm.standard.e6.flex
+us-ashburn-1,vm.standard3.flex,vm.standard3.flex,DENY,vm.standard.e4.flex.8-64 vm.standard.e6.flex.8-64
+us-chicago-1,vm.standard3.flex,vm.standard3.flex,DENY,vm.standard.e4.flex.8-64 vm.standard.e6.flex.8-64
+us-phoenix-1,vm.standard.b1,vm.standard.b1.8,DENY,vm.standard.e6.flex
+us-phoenix-1,vm.standard1,vm.standard1.8,DENY,vm.standard.e6.flex
+us-phoenix-1,vm.standard2,vm.standard2.8,DENY,vm.standard.e6.flex
+us-phoenix-1,vm.standard3.flex,vm.standard3.flex,DENY,vm.standard.e4.flex.8-64 vm.standard.e6.flex.8-64
+us-saltlake-2,vm.standard3.flex,vm.standard3.flex,DENY,vm.standard.e4.flex.8-64 vm.standard.e6.flex.8-64
+us-sanjose-1,vm.standard2,vm.standard2.8,DENY,vm.standard.e6.flex
+us-sanjose-1,vm.standard3.flex,vm.standard3.flex,DENY,vm.standard.e4.flex.8-64 vm.standard.e6.flex.8-64

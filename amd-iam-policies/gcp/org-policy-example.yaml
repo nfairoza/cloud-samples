@@ -1,0 +1,12 @@
+# Apply one policy per custom constraint, after the constraints exist.
+# Separate documents so each can be applied independently.
+---
+name: organizations/ORGANIZATION_ID/policies/custom.denyIntelWhereAmdAvailable
+spec:
+  rules:
+    - enforce: true
+---
+name: organizations/ORGANIZATION_ID/policies/custom.denyC4StandardWhereAmdAvailable
+spec:
+  rules:
+    - enforce: true

@@ -1,0 +1,35 @@
+# Compartment quota backstop.
+#
+# The IAM allowlist in policy-allow-amd-shapes.txt is the authoritative control.
+# This is a second layer: even a principal holding a broader grant cannot
+# consume Intel capacity in a compartment whose Intel quota is zero.
+#
+# Pattern is Oracle's documented allowlist idiom - zero the whole compute-core
+# family, then unset the series that should remain available. That is safer than
+# naming Intel series to zero: a series nobody thought to list defaults to
+# blocked rather than silently open.
+#
+# Existing instances are unaffected. A zeroed quota blocks NEW allocation; it
+# does not terminate or reclaim running cores.
+#
+# AMD/ARM series below are the ones present in the CCA catalog on 2026-10-21.
+# Add any GPU, HPC or dense-I/O series you run - CCA does not price them, so
+# they are not listed here and would stay at zero.
+
+zero compute-core quotas in compartment <COMPARTMENT>
+
+unset compute-core quota standard-a1-core-count in compartment <COMPARTMENT>   # vm.standard.a1.flex (Ampere / ARM)
+unset compute-core quota standard-a2-core-count in compartment <COMPARTMENT>   # vm.standard.a2.flex (Ampere / ARM)
+unset compute-core quota standard-a4-core-count in compartment <COMPARTMENT>   # vm.standard.a4.flex (Ampere / ARM)
+unset compute-core quota standard-e2-core-count in compartment <COMPARTMENT>   # vm.standard.e2 (AMD EPYC)
+unset compute-core quota standard-e3-core-ad-count in compartment <COMPARTMENT>   # vm.standard.e3.flex (AMD EPYC)
+unset compute-core quota standard-e4-core-count in compartment <COMPARTMENT>   # vm.standard.e4.flex (AMD EPYC)
+unset compute-core quota standard-e5-core-count in compartment <COMPARTMENT>   # vm.standard.e5.flex (AMD EPYC)
+unset compute-core quota standard-e6-core-count in compartment <COMPARTMENT>   # vm.standard.e6.flex (AMD EPYC)
+
+# Intel series left at zero by the statement above, all confirmed by CCA to
+# have an AMD equivalent in every region they appear in:
+#   vm.standard.b1  (denied in 6 regions, allowed in 0)
+#   vm.standard1  (denied in 3 regions, allowed in 0)
+#   vm.standard2  (denied in 33 regions, allowed in 0)
+#   vm.standard3.flex  (denied in 43 regions, allowed in 0)

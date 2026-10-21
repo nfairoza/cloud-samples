@@ -1,0 +1,490 @@
+region,instance_family,probe_sku,decision,amd_equivalents
+af-south-1,c5,c5.4xlarge,ALLOW,
+af-south-1,c6i,c6i.8xlarge,ALLOW,
+af-south-1,c7i,c7i.8xlarge,ALLOW,
+af-south-1,c8i,c8i.8xlarge,ALLOW,
+af-south-1,m5,m5.8xlarge,ALLOW,
+af-south-1,m6i,m6i.8xlarge,ALLOW,
+af-south-1,m7i,m7i.8xlarge,ALLOW,
+af-south-1,m8i,m8i.8xlarge,ALLOW,
+af-south-1,r5,r5.8xlarge,ALLOW,
+af-south-1,r6i,r6i.8xlarge,ALLOW,
+af-south-1,r8i,r8i.8xlarge,ALLOW,
+af-south-1,t3,t3.2xlarge,ALLOW,
+ap-east-1,c5,c5.4xlarge,DENY,c6a.4xlarge
+ap-east-1,c6i,c6i.8xlarge,DENY,c6a.8xlarge
+ap-east-1,c7i,c7i.8xlarge,ALLOW,
+ap-east-1,m5,m5.8xlarge,ALLOW,
+ap-east-1,m6i,m6i.8xlarge,ALLOW,
+ap-east-1,m7i,m7i.8xlarge,ALLOW,
+ap-east-1,r5,r5.8xlarge,ALLOW,
+ap-east-1,r6i,r6i.8xlarge,ALLOW,
+ap-east-1,t3,t3.2xlarge,ALLOW,
+ap-east-2,c6i,c6i.8xlarge,ALLOW,
+ap-east-2,c7i,c7i.8xlarge,ALLOW,
+ap-east-2,m6i,m6i.8xlarge,ALLOW,
+ap-east-2,m7i,m7i.8xlarge,ALLOW,
+ap-east-2,r6i,r6i.8xlarge,DENY,r8a.8xlarge r8a.4xlarge
+ap-east-2,r7i,r7i.8xlarge,DENY,r8a.8xlarge
+ap-east-2,t3,t3.2xlarge,ALLOW,
+ap-northeast-1,c1,c1.xlarge,DENY,c6a.2xlarge c8a.2xlarge c8a.xlarge
+ap-northeast-1,c3,c3.8xlarge,DENY,c6a.8xlarge c8a.8xlarge c8a.4xlarge
+ap-northeast-1,c4,c4.8xlarge,DENY,c8a.12xlarge
+ap-northeast-1,c5,c5.4xlarge,DENY,c6a.4xlarge c8a.4xlarge c8a.2xlarge
+ap-northeast-1,c6i,c6i.8xlarge,DENY,c6a.8xlarge c8a.8xlarge c8a.4xlarge
+ap-northeast-1,c7i,c7i.8xlarge,DENY,c8a.8xlarge
+ap-northeast-1,c8i,c8i.8xlarge,DENY,c8a.8xlarge
+ap-northeast-1,m1,m1.xlarge,DENY,m6a.xlarge m8a.xlarge m8a.large
+ap-northeast-1,m2,m2.4xlarge,DENY,m6a.4xlarge m8a.4xlarge
+ap-northeast-1,m3,m3.2xlarge,DENY,m6a.2xlarge m8a.2xlarge m8a.xlarge
+ap-northeast-1,m4,m4.4xlarge,DENY,m6a.4xlarge m8a.4xlarge m8a.2xlarge
+ap-northeast-1,m5,m5.8xlarge,DENY,m6a.8xlarge m8a.8xlarge m8a.4xlarge
+ap-northeast-1,m6i,m6i.8xlarge,DENY,m6a.8xlarge m8a.8xlarge m8a.4xlarge
+ap-northeast-1,m7i,m7i.8xlarge,DENY,m8a.8xlarge
+ap-northeast-1,m8i,m8i.8xlarge,DENY,m8a.8xlarge
+ap-northeast-1,r3,r3.8xlarge,DENY,r6a.8xlarge r8a.8xlarge r8a.4xlarge
+ap-northeast-1,r4,r4.8xlarge,DENY,r6a.8xlarge r8a.8xlarge r8a.4xlarge
+ap-northeast-1,r5,r5.8xlarge,DENY,r6a.8xlarge r8a.8xlarge r8a.4xlarge
+ap-northeast-1,r6i,r6i.8xlarge,DENY,r6a.8xlarge r8a.8xlarge r8a.4xlarge
+ap-northeast-1,r7i,r7i.8xlarge,DENY,r8a.8xlarge
+ap-northeast-1,r8i,r8i.8xlarge,DENY,r8a.8xlarge
+ap-northeast-1,t1,t1.micro,DENY,t3a.micro
+ap-northeast-1,t2,t2.2xlarge,DENY,t3a.2xlarge
+ap-northeast-1,t3,t3.2xlarge,DENY,t3a.2xlarge
+ap-northeast-2,c4,c4.8xlarge,ALLOW,
+ap-northeast-2,c5,c5.4xlarge,ALLOW,
+ap-northeast-2,c6i,c6i.8xlarge,ALLOW,
+ap-northeast-2,c7i,c7i.8xlarge,ALLOW,
+ap-northeast-2,c8i,c8i.8xlarge,ALLOW,
+ap-northeast-2,m4,m4.4xlarge,ALLOW,
+ap-northeast-2,m5,m5.8xlarge,ALLOW,
+ap-northeast-2,m6i,m6i.8xlarge,ALLOW,
+ap-northeast-2,m7i,m7i.8xlarge,ALLOW,
+ap-northeast-2,m8i,m8i.8xlarge,ALLOW,
+ap-northeast-2,r3,r3.8xlarge,ALLOW,
+ap-northeast-2,r4,r4.8xlarge,ALLOW,
+ap-northeast-2,r5,r5.8xlarge,ALLOW,
+ap-northeast-2,r6i,r6i.8xlarge,ALLOW,
+ap-northeast-2,r7i,r7i.8xlarge,ALLOW,
+ap-northeast-2,r8i,r8i.8xlarge,ALLOW,
+ap-northeast-2,t2,t2.2xlarge,DENY,t3a.2xlarge
+ap-northeast-2,t3,t3.2xlarge,DENY,t3a.2xlarge
+ap-northeast-3,c4,c4.8xlarge,ALLOW,
+ap-northeast-3,c5,c5.4xlarge,ALLOW,
+ap-northeast-3,c6i,c6i.8xlarge,ALLOW,
+ap-northeast-3,c7i,c7i.8xlarge,ALLOW,
+ap-northeast-3,m4,m4.4xlarge,ALLOW,
+ap-northeast-3,m5,m5.8xlarge,ALLOW,
+ap-northeast-3,m6i,m6i.8xlarge,ALLOW,
+ap-northeast-3,m7i,m7i.8xlarge,ALLOW,
+ap-northeast-3,r4,r4.8xlarge,ALLOW,
+ap-northeast-3,r5,r5.8xlarge,ALLOW,
+ap-northeast-3,r6i,r6i.8xlarge,ALLOW,
+ap-northeast-3,r7i,r7i.8xlarge,ALLOW,
+ap-northeast-3,t2,t2.2xlarge,ALLOW,
+ap-northeast-3,t3,t3.2xlarge,ALLOW,
+ap-south-1,c4,c4.8xlarge,DENY,c6a.12xlarge
+ap-south-1,c5,c5.4xlarge,DENY,c6a.4xlarge
+ap-south-1,c6i,c6i.8xlarge,DENY,c6a.8xlarge
+ap-south-1,c7i,c7i.8xlarge,ALLOW,
+ap-south-1,c8i,c8i.8xlarge,ALLOW,
+ap-south-1,m4,m4.4xlarge,DENY,m6a.4xlarge m8a.4xlarge m8a.2xlarge
+ap-south-1,m5,m5.8xlarge,DENY,m6a.8xlarge m8a.8xlarge m8a.4xlarge
+ap-south-1,m6i,m6i.8xlarge,DENY,m6a.8xlarge m8a.8xlarge m8a.4xlarge
+ap-south-1,m7i,m7i.8xlarge,DENY,m8a.8xlarge
+ap-south-1,m8i,m8i.8xlarge,DENY,m8a.8xlarge
+ap-south-1,r3,r3.8xlarge,DENY,r6a.8xlarge
+ap-south-1,r4,r4.8xlarge,DENY,r6a.8xlarge
+ap-south-1,r5,r5.8xlarge,DENY,r6a.8xlarge
+ap-south-1,r6i,r6i.8xlarge,DENY,r6a.8xlarge
+ap-south-1,r7i,r7i.8xlarge,ALLOW,
+ap-south-1,r8i,r8i.8xlarge,ALLOW,
+ap-south-1,t2,t2.2xlarge,DENY,t3a.2xlarge
+ap-south-1,t3,t3.2xlarge,DENY,t3a.2xlarge
+ap-south-2,c5,c5.4xlarge,DENY,c6a.4xlarge
+ap-south-2,c6i,c6i.8xlarge,DENY,c6a.8xlarge
+ap-south-2,c7i,c7i.8xlarge,ALLOW,
+ap-south-2,c8i,c8i.8xlarge,ALLOW,
+ap-south-2,m5,m5.8xlarge,DENY,m6a.8xlarge m8a.8xlarge m8a.4xlarge
+ap-south-2,m6i,m6i.8xlarge,DENY,m6a.8xlarge m8a.8xlarge m8a.4xlarge
+ap-south-2,m7i,m7i.8xlarge,DENY,m8a.8xlarge
+ap-south-2,m8i,m8i.8xlarge,DENY,m8a.8xlarge
+ap-south-2,r5,r5.8xlarge,DENY,r6a.8xlarge r7a.8xlarge r7a.4xlarge
+ap-south-2,r6i,r6i.8xlarge,DENY,r6a.8xlarge r7a.8xlarge r7a.4xlarge
+ap-south-2,r7i,r7i.8xlarge,DENY,r7a.8xlarge
+ap-south-2,r8i,r8i.8xlarge,DENY,r7a.8xlarge
+ap-south-2,t3,t3.2xlarge,ALLOW,
+ap-southeast-1,c1,c1.xlarge,DENY,c6a.2xlarge c7a.2xlarge c7a.xlarge
+ap-southeast-1,c3,c3.8xlarge,DENY,c6a.8xlarge c7a.8xlarge c7a.4xlarge
+ap-southeast-1,c4,c4.8xlarge,DENY,c7a.12xlarge
+ap-southeast-1,c5,c5.4xlarge,DENY,c6a.4xlarge c7a.4xlarge c7a.2xlarge
+ap-southeast-1,c6i,c6i.8xlarge,DENY,c6a.8xlarge c7a.8xlarge c7a.4xlarge
+ap-southeast-1,c7i,c7i.8xlarge,DENY,c7a.8xlarge
+ap-southeast-1,c8i,c8i.8xlarge,DENY,c7a.8xlarge
+ap-southeast-1,m1,m1.xlarge,DENY,m6a.xlarge
+ap-southeast-1,m2,m2.4xlarge,DENY,m6a.4xlarge
+ap-southeast-1,m3,m3.2xlarge,DENY,m6a.2xlarge
+ap-southeast-1,m4,m4.4xlarge,DENY,m6a.4xlarge
+ap-southeast-1,m5,m5.8xlarge,DENY,m6a.8xlarge
+ap-southeast-1,m6i,m6i.8xlarge,DENY,m6a.8xlarge
+ap-southeast-1,m7i,m7i.8xlarge,ALLOW,
+ap-southeast-1,m8i,m8i.8xlarge,ALLOW,
+ap-southeast-1,r3,r3.8xlarge,DENY,r6a.8xlarge
+ap-southeast-1,r4,r4.8xlarge,DENY,r6a.8xlarge
+ap-southeast-1,r5,r5.8xlarge,DENY,r6a.8xlarge
+ap-southeast-1,r6i,r6i.8xlarge,DENY,r6a.8xlarge
+ap-southeast-1,r7i,r7i.8xlarge,ALLOW,
+ap-southeast-1,r8i,r8i.8xlarge,ALLOW,
+ap-southeast-1,t1,t1.micro,DENY,t3a.micro
+ap-southeast-1,t2,t2.2xlarge,DENY,t3a.2xlarge
+ap-southeast-1,t3,t3.2xlarge,DENY,t3a.2xlarge
+ap-southeast-2,c1,c1.xlarge,DENY,c6a.2xlarge
+ap-southeast-2,c3,c3.8xlarge,DENY,c6a.8xlarge
+ap-southeast-2,c4,c4.8xlarge,ALLOW,
+ap-southeast-2,c5,c5.4xlarge,DENY,c6a.4xlarge
+ap-southeast-2,c6i,c6i.8xlarge,DENY,c6a.8xlarge
+ap-southeast-2,c7i,c7i.8xlarge,ALLOW,
+ap-southeast-2,c8i,c8i.8xlarge,ALLOW,
+ap-southeast-2,m1,m1.xlarge,DENY,m6a.xlarge m7a.xlarge m7a.large
+ap-southeast-2,m2,m2.4xlarge,DENY,m6a.4xlarge m7a.4xlarge
+ap-southeast-2,m3,m3.2xlarge,DENY,m6a.2xlarge m7a.2xlarge m7a.xlarge
+ap-southeast-2,m4,m4.4xlarge,DENY,m6a.4xlarge m7a.4xlarge m7a.2xlarge
+ap-southeast-2,m5,m5.8xlarge,DENY,m6a.8xlarge m7a.8xlarge m7a.4xlarge
+ap-southeast-2,m6i,m6i.8xlarge,DENY,m6a.8xlarge m7a.8xlarge m7a.4xlarge
+ap-southeast-2,m7i,m7i.8xlarge,DENY,m7a.8xlarge
+ap-southeast-2,m8i,m8i.8xlarge,DENY,m7a.8xlarge
+ap-southeast-2,r3,r3.8xlarge,DENY,r6a.8xlarge
+ap-southeast-2,r4,r4.8xlarge,DENY,r6a.8xlarge
+ap-southeast-2,r5,r5.8xlarge,DENY,r6a.8xlarge
+ap-southeast-2,r6i,r6i.8xlarge,DENY,r6a.8xlarge
+ap-southeast-2,r7i,r7i.8xlarge,ALLOW,
+ap-southeast-2,r8i,r8i.8xlarge,ALLOW,
+ap-southeast-2,t1,t1.micro,DENY,t3a.micro
+ap-southeast-2,t2,t2.2xlarge,DENY,t3a.2xlarge
+ap-southeast-2,t3,t3.2xlarge,DENY,t3a.2xlarge
+ap-southeast-3,c5,c5.4xlarge,ALLOW,
+ap-southeast-3,c7i,c7i.8xlarge,ALLOW,
+ap-southeast-3,m5,m5.8xlarge,ALLOW,
+ap-southeast-3,m6i,m6i.8xlarge,ALLOW,
+ap-southeast-3,m7i,m7i.8xlarge,ALLOW,
+ap-southeast-3,r5,r5.8xlarge,ALLOW,
+ap-southeast-3,r7i,r7i.8xlarge,ALLOW,
+ap-southeast-3,t3,t3.2xlarge,ALLOW,
+ap-southeast-4,c5,c5.4xlarge,ALLOW,
+ap-southeast-4,c7i,c7i.8xlarge,ALLOW,
+ap-southeast-4,m5,m5.8xlarge,ALLOW,
+ap-southeast-4,m7i,m7i.8xlarge,ALLOW,
+ap-southeast-4,r5,r5.8xlarge,ALLOW,
+ap-southeast-4,r7i,r7i.8xlarge,ALLOW,
+ap-southeast-4,t3,t3.2xlarge,ALLOW,
+ap-southeast-5,c6i,c6i.8xlarge,ALLOW,
+ap-southeast-5,c7i,c7i.8xlarge,ALLOW,
+ap-southeast-5,c8i,c8i.8xlarge,ALLOW,
+ap-southeast-5,m6i,m6i.8xlarge,ALLOW,
+ap-southeast-5,m7i,m7i.8xlarge,ALLOW,
+ap-southeast-5,m8i,m8i.8xlarge,ALLOW,
+ap-southeast-5,r6i,r6i.8xlarge,ALLOW,
+ap-southeast-5,r7i,r7i.8xlarge,ALLOW,
+ap-southeast-5,r8i,r8i.8xlarge,ALLOW,
+ap-southeast-5,t3,t3.2xlarge,ALLOW,
+ap-southeast-6,c6i,c6i.8xlarge,ALLOW,
+ap-southeast-6,c7i,c7i.8xlarge,ALLOW,
+ap-southeast-6,c8i,c8i.8xlarge,ALLOW,
+ap-southeast-6,m6i,m6i.8xlarge,ALLOW,
+ap-southeast-6,m7i,m7i.8xlarge,ALLOW,
+ap-southeast-6,m8i,m8i.8xlarge,ALLOW,
+ap-southeast-6,r6i,r6i.8xlarge,ALLOW,
+ap-southeast-6,r7i,r7i.8xlarge,ALLOW,
+ap-southeast-6,r8i,r8i.8xlarge,ALLOW,
+ap-southeast-6,t3,t3.2xlarge,ALLOW,
+ap-southeast-7,c6i,c6i.8xlarge,ALLOW,
+ap-southeast-7,c7i,c7i.8xlarge,ALLOW,
+ap-southeast-7,m6i,m6i.8xlarge,ALLOW,
+ap-southeast-7,m7i,m7i.8xlarge,ALLOW,
+ap-southeast-7,r6i,r6i.8xlarge,ALLOW,
+ap-southeast-7,r7i,r7i.8xlarge,ALLOW,
+ap-southeast-7,t3,t3.2xlarge,ALLOW,
+ca-central-1,c4,c4.8xlarge,ALLOW,
+ca-central-1,c5,c5.4xlarge,DENY,c6a.4xlarge
+ca-central-1,c6i,c6i.8xlarge,DENY,c6a.8xlarge
+ca-central-1,c7i,c7i.8xlarge,ALLOW,
+ca-central-1,c8i,c8i.8xlarge,ALLOW,
+ca-central-1,m4,m4.4xlarge,DENY,m6a.4xlarge
+ca-central-1,m5,m5.8xlarge,DENY,m6a.8xlarge
+ca-central-1,m6i,m6i.8xlarge,DENY,m6a.8xlarge
+ca-central-1,m7i,m7i.8xlarge,ALLOW,
+ca-central-1,m8i,m8i.8xlarge,ALLOW,
+ca-central-1,r4,r4.8xlarge,DENY,r6a.8xlarge r8a.8xlarge r8a.4xlarge
+ca-central-1,r5,r5.8xlarge,DENY,r6a.8xlarge r8a.8xlarge r8a.4xlarge
+ca-central-1,r6i,r6i.8xlarge,DENY,r6a.8xlarge r8a.8xlarge r8a.4xlarge
+ca-central-1,r7i,r7i.8xlarge,DENY,r8a.8xlarge
+ca-central-1,r8i,r8i.8xlarge,DENY,r8a.8xlarge
+ca-central-1,t2,t2.2xlarge,DENY,t3a.2xlarge
+ca-central-1,t3,t3.2xlarge,DENY,t3a.2xlarge
+ca-west-1,c5,c5.4xlarge,ALLOW,
+ca-west-1,c6i,c6i.8xlarge,ALLOW,
+ca-west-1,c7i,c7i.8xlarge,ALLOW,
+ca-west-1,m5,m5.8xlarge,ALLOW,
+ca-west-1,m6i,m6i.8xlarge,ALLOW,
+ca-west-1,m8i,m8i.8xlarge,ALLOW,
+ca-west-1,r5,r5.8xlarge,ALLOW,
+ca-west-1,r6i,r6i.8xlarge,ALLOW,
+ca-west-1,r8i,r8i.8xlarge,ALLOW,
+ca-west-1,t3,t3.2xlarge,ALLOW,
+eu-central-1,c3,c3.8xlarge,DENY,c6a.8xlarge c8a.8xlarge c8a.4xlarge
+eu-central-1,c4,c4.8xlarge,DENY,c8a.12xlarge
+eu-central-1,c5,c5.4xlarge,DENY,c6a.4xlarge c8a.4xlarge c8a.2xlarge
+eu-central-1,c6i,c6i.8xlarge,DENY,c6a.8xlarge c8a.8xlarge c8a.4xlarge
+eu-central-1,c7i,c7i.8xlarge,DENY,c8a.8xlarge
+eu-central-1,c8i,c8i.8xlarge,DENY,c8a.8xlarge
+eu-central-1,m3,m3.2xlarge,DENY,m6a.2xlarge m8a.2xlarge m8a.xlarge
+eu-central-1,m4,m4.4xlarge,DENY,m6a.4xlarge m8a.4xlarge m8a.2xlarge
+eu-central-1,m5,m5.8xlarge,DENY,m6a.8xlarge m8a.8xlarge m8a.4xlarge
+eu-central-1,m6i,m6i.8xlarge,DENY,m6a.8xlarge m8a.8xlarge m8a.4xlarge
+eu-central-1,m7i,m7i.8xlarge,DENY,m8a.8xlarge
+eu-central-1,m8i,m8i.8xlarge,DENY,m8a.8xlarge
+eu-central-1,r3,r3.8xlarge,DENY,r6a.8xlarge r8a.8xlarge r8a.4xlarge
+eu-central-1,r4,r4.8xlarge,DENY,r6a.8xlarge r8a.8xlarge r8a.4xlarge
+eu-central-1,r5,r5.8xlarge,DENY,r6a.8xlarge r8a.8xlarge r8a.4xlarge
+eu-central-1,r6i,r6i.8xlarge,DENY,r6a.8xlarge r8a.8xlarge r8a.4xlarge
+eu-central-1,r7i,r7i.8xlarge,DENY,r8a.8xlarge
+eu-central-1,r8i,r8i.8xlarge,DENY,r8a.8xlarge
+eu-central-1,t2,t2.2xlarge,DENY,t3a.2xlarge
+eu-central-1,t3,t3.2xlarge,DENY,t3a.2xlarge
+eu-central-2,c5,c5.4xlarge,ALLOW,
+eu-central-2,c7i,c7i.8xlarge,ALLOW,
+eu-central-2,m5,m5.8xlarge,ALLOW,
+eu-central-2,m6i,m6i.8xlarge,ALLOW,
+eu-central-2,m7i,m7i.8xlarge,ALLOW,
+eu-central-2,r5,r5.8xlarge,ALLOW,
+eu-central-2,r6i,r6i.8xlarge,ALLOW,
+eu-central-2,r8i,r8i.8xlarge,ALLOW,
+eu-central-2,t3,t3.2xlarge,ALLOW,
+eu-north-1,c5,c5.4xlarge,DENY,c7a.4xlarge c7a.2xlarge
+eu-north-1,c6i,c6i.8xlarge,DENY,c7a.8xlarge c7a.4xlarge
+eu-north-1,c7i,c7i.8xlarge,DENY,c7a.8xlarge
+eu-north-1,c8i,c8i.8xlarge,DENY,c7a.8xlarge
+eu-north-1,m5,m5.8xlarge,DENY,m7a.8xlarge m7a.4xlarge
+eu-north-1,m6i,m6i.8xlarge,DENY,m7a.8xlarge m7a.4xlarge
+eu-north-1,m7i,m7i.8xlarge,DENY,m7a.8xlarge
+eu-north-1,r5,r5.8xlarge,DENY,r7a.8xlarge r7a.4xlarge
+eu-north-1,r6i,r6i.8xlarge,DENY,r7a.8xlarge r7a.4xlarge
+eu-north-1,r7i,r7i.8xlarge,DENY,r7a.8xlarge
+eu-north-1,r8i,r8i.8xlarge,DENY,r7a.8xlarge
+eu-north-1,t3,t3.2xlarge,ALLOW,
+eu-south-1,c5,c5.4xlarge,ALLOW,
+eu-south-1,c6i,c6i.8xlarge,ALLOW,
+eu-south-1,c7i,c7i.8xlarge,ALLOW,
+eu-south-1,m5,m5.8xlarge,DENY,m6a.8xlarge
+eu-south-1,m6i,m6i.8xlarge,DENY,m6a.8xlarge
+eu-south-1,m7i,m7i.8xlarge,ALLOW,
+eu-south-1,r5,r5.8xlarge,ALLOW,
+eu-south-1,r6i,r6i.8xlarge,ALLOW,
+eu-south-1,r7i,r7i.8xlarge,ALLOW,
+eu-south-1,r8i,r8i.8xlarge,ALLOW,
+eu-south-1,t3,t3.2xlarge,DENY,t3a.2xlarge
+eu-south-2,c5,c5.4xlarge,DENY,c8a.4xlarge c8a.2xlarge
+eu-south-2,c7i,c7i.8xlarge,DENY,c8a.8xlarge
+eu-south-2,c8i,c8i.8xlarge,DENY,c8a.8xlarge
+eu-south-2,m5,m5.8xlarge,DENY,m8a.8xlarge m8a.4xlarge
+eu-south-2,m7i,m7i.8xlarge,DENY,m8a.8xlarge
+eu-south-2,m8i,m8i.8xlarge,DENY,m8a.8xlarge
+eu-south-2,r5,r5.8xlarge,DENY,r8a.8xlarge r8a.4xlarge
+eu-south-2,r7i,r7i.8xlarge,DENY,r8a.8xlarge
+eu-south-2,r8i,r8i.8xlarge,DENY,r8a.8xlarge
+eu-south-2,t3,t3.2xlarge,ALLOW,
+eu-west-1,c1,c1.xlarge,DENY,c6a.2xlarge c8a.2xlarge c8a.xlarge
+eu-west-1,c3,c3.8xlarge,DENY,c6a.8xlarge c8a.8xlarge c8a.4xlarge
+eu-west-1,c4,c4.8xlarge,DENY,c8a.12xlarge
+eu-west-1,c5,c5.4xlarge,DENY,c6a.4xlarge c8a.4xlarge c8a.2xlarge
+eu-west-1,c6i,c6i.8xlarge,DENY,c6a.8xlarge c8a.8xlarge c8a.4xlarge
+eu-west-1,c7i,c7i.8xlarge,DENY,c8a.8xlarge
+eu-west-1,c8i,c8i.8xlarge,DENY,c8a.8xlarge
+eu-west-1,m1,m1.xlarge,DENY,m6a.xlarge m8a.xlarge m8a.large
+eu-west-1,m2,m2.4xlarge,DENY,m6a.4xlarge m8a.4xlarge
+eu-west-1,m3,m3.2xlarge,DENY,m6a.2xlarge m8a.2xlarge m8a.xlarge
+eu-west-1,m4,m4.4xlarge,DENY,m6a.4xlarge m8a.4xlarge m8a.2xlarge
+eu-west-1,m5,m5.8xlarge,DENY,m6a.8xlarge m8a.8xlarge m8a.4xlarge
+eu-west-1,m6i,m6i.8xlarge,DENY,m6a.8xlarge m8a.8xlarge m8a.4xlarge
+eu-west-1,m7i,m7i.8xlarge,DENY,m8a.8xlarge
+eu-west-1,m8i,m8i.8xlarge,DENY,m8a.8xlarge
+eu-west-1,r3,r3.8xlarge,DENY,r6a.8xlarge r8a.8xlarge r8a.4xlarge
+eu-west-1,r4,r4.8xlarge,DENY,r6a.8xlarge r8a.8xlarge r8a.4xlarge
+eu-west-1,r5,r5.8xlarge,DENY,r6a.8xlarge r8a.8xlarge r8a.4xlarge
+eu-west-1,r6i,r6i.8xlarge,DENY,r6a.8xlarge r8a.8xlarge r8a.4xlarge
+eu-west-1,r7i,r7i.8xlarge,DENY,r8a.8xlarge
+eu-west-1,r8i,r8i.8xlarge,DENY,r8a.8xlarge
+eu-west-1,t1,t1.micro,DENY,t3a.micro
+eu-west-1,t2,t2.2xlarge,DENY,t3a.2xlarge
+eu-west-1,t3,t3.2xlarge,DENY,t3a.2xlarge
+eu-west-2,c4,c4.8xlarge,DENY,c7a.12xlarge
+eu-west-2,c5,c5.4xlarge,DENY,c6a.4xlarge c7a.4xlarge c7a.2xlarge
+eu-west-2,c6i,c6i.8xlarge,DENY,c6a.8xlarge c7a.8xlarge c7a.4xlarge
+eu-west-2,c7i,c7i.8xlarge,DENY,c7a.8xlarge
+eu-west-2,c8i,c8i.8xlarge,DENY,c7a.8xlarge
+eu-west-2,m4,m4.4xlarge,DENY,m6a.4xlarge m7a.4xlarge m7a.2xlarge
+eu-west-2,m5,m5.8xlarge,DENY,m6a.8xlarge m7a.8xlarge m7a.4xlarge
+eu-west-2,m6i,m6i.8xlarge,DENY,m6a.8xlarge m7a.8xlarge m7a.4xlarge
+eu-west-2,m7i,m7i.8xlarge,DENY,m7a.8xlarge
+eu-west-2,m8i,m8i.8xlarge,DENY,m7a.8xlarge
+eu-west-2,r4,r4.8xlarge,DENY,r6a.8xlarge
+eu-west-2,r5,r5.8xlarge,DENY,r6a.8xlarge
+eu-west-2,r6i,r6i.8xlarge,DENY,r6a.8xlarge
+eu-west-2,r7i,r7i.8xlarge,ALLOW,
+eu-west-2,r8i,r8i.8xlarge,ALLOW,
+eu-west-2,t2,t2.2xlarge,DENY,t3a.2xlarge
+eu-west-2,t3,t3.2xlarge,DENY,t3a.2xlarge
+eu-west-3,c5,c5.4xlarge,ALLOW,
+eu-west-3,c6i,c6i.8xlarge,ALLOW,
+eu-west-3,c7i,c7i.8xlarge,ALLOW,
+eu-west-3,c8i,c8i.8xlarge,ALLOW,
+eu-west-3,m5,m5.8xlarge,DENY,m6a.8xlarge
+eu-west-3,m6i,m6i.8xlarge,DENY,m6a.8xlarge
+eu-west-3,m7i,m7i.8xlarge,ALLOW,
+eu-west-3,m8i,m8i.8xlarge,ALLOW,
+eu-west-3,r4,r4.8xlarge,ALLOW,
+eu-west-3,r5,r5.8xlarge,ALLOW,
+eu-west-3,r6i,r6i.8xlarge,ALLOW,
+eu-west-3,r7i,r7i.8xlarge,ALLOW,
+eu-west-3,r8i,r8i.8xlarge,ALLOW,
+eu-west-3,t2,t2.2xlarge,DENY,t3a.2xlarge
+eu-west-3,t3,t3.2xlarge,DENY,t3a.2xlarge
+il-central-1,c5,c5.4xlarge,ALLOW,
+il-central-1,c6i,c6i.8xlarge,ALLOW,
+il-central-1,c7i,c7i.8xlarge,ALLOW,
+il-central-1,m5,m5.8xlarge,ALLOW,
+il-central-1,m6i,m6i.8xlarge,ALLOW,
+il-central-1,m7i,m7i.8xlarge,ALLOW,
+il-central-1,r5,r5.8xlarge,ALLOW,
+il-central-1,r6i,r6i.8xlarge,ALLOW,
+il-central-1,r8i,r8i.8xlarge,ALLOW,
+il-central-1,t3,t3.2xlarge,DENY,t3a.2xlarge
+me-central-1,c5,c5.4xlarge,ALLOW,
+me-central-1,c7i,c7i.8xlarge,ALLOW,
+me-central-1,m5,m5.8xlarge,ALLOW,
+me-central-1,m6i,m6i.8xlarge,ALLOW,
+me-central-1,m7i,m7i.8xlarge,ALLOW,
+me-central-1,r5,r5.8xlarge,ALLOW,
+me-central-1,r6i,r6i.8xlarge,ALLOW,
+me-central-1,r8i,r8i.8xlarge,ALLOW,
+mx-central-1,c6i,c6i.8xlarge,ALLOW,
+mx-central-1,c7i,c7i.8xlarge,ALLOW,
+mx-central-1,m6i,m6i.8xlarge,ALLOW,
+mx-central-1,m7i,m7i.8xlarge,ALLOW,
+mx-central-1,r6i,r6i.8xlarge,ALLOW,
+mx-central-1,r7i,r7i.8xlarge,ALLOW,
+mx-central-1,t3,t3.2xlarge,ALLOW,
+sa-east-1,c1,c1.xlarge,DENY,c6a.2xlarge
+sa-east-1,c3,c3.8xlarge,DENY,c6a.8xlarge
+sa-east-1,c4,c4.8xlarge,ALLOW,
+sa-east-1,c5,c5.4xlarge,DENY,c6a.4xlarge
+sa-east-1,c6i,c6i.8xlarge,DENY,c6a.8xlarge
+sa-east-1,c7i,c7i.8xlarge,ALLOW,
+sa-east-1,c8i,c8i.8xlarge,ALLOW,
+sa-east-1,m1,m1.xlarge,DENY,m6a.xlarge
+sa-east-1,m2,m2.4xlarge,DENY,m6a.4xlarge
+sa-east-1,m3,m3.2xlarge,DENY,m6a.2xlarge
+sa-east-1,m4,m4.4xlarge,DENY,m6a.4xlarge
+sa-east-1,m5,m5.8xlarge,DENY,m6a.8xlarge
+sa-east-1,m6i,m6i.8xlarge,DENY,m6a.8xlarge
+sa-east-1,m7i,m7i.8xlarge,ALLOW,
+sa-east-1,m8i,m8i.8xlarge,ALLOW,
+sa-east-1,r3,r3.8xlarge,ALLOW,
+sa-east-1,r4,r4.8xlarge,ALLOW,
+sa-east-1,r5,r5.8xlarge,ALLOW,
+sa-east-1,r6i,r6i.8xlarge,ALLOW,
+sa-east-1,r7i,r7i.8xlarge,ALLOW,
+sa-east-1,r8i,r8i.8xlarge,ALLOW,
+sa-east-1,t1,t1.micro,DENY,t3a.micro
+sa-east-1,t2,t2.2xlarge,DENY,t3a.2xlarge
+sa-east-1,t3,t3.2xlarge,DENY,t3a.2xlarge
+us-east-1,c1,c1.xlarge,DENY,c6a.2xlarge c8a.2xlarge c8a.xlarge
+us-east-1,c3,c3.8xlarge,DENY,c6a.8xlarge c8a.8xlarge c8a.4xlarge
+us-east-1,c4,c4.8xlarge,DENY,c8a.12xlarge
+us-east-1,c5,c5.4xlarge,DENY,c6a.4xlarge c8a.4xlarge c8a.2xlarge
+us-east-1,c6i,c6i.8xlarge,DENY,c6a.8xlarge c8a.8xlarge c8a.4xlarge
+us-east-1,c7i,c7i.8xlarge,DENY,c8a.8xlarge
+us-east-1,c8i,c8i.8xlarge,DENY,c8a.8xlarge
+us-east-1,m1,m1.xlarge,DENY,m6a.xlarge m8a.xlarge m8a.large
+us-east-1,m2,m2.4xlarge,DENY,m6a.4xlarge m8a.4xlarge
+us-east-1,m3,m3.2xlarge,DENY,m6a.2xlarge m8a.2xlarge m8a.xlarge
+us-east-1,m4,m4.4xlarge,DENY,m6a.4xlarge m8a.4xlarge m8a.2xlarge
+us-east-1,m5,m5.8xlarge,DENY,m6a.8xlarge m8a.8xlarge m8a.4xlarge
+us-east-1,m6i,m6i.8xlarge,DENY,m6a.8xlarge m8a.8xlarge m8a.4xlarge
+us-east-1,m7i,m7i.8xlarge,DENY,m8a.8xlarge
+us-east-1,m8i,m8i.8xlarge,DENY,m8a.8xlarge
+us-east-1,r3,r3.8xlarge,DENY,r6a.8xlarge r8a.8xlarge r8a.4xlarge
+us-east-1,r4,r4.8xlarge,DENY,r6a.8xlarge r8a.8xlarge r8a.4xlarge
+us-east-1,r5,r5.8xlarge,DENY,r6a.8xlarge r8a.8xlarge r8a.4xlarge
+us-east-1,r6i,r6i.8xlarge,DENY,r6a.8xlarge r8a.8xlarge r8a.4xlarge
+us-east-1,r7i,r7i.8xlarge,DENY,r8a.8xlarge
+us-east-1,r8i,r8i.8xlarge,DENY,r8a.8xlarge
+us-east-1,t1,t1.micro,DENY,t3a.micro
+us-east-1,t2,t2.2xlarge,DENY,t3a.2xlarge
+us-east-1,t3,t3.2xlarge,DENY,t3a.2xlarge
+us-east-2,c4,c4.8xlarge,DENY,c8a.12xlarge
+us-east-2,c5,c5.4xlarge,DENY,c6a.4xlarge c8a.4xlarge c8a.2xlarge
+us-east-2,c6i,c6i.8xlarge,DENY,c6a.8xlarge c8a.8xlarge c8a.4xlarge
+us-east-2,c7i,c7i.8xlarge,DENY,c8a.8xlarge
+us-east-2,c8i,c8i.8xlarge,DENY,c8a.8xlarge
+us-east-2,m4,m4.4xlarge,DENY,m6a.4xlarge m8a.4xlarge m8a.2xlarge
+us-east-2,m5,m5.8xlarge,DENY,m6a.8xlarge m8a.8xlarge m8a.4xlarge
+us-east-2,m6i,m6i.8xlarge,DENY,m6a.8xlarge m8a.8xlarge m8a.4xlarge
+us-east-2,m7i,m7i.8xlarge,DENY,m8a.8xlarge
+us-east-2,m8i,m8i.8xlarge,DENY,m8a.8xlarge
+us-east-2,r3,r3.8xlarge,DENY,r6a.8xlarge r8a.8xlarge r8a.4xlarge
+us-east-2,r4,r4.8xlarge,DENY,r6a.8xlarge r8a.8xlarge r8a.4xlarge
+us-east-2,r5,r5.8xlarge,DENY,r6a.8xlarge r8a.8xlarge r8a.4xlarge
+us-east-2,r6i,r6i.8xlarge,DENY,r6a.8xlarge r8a.8xlarge r8a.4xlarge
+us-east-2,r7i,r7i.8xlarge,DENY,r8a.8xlarge
+us-east-2,r8i,r8i.8xlarge,DENY,r8a.8xlarge
+us-east-2,t2,t2.2xlarge,DENY,t3a.2xlarge
+us-east-2,t3,t3.2xlarge,DENY,t3a.2xlarge
+us-west-1,c1,c1.xlarge,DENY,c6a.2xlarge c7a.2xlarge c7a.xlarge
+us-west-1,c3,c3.8xlarge,DENY,c6a.8xlarge c7a.8xlarge c7a.4xlarge
+us-west-1,c4,c4.8xlarge,DENY,c7a.12xlarge
+us-west-1,c5,c5.4xlarge,DENY,c6a.4xlarge c7a.4xlarge c7a.2xlarge
+us-west-1,c6i,c6i.8xlarge,DENY,c6a.8xlarge c7a.8xlarge c7a.4xlarge
+us-west-1,c7i,c7i.8xlarge,DENY,c7a.8xlarge
+us-west-1,c8i,c8i.8xlarge,DENY,c7a.8xlarge
+us-west-1,m1,m1.xlarge,DENY,m6a.xlarge
+us-west-1,m2,m2.4xlarge,DENY,m6a.4xlarge
+us-west-1,m3,m3.2xlarge,DENY,m6a.2xlarge
+us-west-1,m4,m4.4xlarge,DENY,m6a.4xlarge
+us-west-1,m5,m5.8xlarge,DENY,m6a.8xlarge
+us-west-1,m6i,m6i.8xlarge,DENY,m6a.8xlarge
+us-west-1,m7i,m7i.8xlarge,ALLOW,
+us-west-1,m8i,m8i.8xlarge,ALLOW,
+us-west-1,r3,r3.8xlarge,DENY,r6a.8xlarge
+us-west-1,r4,r4.8xlarge,DENY,r6a.8xlarge
+us-west-1,r5,r5.8xlarge,DENY,r6a.8xlarge
+us-west-1,r6i,r6i.8xlarge,DENY,r6a.8xlarge
+us-west-1,r7i,r7i.8xlarge,ALLOW,
+us-west-1,r8i,r8i.8xlarge,ALLOW,
+us-west-1,t1,t1.micro,DENY,t3a.micro
+us-west-1,t2,t2.2xlarge,DENY,t3a.2xlarge
+us-west-1,t3,t3.2xlarge,DENY,t3a.2xlarge
+us-west-2,c1,c1.xlarge,DENY,c6a.2xlarge c8a.2xlarge c8a.xlarge
+us-west-2,c3,c3.8xlarge,DENY,c6a.8xlarge c8a.8xlarge c8a.4xlarge
+us-west-2,c4,c4.8xlarge,DENY,c8a.12xlarge
+us-west-2,c5,c5.4xlarge,DENY,c6a.4xlarge c8a.4xlarge c8a.2xlarge
+us-west-2,c6i,c6i.8xlarge,DENY,c6a.8xlarge c8a.8xlarge c8a.4xlarge
+us-west-2,c7i,c7i.8xlarge,DENY,c8a.8xlarge
+us-west-2,c8i,c8i.8xlarge,DENY,c8a.8xlarge
+us-west-2,m1,m1.xlarge,DENY,m6a.xlarge m8a.xlarge m8a.large
+us-west-2,m2,m2.4xlarge,DENY,m6a.4xlarge m8a.4xlarge
+us-west-2,m3,m3.2xlarge,DENY,m6a.2xlarge m8a.2xlarge m8a.xlarge
+us-west-2,m4,m4.4xlarge,DENY,m6a.4xlarge m8a.4xlarge m8a.2xlarge
+us-west-2,m5,m5.8xlarge,DENY,m6a.8xlarge m8a.8xlarge m8a.4xlarge
+us-west-2,m6i,m6i.8xlarge,DENY,m6a.8xlarge m8a.8xlarge m8a.4xlarge
+us-west-2,m7i,m7i.8xlarge,DENY,m8a.8xlarge
+us-west-2,m8i,m8i.8xlarge,DENY,m8a.8xlarge
+us-west-2,r3,r3.8xlarge,DENY,r6a.8xlarge r8a.8xlarge r8a.4xlarge
+us-west-2,r4,r4.8xlarge,DENY,r6a.8xlarge r8a.8xlarge r8a.4xlarge
+us-west-2,r5,r5.8xlarge,DENY,r6a.8xlarge r8a.8xlarge r8a.4xlarge
+us-west-2,r6i,r6i.8xlarge,DENY,r6a.8xlarge r8a.8xlarge r8a.4xlarge
+us-west-2,r7i,r7i.8xlarge,DENY,r8a.8xlarge
+us-west-2,r8i,r8i.8xlarge,DENY,r8a.8xlarge
+us-west-2,t1,t1.micro,DENY,t3a.micro
+us-west-2,t2,t2.2xlarge,DENY,t3a.2xlarge
+us-west-2,t3,t3.2xlarge,DENY,t3a.2xlarge

@@ -1,0 +1,61 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "DenyIntelWhereAmdEquivalentExists16",
+      "Effect": "Deny",
+      "Action": "ec2:RunInstances",
+      "Resource": "arn:aws:ec2:*:*:instance/*",
+      "Condition": {
+        "StringLike": {
+          "ec2:InstanceType": [
+            "r6i.*",
+            "r7i.*"
+          ]
+        },
+        "StringEquals": {
+          "aws:RequestedRegion": [
+            "ap-east-2"
+          ]
+        }
+      }
+    },
+    {
+      "Sid": "DenyIntelWhereAmdEquivalentExists17",
+      "Effect": "Deny",
+      "Action": "ec2:RunInstances",
+      "Resource": "arn:aws:ec2:*:*:instance/*",
+      "Condition": {
+        "StringLike": {
+          "ec2:InstanceType": [
+            "t2.*",
+            "t3.*"
+          ]
+        },
+        "StringEquals": {
+          "aws:RequestedRegion": [
+            "ap-northeast-2"
+          ]
+        }
+      }
+    },
+    {
+      "Sid": "DenyIntelWhereAmdEquivalentExists18",
+      "Effect": "Deny",
+      "Action": "ec2:RunInstances",
+      "Resource": "arn:aws:ec2:*:*:instance/*",
+      "Condition": {
+        "StringLike": {
+          "ec2:InstanceType": [
+            "t3.*"
+          ]
+        },
+        "StringEquals": {
+          "aws:RequestedRegion": [
+            "il-central-1"
+          ]
+        }
+      }
+    }
+  ]
+}
