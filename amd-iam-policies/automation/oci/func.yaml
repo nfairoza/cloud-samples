@@ -1,0 +1,16 @@
+schema_version: 20180708
+name: amd-iam-policies-weekly
+version: 0.0.1
+
+# `docker` rather than `python`. The python runtime makes Fn generate its own
+# Dockerfile, which would build only this directory - and generate.py and
+# runner.py live above it. Declaring docker tells Fn to use the Dockerfile
+# beside this file, built from the repo root.
+runtime: docker
+
+entrypoint: /python/bin/fdk /function/func.py handler
+
+# Matches timeout_in_seconds in terraform/main.tf. 300 is the OCI Functions
+# maximum; a full four-cloud CCA sweep measures ~48s.
+timeout: 300
+memory: 1024

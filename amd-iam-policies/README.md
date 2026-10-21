@@ -88,6 +88,23 @@ Get an API key from the EPYC Advisory Portal: Profile → Generate API Key. AMD 
 
 Pass `--snapshot data/cca-snapshot-2026-10-21.json` to rebuild the policies from the committed snapshot without calling the API at all.
 
+### On a schedule
+
+These policies have a shelf life. AMD adds regions and instance families several times a year, and each time it does, some region × family pair that *had* no AMD equivalent now has one — and the committed policy quietly stops enforcing what it claims to enforce.
+
+[`automation/`](automation/) runs this same script weekly in whichever cloud you already operate, and notifies you **only when the answer actually changes** (roughly 2 runs in 52). It's optional — the policy pack above is complete without it.
+
+| Cloud | Native template | Terraform | Compute |
+|-------|-----------------|-----------|---------|
+| [AWS](automation/aws/README.md) | CloudFormation | yes | Lambda |
+| [Azure](automation/azure/README.md) | Bicep | yes | Container Apps Job |
+| [GCP](automation/gcp/README.md) | — *(Terraform is native)* | yes | Cloud Run Job |
+| [OCI](automation/oci/README.md) | — *(Terraform is native)* | yes | Functions |
+
+You only need one — the sweep covers all four clouds' catalogs wherever it runs. GCP and OCI have no second format because they no longer have one: Deployment Manager shut down 2026-03-31 and Infrastructure Manager runs Terraform, and OCI Resource Manager has always been Terraform.
+
+It regenerates artifacts into object storage and nothing more. **Promoting a regenerated policy stays a human review step** — the change alert exists to tell you a review is due, not to widen a Deny policy across your organisation unattended.
+
 ## Rolling this out
 
 Start in audit mode. Every cloud supports it and every folder README shows how:
@@ -113,4 +130,12 @@ amd-iam-policies/
   azure/  policy definition, assignment + exemption examples, deny-matrix.csv, README
   gcp/    custom constraints x2, org policy example, deny-matrix.csv, README
   oci/    IAM allow-list, quota policy, deny-matrix.csv, README
+  automation/                     optional: run the above weekly
+    runner.py                     headless wrapper - 4 secret stores, 4 object stores
+    validate.py                   static checks on every template
+    Dockerfile, package.sh        images for Azure/GCP; zip for Lambda
+    aws/    cloudformation.yaml + terraform/, README
+    azure/  main.bicep + vault-access.bicep + terraform/, README
+    gcp/    terraform/, README
+    oci/    terraform/ + its own Dockerfile/func.py (Fn contract), README
 ```

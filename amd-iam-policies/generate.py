@@ -41,9 +41,23 @@ import urllib.error
 import urllib.request
 
 BASE = 'https://api.epycadvisory.amd.com'
+
+# TLS verification is ON. api.epycadvisory.amd.com presents a valid public
+# certificate, so there is no reason to weaken this by default - and in an
+# unattended cloud runner, an unverified connection to a credential-bearing
+# endpoint is a real exposure. Corporate proxies that re-sign TLS are the one
+# case that legitimately fails here: point REQUESTS_CA_BUNDLE/SSL_CERT_FILE at
+# the proxy CA, or pass --insecure if you have no other option.
 _CTX = ssl.create_default_context()
-_CTX.check_hostname = False
-_CTX.verify_mode = ssl.CERT_NONE
+
+
+def set_insecure():
+    """Opt out of certificate verification (TLS-intercepting proxies only)."""
+    global _CTX
+    _CTX = ssl.create_default_context()
+    _CTX.check_hostname = False
+    _CTX.verify_mode = ssl.CERT_NONE
+
 
 CLOUDS = ['AWS', 'AZURE', 'GCP', 'OCI']
 BATCH = 400
@@ -910,7 +924,11 @@ def main():
     ap.add_argument('--cloud', default=','.join(CLOUDS))
     ap.add_argument('--snapshot', help='reuse a previous snapshot instead of calling CCA')
     ap.add_argument('--date', default=datetime.date.today().isoformat())
+    ap.add_argument('--insecure', action='store_true',
+                    help='skip TLS verification (TLS-intercepting proxies only)')
     args = ap.parse_args()
+    if args.insecure:
+        set_insecure()
 
     clouds = [c.strip().upper() for c in args.cloud.split(',') if c.strip()]
     stamp = args.date

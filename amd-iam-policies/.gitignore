@@ -1,0 +1,14 @@
+# Build and run artifacts. Everything here is reproducible:
+#   __pycache__/   interpreter bytecode
+#   build/         automation/package.sh output (deterministic - rebuild it)
+#   runs/          `runner.py --backend local` scratch output
+#   .terraform/    provider downloads
+#   *.tfstate      state can contain resource metadata; it does not belong here
+__pycache__/
+*.pyc
+build/
+runs/
+.terraform/
+.terraform.lock.hcl
+*.tfstate
+*.tfstate.*
