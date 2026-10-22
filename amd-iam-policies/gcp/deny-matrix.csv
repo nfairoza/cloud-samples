@@ -1,0 +1,909 @@
+region,instance_family,probe_sku,decision,amd_equivalents
+africa-south1,c2-standard,c2-standard-16,DENY,c2d-standard-16 c3d-standard-16
+africa-south1,c3-highcpu,c3-highcpu-8,DENY,c3d-highcpu-8
+africa-south1,c3-highmem,c3-highmem-8,DENY,c3d-highmem-8
+africa-south1,c3-standard,c3-standard-8,DENY,c3d-standard-8
+africa-south1,c4-highcpu,c4-highcpu-16,ALLOW,
+africa-south1,c4-highmem,c4-highmem-16-lssd,ALLOW,
+africa-south1,c4-standard,c4-standard-16-lssd,DENY,c4d-standard-16-lssd
+africa-south1,e2-highcpu,e2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+africa-south1,e2-highmem,e2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+africa-south1,e2-medium,e2-medium,DENY,n4d-highcpu-2
+africa-south1,e2-micro,e2-micro,ALLOW,
+africa-south1,e2-small,e2-small,DENY,n4d-highcpu-2
+africa-south1,e2-standard,e2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+africa-south1,n1-highcpu,n1-highcpu-16,DENY,n2d-highcpu-16 n4d-highcpu-16 n4d-highcpu-8
+africa-south1,n1-highmem,n1-highmem-16,DENY,n2d-highmem-16 n4d-highmem-16 n4d-highmem-8
+africa-south1,n1-standard,n1-standard-16,DENY,n2d-standard-16 n4d-standard-16 n4d-standard-8
+africa-south1,n2-highcpu,n2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+africa-south1,n2-highmem,n2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+africa-south1,n2-standard,n2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+africa-south1,n4-highcpu,n4-highcpu-16,ALLOW,
+africa-south1,n4-highmem,n4-highmem-16,ALLOW,
+africa-south1,n4-standard,n4-standard-16,ALLOW,
+asia-east1,c2-standard,c2-standard-16,DENY,c2d-standard-16 c3d-standard-16
+asia-east1,c3-highcpu,c3-highcpu-8,DENY,c3d-highcpu-8
+asia-east1,c3-highmem,c3-highmem-8,DENY,c3d-highmem-8
+asia-east1,c3-standard,c3-standard-8,DENY,c3d-standard-8
+asia-east1,c4-highcpu,c4-highcpu-16,ALLOW,
+asia-east1,c4-highmem,c4-highmem-16-lssd,ALLOW,
+asia-east1,c4-standard,c4-standard-16-lssd,DENY,c4d-standard-16-lssd
+asia-east1,e2-highcpu,e2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+asia-east1,e2-highmem,e2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+asia-east1,e2-medium,e2-medium,DENY,n4d-highcpu-2
+asia-east1,e2-micro,e2-micro,ALLOW,
+asia-east1,e2-small,e2-small,DENY,n4d-highcpu-2
+asia-east1,e2-standard,e2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+asia-east1,n1-highcpu,n1-highcpu-16,DENY,n2d-highcpu-16 n4d-highcpu-16 n4d-highcpu-8
+asia-east1,n1-highmem,n1-highmem-16,DENY,n2d-highmem-16 n4d-highmem-16 n4d-highmem-8
+asia-east1,n1-standard,n1-standard-16,DENY,n2d-standard-16 n4d-standard-16 n4d-standard-8
+asia-east1,n2-highcpu,n2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+asia-east1,n2-highmem,n2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+asia-east1,n2-standard,n2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+asia-east1,n4-highcpu,n4-highcpu-16,ALLOW,
+asia-east1,n4-highmem,n4-highmem-16,ALLOW,
+asia-east1,n4-standard,n4-standard-16,ALLOW,
+asia-east2,c2-standard,c2-standard-16,DENY,c2d-standard-16 c3d-standard-16
+asia-east2,c3-highcpu,c3-highcpu-8,DENY,c3d-highcpu-8
+asia-east2,c3-highmem,c3-highmem-8,DENY,c3d-highmem-8
+asia-east2,c3-standard,c3-standard-8,DENY,c3d-standard-8
+asia-east2,c4-highcpu,c4-highcpu-16,ALLOW,
+asia-east2,c4-highmem,c4-highmem-16-lssd,ALLOW,
+asia-east2,c4-standard,c4-standard-16-lssd,DENY,c4d-standard-16-lssd
+asia-east2,e2-highcpu,e2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+asia-east2,e2-highmem,e2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+asia-east2,e2-medium,e2-medium,DENY,n4d-highcpu-2
+asia-east2,e2-micro,e2-micro,ALLOW,
+asia-east2,e2-small,e2-small,DENY,n4d-highcpu-2
+asia-east2,e2-standard,e2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+asia-east2,n1-highcpu,n1-highcpu-16,DENY,n2d-highcpu-16 n4d-highcpu-16 n4d-highcpu-8
+asia-east2,n1-highmem,n1-highmem-16,DENY,n2d-highmem-16 n4d-highmem-16 n4d-highmem-8
+asia-east2,n1-standard,n1-standard-16,DENY,n2d-standard-16 n4d-standard-16 n4d-standard-8
+asia-east2,n2-highcpu,n2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+asia-east2,n2-highmem,n2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+asia-east2,n2-standard,n2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+asia-east2,n4-highcpu,n4-highcpu-16,ALLOW,
+asia-east2,n4-highmem,n4-highmem-16,ALLOW,
+asia-east2,n4-standard,n4-standard-16,ALLOW,
+asia-northeast1,c2-standard,c2-standard-16,DENY,c2d-standard-16 c3d-standard-16
+asia-northeast1,c3-highcpu,c3-highcpu-8,DENY,c3d-highcpu-8
+asia-northeast1,c3-highmem,c3-highmem-8,DENY,c3d-highmem-8
+asia-northeast1,c3-standard,c3-standard-8-lssd,DENY,c3d-standard-8-lssd
+asia-northeast1,c4-highcpu,c4-highcpu-16,ALLOW,
+asia-northeast1,c4-highmem,c4-highmem-16-lssd,ALLOW,
+asia-northeast1,c4-standard,c4-standard-16-lssd,DENY,c4d-standard-16-lssd
+asia-northeast1,e2-highcpu,e2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+asia-northeast1,e2-highmem,e2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+asia-northeast1,e2-medium,e2-medium,DENY,n4d-highcpu-2
+asia-northeast1,e2-micro,e2-micro,ALLOW,
+asia-northeast1,e2-small,e2-small,DENY,n4d-highcpu-2
+asia-northeast1,e2-standard,e2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+asia-northeast1,n1-highcpu,n1-highcpu-16,DENY,n2d-highcpu-16 n4d-highcpu-16 n4d-highcpu-8
+asia-northeast1,n1-highmem,n1-highmem-16,DENY,n2d-highmem-16 n4d-highmem-16 n4d-highmem-8
+asia-northeast1,n1-standard,n1-standard-16,DENY,n2d-standard-16 n4d-standard-16 n4d-standard-8
+asia-northeast1,n2-highcpu,n2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+asia-northeast1,n2-highmem,n2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+asia-northeast1,n2-standard,n2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+asia-northeast1,n4-highcpu,n4-highcpu-16,ALLOW,
+asia-northeast1,n4-highmem,n4-highmem-16,ALLOW,
+asia-northeast1,n4-standard,n4-standard-16,ALLOW,
+asia-northeast2,c2-standard,c2-standard-16,DENY,c2d-standard-16 c3d-standard-16
+asia-northeast2,c3-highcpu,c3-highcpu-8,DENY,c3d-highcpu-8
+asia-northeast2,c3-highmem,c3-highmem-8,DENY,c3d-highmem-8
+asia-northeast2,c3-standard,c3-standard-8,DENY,c3d-standard-8
+asia-northeast2,c4-highcpu,c4-highcpu-16,ALLOW,
+asia-northeast2,c4-highmem,c4-highmem-16-lssd,ALLOW,
+asia-northeast2,c4-standard,c4-standard-16-lssd,DENY,c4d-standard-16-lssd
+asia-northeast2,e2-highcpu,e2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+asia-northeast2,e2-highmem,e2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+asia-northeast2,e2-medium,e2-medium,DENY,n4d-highcpu-2
+asia-northeast2,e2-micro,e2-micro,ALLOW,
+asia-northeast2,e2-small,e2-small,DENY,n4d-highcpu-2
+asia-northeast2,e2-standard,e2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+asia-northeast2,n1-highcpu,n1-highcpu-16,DENY,n2d-highcpu-16 n4d-highcpu-16 n4d-highcpu-8
+asia-northeast2,n1-highmem,n1-highmem-16,DENY,n2d-highmem-16 n4d-highmem-16 n4d-highmem-8
+asia-northeast2,n1-standard,n1-standard-16,DENY,n2d-standard-16 n4d-standard-16 n4d-standard-8
+asia-northeast2,n2-highcpu,n2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+asia-northeast2,n2-highmem,n2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+asia-northeast2,n2-standard,n2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+asia-northeast2,n4-highcpu,n4-highcpu-16,ALLOW,
+asia-northeast2,n4-highmem,n4-highmem-16,ALLOW,
+asia-northeast2,n4-standard,n4-standard-16,ALLOW,
+asia-northeast3,c2-standard,c2-standard-16,DENY,c2d-standard-16 c3d-standard-16
+asia-northeast3,c3-highcpu,c3-highcpu-8,DENY,c3d-highcpu-8
+asia-northeast3,c3-highmem,c3-highmem-8,DENY,c3d-highmem-8
+asia-northeast3,c3-standard,c3-standard-8,DENY,c3d-standard-8
+asia-northeast3,c4-highcpu,c4-highcpu-16,ALLOW,
+asia-northeast3,c4-highmem,c4-highmem-16-lssd,ALLOW,
+asia-northeast3,c4-standard,c4-standard-16-lssd,DENY,c4d-standard-16-lssd
+asia-northeast3,e2-highcpu,e2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+asia-northeast3,e2-highmem,e2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+asia-northeast3,e2-medium,e2-medium,DENY,n4d-highcpu-2
+asia-northeast3,e2-micro,e2-micro,ALLOW,
+asia-northeast3,e2-small,e2-small,DENY,n4d-highcpu-2
+asia-northeast3,e2-standard,e2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+asia-northeast3,n1-highcpu,n1-highcpu-16,DENY,n2d-highcpu-16 n4d-highcpu-16 n4d-highcpu-8
+asia-northeast3,n1-highmem,n1-highmem-16,DENY,n2d-highmem-16 n4d-highmem-16 n4d-highmem-8
+asia-northeast3,n1-standard,n1-standard-16,DENY,n2d-standard-16 n4d-standard-16 n4d-standard-8
+asia-northeast3,n2-highcpu,n2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+asia-northeast3,n2-highmem,n2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+asia-northeast3,n2-standard,n2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+asia-northeast3,n4-highcpu,n4-highcpu-16,ALLOW,
+asia-northeast3,n4-highmem,n4-highmem-16,ALLOW,
+asia-northeast3,n4-standard,n4-standard-16,ALLOW,
+asia-south1,c2-standard,c2-standard-16,DENY,c2d-standard-16 c3d-standard-16
+asia-south1,c3-highcpu,c3-highcpu-8,DENY,c3d-highcpu-8
+asia-south1,c3-highmem,c3-highmem-8,DENY,c3d-highmem-8
+asia-south1,c3-standard,c3-standard-8-lssd,DENY,c3d-standard-8-lssd
+asia-south1,c4-highcpu,c4-highcpu-16,ALLOW,
+asia-south1,c4-highmem,c4-highmem-16-lssd,ALLOW,
+asia-south1,c4-standard,c4-standard-16-lssd,DENY,c4d-standard-16-lssd
+asia-south1,e2-highcpu,e2-highcpu-16,DENY,n2d-highcpu-16 n4d-highcpu-16 n4d-highcpu-8
+asia-south1,e2-highmem,e2-highmem-16,DENY,n2d-highmem-16 n4d-highmem-16 n4d-highmem-8
+asia-south1,e2-medium,e2-medium,DENY,n4d-highcpu-2
+asia-south1,e2-micro,e2-micro,ALLOW,
+asia-south1,e2-small,e2-small,DENY,n4d-highcpu-2
+asia-south1,e2-standard,e2-standard-16,DENY,n2d-standard-16 n4d-standard-16 n4d-standard-8
+asia-south1,n1-highcpu,n1-highcpu-16,DENY,n2d-highcpu-16 n4d-highcpu-16 n4d-highcpu-8
+asia-south1,n1-highmem,n1-highmem-16,DENY,n2d-highmem-16 n4d-highmem-16 n4d-highmem-8
+asia-south1,n1-standard,n1-standard-16,DENY,n2d-standard-16 n4d-standard-16 n4d-standard-8
+asia-south1,n2-highcpu,n2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+asia-south1,n2-highmem,n2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+asia-south1,n2-standard,n2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+asia-south1,n4-highcpu,n4-highcpu-16,ALLOW,
+asia-south1,n4-highmem,n4-highmem-16,ALLOW,
+asia-south1,n4-standard,n4-standard-16,ALLOW,
+asia-south2,c2-standard,c2-standard-16,DENY,c2d-standard-16 c3d-standard-16
+asia-south2,c3-highcpu,c3-highcpu-8,DENY,c3d-highcpu-8
+asia-south2,c3-highmem,c3-highmem-8,DENY,c3d-highmem-8
+asia-south2,c3-standard,c3-standard-8-lssd,DENY,c3d-standard-8-lssd
+asia-south2,c4-highcpu,c4-highcpu-16,ALLOW,
+asia-south2,c4-highmem,c4-highmem-16-lssd,ALLOW,
+asia-south2,c4-standard,c4-standard-16-lssd,DENY,c4d-standard-16-lssd
+asia-south2,e2-highcpu,e2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+asia-south2,e2-highmem,e2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+asia-south2,e2-medium,e2-medium,DENY,n4d-highcpu-2
+asia-south2,e2-micro,e2-micro,ALLOW,
+asia-south2,e2-small,e2-small,DENY,n4d-highcpu-2
+asia-south2,e2-standard,e2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+asia-south2,n1-highcpu,n1-highcpu-16,DENY,n2d-highcpu-16 n4d-highcpu-16 n4d-highcpu-8
+asia-south2,n1-highmem,n1-highmem-16,DENY,n2d-highmem-16 n4d-highmem-16 n4d-highmem-8
+asia-south2,n1-standard,n1-standard-16,DENY,n2d-standard-16 n4d-standard-16 n4d-standard-8
+asia-south2,n2-highcpu,n2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+asia-south2,n2-highmem,n2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+asia-south2,n2-standard,n2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+asia-south2,n4-highcpu,n4-highcpu-16,ALLOW,
+asia-south2,n4-highmem,n4-highmem-16,ALLOW,
+asia-south2,n4-standard,n4-standard-16,ALLOW,
+asia-southeast1,c2-standard,c2-standard-16,DENY,c2d-standard-16 c3d-standard-16
+asia-southeast1,c3-highcpu,c3-highcpu-8,DENY,c3d-highcpu-8
+asia-southeast1,c3-highmem,c3-highmem-8,DENY,c3d-highmem-8
+asia-southeast1,c3-standard,c3-standard-8-lssd,DENY,c3d-standard-8-lssd
+asia-southeast1,c4-highcpu,c4-highcpu-16,ALLOW,
+asia-southeast1,c4-highmem,c4-highmem-16-lssd,ALLOW,
+asia-southeast1,c4-standard,c4-standard-16-lssd,DENY,c4d-standard-16-lssd
+asia-southeast1,e2-highcpu,e2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+asia-southeast1,e2-highmem,e2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+asia-southeast1,e2-medium,e2-medium,DENY,n4d-highcpu-2
+asia-southeast1,e2-micro,e2-micro,ALLOW,
+asia-southeast1,e2-small,e2-small,DENY,n4d-highcpu-2
+asia-southeast1,e2-standard,e2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+asia-southeast1,n1-highcpu,n1-highcpu-16,DENY,n2d-highcpu-16 n4d-highcpu-16 n4d-highcpu-8
+asia-southeast1,n1-highmem,n1-highmem-16,DENY,n2d-highmem-16 n4d-highmem-16 n4d-highmem-8
+asia-southeast1,n1-standard,n1-standard-16,DENY,n2d-standard-16 n4d-standard-16 n4d-standard-8
+asia-southeast1,n2-highcpu,n2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+asia-southeast1,n2-highmem,n2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+asia-southeast1,n2-standard,n2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+asia-southeast1,n4-highcpu,n4-highcpu-16,ALLOW,
+asia-southeast1,n4-highmem,n4-highmem-16,ALLOW,
+asia-southeast1,n4-standard,n4-standard-16,ALLOW,
+asia-southeast2,c2-standard,c2-standard-16,DENY,c2d-standard-16 c3d-standard-16
+asia-southeast2,c3-highcpu,c3-highcpu-8,DENY,c3d-highcpu-8
+asia-southeast2,c3-highmem,c3-highmem-8,DENY,c3d-highmem-8
+asia-southeast2,c3-standard,c3-standard-8,DENY,c3d-standard-8
+asia-southeast2,c4-highcpu,c4-highcpu-16,ALLOW,
+asia-southeast2,c4-highmem,c4-highmem-16-lssd,ALLOW,
+asia-southeast2,c4-standard,c4-standard-16-lssd,DENY,c4d-standard-16-lssd
+asia-southeast2,e2-highcpu,e2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+asia-southeast2,e2-highmem,e2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+asia-southeast2,e2-medium,e2-medium,DENY,n4d-highcpu-2
+asia-southeast2,e2-micro,e2-micro,ALLOW,
+asia-southeast2,e2-small,e2-small,DENY,n4d-highcpu-2
+asia-southeast2,e2-standard,e2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+asia-southeast2,n1-highcpu,n1-highcpu-16,DENY,n2d-highcpu-16 n4d-highcpu-16 n4d-highcpu-8
+asia-southeast2,n1-highmem,n1-highmem-16,DENY,n2d-highmem-16 n4d-highmem-16 n4d-highmem-8
+asia-southeast2,n1-standard,n1-standard-16,DENY,n2d-standard-16 n4d-standard-16 n4d-standard-8
+asia-southeast2,n2-highcpu,n2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+asia-southeast2,n2-highmem,n2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+asia-southeast2,n2-standard,n2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+asia-southeast2,n4-highcpu,n4-highcpu-16,ALLOW,
+asia-southeast2,n4-highmem,n4-highmem-16,ALLOW,
+asia-southeast2,n4-standard,n4-standard-16,ALLOW,
+asia-southeast3,c4-highcpu,c4-highcpu-16,ALLOW,
+asia-southeast3,c4-highmem,c4-highmem-16-lssd,ALLOW,
+asia-southeast3,c4-standard,c4-standard-16-lssd,ALLOW,
+asia-southeast3,n4-highcpu,n4-highcpu-16,ALLOW,
+asia-southeast3,n4-highmem,n4-highmem-16,ALLOW,
+asia-southeast3,n4-standard,n4-standard-16,ALLOW,
+australia-southeast1,c2-standard,c2-standard-16,DENY,c2d-standard-16 c3d-standard-16
+australia-southeast1,c3-highcpu,c3-highcpu-8,DENY,c3d-highcpu-8
+australia-southeast1,c3-highmem,c3-highmem-8,DENY,c3d-highmem-8
+australia-southeast1,c3-standard,c3-standard-8-lssd,DENY,c3d-standard-8-lssd
+australia-southeast1,c4-highcpu,c4-highcpu-16,ALLOW,
+australia-southeast1,c4-highmem,c4-highmem-16-lssd,ALLOW,
+australia-southeast1,c4-standard,c4-standard-16-lssd,DENY,c4d-standard-16-lssd
+australia-southeast1,e2-highcpu,e2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+australia-southeast1,e2-highmem,e2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+australia-southeast1,e2-medium,e2-medium,DENY,n4d-highcpu-2
+australia-southeast1,e2-micro,e2-micro,ALLOW,
+australia-southeast1,e2-small,e2-small,DENY,n4d-highcpu-2
+australia-southeast1,e2-standard,e2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+australia-southeast1,n1-highcpu,n1-highcpu-16,DENY,n2d-highcpu-16 n4d-highcpu-16 n4d-highcpu-8
+australia-southeast1,n1-highmem,n1-highmem-16,DENY,n2d-highmem-16 n4d-highmem-16 n4d-highmem-8
+australia-southeast1,n1-standard,n1-standard-16,DENY,n2d-standard-16 n4d-standard-16 n4d-standard-8
+australia-southeast1,n2-highcpu,n2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+australia-southeast1,n2-highmem,n2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+australia-southeast1,n2-standard,n2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+australia-southeast1,n4-highcpu,n4-highcpu-16,ALLOW,
+australia-southeast1,n4-highmem,n4-highmem-16,ALLOW,
+australia-southeast1,n4-standard,n4-standard-16,ALLOW,
+australia-southeast2,c2-standard,c2-standard-16,DENY,c2d-standard-16 c3d-standard-16
+australia-southeast2,c3-highcpu,c3-highcpu-8,DENY,c3d-highcpu-8
+australia-southeast2,c3-highmem,c3-highmem-8,DENY,c3d-highmem-8
+australia-southeast2,c3-standard,c3-standard-8-lssd,DENY,c3d-standard-8-lssd
+australia-southeast2,c4-highcpu,c4-highcpu-16,ALLOW,
+australia-southeast2,c4-highmem,c4-highmem-16-lssd,ALLOW,
+australia-southeast2,c4-standard,c4-standard-16-lssd,DENY,c4d-standard-16-lssd
+australia-southeast2,e2-highcpu,e2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+australia-southeast2,e2-highmem,e2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+australia-southeast2,e2-medium,e2-medium,DENY,n4d-highcpu-2
+australia-southeast2,e2-micro,e2-micro,ALLOW,
+australia-southeast2,e2-small,e2-small,DENY,n4d-highcpu-2
+australia-southeast2,e2-standard,e2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+australia-southeast2,n1-highcpu,n1-highcpu-16,DENY,n2d-highcpu-16 n4d-highcpu-16 n4d-highcpu-8
+australia-southeast2,n1-highmem,n1-highmem-16,DENY,n2d-highmem-16 n4d-highmem-16 n4d-highmem-8
+australia-southeast2,n1-standard,n1-standard-16,DENY,n2d-standard-16 n4d-standard-16 n4d-standard-8
+australia-southeast2,n2-highcpu,n2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+australia-southeast2,n2-highmem,n2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+australia-southeast2,n2-standard,n2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+australia-southeast2,n4-highcpu,n4-highcpu-16,ALLOW,
+australia-southeast2,n4-highmem,n4-highmem-16,ALLOW,
+australia-southeast2,n4-standard,n4-standard-16,ALLOW,
+europe-central2,c2-standard,c2-standard-16,DENY,c2d-standard-16 c3d-standard-16
+europe-central2,c3-highcpu,c3-highcpu-8,DENY,c3d-highcpu-8
+europe-central2,c3-highmem,c3-highmem-8,DENY,c3d-highmem-8
+europe-central2,c3-standard,c3-standard-8,DENY,c3d-standard-8
+europe-central2,c4-highcpu,c4-highcpu-16,ALLOW,
+europe-central2,c4-highmem,c4-highmem-16-lssd,ALLOW,
+europe-central2,c4-standard,c4-standard-16-lssd,DENY,c4d-standard-16-lssd
+europe-central2,e2-highcpu,e2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+europe-central2,e2-highmem,e2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+europe-central2,e2-medium,e2-medium,DENY,n4d-highcpu-2
+europe-central2,e2-micro,e2-micro,ALLOW,
+europe-central2,e2-small,e2-small,DENY,n4d-highcpu-2
+europe-central2,e2-standard,e2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+europe-central2,n1-highcpu,n1-highcpu-16,DENY,n2d-highcpu-16 n4d-highcpu-16 n4d-highcpu-8
+europe-central2,n1-highmem,n1-highmem-16,DENY,n2d-highmem-16 n4d-highmem-16 n4d-highmem-8
+europe-central2,n1-standard,n1-standard-16,DENY,n2d-standard-16 n4d-standard-16 n4d-standard-8
+europe-central2,n2-highcpu,n2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+europe-central2,n2-highmem,n2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+europe-central2,n2-standard,n2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+europe-central2,n4-highcpu,n4-highcpu-16,ALLOW,
+europe-central2,n4-highmem,n4-highmem-16,ALLOW,
+europe-central2,n4-standard,n4-standard-16,ALLOW,
+europe-north1,c2-standard,c2-standard-16,DENY,c2d-standard-16 c3d-standard-16
+europe-north1,c3-highcpu,c3-highcpu-8,DENY,c3d-highcpu-8
+europe-north1,c3-highmem,c3-highmem-8,DENY,c3d-highmem-8
+europe-north1,c3-standard,c3-standard-8-lssd,DENY,c3d-standard-8-lssd
+europe-north1,c4-highcpu,c4-highcpu-16,ALLOW,
+europe-north1,c4-highmem,c4-highmem-16-lssd,ALLOW,
+europe-north1,c4-standard,c4-standard-16-lssd,DENY,c4d-standard-16-lssd
+europe-north1,e2-highcpu,e2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+europe-north1,e2-highmem,e2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+europe-north1,e2-medium,e2-medium,DENY,n4d-highcpu-2
+europe-north1,e2-micro,e2-micro,ALLOW,
+europe-north1,e2-small,e2-small,DENY,n4d-highcpu-2
+europe-north1,e2-standard,e2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+europe-north1,n1-highcpu,n1-highcpu-16,DENY,n2d-highcpu-16 n4d-highcpu-16 n4d-highcpu-8
+europe-north1,n1-highmem,n1-highmem-16,DENY,n2d-highmem-16 n4d-highmem-16 n4d-highmem-8
+europe-north1,n1-standard,n1-standard-16,DENY,n2d-standard-16 n4d-standard-16 n4d-standard-8
+europe-north1,n2-highcpu,n2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+europe-north1,n2-highmem,n2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+europe-north1,n2-standard,n2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+europe-north1,n4-highcpu,n4-highcpu-16,ALLOW,
+europe-north1,n4-highmem,n4-highmem-16,ALLOW,
+europe-north1,n4-standard,n4-standard-16,ALLOW,
+europe-north2,c2-standard,c2-standard-16,DENY,c3d-standard-16
+europe-north2,c3-highcpu,c3-highcpu-8,DENY,c3d-highcpu-8
+europe-north2,c3-highmem,c3-highmem-8,DENY,c3d-highmem-8
+europe-north2,c3-standard,c3-standard-8,DENY,c3d-standard-8
+europe-north2,c4-highcpu,c4-highcpu-16,ALLOW,
+europe-north2,c4-highmem,c4-highmem-16-lssd,ALLOW,
+europe-north2,c4-standard,c4-standard-16-lssd,DENY,c4d-standard-16-lssd
+europe-north2,e2-highcpu,e2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+europe-north2,e2-highmem,e2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+europe-north2,e2-medium,e2-medium,DENY,n4d-highcpu-2
+europe-north2,e2-micro,e2-micro,ALLOW,
+europe-north2,e2-small,e2-small,DENY,n4d-highcpu-2
+europe-north2,e2-standard,e2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+europe-north2,n4-highcpu,n4-highcpu-16,ALLOW,
+europe-north2,n4-highmem,n4-highmem-16,ALLOW,
+europe-north2,n4-standard,n4-standard-16,ALLOW,
+europe-southwest1,c2-standard,c2-standard-16,DENY,c2d-standard-16 c3d-standard-16
+europe-southwest1,c3-highcpu,c3-highcpu-8,DENY,c3d-highcpu-8
+europe-southwest1,c3-highmem,c3-highmem-8,DENY,c3d-highmem-8
+europe-southwest1,c3-standard,c3-standard-8,DENY,c3d-standard-8
+europe-southwest1,c4-highcpu,c4-highcpu-16,ALLOW,
+europe-southwest1,c4-highmem,c4-highmem-16-lssd,ALLOW,
+europe-southwest1,c4-standard,c4-standard-16-lssd,DENY,c4d-standard-16-lssd
+europe-southwest1,e2-highcpu,e2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+europe-southwest1,e2-highmem,e2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+europe-southwest1,e2-medium,e2-medium,DENY,n4d-highcpu-2
+europe-southwest1,e2-micro,e2-micro,ALLOW,
+europe-southwest1,e2-small,e2-small,DENY,n4d-highcpu-2
+europe-southwest1,e2-standard,e2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+europe-southwest1,n1-highcpu,n1-highcpu-16,DENY,n2d-highcpu-16 n4d-highcpu-16 n4d-highcpu-8
+europe-southwest1,n1-highmem,n1-highmem-16,DENY,n2d-highmem-16 n4d-highmem-16 n4d-highmem-8
+europe-southwest1,n1-standard,n1-standard-16,DENY,n2d-standard-16 n4d-standard-16 n4d-standard-8
+europe-southwest1,n2-highcpu,n2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+europe-southwest1,n2-highmem,n2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+europe-southwest1,n2-standard,n2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+europe-southwest1,n4-highcpu,n4-highcpu-16,ALLOW,
+europe-southwest1,n4-highmem,n4-highmem-16,ALLOW,
+europe-southwest1,n4-standard,n4-standard-16,ALLOW,
+europe-west10,c2-standard,c2-standard-16,DENY,c2d-standard-16 c3d-standard-16
+europe-west10,c3-highcpu,c3-highcpu-8,DENY,c3d-highcpu-8
+europe-west10,c3-highmem,c3-highmem-8,DENY,c3d-highmem-8
+europe-west10,c3-standard,c3-standard-8,DENY,c3d-standard-8
+europe-west10,c4-highcpu,c4-highcpu-16,ALLOW,
+europe-west10,c4-highmem,c4-highmem-16-lssd,ALLOW,
+europe-west10,c4-standard,c4-standard-16,ALLOW,
+europe-west10,e2-highcpu,e2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+europe-west10,e2-highmem,e2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+europe-west10,e2-medium,e2-medium,DENY,n4d-highcpu-2
+europe-west10,e2-micro,e2-micro,ALLOW,
+europe-west10,e2-small,e2-small,DENY,n4d-highcpu-2
+europe-west10,e2-standard,e2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+europe-west10,n1-highcpu,n1-highcpu-16,DENY,n2d-highcpu-16 n4d-highcpu-16 n4d-highcpu-8
+europe-west10,n1-highmem,n1-highmem-16,DENY,n2d-highmem-16 n4d-highmem-16 n4d-highmem-8
+europe-west10,n1-standard,n1-standard-16,DENY,n2d-standard-16 n4d-standard-16 n4d-standard-8
+europe-west10,n2-highcpu,n2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+europe-west10,n2-highmem,n2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+europe-west10,n2-standard,n2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+europe-west12,c2-standard,c2-standard-16,DENY,c2d-standard-16 c3d-standard-16
+europe-west12,c3-highcpu,c3-highcpu-8,DENY,c3d-highcpu-8
+europe-west12,c3-highmem,c3-highmem-8,DENY,c3d-highmem-8
+europe-west12,c3-standard,c3-standard-8,DENY,c3d-standard-8
+europe-west12,c4-highcpu,c4-highcpu-16,ALLOW,
+europe-west12,c4-highmem,c4-highmem-16-lssd,ALLOW,
+europe-west12,c4-standard,c4-standard-16-lssd,DENY,c4d-standard-16-lssd
+europe-west12,e2-highcpu,e2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+europe-west12,e2-highmem,e2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+europe-west12,e2-medium,e2-medium,DENY,n4d-highcpu-2
+europe-west12,e2-micro,e2-micro,ALLOW,
+europe-west12,e2-small,e2-small,DENY,n4d-highcpu-2
+europe-west12,e2-standard,e2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+europe-west12,n1-highcpu,n1-highcpu-16,DENY,n2d-highcpu-16 n4d-highcpu-16 n4d-highcpu-8
+europe-west12,n1-highmem,n1-highmem-16,DENY,n2d-highmem-16 n4d-highmem-16 n4d-highmem-8
+europe-west12,n1-standard,n1-standard-16,DENY,n2d-standard-16 n4d-standard-16 n4d-standard-8
+europe-west12,n2-highcpu,n2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+europe-west12,n2-highmem,n2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+europe-west12,n2-standard,n2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+europe-west1,c2-standard,c2-standard-16,DENY,c2d-standard-16 c3d-standard-16
+europe-west1,c3-highcpu,c3-highcpu-8,DENY,c3d-highcpu-8
+europe-west1,c3-highmem,c3-highmem-8,DENY,c3d-highmem-8
+europe-west1,c3-standard,c3-standard-8-lssd,DENY,c3d-standard-8-lssd
+europe-west1,c4-highcpu,c4-highcpu-16,ALLOW,
+europe-west1,c4-highmem,c4-highmem-16-lssd,ALLOW,
+europe-west1,c4-standard,c4-standard-16-lssd,DENY,c4d-standard-16-lssd
+europe-west1,e2-highcpu,e2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+europe-west1,e2-highmem,e2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+europe-west1,e2-medium,e2-medium,DENY,n4d-highcpu-2
+europe-west1,e2-micro,e2-micro,ALLOW,
+europe-west1,e2-small,e2-small,DENY,n4d-highcpu-2
+europe-west1,e2-standard,e2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+europe-west1,n1-highcpu,n1-highcpu-16,DENY,n2d-highcpu-16 n4d-highcpu-16 n4d-highcpu-8
+europe-west1,n1-highmem,n1-highmem-16,DENY,n2d-highmem-16 n4d-highmem-16 n4d-highmem-8
+europe-west1,n1-standard,n1-standard-16,DENY,n2d-standard-16 n4d-standard-16 n4d-standard-8
+europe-west1,n2-highcpu,n2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+europe-west1,n2-highmem,n2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+europe-west1,n2-standard,n2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+europe-west1,n4-highcpu,n4-highcpu-16,ALLOW,
+europe-west1,n4-highmem,n4-highmem-16,ALLOW,
+europe-west1,n4-standard,n4-standard-16,ALLOW,
+europe-west2,c2-standard,c2-standard-16,DENY,c2d-standard-16 c3d-standard-16
+europe-west2,c3-highcpu,c3-highcpu-8,DENY,c3d-highcpu-8
+europe-west2,c3-highmem,c3-highmem-8,DENY,c3d-highmem-8
+europe-west2,c3-standard,c3-standard-8-lssd,DENY,c3d-standard-8-lssd
+europe-west2,c4-highcpu,c4-highcpu-16,ALLOW,
+europe-west2,c4-highmem,c4-highmem-16-lssd,ALLOW,
+europe-west2,c4-standard,c4-standard-16-lssd,DENY,c4d-standard-16-lssd
+europe-west2,e2-highcpu,e2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+europe-west2,e2-highmem,e2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+europe-west2,e2-medium,e2-medium,DENY,n4d-highcpu-2
+europe-west2,e2-micro,e2-micro,ALLOW,
+europe-west2,e2-small,e2-small,DENY,n4d-highcpu-2
+europe-west2,e2-standard,e2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+europe-west2,n1-highcpu,n1-highcpu-16,DENY,n2d-highcpu-16 n4d-highcpu-16 n4d-highcpu-8
+europe-west2,n1-highmem,n1-highmem-16,DENY,n2d-highmem-16 n4d-highmem-16 n4d-highmem-8
+europe-west2,n1-standard,n1-standard-16,DENY,n2d-standard-16 n4d-standard-16 n4d-standard-8
+europe-west2,n2-highcpu,n2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+europe-west2,n2-highmem,n2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+europe-west2,n2-standard,n2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+europe-west2,n4-highcpu,n4-highcpu-16,ALLOW,
+europe-west2,n4-highmem,n4-highmem-16,ALLOW,
+europe-west2,n4-standard,n4-standard-16,ALLOW,
+europe-west3,c2-standard,c2-standard-16,DENY,c2d-standard-16 c3d-standard-16
+europe-west3,c3-highcpu,c3-highcpu-8,DENY,c3d-highcpu-8
+europe-west3,c3-highmem,c3-highmem-8,DENY,c3d-highmem-8
+europe-west3,c3-standard,c3-standard-8-lssd,DENY,c3d-standard-8-lssd
+europe-west3,c4-highcpu,c4-highcpu-16,ALLOW,
+europe-west3,c4-highmem,c4-highmem-16-lssd,ALLOW,
+europe-west3,c4-standard,c4-standard-16-lssd,DENY,c4d-standard-16-lssd
+europe-west3,e2-highcpu,e2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+europe-west3,e2-highmem,e2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+europe-west3,e2-medium,e2-medium,DENY,n4d-highcpu-2
+europe-west3,e2-micro,e2-micro,ALLOW,
+europe-west3,e2-small,e2-small,DENY,n4d-highcpu-2
+europe-west3,e2-standard,e2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+europe-west3,n1-highcpu,n1-highcpu-16,DENY,n2d-highcpu-16 n4d-highcpu-16 n4d-highcpu-8
+europe-west3,n1-highmem,n1-highmem-16,DENY,n2d-highmem-16 n4d-highmem-16 n4d-highmem-8
+europe-west3,n1-standard,n1-standard-16,DENY,n2d-standard-16 n4d-standard-16 n4d-standard-8
+europe-west3,n2-highcpu,n2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+europe-west3,n2-highmem,n2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+europe-west3,n2-standard,n2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+europe-west3,n4-highcpu,n4-highcpu-16,ALLOW,
+europe-west3,n4-highmem,n4-highmem-16,ALLOW,
+europe-west3,n4-standard,n4-standard-16,ALLOW,
+europe-west4,c2-standard,c2-standard-16,DENY,c2d-standard-16 c3d-standard-16
+europe-west4,c3-highcpu,c3-highcpu-8,DENY,c3d-highcpu-8
+europe-west4,c3-highmem,c3-highmem-8,DENY,c3d-highmem-8
+europe-west4,c3-standard,c3-standard-8-lssd,DENY,c3d-standard-8-lssd
+europe-west4,c4-highcpu,c4-highcpu-16,ALLOW,
+europe-west4,c4-highmem,c4-highmem-16-lssd,ALLOW,
+europe-west4,c4-standard,c4-standard-16-lssd,DENY,c4d-standard-16-lssd
+europe-west4,e2-highcpu,e2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+europe-west4,e2-highmem,e2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+europe-west4,e2-medium,e2-medium,DENY,n4d-highcpu-2
+europe-west4,e2-micro,e2-micro,ALLOW,
+europe-west4,e2-small,e2-small,DENY,n4d-highcpu-2
+europe-west4,e2-standard,e2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+europe-west4,n1-highcpu,n1-highcpu-16,DENY,n2d-highcpu-16 n4d-highcpu-16 n4d-highcpu-8
+europe-west4,n1-highmem,n1-highmem-16,DENY,n2d-highmem-16 n4d-highmem-16 n4d-highmem-8
+europe-west4,n1-standard,n1-standard-16,DENY,n2d-standard-16 n4d-standard-16 n4d-standard-8
+europe-west4,n2-highcpu,n2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+europe-west4,n2-highmem,n2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+europe-west4,n2-standard,n2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+europe-west4,n4-highcpu,n4-highcpu-16,ALLOW,
+europe-west4,n4-highmem,n4-highmem-16,ALLOW,
+europe-west4,n4-standard,n4-standard-16,ALLOW,
+europe-west6,c2-standard,c2-standard-16,DENY,c2d-standard-16 c3d-standard-16
+europe-west6,c3-highcpu,c3-highcpu-8,DENY,c3d-highcpu-8
+europe-west6,c3-highmem,c3-highmem-8,DENY,c3d-highmem-8
+europe-west6,c3-standard,c3-standard-8,DENY,c3d-standard-8
+europe-west6,c4-highcpu,c4-highcpu-16,ALLOW,
+europe-west6,c4-highmem,c4-highmem-16-lssd,ALLOW,
+europe-west6,c4-standard,c4-standard-16-lssd,DENY,c4d-standard-16-lssd
+europe-west6,e2-highcpu,e2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+europe-west6,e2-highmem,e2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+europe-west6,e2-medium,e2-medium,DENY,n4d-highcpu-2
+europe-west6,e2-micro,e2-micro,ALLOW,
+europe-west6,e2-small,e2-small,DENY,n4d-highcpu-2
+europe-west6,e2-standard,e2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+europe-west6,n1-highcpu,n1-highcpu-16,DENY,n2d-highcpu-16 n4d-highcpu-16 n4d-highcpu-8
+europe-west6,n1-highmem,n1-highmem-16,DENY,n2d-highmem-16 n4d-highmem-16 n4d-highmem-8
+europe-west6,n1-standard,n1-standard-16,DENY,n2d-standard-16 n4d-standard-16 n4d-standard-8
+europe-west6,n2-highcpu,n2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+europe-west6,n2-highmem,n2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+europe-west6,n2-standard,n2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+europe-west6,n4-highcpu,n4-highcpu-16,ALLOW,
+europe-west6,n4-highmem,n4-highmem-16,ALLOW,
+europe-west6,n4-standard,n4-standard-16,ALLOW,
+europe-west8,c2-standard,c2-standard-16,DENY,c2d-standard-16 c3d-standard-16
+europe-west8,c3-highcpu,c3-highcpu-8,DENY,c3d-highcpu-8
+europe-west8,c3-highmem,c3-highmem-8,DENY,c3d-highmem-8
+europe-west8,c3-standard,c3-standard-8,DENY,c3d-standard-8
+europe-west8,c4-highcpu,c4-highcpu-16,ALLOW,
+europe-west8,c4-highmem,c4-highmem-16-lssd,ALLOW,
+europe-west8,c4-standard,c4-standard-16-lssd,DENY,c4d-standard-16-lssd
+europe-west8,e2-highcpu,e2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+europe-west8,e2-highmem,e2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+europe-west8,e2-medium,e2-medium,DENY,n4d-highcpu-2
+europe-west8,e2-micro,e2-micro,ALLOW,
+europe-west8,e2-small,e2-small,DENY,n4d-highcpu-2
+europe-west8,e2-standard,e2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+europe-west8,n1-highcpu,n1-highcpu-16,DENY,n2d-highcpu-16 n4d-highcpu-16 n4d-highcpu-8
+europe-west8,n1-highmem,n1-highmem-16,DENY,n2d-highmem-16 n4d-highmem-16 n4d-highmem-8
+europe-west8,n1-standard,n1-standard-16,DENY,n2d-standard-16 n4d-standard-16 n4d-standard-8
+europe-west8,n2-highcpu,n2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+europe-west8,n2-highmem,n2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+europe-west8,n2-standard,n2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+europe-west8,n4-highcpu,n4-highcpu-16,ALLOW,
+europe-west8,n4-highmem,n4-highmem-16,ALLOW,
+europe-west8,n4-standard,n4-standard-16,ALLOW,
+europe-west9,c2-standard,c2-standard-16,DENY,c2d-standard-16 c3d-standard-16
+europe-west9,c3-highcpu,c3-highcpu-8,DENY,c3d-highcpu-8
+europe-west9,c3-highmem,c3-highmem-8,DENY,c3d-highmem-8
+europe-west9,c3-standard,c3-standard-8-lssd,DENY,c3d-standard-8-lssd
+europe-west9,c4-highcpu,c4-highcpu-16,ALLOW,
+europe-west9,c4-highmem,c4-highmem-16-lssd,ALLOW,
+europe-west9,c4-standard,c4-standard-16-lssd,DENY,c4d-standard-16-lssd
+europe-west9,e2-highcpu,e2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+europe-west9,e2-highmem,e2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+europe-west9,e2-medium,e2-medium,DENY,n4d-highcpu-2
+europe-west9,e2-micro,e2-micro,ALLOW,
+europe-west9,e2-small,e2-small,DENY,n4d-highcpu-2
+europe-west9,e2-standard,e2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+europe-west9,n1-highcpu,n1-highcpu-16,DENY,n2d-highcpu-16 n4d-highcpu-16 n4d-highcpu-8
+europe-west9,n1-highmem,n1-highmem-16,DENY,n2d-highmem-16 n4d-highmem-16 n4d-highmem-8
+europe-west9,n1-standard,n1-standard-16,DENY,n2d-standard-16 n4d-standard-16 n4d-standard-8
+europe-west9,n2-highcpu,n2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+europe-west9,n2-highmem,n2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+europe-west9,n2-standard,n2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+europe-west9,n4-highcpu,n4-highcpu-16,ALLOW,
+europe-west9,n4-highmem,n4-highmem-16,ALLOW,
+europe-west9,n4-standard,n4-standard-16,ALLOW,
+me-central1,c2-standard,c2-standard-16,DENY,c2d-standard-16 c3d-standard-16
+me-central1,c3-highcpu,c3-highcpu-8,DENY,c3d-highcpu-8
+me-central1,c3-highmem,c3-highmem-8,DENY,c3d-highmem-8
+me-central1,c3-standard,c3-standard-8,DENY,c3d-standard-8
+me-central1,c4-highcpu,c4-highcpu-16,ALLOW,
+me-central1,c4-highmem,c4-highmem-16-lssd,ALLOW,
+me-central1,c4-standard,c4-standard-16-lssd,DENY,c4d-standard-16-lssd
+me-central1,e2-highcpu,e2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+me-central1,e2-highmem,e2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+me-central1,e2-medium,e2-medium,DENY,n4d-highcpu-2
+me-central1,e2-micro,e2-micro,ALLOW,
+me-central1,e2-small,e2-small,DENY,n4d-highcpu-2
+me-central1,e2-standard,e2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+me-central1,n1-highcpu,n1-highcpu-16,DENY,n2d-highcpu-16 n4d-highcpu-16 n4d-highcpu-8
+me-central1,n1-highmem,n1-highmem-16,DENY,n2d-highmem-16 n4d-highmem-16 n4d-highmem-8
+me-central1,n1-standard,n1-standard-16,DENY,n2d-standard-16 n4d-standard-16 n4d-standard-8
+me-central1,n2-highcpu,n2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+me-central1,n2-highmem,n2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+me-central1,n2-standard,n2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+me-central1,n4-highcpu,n4-highcpu-16,ALLOW,
+me-central1,n4-highmem,n4-highmem-16,ALLOW,
+me-central1,n4-standard,n4-standard-16,ALLOW,
+me-central2,c2-standard,c2-standard-16,DENY,c2d-standard-16 c3d-standard-16
+me-central2,c3-highcpu,c3-highcpu-8,DENY,c3d-highcpu-8
+me-central2,c3-highmem,c3-highmem-8,DENY,c3d-highmem-8
+me-central2,c3-standard,c3-standard-8-lssd,DENY,c3d-standard-8-lssd
+me-central2,c4-highcpu,c4-highcpu-16,ALLOW,
+me-central2,c4-highmem,c4-highmem-16-lssd,ALLOW,
+me-central2,c4-standard,c4-standard-16-lssd,DENY,c4d-standard-16-lssd
+me-central2,e2-highcpu,e2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+me-central2,e2-highmem,e2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+me-central2,e2-medium,e2-medium,DENY,n4d-highcpu-2
+me-central2,e2-micro,e2-micro,ALLOW,
+me-central2,e2-small,e2-small,DENY,n4d-highcpu-2
+me-central2,e2-standard,e2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+me-central2,n1-highcpu,n1-highcpu-16,DENY,n2d-highcpu-16 n4d-highcpu-16 n4d-highcpu-8
+me-central2,n1-highmem,n1-highmem-16,DENY,n2d-highmem-16 n4d-highmem-16 n4d-highmem-8
+me-central2,n1-standard,n1-standard-16,DENY,n2d-standard-16 n4d-standard-16 n4d-standard-8
+me-central2,n2-highcpu,n2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+me-central2,n2-highmem,n2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+me-central2,n2-standard,n2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+me-central2,n4-highcpu,n4-highcpu-16,ALLOW,
+me-central2,n4-highmem,n4-highmem-16,ALLOW,
+me-central2,n4-standard,n4-standard-16,ALLOW,
+me-west1,c2-standard,c2-standard-16,DENY,c2d-standard-16 c3d-standard-16
+me-west1,c3-highcpu,c3-highcpu-8,DENY,c3d-highcpu-8
+me-west1,c3-highmem,c3-highmem-8,DENY,c3d-highmem-8
+me-west1,c3-standard,c3-standard-8-lssd,DENY,c3d-standard-8-lssd
+me-west1,c4-highcpu,c4-highcpu-16,ALLOW,
+me-west1,c4-highmem,c4-highmem-16-lssd,ALLOW,
+me-west1,c4-standard,c4-standard-16-lssd,DENY,c4d-standard-16-lssd
+me-west1,e2-highcpu,e2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+me-west1,e2-highmem,e2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+me-west1,e2-medium,e2-medium,DENY,n4d-highcpu-2
+me-west1,e2-micro,e2-micro,ALLOW,
+me-west1,e2-small,e2-small,DENY,n4d-highcpu-2
+me-west1,e2-standard,e2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+me-west1,n1-highcpu,n1-highcpu-16,DENY,n2d-highcpu-16 n4d-highcpu-16 n4d-highcpu-8
+me-west1,n1-highmem,n1-highmem-16,DENY,n2d-highmem-16 n4d-highmem-16 n4d-highmem-8
+me-west1,n1-standard,n1-standard-16,DENY,n2d-standard-16 n4d-standard-16 n4d-standard-8
+me-west1,n2-highcpu,n2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+me-west1,n2-highmem,n2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+me-west1,n2-standard,n2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+me-west1,n4-highcpu,n4-highcpu-16,ALLOW,
+me-west1,n4-highmem,n4-highmem-16,ALLOW,
+me-west1,n4-standard,n4-standard-16,ALLOW,
+northamerica-northeast1,c2-standard,c2-standard-16,DENY,c2d-standard-16 c3d-standard-16
+northamerica-northeast1,c3-highcpu,c3-highcpu-8,DENY,c3d-highcpu-8
+northamerica-northeast1,c3-highmem,c3-highmem-8,DENY,c3d-highmem-8
+northamerica-northeast1,c3-standard,c3-standard-8-lssd,DENY,c3d-standard-8-lssd
+northamerica-northeast1,c4-highcpu,c4-highcpu-16,ALLOW,
+northamerica-northeast1,c4-highmem,c4-highmem-16-lssd,ALLOW,
+northamerica-northeast1,c4-standard,c4-standard-16-lssd,DENY,c4d-standard-16-lssd
+northamerica-northeast1,e2-highcpu,e2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+northamerica-northeast1,e2-highmem,e2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+northamerica-northeast1,e2-medium,e2-medium,DENY,n4d-highcpu-2
+northamerica-northeast1,e2-micro,e2-micro,ALLOW,
+northamerica-northeast1,e2-small,e2-small,DENY,n4d-highcpu-2
+northamerica-northeast1,e2-standard,e2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+northamerica-northeast1,n1-highcpu,n1-highcpu-16,DENY,n2d-highcpu-16 n4d-highcpu-16 n4d-highcpu-8
+northamerica-northeast1,n1-highmem,n1-highmem-16,DENY,n2d-highmem-16 n4d-highmem-16 n4d-highmem-8
+northamerica-northeast1,n1-standard,n1-standard-16,DENY,n2d-standard-16 n4d-standard-16 n4d-standard-8
+northamerica-northeast1,n2-highcpu,n2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+northamerica-northeast1,n2-highmem,n2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+northamerica-northeast1,n2-standard,n2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+northamerica-northeast1,n4-highcpu,n4-highcpu-16,ALLOW,
+northamerica-northeast1,n4-highmem,n4-highmem-16,ALLOW,
+northamerica-northeast1,n4-standard,n4-standard-16,ALLOW,
+northamerica-northeast2,c2-standard,c2-standard-16,DENY,c2d-standard-16 c3d-standard-16
+northamerica-northeast2,c3-highcpu,c3-highcpu-8,DENY,c3d-highcpu-8
+northamerica-northeast2,c3-highmem,c3-highmem-8,DENY,c3d-highmem-8
+northamerica-northeast2,c3-standard,c3-standard-8,DENY,c3d-standard-8
+northamerica-northeast2,c4-highcpu,c4-highcpu-16,ALLOW,
+northamerica-northeast2,c4-highmem,c4-highmem-16-lssd,ALLOW,
+northamerica-northeast2,c4-standard,c4-standard-16-lssd,DENY,c4d-standard-16-lssd
+northamerica-northeast2,e2-highcpu,e2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+northamerica-northeast2,e2-highmem,e2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+northamerica-northeast2,e2-medium,e2-medium,DENY,n4d-highcpu-2
+northamerica-northeast2,e2-micro,e2-micro,ALLOW,
+northamerica-northeast2,e2-small,e2-small,DENY,n4d-highcpu-2
+northamerica-northeast2,e2-standard,e2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+northamerica-northeast2,n1-highcpu,n1-highcpu-16,DENY,n2d-highcpu-16 n4d-highcpu-16 n4d-highcpu-8
+northamerica-northeast2,n1-highmem,n1-highmem-16,DENY,n2d-highmem-16 n4d-highmem-16 n4d-highmem-8
+northamerica-northeast2,n1-standard,n1-standard-16,DENY,n2d-standard-16 n4d-standard-16 n4d-standard-8
+northamerica-northeast2,n2-highcpu,n2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+northamerica-northeast2,n2-highmem,n2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+northamerica-northeast2,n2-standard,n2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+northamerica-northeast2,n4-highcpu,n4-highcpu-16,ALLOW,
+northamerica-northeast2,n4-highmem,n4-highmem-16,ALLOW,
+northamerica-northeast2,n4-standard,n4-standard-16,ALLOW,
+northamerica-south1,c4-highcpu,c4-highcpu-16,ALLOW,
+northamerica-south1,c4-highmem,c4-highmem-16-lssd,ALLOW,
+northamerica-south1,c4-standard,c4-standard-16-lssd,DENY,c4d-standard-16-lssd
+northamerica-south1,e2-highcpu,e2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+northamerica-south1,e2-highmem,e2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+northamerica-south1,e2-medium,e2-medium,DENY,n4d-highcpu-2
+northamerica-south1,e2-micro,e2-micro,ALLOW,
+northamerica-south1,e2-small,e2-small,DENY,n4d-highcpu-2
+northamerica-south1,e2-standard,e2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+northamerica-south1,n4-highcpu,n4-highcpu-16,ALLOW,
+northamerica-south1,n4-highmem,n4-highmem-16,ALLOW,
+northamerica-south1,n4-standard,n4-standard-16,ALLOW,
+southamerica-east1,c2-standard,c2-standard-16,DENY,c2d-standard-16 c3d-standard-16
+southamerica-east1,c3-highcpu,c3-highcpu-8,DENY,c3d-highcpu-8
+southamerica-east1,c3-highmem,c3-highmem-8,DENY,c3d-highmem-8
+southamerica-east1,c3-standard,c3-standard-8-lssd,DENY,c3d-standard-8-lssd
+southamerica-east1,c4-highcpu,c4-highcpu-16,ALLOW,
+southamerica-east1,c4-highmem,c4-highmem-16-lssd,ALLOW,
+southamerica-east1,c4-standard,c4-standard-16-lssd,DENY,c4d-standard-16-lssd
+southamerica-east1,e2-highcpu,e2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+southamerica-east1,e2-highmem,e2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+southamerica-east1,e2-medium,e2-medium,DENY,n4d-highcpu-2
+southamerica-east1,e2-micro,e2-micro,ALLOW,
+southamerica-east1,e2-small,e2-small,DENY,n4d-highcpu-2
+southamerica-east1,e2-standard,e2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+southamerica-east1,n1-highcpu,n1-highcpu-16,DENY,n2d-highcpu-16 n4d-highcpu-16 n4d-highcpu-8
+southamerica-east1,n1-highmem,n1-highmem-16,DENY,n2d-highmem-16 n4d-highmem-16 n4d-highmem-8
+southamerica-east1,n1-standard,n1-standard-16,DENY,n2d-standard-16 n4d-standard-16 n4d-standard-8
+southamerica-east1,n2-highcpu,n2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+southamerica-east1,n2-highmem,n2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+southamerica-east1,n2-standard,n2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+southamerica-east1,n4-highcpu,n4-highcpu-16,ALLOW,
+southamerica-east1,n4-highmem,n4-highmem-16,ALLOW,
+southamerica-east1,n4-standard,n4-standard-16,ALLOW,
+southamerica-west1,c2-standard,c2-standard-16,DENY,c2d-standard-16 c3d-standard-16
+southamerica-west1,c3-highcpu,c3-highcpu-8,DENY,c3d-highcpu-8
+southamerica-west1,c3-highmem,c3-highmem-8,DENY,c3d-highmem-8
+southamerica-west1,c3-standard,c3-standard-8,DENY,c3d-standard-8
+southamerica-west1,c4-highcpu,c4-highcpu-16,ALLOW,
+southamerica-west1,c4-highmem,c4-highmem-16-lssd,ALLOW,
+southamerica-west1,c4-standard,c4-standard-16-lssd,DENY,c4d-standard-16-lssd
+southamerica-west1,e2-highcpu,e2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+southamerica-west1,e2-highmem,e2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+southamerica-west1,e2-medium,e2-medium,DENY,n4d-highcpu-2
+southamerica-west1,e2-micro,e2-micro,ALLOW,
+southamerica-west1,e2-small,e2-small,DENY,n4d-highcpu-2
+southamerica-west1,e2-standard,e2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+southamerica-west1,n1-highcpu,n1-highcpu-16,DENY,n2d-highcpu-16 n4d-highcpu-16 n4d-highcpu-8
+southamerica-west1,n1-highmem,n1-highmem-16,DENY,n2d-highmem-16 n4d-highmem-16 n4d-highmem-8
+southamerica-west1,n1-standard,n1-standard-16,DENY,n2d-standard-16 n4d-standard-16 n4d-standard-8
+southamerica-west1,n2-highcpu,n2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+southamerica-west1,n2-highmem,n2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+southamerica-west1,n2-standard,n2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+southamerica-west1,n4-highcpu,n4-highcpu-16,ALLOW,
+southamerica-west1,n4-highmem,n4-highmem-16,ALLOW,
+southamerica-west1,n4-standard,n4-standard-16,ALLOW,
+us-central1,c2-standard,c2-standard-16,DENY,c2d-standard-16 c3d-standard-16
+us-central1,c3-highcpu,c3-highcpu-8,DENY,c3d-highcpu-8
+us-central1,c3-highmem,c3-highmem-8,DENY,c3d-highmem-8
+us-central1,c3-standard,c3-standard-8-lssd,DENY,c3d-standard-8-lssd
+us-central1,c4-highcpu,c4-highcpu-16,ALLOW,
+us-central1,c4-highmem,c4-highmem-16-lssd,ALLOW,
+us-central1,c4-standard,c4-standard-16-lssd,DENY,c4d-standard-16-lssd
+us-central1,e2-highcpu,e2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+us-central1,e2-highmem,e2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+us-central1,e2-medium,e2-medium,DENY,n4d-highcpu-2
+us-central1,e2-micro,e2-micro,ALLOW,
+us-central1,e2-small,e2-small,DENY,n4d-highcpu-2
+us-central1,e2-standard,e2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+us-central1,n1-highcpu,n1-highcpu-16,DENY,n2d-highcpu-16 n4d-highcpu-16 n4d-highcpu-8
+us-central1,n1-highmem,n1-highmem-16,DENY,n2d-highmem-16 n4d-highmem-16 n4d-highmem-8
+us-central1,n1-standard,n1-standard-16,DENY,n2d-standard-16 n4d-standard-16 n4d-standard-8
+us-central1,n2-highcpu,n2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+us-central1,n2-highmem,n2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+us-central1,n2-standard,n2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+us-central1,n4-highcpu,n4-highcpu-16,ALLOW,
+us-central1,n4-highmem,n4-highmem-16,ALLOW,
+us-central1,n4-standard,n4-standard-16,ALLOW,
+us-east1,c2-standard,c2-standard-16,DENY,c2d-standard-16 c3d-standard-16
+us-east1,c3-highcpu,c3-highcpu-8,DENY,c3d-highcpu-8
+us-east1,c3-highmem,c3-highmem-8,DENY,c3d-highmem-8
+us-east1,c3-standard,c3-standard-8-lssd,DENY,c3d-standard-8-lssd
+us-east1,c4-highcpu,c4-highcpu-16,ALLOW,
+us-east1,c4-highmem,c4-highmem-16-lssd,ALLOW,
+us-east1,c4-standard,c4-standard-16-lssd,DENY,c4d-standard-16-lssd
+us-east1,e2-highcpu,e2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+us-east1,e2-highmem,e2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+us-east1,e2-medium,e2-medium,DENY,n4d-highcpu-2
+us-east1,e2-micro,e2-micro,ALLOW,
+us-east1,e2-small,e2-small,DENY,n4d-highcpu-2
+us-east1,e2-standard,e2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+us-east1,n1-highcpu,n1-highcpu-16,DENY,n2d-highcpu-16 n4d-highcpu-16 n4d-highcpu-8
+us-east1,n1-highmem,n1-highmem-16,DENY,n2d-highmem-16 n4d-highmem-16 n4d-highmem-8
+us-east1,n1-standard,n1-standard-16,DENY,n2d-standard-16 n4d-standard-16 n4d-standard-8
+us-east1,n2-highcpu,n2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+us-east1,n2-highmem,n2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+us-east1,n2-standard,n2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+us-east1,n4-highcpu,n4-highcpu-16,ALLOW,
+us-east1,n4-highmem,n4-highmem-16,ALLOW,
+us-east1,n4-standard,n4-standard-16,ALLOW,
+us-east4,c2-standard,c2-standard-16,DENY,c2d-standard-16 c3d-standard-16
+us-east4,c3-highcpu,c3-highcpu-8,DENY,c3d-highcpu-8
+us-east4,c3-highmem,c3-highmem-8,DENY,c3d-highmem-8
+us-east4,c3-standard,c3-standard-8-lssd,DENY,c3d-standard-8-lssd
+us-east4,c4-highcpu,c4-highcpu-16,ALLOW,
+us-east4,c4-highmem,c4-highmem-16-lssd,ALLOW,
+us-east4,c4-standard,c4-standard-16-lssd,DENY,c4d-standard-16-lssd
+us-east4,e2-highcpu,e2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+us-east4,e2-highmem,e2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+us-east4,e2-medium,e2-medium,DENY,n4d-highcpu-2
+us-east4,e2-micro,e2-micro,ALLOW,
+us-east4,e2-small,e2-small,DENY,n4d-highcpu-2
+us-east4,e2-standard,e2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+us-east4,n1-highcpu,n1-highcpu-16,DENY,n2d-highcpu-16 n4d-highcpu-16 n4d-highcpu-8
+us-east4,n1-highmem,n1-highmem-16,DENY,n2d-highmem-16 n4d-highmem-16 n4d-highmem-8
+us-east4,n1-standard,n1-standard-16,DENY,n2d-standard-16 n4d-standard-16 n4d-standard-8
+us-east4,n2-highcpu,n2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+us-east4,n2-highmem,n2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+us-east4,n2-standard,n2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+us-east4,n4-highcpu,n4-highcpu-16,ALLOW,
+us-east4,n4-highmem,n4-highmem-16,ALLOW,
+us-east4,n4-standard,n4-standard-16,ALLOW,
+us-east5,c2-standard,c2-standard-16,DENY,c2d-standard-16 c3d-standard-16
+us-east5,c3-highcpu,c3-highcpu-8,DENY,c3d-highcpu-8
+us-east5,c3-highmem,c3-highmem-8,DENY,c3d-highmem-8
+us-east5,c3-standard,c3-standard-8-lssd,DENY,c3d-standard-8-lssd
+us-east5,c4-highcpu,c4-highcpu-16,ALLOW,
+us-east5,c4-highmem,c4-highmem-16-lssd,ALLOW,
+us-east5,c4-standard,c4-standard-16-lssd,DENY,c4d-standard-16-lssd
+us-east5,e2-highcpu,e2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+us-east5,e2-highmem,e2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+us-east5,e2-medium,e2-medium,DENY,n4d-highcpu-2
+us-east5,e2-micro,e2-micro,ALLOW,
+us-east5,e2-small,e2-small,DENY,n4d-highcpu-2
+us-east5,e2-standard,e2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+us-east5,n1-highcpu,n1-highcpu-16,DENY,n2d-highcpu-16 n4d-highcpu-16 n4d-highcpu-8
+us-east5,n1-highmem,n1-highmem-16,DENY,n2d-highmem-16 n4d-highmem-16 n4d-highmem-8
+us-east5,n1-standard,n1-standard-16,DENY,n2d-standard-16 n4d-standard-16 n4d-standard-8
+us-east5,n2-highcpu,n2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+us-east5,n2-highmem,n2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+us-east5,n2-standard,n2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+us-east5,n4-highcpu,n4-highcpu-16,ALLOW,
+us-east5,n4-highmem,n4-highmem-16,ALLOW,
+us-east5,n4-standard,n4-standard-16,ALLOW,
+us-south1,c2-standard,c2-standard-16,DENY,c2d-standard-16 c3d-standard-16
+us-south1,c3-highcpu,c3-highcpu-8,DENY,c3d-highcpu-8
+us-south1,c3-highmem,c3-highmem-8,DENY,c3d-highmem-8
+us-south1,c3-standard,c3-standard-8-lssd,DENY,c3d-standard-8-lssd
+us-south1,c4-highcpu,c4-highcpu-16,ALLOW,
+us-south1,c4-highmem,c4-highmem-16-lssd,ALLOW,
+us-south1,c4-standard,c4-standard-16-lssd,DENY,c4d-standard-16-lssd
+us-south1,e2-highcpu,e2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+us-south1,e2-highmem,e2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+us-south1,e2-medium,e2-medium,DENY,n4d-highcpu-2
+us-south1,e2-micro,e2-micro,ALLOW,
+us-south1,e2-small,e2-small,DENY,n4d-highcpu-2
+us-south1,e2-standard,e2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+us-south1,n1-highcpu,n1-highcpu-16,DENY,n2d-highcpu-16 n4d-highcpu-16 n4d-highcpu-8
+us-south1,n1-highmem,n1-highmem-16,DENY,n2d-highmem-16 n4d-highmem-16 n4d-highmem-8
+us-south1,n1-standard,n1-standard-16,DENY,n2d-standard-16 n4d-standard-16 n4d-standard-8
+us-south1,n2-highcpu,n2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+us-south1,n2-highmem,n2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+us-south1,n2-standard,n2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+us-south1,n4-highcpu,n4-highcpu-16,ALLOW,
+us-south1,n4-highmem,n4-highmem-16,ALLOW,
+us-south1,n4-standard,n4-standard-16,ALLOW,
+us-west1,c2-standard,c2-standard-16,DENY,c2d-standard-16 c3d-standard-16
+us-west1,c3-highcpu,c3-highcpu-8,DENY,c3d-highcpu-8
+us-west1,c3-highmem,c3-highmem-8,DENY,c3d-highmem-8
+us-west1,c3-standard,c3-standard-8-lssd,DENY,c3d-standard-8-lssd
+us-west1,c4-highcpu,c4-highcpu-16,ALLOW,
+us-west1,c4-highmem,c4-highmem-16-lssd,ALLOW,
+us-west1,c4-standard,c4-standard-16-lssd,DENY,c4d-standard-16-lssd
+us-west1,e2-highcpu,e2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+us-west1,e2-highmem,e2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+us-west1,e2-medium,e2-medium,DENY,n4d-highcpu-2
+us-west1,e2-micro,e2-micro,ALLOW,
+us-west1,e2-small,e2-small,DENY,n4d-highcpu-2
+us-west1,e2-standard,e2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+us-west1,n1-highcpu,n1-highcpu-16,DENY,n2d-highcpu-16 n4d-highcpu-16 n4d-highcpu-8
+us-west1,n1-highmem,n1-highmem-16,DENY,n2d-highmem-16 n4d-highmem-16 n4d-highmem-8
+us-west1,n1-standard,n1-standard-16,DENY,n2d-standard-16 n4d-standard-16 n4d-standard-8
+us-west1,n2-highcpu,n2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+us-west1,n2-highmem,n2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+us-west1,n2-standard,n2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+us-west1,n4-highcpu,n4-highcpu-16,ALLOW,
+us-west1,n4-highmem,n4-highmem-16,ALLOW,
+us-west1,n4-standard,n4-standard-16,ALLOW,
+us-west2,c2-standard,c2-standard-16,DENY,c2d-standard-16 c3d-standard-16
+us-west2,c3-highcpu,c3-highcpu-8,DENY,c3d-highcpu-8
+us-west2,c3-highmem,c3-highmem-8,DENY,c3d-highmem-8
+us-west2,c3-standard,c3-standard-8-lssd,DENY,c3d-standard-8-lssd
+us-west2,c4-highcpu,c4-highcpu-16,ALLOW,
+us-west2,c4-highmem,c4-highmem-16-lssd,ALLOW,
+us-west2,c4-standard,c4-standard-16-lssd,DENY,c4d-standard-16-lssd
+us-west2,e2-highcpu,e2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+us-west2,e2-highmem,e2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+us-west2,e2-medium,e2-medium,DENY,n4d-highcpu-2
+us-west2,e2-micro,e2-micro,ALLOW,
+us-west2,e2-small,e2-small,DENY,n4d-highcpu-2
+us-west2,e2-standard,e2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+us-west2,n1-highcpu,n1-highcpu-16,DENY,n2d-highcpu-16 n4d-highcpu-16 n4d-highcpu-8
+us-west2,n1-highmem,n1-highmem-16,DENY,n2d-highmem-16 n4d-highmem-16 n4d-highmem-8
+us-west2,n1-standard,n1-standard-16,DENY,n2d-standard-16 n4d-standard-16 n4d-standard-8
+us-west2,n2-highcpu,n2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+us-west2,n2-highmem,n2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+us-west2,n2-standard,n2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+us-west2,n4-highcpu,n4-highcpu-16,ALLOW,
+us-west2,n4-highmem,n4-highmem-16,ALLOW,
+us-west2,n4-standard,n4-standard-16,ALLOW,
+us-west3,c2-standard,c2-standard-16,DENY,c2d-standard-16 c3d-standard-16
+us-west3,c3-highcpu,c3-highcpu-8,DENY,c3d-highcpu-8
+us-west3,c3-highmem,c3-highmem-8,DENY,c3d-highmem-8
+us-west3,c3-standard,c3-standard-8-lssd,DENY,c3d-standard-8-lssd
+us-west3,c4-highcpu,c4-highcpu-16,ALLOW,
+us-west3,c4-highmem,c4-highmem-16-lssd,ALLOW,
+us-west3,c4-standard,c4-standard-16-lssd,DENY,c4d-standard-16-lssd
+us-west3,e2-highcpu,e2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+us-west3,e2-highmem,e2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+us-west3,e2-medium,e2-medium,DENY,n4d-highcpu-2
+us-west3,e2-micro,e2-micro,ALLOW,
+us-west3,e2-small,e2-small,DENY,n4d-highcpu-2
+us-west3,e2-standard,e2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+us-west3,n1-highcpu,n1-highcpu-16,DENY,n2d-highcpu-16 n4d-highcpu-16 n4d-highcpu-8
+us-west3,n1-highmem,n1-highmem-16,DENY,n2d-highmem-16 n4d-highmem-16 n4d-highmem-8
+us-west3,n1-standard,n1-standard-16,DENY,n2d-standard-16 n4d-standard-16 n4d-standard-8
+us-west3,n2-highcpu,n2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+us-west3,n2-highmem,n2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+us-west3,n2-standard,n2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+us-west3,n4-highcpu,n4-highcpu-16,ALLOW,
+us-west3,n4-highmem,n4-highmem-16,ALLOW,
+us-west3,n4-standard,n4-standard-16,ALLOW,
+us-west4,c2-standard,c2-standard-16,DENY,c2d-standard-16 c3d-standard-16
+us-west4,c3-highcpu,c3-highcpu-8,DENY,c3d-highcpu-8
+us-west4,c3-highmem,c3-highmem-8,DENY,c3d-highmem-8
+us-west4,c3-standard,c3-standard-8-lssd,DENY,c3d-standard-8-lssd
+us-west4,c4-highcpu,c4-highcpu-16,ALLOW,
+us-west4,c4-highmem,c4-highmem-16-lssd,ALLOW,
+us-west4,c4-standard,c4-standard-16-lssd,DENY,c4d-standard-16-lssd
+us-west4,e2-highcpu,e2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+us-west4,e2-highmem,e2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+us-west4,e2-medium,e2-medium,DENY,n4d-highcpu-2
+us-west4,e2-micro,e2-micro,ALLOW,
+us-west4,e2-small,e2-small,DENY,n4d-highcpu-2
+us-west4,e2-standard,e2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+us-west4,n1-highcpu,n1-highcpu-16,DENY,n2d-highcpu-16 n4d-highcpu-16 n4d-highcpu-8
+us-west4,n1-highmem,n1-highmem-16,DENY,n2d-highmem-16 n4d-highmem-16 n4d-highmem-8
+us-west4,n1-standard,n1-standard-16,DENY,n2d-standard-16 n4d-standard-16 n4d-standard-8
+us-west4,n2-highcpu,n2-highcpu-16,DENY,n4d-highcpu-16 n4d-highcpu-8
+us-west4,n2-highmem,n2-highmem-16,DENY,n4d-highmem-16 n4d-highmem-8
+us-west4,n2-standard,n2-standard-16,DENY,n4d-standard-16 n4d-standard-8
+us-west4,n4-highcpu,n4-highcpu-16,ALLOW,
+us-west4,n4-highmem,n4-highmem-16,ALLOW,
+us-west4,n4-standard,n4-standard-16,ALLOW,

@@ -1,0 +1,458 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "DenyIntelWhereAmdEquivalentExists1",
+      "Effect": "Deny",
+      "Action": "ec2:RunInstances",
+      "Resource": "arn:aws:ec2:*:*:instance/*",
+      "Condition": {
+        "StringLike": {
+          "ec2:InstanceType": [
+            "c1.*",
+            "c3.*",
+            "c4.*",
+            "c5.*",
+            "c6i.*",
+            "c7i.*",
+            "c8i.*",
+            "m1.*",
+            "m2.*",
+            "m3.*",
+            "m4.*",
+            "m5.*",
+            "m6i.*",
+            "m7i.*",
+            "m8i.*",
+            "r3.*",
+            "r4.*",
+            "r5.*",
+            "r6i.*",
+            "r7i.*",
+            "r8i.*",
+            "t1.*",
+            "t2.*",
+            "t3.*"
+          ]
+        },
+        "StringEquals": {
+          "aws:RequestedRegion": [
+            "ap-northeast-1",
+            "eu-west-1",
+            "us-east-1",
+            "us-west-2"
+          ]
+        }
+      }
+    },
+    {
+      "Sid": "DenyIntelWhereAmdEquivalentExists2",
+      "Effect": "Deny",
+      "Action": "ec2:RunInstances",
+      "Resource": "arn:aws:ec2:*:*:instance/*",
+      "Condition": {
+        "StringLike": {
+          "ec2:InstanceType": [
+            "c1.*",
+            "c3.*",
+            "c4.*",
+            "c5.*",
+            "c6i.*",
+            "c7i.*",
+            "c8i.*",
+            "m1.*",
+            "m2.*",
+            "m3.*",
+            "m4.*",
+            "m5.*",
+            "m6i.*",
+            "r3.*",
+            "r4.*",
+            "r5.*",
+            "r6i.*",
+            "t1.*",
+            "t2.*",
+            "t3.*"
+          ]
+        },
+        "StringEquals": {
+          "aws:RequestedRegion": [
+            "ap-southeast-1",
+            "us-west-1"
+          ]
+        }
+      }
+    },
+    {
+      "Sid": "DenyIntelWhereAmdEquivalentExists3",
+      "Effect": "Deny",
+      "Action": "ec2:RunInstances",
+      "Resource": "arn:aws:ec2:*:*:instance/*",
+      "Condition": {
+        "StringLike": {
+          "ec2:InstanceType": [
+            "c1.*",
+            "c3.*",
+            "c5.*",
+            "c6i.*",
+            "m1.*",
+            "m2.*",
+            "m3.*",
+            "m4.*",
+            "m5.*",
+            "m6i.*",
+            "m7i.*",
+            "m8i.*",
+            "r3.*",
+            "r4.*",
+            "r5.*",
+            "r6i.*",
+            "t1.*",
+            "t2.*",
+            "t3.*"
+          ]
+        },
+        "StringEquals": {
+          "aws:RequestedRegion": [
+            "ap-southeast-2"
+          ]
+        }
+      }
+    },
+    {
+      "Sid": "DenyIntelWhereAmdEquivalentExists4",
+      "Effect": "Deny",
+      "Action": "ec2:RunInstances",
+      "Resource": "arn:aws:ec2:*:*:instance/*",
+      "Condition": {
+        "StringLike": {
+          "ec2:InstanceType": [
+            "c1.*",
+            "c3.*",
+            "c5.*",
+            "c6i.*",
+            "m1.*",
+            "m2.*",
+            "m3.*",
+            "m4.*",
+            "m5.*",
+            "m6i.*",
+            "t1.*",
+            "t2.*",
+            "t3.*"
+          ]
+        },
+        "StringEquals": {
+          "aws:RequestedRegion": [
+            "sa-east-1"
+          ]
+        }
+      }
+    },
+    {
+      "Sid": "DenyIntelWhereAmdEquivalentExists5",
+      "Effect": "Deny",
+      "Action": "ec2:RunInstances",
+      "Resource": "arn:aws:ec2:*:*:instance/*",
+      "Condition": {
+        "StringLike": {
+          "ec2:InstanceType": [
+            "c3.*",
+            "c4.*",
+            "c5.*",
+            "c6i.*",
+            "c7i.*",
+            "c8i.*",
+            "m3.*",
+            "m4.*",
+            "m5.*",
+            "m6i.*",
+            "m7i.*",
+            "m8i.*",
+            "r3.*",
+            "r4.*",
+            "r5.*",
+            "r6i.*",
+            "r7i.*",
+            "r8i.*",
+            "t2.*",
+            "t3.*"
+          ]
+        },
+        "StringEquals": {
+          "aws:RequestedRegion": [
+            "eu-central-1"
+          ]
+        }
+      }
+    },
+    {
+      "Sid": "DenyIntelWhereAmdEquivalentExists6",
+      "Effect": "Deny",
+      "Action": "ec2:RunInstances",
+      "Resource": "arn:aws:ec2:*:*:instance/*",
+      "Condition": {
+        "StringLike": {
+          "ec2:InstanceType": [
+            "c4.*",
+            "c5.*",
+            "c6i.*",
+            "c7i.*",
+            "c8i.*",
+            "m4.*",
+            "m5.*",
+            "m6i.*",
+            "m7i.*",
+            "m8i.*",
+            "r3.*",
+            "r4.*",
+            "r5.*",
+            "r6i.*",
+            "r7i.*",
+            "r8i.*",
+            "t2.*",
+            "t3.*"
+          ]
+        },
+        "StringEquals": {
+          "aws:RequestedRegion": [
+            "us-east-2"
+          ]
+        }
+      }
+    },
+    {
+      "Sid": "DenyIntelWhereAmdEquivalentExists7",
+      "Effect": "Deny",
+      "Action": "ec2:RunInstances",
+      "Resource": "arn:aws:ec2:*:*:instance/*",
+      "Condition": {
+        "StringLike": {
+          "ec2:InstanceType": [
+            "c4.*",
+            "c5.*",
+            "c6i.*",
+            "c7i.*",
+            "c8i.*",
+            "m4.*",
+            "m5.*",
+            "m6i.*",
+            "m7i.*",
+            "m8i.*",
+            "r4.*",
+            "r5.*",
+            "r6i.*",
+            "t2.*",
+            "t3.*"
+          ]
+        },
+        "StringEquals": {
+          "aws:RequestedRegion": [
+            "eu-west-2"
+          ]
+        }
+      }
+    },
+    {
+      "Sid": "DenyIntelWhereAmdEquivalentExists8",
+      "Effect": "Deny",
+      "Action": "ec2:RunInstances",
+      "Resource": "arn:aws:ec2:*:*:instance/*",
+      "Condition": {
+        "StringLike": {
+          "ec2:InstanceType": [
+            "c4.*",
+            "c5.*",
+            "c6i.*",
+            "m4.*",
+            "m5.*",
+            "m6i.*",
+            "m7i.*",
+            "m8i.*",
+            "r3.*",
+            "r4.*",
+            "r5.*",
+            "r6i.*",
+            "t2.*",
+            "t3.*"
+          ]
+        },
+        "StringEquals": {
+          "aws:RequestedRegion": [
+            "ap-south-1"
+          ]
+        }
+      }
+    },
+    {
+      "Sid": "DenyIntelWhereAmdEquivalentExists9",
+      "Effect": "Deny",
+      "Action": "ec2:RunInstances",
+      "Resource": "arn:aws:ec2:*:*:instance/*",
+      "Condition": {
+        "StringLike": {
+          "ec2:InstanceType": [
+            "c5.*",
+            "c6i.*"
+          ]
+        },
+        "StringEquals": {
+          "aws:RequestedRegion": [
+            "ap-east-1"
+          ]
+        }
+      }
+    },
+    {
+      "Sid": "DenyIntelWhereAmdEquivalentExists10",
+      "Effect": "Deny",
+      "Action": "ec2:RunInstances",
+      "Resource": "arn:aws:ec2:*:*:instance/*",
+      "Condition": {
+        "StringLike": {
+          "ec2:InstanceType": [
+            "c5.*",
+            "c6i.*",
+            "c7i.*",
+            "c8i.*",
+            "m5.*",
+            "m6i.*",
+            "m7i.*",
+            "r5.*",
+            "r6i.*",
+            "r7i.*",
+            "r8i.*"
+          ]
+        },
+        "StringEquals": {
+          "aws:RequestedRegion": [
+            "eu-north-1"
+          ]
+        }
+      }
+    },
+    {
+      "Sid": "DenyIntelWhereAmdEquivalentExists11",
+      "Effect": "Deny",
+      "Action": "ec2:RunInstances",
+      "Resource": "arn:aws:ec2:*:*:instance/*",
+      "Condition": {
+        "StringLike": {
+          "ec2:InstanceType": [
+            "c5.*",
+            "c6i.*",
+            "m4.*",
+            "m5.*",
+            "m6i.*",
+            "r4.*",
+            "r5.*",
+            "r6i.*",
+            "r7i.*",
+            "r8i.*",
+            "t2.*",
+            "t3.*"
+          ]
+        },
+        "StringEquals": {
+          "aws:RequestedRegion": [
+            "ca-central-1"
+          ]
+        }
+      }
+    },
+    {
+      "Sid": "DenyIntelWhereAmdEquivalentExists12",
+      "Effect": "Deny",
+      "Action": "ec2:RunInstances",
+      "Resource": "arn:aws:ec2:*:*:instance/*",
+      "Condition": {
+        "StringLike": {
+          "ec2:InstanceType": [
+            "c5.*",
+            "c6i.*",
+            "m5.*",
+            "m6i.*",
+            "m7i.*",
+            "m8i.*",
+            "r5.*",
+            "r6i.*",
+            "r7i.*",
+            "r8i.*"
+          ]
+        },
+        "StringEquals": {
+          "aws:RequestedRegion": [
+            "ap-south-2"
+          ]
+        }
+      }
+    },
+    {
+      "Sid": "DenyIntelWhereAmdEquivalentExists13",
+      "Effect": "Deny",
+      "Action": "ec2:RunInstances",
+      "Resource": "arn:aws:ec2:*:*:instance/*",
+      "Condition": {
+        "StringLike": {
+          "ec2:InstanceType": [
+            "c5.*",
+            "c7i.*",
+            "c8i.*",
+            "m5.*",
+            "m7i.*",
+            "m8i.*",
+            "r5.*",
+            "r7i.*",
+            "r8i.*"
+          ]
+        },
+        "StringEquals": {
+          "aws:RequestedRegion": [
+            "eu-south-2"
+          ]
+        }
+      }
+    },
+    {
+      "Sid": "DenyIntelWhereAmdEquivalentExists14",
+      "Effect": "Deny",
+      "Action": "ec2:RunInstances",
+      "Resource": "arn:aws:ec2:*:*:instance/*",
+      "Condition": {
+        "StringLike": {
+          "ec2:InstanceType": [
+            "m5.*",
+            "m6i.*",
+            "t2.*",
+            "t3.*"
+          ]
+        },
+        "StringEquals": {
+          "aws:RequestedRegion": [
+            "eu-west-3"
+          ]
+        }
+      }
+    },
+    {
+      "Sid": "DenyIntelWhereAmdEquivalentExists15",
+      "Effect": "Deny",
+      "Action": "ec2:RunInstances",
+      "Resource": "arn:aws:ec2:*:*:instance/*",
+      "Condition": {
+        "StringLike": {
+          "ec2:InstanceType": [
+            "m5.*",
+            "m6i.*",
+            "t3.*"
+          ]
+        },
+        "StringEquals": {
+          "aws:RequestedRegion": [
+            "eu-south-1"
+          ]
+        }
+      }
+    }
+  ]
+}

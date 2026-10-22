@@ -1,0 +1,47 @@
+# AMD shape enforcement for OCI Compute
+#
+# OCI IAM has no Deny verb, so enforcement is inverted: the group is granted
+# manage instance-family ONLY for AMD shapes. Anything not listed simply has
+# no grant and therefore cannot be launched.
+#
+# The unconditioned inspect/read statement below is required. A condition on a
+# variable the request does not carry evaluates false, so List and Get calls
+# would be denied and the Console would break without it.
+#
+# Shape list derived from AMD CCA on 2026-10-21.
+
+# 1. Unconditioned visibility - do not remove.
+Allow group <GROUP> to inspect instance-family in compartment <COMPARTMENT>
+Allow group <GROUP> to read instance-family in compartment <COMPARTMENT>
+Allow group <GROUP> to read app-catalog-listing in compartment <COMPARTMENT>
+Allow group <GROUP> to inspect compute-management-family in compartment <COMPARTMENT>
+
+# 2. Launch and manage, restricted to AMD EPYC shapes (E-series) plus
+#    Ampere A-series. ARM is out of scope for this policy - dropping the
+#    A-series here would deny it by omission, which is not the intent.
+#
+#    Shapes NOT listed, and therefore not launchable: vm.standard1,
+#    vm.standard2, vm.standard3.flex, vm.standard.b1 - all Intel, and all
+#    confirmed by CCA to have an AMD equivalent in every region they appear in.
+#
+#    Shapes CCA does not price (GPU, HPC, dense I/O) are also absent from this
+#    list. If you run them, add them here before applying.
+Allow group <GROUP> to manage instance-family in compartment <COMPARTMENT> where any {
+    target.instance.shape = 'vm.standard.e2.1',
+    target.instance.shape = 'vm.standard.e2.2',
+    target.instance.shape = 'vm.standard.e2.4',
+    target.instance.shape = 'vm.standard.e2.8',
+    target.instance.shape = 'vm.standard.e3.flex',
+    target.instance.shape = 'vm.standard.e4.flex',
+    target.instance.shape = 'vm.standard.e5.flex',
+    target.instance.shape = 'vm.standard.e6.flex',
+    target.instance.shape = 'vm.standard.a1.flex',
+    target.instance.shape = 'vm.standard.a2.flex',
+    target.instance.shape = 'vm.standard.a4.flex'
+}
+
+# 3. Supporting grants a launch needs (these carry no shape variable).
+Allow group <GROUP> to use subnets in compartment <COMPARTMENT>
+Allow group <GROUP> to use vnics in compartment <COMPARTMENT>
+Allow group <GROUP> to use network-security-groups in compartment <COMPARTMENT>
+Allow group <GROUP> to read instance-images in compartment <COMPARTMENT>

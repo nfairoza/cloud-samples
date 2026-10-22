@@ -1,0 +1,9 @@
+{
+  "properties": {
+    "policyAssignmentId": "/subscriptions/<SUB_ID>/providers/Microsoft.Authorization/policyAssignments/enforce-amd-where-available",
+    "exemptionCategory": "Waiver",
+    "displayName": "Grandfather existing Intel VM until migration completes",
+    "description": "Azure Policy Deny evaluates on update as well as create, so an existing Intel VM can be blocked from routine changes such as resize or tagging. This waiver keeps that VM manageable while migration is planned.",
+    "expiresOn": "2027-10-21T00:00:00Z"
+  }
+}

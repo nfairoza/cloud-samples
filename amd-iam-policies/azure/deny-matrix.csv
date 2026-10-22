@@ -1,0 +1,2631 @@
+region,instance_family,probe_sku,decision,amd_equivalents
+australiacentral2,a||2,standard_a8_v2,ALLOW,
+australiacentral2,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+australiacentral2,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+australiacentral2,b|ts|2,standard_b2ts_v2,ALLOW,
+australiacentral2,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v6
+australiacentral2,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v6
+australiacentral2,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v6
+australiacentral2,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v6
+australiacentral2,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v6
+australiacentral2,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v6
+australiacentral2,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v6 standard_d16alds_v6
+australiacentral2,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v6
+australiacentral2,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v6 standard_d16als_v6 standard_f8als_v6
+australiacentral2,d|ls|6,standard_d16ls_v6,DENY,standard_d16als_v6 standard_d16als_v6
+australiacentral2,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v6
+australiacentral2,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v6 standard_f8as_v6
+australiacentral2,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v6
+australiacentral2,d|s|6,standard_d16s_v6,DENY,standard_d16as_v6
+australiacentral2,d||2,standard_d4_v2,ALLOW,
+australiacentral2,d||3,standard_d16_v3,DENY,standard_d16ads_v6
+australiacentral2,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v6 standard_f8as_v6
+australiacentral2,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v6
+australiacentral2,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v6
+australiacentral2,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v6
+australiacentral2,e|ds|6,standard_e16ds_v6,ALLOW,
+australiacentral2,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v6
+australiacentral2,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v6
+australiacentral2,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v6 standard_e48ads_v6
+australiacentral2,e|ids|5,standard_e104ids_v5,ALLOW,
+australiacentral2,e|ids|6,standard_e192ids_v6,ALLOW,
+australiacentral2,e|id|5,standard_e104id_v5,ALLOW,
+australiacentral2,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v6
+australiacentral2,e|is|5,standard_e104is_v5,DENY,standard_f64ams_v6
+australiacentral2,e|is|6,standard_e192is_v6,ALLOW,
+australiacentral2,e|i|5,standard_e104i_v5,DENY,standard_f64ams_v6
+australiacentral2,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v5 standard_e16ads_v6
+australiacentral2,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v6
+australiacentral2,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v6
+australiacentral2,e|s|6,standard_e16s_v6,DENY,standard_e16as_v6
+australiacentral2,e||3,standard_e16_v3,DENY,standard_e16ads_v5 standard_e16ads_v6
+australiacentral2,e||4,standard_e16_v4,DENY,standard_e16ads_v6
+australiacentral2,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v6
+australiacentral2,f|s|2,standard_f16s_v2,ALLOW,
+australiacentral,a||2,standard_a8_v2,ALLOW,
+australiacentral,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+australiacentral,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+australiacentral,b|ts|2,standard_b2ts_v2,ALLOW,
+australiacentral,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v6
+australiacentral,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v6
+australiacentral,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v6
+australiacentral,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v6
+australiacentral,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v6
+australiacentral,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v6
+australiacentral,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v6 standard_d16alds_v6
+australiacentral,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v6
+australiacentral,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v6 standard_d16als_v6 standard_f8als_v6
+australiacentral,d|ls|6,standard_d16ls_v6,DENY,standard_d16als_v6 standard_d16als_v6
+australiacentral,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v6
+australiacentral,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v6 standard_f8as_v6
+australiacentral,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v6
+australiacentral,d|s|6,standard_d16s_v6,DENY,standard_d16as_v6
+australiacentral,d||2,standard_d4_v2,ALLOW,
+australiacentral,d||3,standard_d16_v3,DENY,standard_d16ads_v6
+australiacentral,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v6 standard_f8as_v6
+australiacentral,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v6
+australiacentral,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v6
+australiacentral,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v6
+australiacentral,e|ds|6,standard_e16ds_v6,ALLOW,
+australiacentral,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v6
+australiacentral,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v6
+australiacentral,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v6 standard_e48ads_v6
+australiacentral,e|ids|5,standard_e104ids_v5,DENY,standard_e112iads_v5
+australiacentral,e|ids|6,standard_e192ids_v6,ALLOW,
+australiacentral,e|id|5,standard_e104id_v5,DENY,standard_e112iads_v5
+australiacentral,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v6
+australiacentral,e|is|5,standard_e104is_v5,DENY,standard_f64ams_v6
+australiacentral,e|is|6,standard_e192is_v6,ALLOW,
+australiacentral,e|i|5,standard_e104i_v5,DENY,standard_f64ams_v6
+australiacentral,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v5 standard_e16ads_v6
+australiacentral,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v6
+australiacentral,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v6
+australiacentral,e|s|6,standard_e16s_v6,DENY,standard_e16as_v6
+australiacentral,e||3,standard_e16_v3,DENY,standard_e16ads_v5 standard_e16ads_v6
+australiacentral,e||4,standard_e16_v4,DENY,standard_e16ads_v6
+australiacentral,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v6
+australiacentral,f|s|2,standard_f16s_v2,ALLOW,
+australiaeast,a||2,standard_a8_v2,ALLOW,
+australiaeast,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+australiaeast,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+australiaeast,b|ts|2,standard_b2ts_v2,ALLOW,
+australiaeast,dc|ds|3,standard_dc16ds_v3,DENY,standard_ec16ads_v6
+australiaeast,dc|s|2,standard_dc4s_v2,ALLOW,
+australiaeast,dc|s|3,standard_dc16s_v3,DENY,standard_ec16as_v6
+australiaeast,dc||2,standard_dc8_v2,ALLOW,
+australiaeast,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v7 standard_f4ads_v7
+australiaeast,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+australiaeast,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+australiaeast,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v7 standard_f8ads_v7
+australiaeast,d|ds|7,standard_d16ds_v7,ALLOW,
+australiaeast,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+australiaeast,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+australiaeast,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+australiaeast,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+australiaeast,d|lds|7,standard_d16lds_v7,ALLOW,
+australiaeast,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+australiaeast,d|ls|6,standard_d16ls_v6,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+australiaeast,d|ls|7,standard_d16ls_v7,ALLOW,
+australiaeast,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+australiaeast,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+australiaeast,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+australiaeast,d|s|6,standard_d16s_v6,DENY,standard_d16as_v7 standard_f8as_v7
+australiaeast,d|s|7,standard_d16s_v7,ALLOW,
+australiaeast,d||2,standard_d4_v2,ALLOW,
+australiaeast,d||3,standard_d16_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+australiaeast,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+australiaeast,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+australiaeast,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+australiaeast,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+australiaeast,e|ds|6,standard_e16ds_v6,DENY,standard_e16ads_v7 standard_f8amds_v7
+australiaeast,e|ds|7,standard_e16ds_v7,ALLOW,
+australiaeast,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+australiaeast,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+australiaeast,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v7 standard_f48amds_v7
+australiaeast,e|ids|5,standard_e104ids_v5,DENY,standard_e112iads_v5 standard_e128ads_v7 standard_f64amds_v7
+australiaeast,e|ids|6,standard_e192ids_v6,DENY,standard_e128ads_v7
+australiaeast,e|ids|7,standard_e372ids_v7,ALLOW,
+australiaeast,e|id|5,standard_e104id_v5,DENY,standard_e112iads_v5 standard_e128ads_v7 standard_f64amds_v7
+australiaeast,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v7
+australiaeast,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v7
+australiaeast,e|is|5,standard_e104is_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+australiaeast,e|is|6,standard_e192is_v6,DENY,standard_e128as_v7
+australiaeast,e|is|7,standard_e372is_v7,ALLOW,
+australiaeast,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v7
+australiaeast,e|i|5,standard_e104i_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+australiaeast,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+australiaeast,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+australiaeast,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+australiaeast,e|s|6,standard_e16s_v6,DENY,standard_e16as_v7 standard_f8ams_v7
+australiaeast,e|s|7,standard_e16s_v7,ALLOW,
+australiaeast,e||3,standard_e16_v3,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+australiaeast,e||4,standard_e16_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+australiaeast,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+australiaeast,f|s|2,standard_f16s_v2,DENY,standard_f16ads_v7 standard_f8ads_v7
+australiasoutheast,a||2,standard_a8_v2,ALLOW,
+australiasoutheast,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+australiasoutheast,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+australiasoutheast,b|ts|2,standard_b2ts_v2,ALLOW,
+australiasoutheast,dc|s|2,standard_dc4s_v2,ALLOW,
+australiasoutheast,dc||2,standard_dc8_v2,ALLOW,
+australiasoutheast,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v6
+australiasoutheast,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v6
+australiasoutheast,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v6
+australiasoutheast,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v6
+australiasoutheast,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v6
+australiasoutheast,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v6
+australiasoutheast,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v6 standard_d16alds_v6
+australiasoutheast,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v6
+australiasoutheast,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v6 standard_d16als_v6 standard_f8als_v6
+australiasoutheast,d|ls|6,standard_d16ls_v6,DENY,standard_d16als_v6 standard_d16als_v6
+australiasoutheast,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v6
+australiasoutheast,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v6 standard_f8as_v6
+australiasoutheast,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v6
+australiasoutheast,d|s|6,standard_d16s_v6,DENY,standard_d16as_v6
+australiasoutheast,d||2,standard_d4_v2,ALLOW,
+australiasoutheast,d||3,standard_d16_v3,DENY,standard_d16ads_v6
+australiasoutheast,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v6 standard_f8as_v6
+australiasoutheast,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v6
+australiasoutheast,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v6
+australiasoutheast,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v6
+australiasoutheast,e|ds|6,standard_e16ds_v6,ALLOW,
+australiasoutheast,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v6
+australiasoutheast,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v6
+australiasoutheast,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v6 standard_e48ads_v6
+australiasoutheast,e|ids|5,standard_e104ids_v5,ALLOW,
+australiasoutheast,e|ids|6,standard_e192ids_v6,ALLOW,
+australiasoutheast,e|id|5,standard_e104id_v5,ALLOW,
+australiasoutheast,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v6
+australiasoutheast,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v6
+australiasoutheast,e|is|5,standard_e104is_v5,DENY,standard_f64ams_v6
+australiasoutheast,e|is|6,standard_e192is_v6,ALLOW,
+australiasoutheast,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v6
+australiasoutheast,e|i|5,standard_e104i_v5,DENY,standard_f64ams_v6
+australiasoutheast,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v6
+australiasoutheast,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v6
+australiasoutheast,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v6
+australiasoutheast,e|s|6,standard_e16s_v6,DENY,standard_e16as_v6
+australiasoutheast,e||3,standard_e16_v3,DENY,standard_e16ads_v6
+australiasoutheast,e||4,standard_e16_v4,DENY,standard_e16ads_v6
+australiasoutheast,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v6
+australiasoutheast,f|s|2,standard_f16s_v2,ALLOW,
+brazilsoutheast,a||2,standard_a8_v2,ALLOW,
+brazilsoutheast,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+brazilsoutheast,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+brazilsoutheast,b|ts|2,standard_b2ts_v2,ALLOW,
+brazilsoutheast,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v6
+brazilsoutheast,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v6
+brazilsoutheast,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v6
+brazilsoutheast,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v6
+brazilsoutheast,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v6
+brazilsoutheast,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v6
+brazilsoutheast,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v6
+brazilsoutheast,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v6
+brazilsoutheast,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v6 standard_d16als_v6 standard_f8als_v6
+brazilsoutheast,d|ls|6,standard_d16ls_v6,DENY,standard_d16als_v6 standard_d16als_v6
+brazilsoutheast,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v6
+brazilsoutheast,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v6 standard_f8as_v6
+brazilsoutheast,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v6
+brazilsoutheast,d|s|6,standard_d16s_v6,DENY,standard_d16as_v6
+brazilsoutheast,d||2,standard_d4_v2,ALLOW,
+brazilsoutheast,d||3,standard_d16_v3,DENY,standard_d16ads_v6
+brazilsoutheast,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v6 standard_f8as_v6
+brazilsoutheast,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v6
+brazilsoutheast,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v6
+brazilsoutheast,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v6
+brazilsoutheast,e|ds|6,standard_e16ds_v6,ALLOW,
+brazilsoutheast,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v6
+brazilsoutheast,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v6
+brazilsoutheast,e|ids|4,standard_e80ids_v4,DENY,standard_e112iads_v5 standard_e96ads_v6 standard_e48ads_v6
+brazilsoutheast,e|ids|5,standard_e104ids_v5,DENY,standard_e112iads_v5
+brazilsoutheast,e|ids|6,standard_e192ids_v6,ALLOW,
+brazilsoutheast,e|id|5,standard_e104id_v5,DENY,standard_e112iads_v5
+brazilsoutheast,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v6
+brazilsoutheast,e|is|4,standard_e80is_v4,DENY,standard_e112iads_v5 standard_e96ads_v6
+brazilsoutheast,e|is|5,standard_e104is_v5,DENY,standard_e112ias_v5 standard_f64ams_v6
+brazilsoutheast,e|is|6,standard_e192is_v6,ALLOW,
+brazilsoutheast,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v6
+brazilsoutheast,e|i|5,standard_e104i_v5,DENY,standard_e112ias_v5 standard_f64ams_v6
+brazilsoutheast,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v5 standard_e16ads_v6
+brazilsoutheast,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v6
+brazilsoutheast,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v6
+brazilsoutheast,e|s|6,standard_e16s_v6,DENY,standard_e16as_v6
+brazilsoutheast,e||3,standard_e16_v3,DENY,standard_e16ads_v5 standard_e16ads_v6
+brazilsoutheast,e||4,standard_e16_v4,DENY,standard_e16ads_v6
+brazilsoutheast,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v6
+brazilsoutheast,f|s|2,standard_f16s_v2,ALLOW,
+brazilsouth,a||2,standard_a8_v2,ALLOW,
+brazilsouth,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+brazilsouth,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+brazilsouth,b|ts|2,standard_b2ts_v2,ALLOW,
+brazilsouth,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v7 standard_f4ads_v7
+brazilsouth,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+brazilsouth,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+brazilsouth,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v7 standard_f8ads_v7
+brazilsouth,d|ds|7,standard_d16ds_v7,ALLOW,
+brazilsouth,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+brazilsouth,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+brazilsouth,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v7 standard_f8alds_v7
+brazilsouth,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+brazilsouth,d|lds|7,standard_d16lds_v7,ALLOW,
+brazilsouth,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+brazilsouth,d|ls|6,standard_d16ls_v6,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+brazilsouth,d|ls|7,standard_d16ls_v7,ALLOW,
+brazilsouth,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+brazilsouth,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+brazilsouth,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+brazilsouth,d|s|6,standard_d16s_v6,DENY,standard_d16as_v7 standard_f8as_v7
+brazilsouth,d|s|7,standard_d16s_v7,ALLOW,
+brazilsouth,d||2,standard_d4_v2,ALLOW,
+brazilsouth,d||3,standard_d16_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+brazilsouth,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+brazilsouth,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+brazilsouth,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+brazilsouth,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+brazilsouth,e|ds|6,standard_e16ds_v6,DENY,standard_e16ads_v7 standard_f8amds_v7
+brazilsouth,e|ds|7,standard_e16ds_v7,ALLOW,
+brazilsouth,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+brazilsouth,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+brazilsouth,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v7 standard_f48amds_v7
+brazilsouth,e|ids|5,standard_e104ids_v5,DENY,standard_e112iads_v5 standard_e128ads_v7 standard_f64amds_v7
+brazilsouth,e|ids|6,standard_e192ids_v6,DENY,standard_e128ads_v7
+brazilsouth,e|ids|7,standard_e372ids_v7,ALLOW,
+brazilsouth,e|id|5,standard_e104id_v5,DENY,standard_e112iads_v5 standard_e128ads_v7 standard_f64amds_v7
+brazilsouth,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v7 standard_f32amds_v7
+brazilsouth,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v7
+brazilsouth,e|is|5,standard_e104is_v5,DENY,standard_e112ias_v5 standard_e128as_v7 standard_f64ams_v7
+brazilsouth,e|is|6,standard_e192is_v6,DENY,standard_e128as_v7
+brazilsouth,e|is|7,standard_e372is_v7,ALLOW,
+brazilsouth,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v7 standard_f32amds_v7
+brazilsouth,e|i|5,standard_e104i_v5,DENY,standard_e112ias_v5 standard_e128as_v7 standard_f64ams_v7
+brazilsouth,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+brazilsouth,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+brazilsouth,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+brazilsouth,e|s|6,standard_e16s_v6,DENY,standard_e16as_v7 standard_f8ams_v7
+brazilsouth,e|s|7,standard_e16s_v7,ALLOW,
+brazilsouth,e||3,standard_e16_v3,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+brazilsouth,e||4,standard_e16_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+brazilsouth,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+brazilsouth,f|s|2,standard_f16s_v2,DENY,standard_f16ads_v7
+canadacentral,a||2,standard_a8_v2,ALLOW,
+canadacentral,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+canadacentral,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+canadacentral,b|ts|2,standard_b2ts_v2,ALLOW,
+canadacentral,dc|ds|3,standard_dc16ds_v3,DENY,standard_ec16ads_v6
+canadacentral,dc|s|2,standard_dc4s_v2,ALLOW,
+canadacentral,dc|s|3,standard_dc16s_v3,DENY,standard_ec16as_v6
+canadacentral,dc||2,standard_dc8_v2,ALLOW,
+canadacentral,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v7 standard_f4ads_v7
+canadacentral,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+canadacentral,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+canadacentral,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v7 standard_f8ads_v7
+canadacentral,d|ds|7,standard_d16ds_v7,ALLOW,
+canadacentral,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+canadacentral,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+canadacentral,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v7 standard_f8alds_v7
+canadacentral,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+canadacentral,d|lds|7,standard_d16lds_v7,ALLOW,
+canadacentral,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+canadacentral,d|ls|6,standard_d16ls_v6,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+canadacentral,d|ls|7,standard_d16ls_v7,ALLOW,
+canadacentral,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+canadacentral,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+canadacentral,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+canadacentral,d|s|6,standard_d16s_v6,DENY,standard_d16as_v7 standard_f8as_v7
+canadacentral,d|s|7,standard_d16s_v7,ALLOW,
+canadacentral,d||2,standard_d4_v2,ALLOW,
+canadacentral,d||3,standard_d16_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+canadacentral,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+canadacentral,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+canadacentral,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+canadacentral,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+canadacentral,e|ds|6,standard_e16ds_v6,DENY,standard_e16ads_v7 standard_f8amds_v7
+canadacentral,e|ds|7,standard_e16ds_v7,ALLOW,
+canadacentral,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+canadacentral,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+canadacentral,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v7 standard_f48amds_v7
+canadacentral,e|ids|5,standard_e104ids_v5,DENY,standard_e128ads_v7 standard_f64amds_v7
+canadacentral,e|ids|6,standard_e192ids_v6,DENY,standard_e128ads_v7
+canadacentral,e|ids|7,standard_e372ids_v7,ALLOW,
+canadacentral,e|id|5,standard_e104id_v5,DENY,standard_e128ads_v7 standard_f64amds_v7
+canadacentral,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v7 standard_f32amds_v7
+canadacentral,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v7
+canadacentral,e|is|5,standard_e104is_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+canadacentral,e|is|6,standard_e192is_v6,DENY,standard_e128as_v7
+canadacentral,e|is|7,standard_e372is_v7,ALLOW,
+canadacentral,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v7 standard_f32amds_v7
+canadacentral,e|i|5,standard_e104i_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+canadacentral,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+canadacentral,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+canadacentral,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+canadacentral,e|s|6,standard_e16s_v6,DENY,standard_e16as_v7 standard_f8ams_v7
+canadacentral,e|s|7,standard_e16s_v7,ALLOW,
+canadacentral,e||3,standard_e16_v3,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+canadacentral,e||4,standard_e16_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+canadacentral,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+canadacentral,f|s|2,standard_f16s_v2,DENY,standard_f16ads_v7
+canadaeast,a||2,standard_a8_v2,ALLOW,
+canadaeast,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+canadaeast,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+canadaeast,b|ts|2,standard_b2ts_v2,ALLOW,
+canadaeast,dc|s|2,standard_dc4s_v2,ALLOW,
+canadaeast,dc||2,standard_dc8_v2,ALLOW,
+canadaeast,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v6
+canadaeast,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v6
+canadaeast,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v6
+canadaeast,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v6
+canadaeast,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v6
+canadaeast,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v6
+canadaeast,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v6
+canadaeast,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v6
+canadaeast,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v6 standard_d16als_v6 standard_f8als_v6
+canadaeast,d|ls|6,standard_d16ls_v6,DENY,standard_d16als_v6 standard_d16als_v6
+canadaeast,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v6
+canadaeast,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v6 standard_f8as_v6
+canadaeast,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v6
+canadaeast,d|s|6,standard_d16s_v6,DENY,standard_d16as_v6
+canadaeast,d||2,standard_d4_v2,ALLOW,
+canadaeast,d||3,standard_d16_v3,DENY,standard_d16ads_v6
+canadaeast,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v6 standard_f8as_v6
+canadaeast,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v6
+canadaeast,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v6
+canadaeast,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v6
+canadaeast,e|ds|6,standard_e16ds_v6,ALLOW,
+canadaeast,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v6
+canadaeast,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v6
+canadaeast,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v6 standard_e48ads_v6
+canadaeast,e|ids|5,standard_e104ids_v5,ALLOW,
+canadaeast,e|ids|6,standard_e192ids_v6,ALLOW,
+canadaeast,e|id|5,standard_e104id_v5,ALLOW,
+canadaeast,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v6
+canadaeast,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v6
+canadaeast,e|is|5,standard_e104is_v5,DENY,standard_f64ams_v6
+canadaeast,e|is|6,standard_e192is_v6,ALLOW,
+canadaeast,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v6
+canadaeast,e|i|5,standard_e104i_v5,DENY,standard_f64ams_v6
+canadaeast,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v5 standard_e16ads_v6
+canadaeast,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v6
+canadaeast,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v6
+canadaeast,e|s|6,standard_e16s_v6,DENY,standard_e16as_v6
+canadaeast,e||3,standard_e16_v3,DENY,standard_e16ads_v5 standard_e16ads_v6
+canadaeast,e||4,standard_e16_v4,DENY,standard_e16ads_v6
+canadaeast,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v6
+canadaeast,f|s|2,standard_f16s_v2,ALLOW,
+centralindia,a||2,standard_a8_v2,ALLOW,
+centralindia,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+centralindia,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+centralindia,b|ts|2,standard_b2ts_v2,ALLOW,
+centralindia,dc|ds|3,standard_dc16ds_v3,DENY,standard_ec16ads_v5 standard_ec16ads_v6
+centralindia,dc|s|3,standard_dc16s_v3,DENY,standard_ec16as_v5 standard_ec16as_v6
+centralindia,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v7 standard_f4ads_v7
+centralindia,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+centralindia,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+centralindia,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v7 standard_f8ads_v7
+centralindia,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+centralindia,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+centralindia,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+centralindia,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+centralindia,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+centralindia,d|ls|6,standard_d16ls_v6,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+centralindia,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+centralindia,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+centralindia,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+centralindia,d|s|6,standard_d16s_v6,DENY,standard_d16as_v7 standard_f8as_v7
+centralindia,d||2,standard_d4_v2,ALLOW,
+centralindia,d||3,standard_d16_v3,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+centralindia,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+centralindia,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+centralindia,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+centralindia,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+centralindia,e|ds|6,standard_e16ds_v6,DENY,standard_e16ads_v7 standard_f8amds_v7
+centralindia,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+centralindia,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+centralindia,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v7 standard_f48amds_v7
+centralindia,e|ids|5,standard_e104ids_v5,DENY,standard_e128ads_v7 standard_f64amds_v7
+centralindia,e|ids|6,standard_e192ids_v6,DENY,standard_e128ads_v7
+centralindia,e|id|5,standard_e104id_v5,DENY,standard_e128ads_v7 standard_f64amds_v7
+centralindia,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v7 standard_f48amds_v7
+centralindia,e|is|5,standard_e104is_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+centralindia,e|is|6,standard_e192is_v6,DENY,standard_e128as_v7
+centralindia,e|i|5,standard_e104i_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+centralindia,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+centralindia,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+centralindia,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+centralindia,e|s|6,standard_e16s_v6,DENY,standard_e16as_v7 standard_f8ams_v7
+centralindia,e||3,standard_e16_v3,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+centralindia,e||4,standard_e16_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+centralindia,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+centralindia,f|s|2,standard_f16s_v2,DENY,standard_d16ads_v5 standard_f16ads_v7 standard_f8ads_v7
+centralus,a||2,standard_a8_v2,ALLOW,
+centralus,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+centralus,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+centralus,b|ts|2,standard_b2ts_v2,ALLOW,
+centralus,dc|ds|3,standard_dc16ds_v3,DENY,standard_ec16ads_v5 standard_ec16ads_v6
+centralus,dc|s|3,standard_dc16s_v3,DENY,standard_ec16as_v5 standard_ec16as_v6
+centralus,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v7 standard_f4ads_v7
+centralus,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+centralus,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+centralus,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v7 standard_f8ads_v7
+centralus,d|ds|7,standard_d16ds_v7,ALLOW,
+centralus,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+centralus,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+centralus,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+centralus,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+centralus,d|lds|7,standard_d16lds_v7,ALLOW,
+centralus,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+centralus,d|ls|6,standard_d16ls_v6,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+centralus,d|ls|7,standard_d16ls_v7,ALLOW,
+centralus,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+centralus,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+centralus,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+centralus,d|s|6,standard_d16s_v6,DENY,standard_d16as_v7 standard_f8as_v7
+centralus,d|s|7,standard_d16s_v7,ALLOW,
+centralus,d||2,standard_d4_v2,ALLOW,
+centralus,d||3,standard_d16_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+centralus,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+centralus,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+centralus,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+centralus,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+centralus,e|ds|6,standard_e16ds_v6,DENY,standard_e16ads_v7 standard_f8amds_v7
+centralus,e|ds|7,standard_e16ds_v7,ALLOW,
+centralus,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+centralus,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+centralus,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v7 standard_f48amds_v7
+centralus,e|ids|5,standard_e104ids_v5,DENY,standard_e128ads_v7 standard_f64amds_v7
+centralus,e|ids|6,standard_e192ids_v6,DENY,standard_e128ads_v7
+centralus,e|ids|7,standard_e372ids_v7,ALLOW,
+centralus,e|id|5,standard_e104id_v5,DENY,standard_e128ads_v7 standard_f64amds_v7
+centralus,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v7 standard_f32amds_v7
+centralus,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v7 standard_f48amds_v7
+centralus,e|is|5,standard_e104is_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+centralus,e|is|6,standard_e192is_v6,DENY,standard_e128as_v7
+centralus,e|is|7,standard_e372is_v7,ALLOW,
+centralus,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v7 standard_f32amds_v7
+centralus,e|i|5,standard_e104i_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+centralus,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v7 standard_f8amds_v7
+centralus,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+centralus,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+centralus,e|s|6,standard_e16s_v6,DENY,standard_e16as_v7 standard_f8ams_v7
+centralus,e|s|7,standard_e16s_v7,ALLOW,
+centralus,e||3,standard_e16_v3,DENY,standard_e16ads_v7 standard_f8amds_v7
+centralus,e||4,standard_e16_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+centralus,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+centralus,f|s|2,standard_f16s_v2,DENY,standard_f16ads_v7 standard_f8ads_v7
+chilecentral,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+chilecentral,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+chilecentral,b|ts|2,standard_b2ts_v2,ALLOW,
+chilecentral,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v6
+chilecentral,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v6
+chilecentral,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v6
+chilecentral,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v6
+chilecentral,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v6 standard_d16alds_v6
+chilecentral,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v6 standard_d16als_v6 standard_f8als_v6
+chilecentral,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v6 standard_f8as_v6
+chilecentral,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v6
+chilecentral,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v6 standard_f8as_v6
+chilecentral,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v6
+chilecentral,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v6
+chilecentral,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v6
+chilecentral,e|ds|6,standard_e16ds_v6,ALLOW,
+chilecentral,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v6
+chilecentral,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v6
+chilecentral,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v6 standard_e48ads_v6
+chilecentral,e|ids|5,standard_e104ids_v5,DENY,standard_e112iads_v5
+chilecentral,e|ids|6,standard_e192ids_v6,ALLOW,
+chilecentral,e|id|5,standard_e104id_v5,DENY,standard_e112iads_v5
+chilecentral,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v6
+chilecentral,e|is|5,standard_e104is_v5,DENY,standard_e112ias_v5 standard_f64ams_v6
+chilecentral,e|is|6,standard_e192is_v6,ALLOW,
+chilecentral,e|i|5,standard_e104i_v5,DENY,standard_e112ias_v5 standard_f64ams_v6
+chilecentral,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v6
+chilecentral,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v6
+chilecentral,e|s|6,standard_e16s_v6,DENY,standard_e16as_v6
+chilecentral,e||4,standard_e16_v4,DENY,standard_e16ads_v6
+chilecentral,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v6
+chilecentral,f|s|2,standard_f16s_v2,ALLOW,
+eastasia,a||2,standard_a8_v2,ALLOW,
+eastasia,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+eastasia,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+eastasia,b|ts|2,standard_b2ts_v2,ALLOW,
+eastasia,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v7 standard_f4ads_v7
+eastasia,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+eastasia,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+eastasia,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v7 standard_f8ads_v7
+eastasia,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+eastasia,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+eastasia,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v7 standard_f8alds_v7
+eastasia,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+eastasia,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v7 standard_f8als_v7
+eastasia,d|ls|6,standard_d16ls_v6,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+eastasia,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+eastasia,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+eastasia,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+eastasia,d|s|6,standard_d16s_v6,DENY,standard_d16as_v7 standard_f8as_v7
+eastasia,d||2,standard_d4_v2,ALLOW,
+eastasia,d||3,standard_d16_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+eastasia,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+eastasia,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+eastasia,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+eastasia,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+eastasia,e|ds|6,standard_e16ds_v6,DENY,standard_e16ads_v7 standard_f8amds_v7
+eastasia,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+eastasia,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+eastasia,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v7
+eastasia,e|ids|5,standard_e104ids_v5,DENY,standard_e128ads_v7 standard_f64amds_v7
+eastasia,e|ids|6,standard_e192ids_v6,DENY,standard_e128ads_v7
+eastasia,e|id|5,standard_e104id_v5,DENY,standard_e128ads_v7 standard_f64amds_v7
+eastasia,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v7
+eastasia,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v7
+eastasia,e|is|5,standard_e104is_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+eastasia,e|is|6,standard_e192is_v6,DENY,standard_e128as_v7
+eastasia,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v7
+eastasia,e|i|5,standard_e104i_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+eastasia,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v7 standard_f8amds_v7
+eastasia,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+eastasia,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+eastasia,e|s|6,standard_e16s_v6,DENY,standard_e16as_v7 standard_f8ams_v7
+eastasia,e||3,standard_e16_v3,DENY,standard_e16ads_v7 standard_f8amds_v7
+eastasia,e||4,standard_e16_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+eastasia,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+eastasia,f|s|2,standard_f16s_v2,ALLOW,
+eastus2,a||2,standard_a8_v2,ALLOW,
+eastus2,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+eastus2,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+eastus2,b|ts|2,standard_b2ts_v2,ALLOW,
+eastus2,dc|ds|3,standard_dc16ds_v3,DENY,standard_ec16ads_v5 standard_ec16ads_v6
+eastus2,dc|s|3,standard_dc16s_v3,DENY,standard_ec16as_v5 standard_ec16as_v6
+eastus2,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v7 standard_f4ads_v7
+eastus2,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+eastus2,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+eastus2,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v7 standard_f8ads_v7
+eastus2,d|ds|7,standard_d16ds_v7,ALLOW,
+eastus2,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+eastus2,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+eastus2,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+eastus2,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+eastus2,d|lds|7,standard_d16lds_v7,ALLOW,
+eastus2,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+eastus2,d|ls|6,standard_d16ls_v6,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+eastus2,d|ls|7,standard_d16ls_v7,ALLOW,
+eastus2,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+eastus2,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+eastus2,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+eastus2,d|s|6,standard_d16s_v6,DENY,standard_d16as_v7 standard_f8as_v7
+eastus2,d|s|7,standard_d16s_v7,ALLOW,
+eastus2,d||2,standard_d4_v2,ALLOW,
+eastus2,d||3,standard_d16_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+eastus2,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+eastus2,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+eastus2,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+eastus2,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+eastus2,e|ds|6,standard_e16ds_v6,DENY,standard_e16ads_v7 standard_f8amds_v7
+eastus2,e|ds|7,standard_e16ds_v7,ALLOW,
+eastus2,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+eastus2,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+eastus2,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v7 standard_f48amds_v7
+eastus2,e|ids|5,standard_e104ids_v5,DENY,standard_e128ads_v7 standard_f64amds_v7
+eastus2,e|ids|6,standard_e192ids_v6,DENY,standard_e128ads_v7
+eastus2,e|ids|7,standard_e372ids_v7,ALLOW,
+eastus2,e|id|5,standard_e104id_v5,DENY,standard_e128ads_v7 standard_f64amds_v7
+eastus2,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v7 standard_f32amds_v7
+eastus2,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v7
+eastus2,e|is|5,standard_e104is_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+eastus2,e|is|6,standard_e192is_v6,DENY,standard_e128as_v7
+eastus2,e|is|7,standard_e372is_v7,ALLOW,
+eastus2,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v7 standard_f32amds_v7
+eastus2,e|i|5,standard_e104i_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+eastus2,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+eastus2,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+eastus2,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+eastus2,e|s|6,standard_e16s_v6,DENY,standard_e16as_v7 standard_f8ams_v7
+eastus2,e|s|7,standard_e16s_v7,ALLOW,
+eastus2,e||3,standard_e16_v3,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+eastus2,e||4,standard_e16_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+eastus2,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+eastus2,f|s|2,standard_f16s_v2,DENY,standard_f16ads_v7
+eastus,a||2,standard_a8_v2,ALLOW,
+eastus,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+eastus,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+eastus,b|ts|2,standard_b2ts_v2,ALLOW,
+eastus,dc|ds|3,standard_dc16ds_v3,DENY,standard_ec16ads_v5 standard_ec16ads_v6
+eastus,dc|eds|6,standard_dc16eds_v6,DENY,standard_dc16ads_v6
+eastus,dc|es|6,standard_dc16es_v6,DENY,standard_dc16as_v6
+eastus,dc|s|2,standard_dc4s_v2,ALLOW,
+eastus,dc|s|3,standard_dc16s_v3,DENY,standard_ec16as_v5 standard_ec16as_v6
+eastus,dc||2,standard_dc8_v2,ALLOW,
+eastus,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v7 standard_f4ads_v7
+eastus,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+eastus,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+eastus,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v7 standard_f8ads_v7
+eastus,d|ds|7,standard_d16ds_v7,ALLOW,
+eastus,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+eastus,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+eastus,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+eastus,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+eastus,d|lds|7,standard_d16lds_v7,ALLOW,
+eastus,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+eastus,d|ls|6,standard_d16ls_v6,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+eastus,d|ls|7,standard_d16ls_v7,ALLOW,
+eastus,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+eastus,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+eastus,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+eastus,d|s|6,standard_d16s_v6,DENY,standard_d16as_v7 standard_f8as_v7
+eastus,d|s|7,standard_d16s_v7,ALLOW,
+eastus,d||2,standard_d4_v2,ALLOW,
+eastus,d||3,standard_d16_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+eastus,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+eastus,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+eastus,ec|eds|6,standard_ec16eds_v6,DENY,standard_ec16ads_v6
+eastus,ec|es|6,standard_ec16es_v6,DENY,standard_ec16as_v6
+eastus,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+eastus,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+eastus,e|ds|6,standard_e16ds_v6,DENY,standard_e16ads_v7 standard_f8amds_v7
+eastus,e|ds|7,standard_e16ds_v7,ALLOW,
+eastus,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+eastus,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+eastus,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v7 standard_f48amds_v7
+eastus,e|ids|5,standard_e104ids_v5,DENY,standard_e128ads_v7 standard_f64amds_v7
+eastus,e|ids|6,standard_e192ids_v6,DENY,standard_e128ads_v7
+eastus,e|ids|7,standard_e372ids_v7,ALLOW,
+eastus,e|id|5,standard_e104id_v5,DENY,standard_e128ads_v7 standard_f64amds_v7
+eastus,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v7 standard_f32amds_v7
+eastus,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v7
+eastus,e|is|5,standard_e104is_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+eastus,e|is|6,standard_e192is_v6,DENY,standard_e128as_v7
+eastus,e|is|7,standard_e372is_v7,ALLOW,
+eastus,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v7 standard_f32amds_v7
+eastus,e|i|5,standard_e104i_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+eastus,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v7 standard_f8amds_v7
+eastus,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+eastus,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+eastus,e|s|6,standard_e16s_v6,DENY,standard_e16as_v7 standard_f8ams_v7
+eastus,e|s|7,standard_e16s_v7,ALLOW,
+eastus,e||3,standard_e16_v3,DENY,standard_e16ads_v7 standard_f8amds_v7
+eastus,e||4,standard_e16_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+eastus,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+eastus,f|s|2,standard_f16s_v2,DENY,standard_f16ads_v7
+francecentral,a||2,standard_a8_v2,ALLOW,
+francecentral,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+francecentral,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+francecentral,b|ts|2,standard_b2ts_v2,ALLOW,
+francecentral,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v7 standard_f4ads_v7
+francecentral,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+francecentral,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+francecentral,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v7 standard_f8ads_v7
+francecentral,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+francecentral,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+francecentral,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+francecentral,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+francecentral,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+francecentral,d|ls|6,standard_d16ls_v6,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+francecentral,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+francecentral,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+francecentral,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+francecentral,d|s|6,standard_d16s_v6,DENY,standard_d16as_v7 standard_f8as_v7
+francecentral,d||2,standard_d4_v2,ALLOW,
+francecentral,d||3,standard_d16_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+francecentral,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+francecentral,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+francecentral,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+francecentral,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+francecentral,e|ds|6,standard_e16ds_v6,DENY,standard_e16ads_v7 standard_f8amds_v7
+francecentral,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+francecentral,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+francecentral,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v7 standard_f48amds_v7
+francecentral,e|ids|5,standard_e104ids_v5,DENY,standard_e128ads_v7 standard_f64amds_v7
+francecentral,e|ids|6,standard_e192ids_v6,DENY,standard_e128ads_v7
+francecentral,e|id|5,standard_e104id_v5,DENY,standard_e128ads_v7 standard_f64amds_v7
+francecentral,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v7 standard_f32amds_v7
+francecentral,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v7
+francecentral,e|is|5,standard_e104is_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+francecentral,e|is|6,standard_e192is_v6,DENY,standard_e128as_v7
+francecentral,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v7 standard_f32amds_v7
+francecentral,e|i|5,standard_e104i_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+francecentral,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+francecentral,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+francecentral,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+francecentral,e|s|6,standard_e16s_v6,DENY,standard_e16as_v7 standard_f8ams_v7
+francecentral,e||3,standard_e16_v3,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+francecentral,e||4,standard_e16_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+francecentral,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+francecentral,f|s|2,standard_f16s_v2,DENY,standard_f16ads_v7 standard_f8ads_v7
+francesouth,a||2,standard_a8_v2,ALLOW,
+francesouth,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+francesouth,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+francesouth,b|ts|2,standard_b2ts_v2,ALLOW,
+francesouth,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v6
+francesouth,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v6
+francesouth,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v6
+francesouth,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v6
+francesouth,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v6
+francesouth,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v6
+francesouth,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v6 standard_d16alds_v6
+francesouth,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v6
+francesouth,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v6 standard_d16als_v6 standard_f8als_v6
+francesouth,d|ls|6,standard_d16ls_v6,DENY,standard_d16als_v6 standard_d16als_v6
+francesouth,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v6
+francesouth,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v6 standard_f8as_v6
+francesouth,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v6
+francesouth,d|s|6,standard_d16s_v6,DENY,standard_d16as_v6
+francesouth,d||2,standard_d4_v2,ALLOW,
+francesouth,d||3,standard_d16_v3,DENY,standard_d16ads_v6
+francesouth,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v6 standard_f8as_v6
+francesouth,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v6
+francesouth,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v6
+francesouth,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v6
+francesouth,e|ds|6,standard_e16ds_v6,ALLOW,
+francesouth,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v6
+francesouth,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v6
+francesouth,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v6 standard_e48ads_v6
+francesouth,e|ids|5,standard_e104ids_v5,DENY,standard_e112iads_v5
+francesouth,e|ids|6,standard_e192ids_v6,ALLOW,
+francesouth,e|id|5,standard_e104id_v5,DENY,standard_e112iads_v5
+francesouth,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v6
+francesouth,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v6
+francesouth,e|is|5,standard_e104is_v5,DENY,standard_e112ias_v5 standard_f64ams_v6
+francesouth,e|is|6,standard_e192is_v6,ALLOW,
+francesouth,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v6
+francesouth,e|i|5,standard_e104i_v5,DENY,standard_e112ias_v5 standard_f64ams_v6
+francesouth,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v5 standard_e16ads_v6
+francesouth,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v6
+francesouth,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v6
+francesouth,e|s|6,standard_e16s_v6,DENY,standard_e16as_v6
+francesouth,e||3,standard_e16_v3,DENY,standard_e16ads_v5 standard_e16ads_v6
+francesouth,e||4,standard_e16_v4,DENY,standard_e16ads_v6
+francesouth,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v6
+francesouth,f|s|2,standard_f16s_v2,ALLOW,
+germanynorth,a||2,standard_a8_v2,ALLOW,
+germanynorth,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+germanynorth,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+germanynorth,b|ts|2,standard_b2ts_v2,ALLOW,
+germanynorth,dc|ds|3,standard_dc16ds_v3,ALLOW,
+germanynorth,dc|s|3,standard_dc16s_v3,ALLOW,
+germanynorth,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v6
+germanynorth,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v6
+germanynorth,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v6
+germanynorth,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v6
+germanynorth,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v6
+germanynorth,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v6
+germanynorth,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v6
+germanynorth,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v6
+germanynorth,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v6 standard_f8als_v6
+germanynorth,d|ls|6,standard_d16ls_v6,DENY,standard_d16als_v6 standard_d16als_v6
+germanynorth,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v6
+germanynorth,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v6 standard_f8as_v6
+germanynorth,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v6
+germanynorth,d|s|6,standard_d16s_v6,DENY,standard_d16as_v6
+germanynorth,d||2,standard_d4_v2,ALLOW,
+germanynorth,d||3,standard_d16_v3,DENY,standard_d16ads_v6
+germanynorth,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v6 standard_f8as_v6
+germanynorth,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v6
+germanynorth,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v6
+germanynorth,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v6
+germanynorth,e|ds|6,standard_e16ds_v6,ALLOW,
+germanynorth,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v6
+germanynorth,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v6
+germanynorth,e|ids|4,standard_e80ids_v4,DENY,standard_e112iads_v5 standard_e96ads_v6 standard_e48ads_v6
+germanynorth,e|ids|5,standard_e104ids_v5,DENY,standard_e112iads_v5
+germanynorth,e|ids|6,standard_e192ids_v6,ALLOW,
+germanynorth,e|id|5,standard_e104id_v5,DENY,standard_e112iads_v5
+germanynorth,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v6
+germanynorth,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v6
+germanynorth,e|is|5,standard_e104is_v5,DENY,standard_e112ias_v5 standard_f64ams_v6
+germanynorth,e|is|6,standard_e192is_v6,ALLOW,
+germanynorth,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v6
+germanynorth,e|i|5,standard_e104i_v5,DENY,standard_e112ias_v5 standard_f64ams_v6
+germanynorth,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v6
+germanynorth,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v6
+germanynorth,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v6
+germanynorth,e|s|6,standard_e16s_v6,DENY,standard_e16as_v6
+germanynorth,e||3,standard_e16_v3,DENY,standard_e16ads_v6
+germanynorth,e||4,standard_e16_v4,DENY,standard_e16ads_v6
+germanynorth,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v6
+germanynorth,f|s|2,standard_f16s_v2,ALLOW,
+germanywestcentral,a||2,standard_a8_v2,ALLOW,
+germanywestcentral,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+germanywestcentral,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+germanywestcentral,b|ts|2,standard_b2ts_v2,ALLOW,
+germanywestcentral,dc|ds|3,standard_dc16ds_v3,ALLOW,
+germanywestcentral,dc|s|3,standard_dc16s_v3,ALLOW,
+germanywestcentral,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v7 standard_f4ads_v7
+germanywestcentral,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+germanywestcentral,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+germanywestcentral,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v7 standard_f8ads_v7
+germanywestcentral,d|ds|7,standard_d16ds_v7,ALLOW,
+germanywestcentral,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+germanywestcentral,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+germanywestcentral,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v7 standard_f8alds_v7
+germanywestcentral,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+germanywestcentral,d|lds|7,standard_d16lds_v7,ALLOW,
+germanywestcentral,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v7 standard_f8als_v7
+germanywestcentral,d|ls|6,standard_d16ls_v6,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+germanywestcentral,d|ls|7,standard_d16ls_v7,ALLOW,
+germanywestcentral,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+germanywestcentral,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+germanywestcentral,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+germanywestcentral,d|s|6,standard_d16s_v6,DENY,standard_d16as_v7 standard_f8as_v7
+germanywestcentral,d|s|7,standard_d16s_v7,ALLOW,
+germanywestcentral,d||2,standard_d4_v2,ALLOW,
+germanywestcentral,d||3,standard_d16_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+germanywestcentral,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+germanywestcentral,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+germanywestcentral,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+germanywestcentral,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+germanywestcentral,e|ds|6,standard_e16ds_v6,DENY,standard_e16ads_v7 standard_f8amds_v7
+germanywestcentral,e|ds|7,standard_e16ds_v7,ALLOW,
+germanywestcentral,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+germanywestcentral,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+germanywestcentral,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v7 standard_f48amds_v7
+germanywestcentral,e|ids|5,standard_e104ids_v5,DENY,standard_e112iads_v5 standard_e128ads_v7 standard_f64amds_v7
+germanywestcentral,e|ids|6,standard_e192ids_v6,DENY,standard_e128ads_v7
+germanywestcentral,e|ids|7,standard_e372ids_v7,ALLOW,
+germanywestcentral,e|id|5,standard_e104id_v5,DENY,standard_e112iads_v5 standard_e128ads_v7 standard_f64amds_v7
+germanywestcentral,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v7 standard_f32amds_v7
+germanywestcentral,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v7
+germanywestcentral,e|is|5,standard_e104is_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+germanywestcentral,e|is|6,standard_e192is_v6,DENY,standard_e128as_v7
+germanywestcentral,e|is|7,standard_e372is_v7,ALLOW,
+germanywestcentral,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v7 standard_f32amds_v7
+germanywestcentral,e|i|5,standard_e104i_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+germanywestcentral,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v7 standard_f8amds_v7
+germanywestcentral,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+germanywestcentral,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+germanywestcentral,e|s|6,standard_e16s_v6,DENY,standard_e16as_v7 standard_f8ams_v7
+germanywestcentral,e|s|7,standard_e16s_v7,ALLOW,
+germanywestcentral,e||3,standard_e16_v3,DENY,standard_e16ads_v7 standard_f8amds_v7
+germanywestcentral,e||4,standard_e16_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+germanywestcentral,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+germanywestcentral,f|s|2,standard_f16s_v2,DENY,standard_f16ads_v7
+indonesiacentral,a||2,standard_a8_v2,ALLOW,
+indonesiacentral,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+indonesiacentral,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+indonesiacentral,b|ts|2,standard_b2ts_v2,ALLOW,
+indonesiacentral,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v6
+indonesiacentral,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v6
+indonesiacentral,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v6
+indonesiacentral,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v6
+indonesiacentral,d|ds|7,standard_d16ds_v7,ALLOW,
+indonesiacentral,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v6
+indonesiacentral,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v6
+indonesiacentral,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v6
+indonesiacentral,d|lds|7,standard_d16lds_v7,ALLOW,
+indonesiacentral,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v6 standard_f8als_v6
+indonesiacentral,d|ls|7,standard_d16ls_v7,ALLOW,
+indonesiacentral,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v6
+indonesiacentral,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v6 standard_f8as_v6
+indonesiacentral,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v6
+indonesiacentral,d|s|7,standard_d16s_v7,ALLOW,
+indonesiacentral,d||2,standard_d4_v2,ALLOW,
+indonesiacentral,d||3,standard_d16_v3,DENY,standard_d16ads_v6
+indonesiacentral,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v6 standard_f8as_v6
+indonesiacentral,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v6
+indonesiacentral,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v6
+indonesiacentral,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v6
+indonesiacentral,e|ds|6,standard_e16ds_v6,ALLOW,
+indonesiacentral,e|ds|7,standard_e16ds_v7,ALLOW,
+indonesiacentral,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v6
+indonesiacentral,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v6
+indonesiacentral,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v6 standard_e48ads_v6
+indonesiacentral,e|ids|5,standard_e104ids_v5,ALLOW,
+indonesiacentral,e|ids|6,standard_e192ids_v6,ALLOW,
+indonesiacentral,e|ids|7,standard_e372ids_v7,ALLOW,
+indonesiacentral,e|id|5,standard_e104id_v5,ALLOW,
+indonesiacentral,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v6
+indonesiacentral,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v6
+indonesiacentral,e|is|5,standard_e104is_v5,DENY,standard_f64ams_v6
+indonesiacentral,e|is|6,standard_e192is_v6,ALLOW,
+indonesiacentral,e|is|7,standard_e372is_v7,ALLOW,
+indonesiacentral,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v6
+indonesiacentral,e|i|5,standard_e104i_v5,DENY,standard_f64ams_v6
+indonesiacentral,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v5 standard_e16ads_v6
+indonesiacentral,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v6
+indonesiacentral,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v6
+indonesiacentral,e|s|6,standard_e16s_v6,DENY,standard_e16as_v6
+indonesiacentral,e|s|7,standard_e16s_v7,ALLOW,
+indonesiacentral,e||3,standard_e16_v3,DENY,standard_e16ads_v5 standard_e16ads_v6
+indonesiacentral,e||4,standard_e16_v4,DENY,standard_e16ads_v6
+indonesiacentral,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v6
+indonesiacentral,f|s|2,standard_f16s_v2,ALLOW,
+israelcentral,a||2,standard_a8_v2,ALLOW,
+israelcentral,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+israelcentral,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+israelcentral,b|ts|2,standard_b2ts_v2,ALLOW,
+israelcentral,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v6
+israelcentral,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v6
+israelcentral,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5
+israelcentral,d|ds|6,standard_d16ds_v6,ALLOW,
+israelcentral,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v6
+israelcentral,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5
+israelcentral,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v6
+israelcentral,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v6
+israelcentral,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v6 standard_f8als_v6
+israelcentral,d|ls|6,standard_d16ls_v6,ALLOW,
+israelcentral,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v6
+israelcentral,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v6 standard_f8as_v6
+israelcentral,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v6
+israelcentral,d|s|6,standard_d16s_v6,ALLOW,
+israelcentral,d||2,standard_d4_v2,ALLOW,
+israelcentral,d||3,standard_d16_v3,DENY,standard_d16ads_v6
+israelcentral,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v6 standard_f8as_v6
+israelcentral,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v6
+israelcentral,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v6
+israelcentral,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5
+israelcentral,e|ds|6,standard_e16ds_v6,ALLOW,
+israelcentral,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v6
+israelcentral,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5
+israelcentral,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v6 standard_e48ads_v6
+israelcentral,e|ids|5,standard_e104ids_v5,ALLOW,
+israelcentral,e|ids|6,standard_e192ids_v6,ALLOW,
+israelcentral,e|id|5,standard_e104id_v5,ALLOW,
+israelcentral,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v6
+israelcentral,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v6
+israelcentral,e|is|5,standard_e104is_v5,DENY,standard_f64ams_v6
+israelcentral,e|is|6,standard_e192is_v6,ALLOW,
+israelcentral,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v6
+israelcentral,e|i|5,standard_e104i_v5,DENY,standard_f64ams_v6
+israelcentral,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v6
+israelcentral,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v6
+israelcentral,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v6
+israelcentral,e|s|6,standard_e16s_v6,ALLOW,
+israelcentral,e||3,standard_e16_v3,DENY,standard_e16ads_v6
+israelcentral,e||4,standard_e16_v4,DENY,standard_e16ads_v6
+israelcentral,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v6
+israelcentral,f|s|2,standard_f16s_v2,ALLOW,
+italynorth,a||2,standard_a8_v2,ALLOW,
+italynorth,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+italynorth,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+italynorth,b|ts|2,standard_b2ts_v2,ALLOW,
+italynorth,dc|ds|3,standard_dc16ds_v3,ALLOW,
+italynorth,dc|s|3,standard_dc16s_v3,ALLOW,
+italynorth,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v7 standard_f4ads_v7
+italynorth,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+italynorth,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+italynorth,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v7 standard_f8ads_v7
+italynorth,d|ds|7,standard_d16ds_v7,ALLOW,
+italynorth,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+italynorth,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+italynorth,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v7 standard_f8alds_v7
+italynorth,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+italynorth,d|lds|7,standard_d16lds_v7,ALLOW,
+italynorth,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+italynorth,d|ls|6,standard_d16ls_v6,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+italynorth,d|ls|7,standard_d16ls_v7,ALLOW,
+italynorth,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+italynorth,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+italynorth,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+italynorth,d|s|6,standard_d16s_v6,DENY,standard_d16as_v7 standard_f8as_v7
+italynorth,d|s|7,standard_d16s_v7,ALLOW,
+italynorth,d||2,standard_d4_v2,ALLOW,
+italynorth,d||3,standard_d16_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+italynorth,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+italynorth,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+italynorth,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+italynorth,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+italynorth,e|ds|6,standard_e16ds_v6,DENY,standard_e16ads_v7 standard_f8amds_v7
+italynorth,e|ds|7,standard_e16ds_v7,ALLOW,
+italynorth,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+italynorth,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+italynorth,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v7 standard_f48amds_v7
+italynorth,e|ids|5,standard_e104ids_v5,DENY,standard_e128ads_v7 standard_f64amds_v7
+italynorth,e|ids|6,standard_e192ids_v6,DENY,standard_e128ads_v7
+italynorth,e|ids|7,standard_e372ids_v7,ALLOW,
+italynorth,e|id|5,standard_e104id_v5,DENY,standard_e128ads_v7 standard_f64amds_v7
+italynorth,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v7 standard_f32amds_v7
+italynorth,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v7
+italynorth,e|is|5,standard_e104is_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+italynorth,e|is|6,standard_e192is_v6,DENY,standard_e128as_v7
+italynorth,e|is|7,standard_e372is_v7,ALLOW,
+italynorth,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v7 standard_f32amds_v7
+italynorth,e|i|5,standard_e104i_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+italynorth,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v7 standard_f8amds_v7
+italynorth,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+italynorth,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+italynorth,e|s|6,standard_e16s_v6,DENY,standard_e16as_v7 standard_f8ams_v7
+italynorth,e|s|7,standard_e16s_v7,ALLOW,
+italynorth,e||3,standard_e16_v3,DENY,standard_e16ads_v7 standard_f8amds_v7
+italynorth,e||4,standard_e16_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+italynorth,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+italynorth,f|s|2,standard_f16s_v2,DENY,standard_f16ads_v7
+japaneast,a||2,standard_a8_v2,ALLOW,
+japaneast,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+japaneast,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+japaneast,b|ts|2,standard_b2ts_v2,ALLOW,
+japaneast,dc|ds|3,standard_dc16ds_v3,DENY,standard_ec16ads_v5 standard_ec16ads_v6
+japaneast,dc|s|3,standard_dc16s_v3,DENY,standard_ec16as_v5 standard_ec16as_v6
+japaneast,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v7 standard_f4ads_v7
+japaneast,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+japaneast,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+japaneast,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v7 standard_f8ads_v7
+japaneast,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+japaneast,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+japaneast,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v7 standard_f8alds_v7
+japaneast,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+japaneast,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+japaneast,d|ls|6,standard_d16ls_v6,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+japaneast,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+japaneast,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+japaneast,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+japaneast,d|s|6,standard_d16s_v6,DENY,standard_d16as_v7 standard_f8as_v7
+japaneast,d||2,standard_d4_v2,ALLOW,
+japaneast,d||3,standard_d16_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+japaneast,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+japaneast,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+japaneast,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+japaneast,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+japaneast,e|ds|6,standard_e16ds_v6,DENY,standard_e16ads_v7 standard_f8amds_v7
+japaneast,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+japaneast,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+japaneast,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v7 standard_f48amds_v7
+japaneast,e|ids|5,standard_e104ids_v5,DENY,standard_e112iads_v5 standard_e128ads_v7 standard_f64amds_v7
+japaneast,e|ids|6,standard_e192ids_v6,DENY,standard_e128ads_v7
+japaneast,e|id|5,standard_e104id_v5,DENY,standard_e112iads_v5 standard_e128ads_v7 standard_f64amds_v7
+japaneast,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v7
+japaneast,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v7
+japaneast,e|is|5,standard_e104is_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+japaneast,e|is|6,standard_e192is_v6,DENY,standard_e128as_v7
+japaneast,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v7
+japaneast,e|i|5,standard_e104i_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+japaneast,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+japaneast,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+japaneast,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+japaneast,e|s|6,standard_e16s_v6,DENY,standard_e16as_v7 standard_f8ams_v7
+japaneast,e||3,standard_e16_v3,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+japaneast,e||4,standard_e16_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+japaneast,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+japaneast,f|s|2,standard_f16s_v2,DENY,standard_f16ads_v7
+japanwest,a||2,standard_a8_v2,ALLOW,
+japanwest,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+japanwest,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+japanwest,b|ts|2,standard_b2ts_v2,ALLOW,
+japanwest,dc|ds|3,standard_dc16ds_v3,DENY,standard_ec16ads_v6
+japanwest,dc|s|3,standard_dc16s_v3,DENY,standard_ec16as_v6
+japanwest,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v7 standard_f4ads_v7
+japanwest,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+japanwest,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+japanwest,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v7 standard_f8ads_v7
+japanwest,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+japanwest,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+japanwest,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v7 standard_f8alds_v7
+japanwest,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+japanwest,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+japanwest,d|ls|6,standard_d16ls_v6,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+japanwest,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+japanwest,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+japanwest,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+japanwest,d|s|6,standard_d16s_v6,DENY,standard_d16as_v7 standard_f8as_v7
+japanwest,d||2,standard_d4_v2,ALLOW,
+japanwest,d||3,standard_d16_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+japanwest,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+japanwest,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+japanwest,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+japanwest,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+japanwest,e|ds|6,standard_e16ds_v6,DENY,standard_e16ads_v7 standard_f8amds_v7
+japanwest,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+japanwest,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+japanwest,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v7 standard_f48amds_v7
+japanwest,e|ids|5,standard_e104ids_v5,DENY,standard_e128ads_v7 standard_f64amds_v7
+japanwest,e|ids|6,standard_e192ids_v6,DENY,standard_e128ads_v7
+japanwest,e|id|5,standard_e104id_v5,DENY,standard_e128ads_v7 standard_f64amds_v7
+japanwest,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v7 standard_f32amds_v7
+japanwest,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v7
+japanwest,e|is|5,standard_e104is_v5,DENY,standard_e112ias_v5 standard_e128as_v7 standard_f64ams_v7
+japanwest,e|is|6,standard_e192is_v6,DENY,standard_e128as_v7
+japanwest,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v7 standard_f32amds_v7
+japanwest,e|i|5,standard_e104i_v5,DENY,standard_e112ias_v5 standard_e128as_v7 standard_f64ams_v7
+japanwest,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+japanwest,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+japanwest,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+japanwest,e|s|6,standard_e16s_v6,DENY,standard_e16as_v7 standard_f8ams_v7
+japanwest,e||3,standard_e16_v3,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+japanwest,e||4,standard_e16_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+japanwest,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+japanwest,f|s|2,standard_f16s_v2,DENY,standard_f16ads_v7 standard_f8ads_v7
+koreacentral,a||2,standard_a8_v2,ALLOW,
+koreacentral,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+koreacentral,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+koreacentral,b|ts|2,standard_b2ts_v2,ALLOW,
+koreacentral,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v7 standard_f4ads_v7
+koreacentral,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+koreacentral,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+koreacentral,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v7 standard_f8ads_v7
+koreacentral,d|ds|7,standard_d16ds_v7,ALLOW,
+koreacentral,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+koreacentral,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+koreacentral,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v7 standard_f8alds_v7
+koreacentral,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+koreacentral,d|lds|7,standard_d16lds_v7,ALLOW,
+koreacentral,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v7 standard_f8als_v7
+koreacentral,d|ls|6,standard_d16ls_v6,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+koreacentral,d|ls|7,standard_d16ls_v7,ALLOW,
+koreacentral,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+koreacentral,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+koreacentral,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+koreacentral,d|s|6,standard_d16s_v6,DENY,standard_d16as_v7 standard_f8as_v7
+koreacentral,d|s|7,standard_d16s_v7,ALLOW,
+koreacentral,d||2,standard_d4_v2,ALLOW,
+koreacentral,d||3,standard_d16_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+koreacentral,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+koreacentral,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+koreacentral,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+koreacentral,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+koreacentral,e|ds|6,standard_e16ds_v6,DENY,standard_e16ads_v7 standard_f8amds_v7
+koreacentral,e|ds|7,standard_e16ds_v7,ALLOW,
+koreacentral,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+koreacentral,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+koreacentral,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v7 standard_f48amds_v7
+koreacentral,e|ids|5,standard_e104ids_v5,DENY,standard_e128ads_v7 standard_f64amds_v7
+koreacentral,e|ids|6,standard_e192ids_v6,DENY,standard_e128ads_v7
+koreacentral,e|ids|7,standard_e372ids_v7,ALLOW,
+koreacentral,e|id|5,standard_e104id_v5,DENY,standard_e128ads_v7 standard_f64amds_v7
+koreacentral,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v7 standard_f32amds_v7
+koreacentral,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v7
+koreacentral,e|is|5,standard_e104is_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+koreacentral,e|is|6,standard_e192is_v6,DENY,standard_e128as_v7
+koreacentral,e|is|7,standard_e372is_v7,ALLOW,
+koreacentral,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v7 standard_f32amds_v7
+koreacentral,e|i|5,standard_e104i_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+koreacentral,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+koreacentral,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+koreacentral,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+koreacentral,e|s|6,standard_e16s_v6,DENY,standard_e16as_v7 standard_f8ams_v7
+koreacentral,e|s|7,standard_e16s_v7,ALLOW,
+koreacentral,e||3,standard_e16_v3,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+koreacentral,e||4,standard_e16_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+koreacentral,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+koreacentral,f|s|2,standard_f16s_v2,ALLOW,
+koreasouth,a||2,standard_a8_v2,ALLOW,
+koreasouth,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+koreasouth,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+koreasouth,b|ts|2,standard_b2ts_v2,ALLOW,
+koreasouth,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v6
+koreasouth,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v6
+koreasouth,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v6
+koreasouth,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v6
+koreasouth,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v6
+koreasouth,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v6
+koreasouth,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v6 standard_d16alds_v6
+koreasouth,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v6
+koreasouth,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v6 standard_d16als_v6 standard_f8als_v6
+koreasouth,d|ls|6,standard_d16ls_v6,DENY,standard_d16als_v6 standard_d16als_v6
+koreasouth,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v6
+koreasouth,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v6 standard_f8as_v6
+koreasouth,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v6
+koreasouth,d|s|6,standard_d16s_v6,DENY,standard_d16as_v6
+koreasouth,d||2,standard_d4_v2,ALLOW,
+koreasouth,d||3,standard_d16_v3,DENY,standard_d16ads_v6
+koreasouth,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v6 standard_f8as_v6
+koreasouth,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v6
+koreasouth,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v6
+koreasouth,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v6
+koreasouth,e|ds|6,standard_e16ds_v6,ALLOW,
+koreasouth,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v6
+koreasouth,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v6
+koreasouth,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v6 standard_e48ads_v6
+koreasouth,e|ids|5,standard_e104ids_v5,ALLOW,
+koreasouth,e|ids|6,standard_e192ids_v6,ALLOW,
+koreasouth,e|id|5,standard_e104id_v5,ALLOW,
+koreasouth,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v6
+koreasouth,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v6
+koreasouth,e|is|5,standard_e104is_v5,DENY,standard_f64ams_v6
+koreasouth,e|is|6,standard_e192is_v6,ALLOW,
+koreasouth,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v6
+koreasouth,e|i|5,standard_e104i_v5,DENY,standard_f64ams_v6
+koreasouth,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v6
+koreasouth,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v6
+koreasouth,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v6
+koreasouth,e|s|6,standard_e16s_v6,DENY,standard_e16as_v6
+koreasouth,e||3,standard_e16_v3,DENY,standard_e16ads_v6
+koreasouth,e||4,standard_e16_v4,DENY,standard_e16ads_v6
+koreasouth,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v6
+koreasouth,f|s|2,standard_f16s_v2,ALLOW,
+malaysiawest,a||2,standard_a8_v2,ALLOW,
+malaysiawest,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v6
+malaysiawest,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v6
+malaysiawest,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v6
+malaysiawest,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v6
+malaysiawest,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v6
+malaysiawest,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v6
+malaysiawest,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v6
+malaysiawest,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v6 standard_f8als_v6
+malaysiawest,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v6
+malaysiawest,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v6 standard_f8as_v6
+malaysiawest,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v6
+malaysiawest,d||2,standard_d4_v2,ALLOW,
+malaysiawest,d||3,standard_d16_v3,DENY,standard_d16ads_v6
+malaysiawest,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v6 standard_f8as_v6
+malaysiawest,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v6
+malaysiawest,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v6
+malaysiawest,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v6
+malaysiawest,e|ds|6,standard_e16ds_v6,ALLOW,
+malaysiawest,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v6
+malaysiawest,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v6
+malaysiawest,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v6 standard_e48ads_v6
+malaysiawest,e|ids|5,standard_e104ids_v5,ALLOW,
+malaysiawest,e|ids|6,standard_e192ids_v6,ALLOW,
+malaysiawest,e|id|5,standard_e104id_v5,ALLOW,
+malaysiawest,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v6
+malaysiawest,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v6
+malaysiawest,e|is|5,standard_e104is_v5,DENY,standard_f64ams_v6
+malaysiawest,e|is|6,standard_e192is_v6,ALLOW,
+malaysiawest,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v6
+malaysiawest,e|i|5,standard_e104i_v5,DENY,standard_f64ams_v6
+malaysiawest,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v5 standard_e16ads_v6
+malaysiawest,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v6
+malaysiawest,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v6
+malaysiawest,e|s|6,standard_e16s_v6,DENY,standard_e16as_v6
+malaysiawest,e||3,standard_e16_v3,DENY,standard_e16ads_v5 standard_e16ads_v6
+malaysiawest,e||4,standard_e16_v4,DENY,standard_e16ads_v6
+malaysiawest,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v6
+malaysiawest,f|s|2,standard_f16s_v2,ALLOW,
+mexicocentral,a||2,standard_a8_v2,ALLOW,
+mexicocentral,dc|ds|3,standard_dc16ds_v3,DENY,standard_ec16ads_v6
+mexicocentral,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v7 standard_f4ads_v7
+mexicocentral,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+mexicocentral,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+mexicocentral,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v7 standard_f8ads_v7
+mexicocentral,d|ds|7,standard_d16ds_v7,ALLOW,
+mexicocentral,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+mexicocentral,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+mexicocentral,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+mexicocentral,d|lds|7,standard_d16lds_v7,ALLOW,
+mexicocentral,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+mexicocentral,d|ls|6,standard_d16ls_v6,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+mexicocentral,d|ls|7,standard_d16ls_v7,ALLOW,
+mexicocentral,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+mexicocentral,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+mexicocentral,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+mexicocentral,d|s|6,standard_d16s_v6,DENY,standard_d16as_v7 standard_f8as_v7
+mexicocentral,d|s|7,standard_d16s_v7,ALLOW,
+mexicocentral,d||2,standard_d4_v2,ALLOW,
+mexicocentral,d||3,standard_d16_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+mexicocentral,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+mexicocentral,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+mexicocentral,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+mexicocentral,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+mexicocentral,e|ds|6,standard_e16ds_v6,DENY,standard_e16ads_v7 standard_f8amds_v7
+mexicocentral,e|ds|7,standard_e16ds_v7,ALLOW,
+mexicocentral,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+mexicocentral,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+mexicocentral,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v7 standard_f48amds_v7
+mexicocentral,e|ids|5,standard_e104ids_v5,DENY,standard_e112iads_v5 standard_e128ads_v7 standard_f64amds_v7
+mexicocentral,e|ids|6,standard_e192ids_v6,DENY,standard_e128ads_v7
+mexicocentral,e|ids|7,standard_e372ids_v7,ALLOW,
+mexicocentral,e|id|5,standard_e104id_v5,DENY,standard_e112iads_v5 standard_e128ads_v7 standard_f64amds_v7
+mexicocentral,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v7 standard_f32amds_v7
+mexicocentral,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v7
+mexicocentral,e|is|5,standard_e104is_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+mexicocentral,e|is|6,standard_e192is_v6,DENY,standard_e128as_v7
+mexicocentral,e|is|7,standard_e372is_v7,ALLOW,
+mexicocentral,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v7 standard_f32amds_v7
+mexicocentral,e|i|5,standard_e104i_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+mexicocentral,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v7 standard_f8amds_v7
+mexicocentral,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+mexicocentral,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+mexicocentral,e|s|6,standard_e16s_v6,DENY,standard_e16as_v7 standard_f8ams_v7
+mexicocentral,e|s|7,standard_e16s_v7,ALLOW,
+mexicocentral,e||3,standard_e16_v3,DENY,standard_e16ads_v7 standard_f8amds_v7
+mexicocentral,e||4,standard_e16_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+mexicocentral,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+mexicocentral,f|s|2,standard_f16s_v2,DENY,standard_f16ads_v7
+newzealandnorth,a||2,standard_a8_v2,ALLOW,
+newzealandnorth,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+newzealandnorth,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+newzealandnorth,b|ts|2,standard_b2ts_v2,ALLOW,
+newzealandnorth,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v6
+newzealandnorth,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v6
+newzealandnorth,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v6
+newzealandnorth,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v6
+newzealandnorth,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v6
+newzealandnorth,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v6 standard_d16alds_v6
+newzealandnorth,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v6 standard_d16als_v6 standard_f8als_v6
+newzealandnorth,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v6
+newzealandnorth,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v6 standard_f8as_v6
+newzealandnorth,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v6
+newzealandnorth,d||2,standard_d4_v2,ALLOW,
+newzealandnorth,d||3,standard_d16_v3,DENY,standard_d16ads_v6
+newzealandnorth,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v6 standard_f8as_v6
+newzealandnorth,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v6
+newzealandnorth,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v6
+newzealandnorth,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v6
+newzealandnorth,e|ds|6,standard_e16ds_v6,ALLOW,
+newzealandnorth,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v6
+newzealandnorth,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v6
+newzealandnorth,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v6 standard_e48ads_v6
+newzealandnorth,e|ids|5,standard_e104ids_v5,ALLOW,
+newzealandnorth,e|ids|6,standard_e192ids_v6,ALLOW,
+newzealandnorth,e|id|5,standard_e104id_v5,ALLOW,
+newzealandnorth,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v6
+newzealandnorth,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v6
+newzealandnorth,e|is|5,standard_e104is_v5,DENY,standard_f64ams_v6
+newzealandnorth,e|is|6,standard_e192is_v6,ALLOW,
+newzealandnorth,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v6
+newzealandnorth,e|i|5,standard_e104i_v5,DENY,standard_f64ams_v6
+newzealandnorth,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v6
+newzealandnorth,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v6
+newzealandnorth,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v6
+newzealandnorth,e|s|6,standard_e16s_v6,DENY,standard_e16as_v6
+newzealandnorth,e||3,standard_e16_v3,DENY,standard_e16ads_v6
+newzealandnorth,e||4,standard_e16_v4,DENY,standard_e16ads_v6
+newzealandnorth,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v6
+newzealandnorth,f|s|2,standard_f16s_v2,ALLOW,
+northcentralus,a||2,standard_a8_v2,ALLOW,
+northcentralus,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+northcentralus,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+northcentralus,b|ts|2,standard_b2ts_v2,ALLOW,
+northcentralus,dc|s|2,standard_dc4s_v2,ALLOW,
+northcentralus,dc||2,standard_dc8_v2,ALLOW,
+northcentralus,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v7 standard_f4ads_v7
+northcentralus,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+northcentralus,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+northcentralus,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v7 standard_f8ads_v7
+northcentralus,d|ds|7,standard_d16ds_v7,ALLOW,
+northcentralus,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+northcentralus,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+northcentralus,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+northcentralus,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+northcentralus,d|lds|7,standard_d16lds_v7,ALLOW,
+northcentralus,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+northcentralus,d|ls|6,standard_d16ls_v6,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+northcentralus,d|ls|7,standard_d16ls_v7,ALLOW,
+northcentralus,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+northcentralus,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+northcentralus,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+northcentralus,d|s|6,standard_d16s_v6,DENY,standard_d16as_v7 standard_f8as_v7
+northcentralus,d|s|7,standard_d16s_v7,ALLOW,
+northcentralus,d||2,standard_d4_v2,ALLOW,
+northcentralus,d||3,standard_d16_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+northcentralus,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+northcentralus,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+northcentralus,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+northcentralus,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+northcentralus,e|ds|6,standard_e16ds_v6,DENY,standard_e16ads_v7 standard_f8amds_v7
+northcentralus,e|ds|7,standard_e16ds_v7,ALLOW,
+northcentralus,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+northcentralus,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+northcentralus,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v7 standard_f48amds_v7
+northcentralus,e|ids|5,standard_e104ids_v5,DENY,standard_e128ads_v7 standard_f64amds_v7
+northcentralus,e|ids|6,standard_e192ids_v6,DENY,standard_e128ads_v7
+northcentralus,e|ids|7,standard_e372ids_v7,ALLOW,
+northcentralus,e|id|5,standard_e104id_v5,DENY,standard_e128ads_v7 standard_f64amds_v7
+northcentralus,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v7 standard_f32amds_v7
+northcentralus,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v7
+northcentralus,e|is|5,standard_e104is_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+northcentralus,e|is|6,standard_e192is_v6,DENY,standard_e128as_v7
+northcentralus,e|is|7,standard_e372is_v7,ALLOW,
+northcentralus,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v7 standard_f32amds_v7
+northcentralus,e|i|5,standard_e104i_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+northcentralus,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v7 standard_f8amds_v7
+northcentralus,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+northcentralus,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+northcentralus,e|s|6,standard_e16s_v6,DENY,standard_e16as_v7 standard_f8ams_v7
+northcentralus,e|s|7,standard_e16s_v7,ALLOW,
+northcentralus,e||3,standard_e16_v3,DENY,standard_e16ads_v7 standard_f8amds_v7
+northcentralus,e||4,standard_e16_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+northcentralus,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+northcentralus,f|s|2,standard_f16s_v2,DENY,standard_f16ads_v7
+northeurope,a||2,standard_a8_v2,ALLOW,
+northeurope,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+northeurope,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+northeurope,b|ts|2,standard_b2ts_v2,ALLOW,
+northeurope,dc|ds|3,standard_dc16ds_v3,DENY,standard_ec16ads_v5 standard_ec16ads_v6
+northeurope,dc|s|2,standard_dc4s_v2,ALLOW,
+northeurope,dc|s|3,standard_dc16s_v3,DENY,standard_ec16as_v5 standard_ec16as_v6
+northeurope,dc||2,standard_dc8_v2,ALLOW,
+northeurope,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v7 standard_f4ads_v7
+northeurope,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+northeurope,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+northeurope,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v7 standard_f8ads_v7
+northeurope,d|ds|7,standard_d16ds_v7,ALLOW,
+northeurope,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+northeurope,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+northeurope,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+northeurope,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+northeurope,d|lds|7,standard_d16lds_v7,ALLOW,
+northeurope,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+northeurope,d|ls|6,standard_d16ls_v6,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+northeurope,d|ls|7,standard_d16ls_v7,ALLOW,
+northeurope,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+northeurope,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+northeurope,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+northeurope,d|s|6,standard_d16s_v6,DENY,standard_d16as_v7 standard_f8as_v7
+northeurope,d|s|7,standard_d16s_v7,ALLOW,
+northeurope,d||2,standard_d4_v2,ALLOW,
+northeurope,d||3,standard_d16_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+northeurope,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+northeurope,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+northeurope,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+northeurope,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+northeurope,e|ds|6,standard_e16ds_v6,DENY,standard_e16ads_v7 standard_f8amds_v7
+northeurope,e|ds|7,standard_e16ds_v7,ALLOW,
+northeurope,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+northeurope,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+northeurope,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v7 standard_f48amds_v7
+northeurope,e|ids|5,standard_e104ids_v5,DENY,standard_e112iads_v5 standard_e128ads_v7 standard_f64amds_v7
+northeurope,e|ids|6,standard_e192ids_v6,DENY,standard_e128ads_v7
+northeurope,e|ids|7,standard_e372ids_v7,ALLOW,
+northeurope,e|id|5,standard_e104id_v5,DENY,standard_e112iads_v5 standard_e128ads_v7 standard_f64amds_v7
+northeurope,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v7 standard_f32amds_v7
+northeurope,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v7
+northeurope,e|is|5,standard_e104is_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+northeurope,e|is|6,standard_e192is_v6,DENY,standard_e128as_v7
+northeurope,e|is|7,standard_e372is_v7,ALLOW,
+northeurope,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v7 standard_f32amds_v7
+northeurope,e|i|5,standard_e104i_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+northeurope,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v7 standard_f8amds_v7
+northeurope,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+northeurope,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+northeurope,e|s|6,standard_e16s_v6,DENY,standard_e16as_v7 standard_f8ams_v7
+northeurope,e|s|7,standard_e16s_v7,ALLOW,
+northeurope,e||3,standard_e16_v3,DENY,standard_e16ads_v7 standard_f8amds_v7
+northeurope,e||4,standard_e16_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+northeurope,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+northeurope,f|s|2,standard_f16s_v2,DENY,standard_f16ads_v7 standard_f8ads_v7
+norwayeast,a||2,standard_a8_v2,ALLOW,
+norwayeast,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+norwayeast,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+norwayeast,b|ts|2,standard_b2ts_v2,ALLOW,
+norwayeast,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v7 standard_f4ads_v7
+norwayeast,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+norwayeast,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+norwayeast,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v7 standard_f8ads_v7
+norwayeast,d|ds|7,standard_d16ds_v7,ALLOW,
+norwayeast,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+norwayeast,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+norwayeast,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+norwayeast,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+norwayeast,d|lds|7,standard_d16lds_v7,ALLOW,
+norwayeast,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+norwayeast,d|ls|6,standard_d16ls_v6,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+norwayeast,d|ls|7,standard_d16ls_v7,ALLOW,
+norwayeast,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+norwayeast,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+norwayeast,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+norwayeast,d|s|6,standard_d16s_v6,DENY,standard_d16as_v7 standard_f8as_v7
+norwayeast,d|s|7,standard_d16s_v7,ALLOW,
+norwayeast,d||2,standard_d4_v2,ALLOW,
+norwayeast,d||3,standard_d16_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+norwayeast,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+norwayeast,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+norwayeast,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+norwayeast,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+norwayeast,e|ds|6,standard_e16ds_v6,DENY,standard_e16ads_v7 standard_f8amds_v7
+norwayeast,e|ds|7,standard_e16ds_v7,ALLOW,
+norwayeast,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+norwayeast,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+norwayeast,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v7 standard_f48amds_v7
+norwayeast,e|ids|5,standard_e104ids_v5,DENY,standard_e112iads_v5 standard_e128ads_v7 standard_f64amds_v7
+norwayeast,e|ids|6,standard_e192ids_v6,DENY,standard_e128ads_v7
+norwayeast,e|ids|7,standard_e372ids_v7,ALLOW,
+norwayeast,e|id|5,standard_e104id_v5,DENY,standard_e112iads_v5 standard_e128ads_v7 standard_f64amds_v7
+norwayeast,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v7
+norwayeast,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v7
+norwayeast,e|is|5,standard_e104is_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+norwayeast,e|is|6,standard_e192is_v6,DENY,standard_e128as_v7
+norwayeast,e|is|7,standard_e372is_v7,ALLOW,
+norwayeast,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v7
+norwayeast,e|i|5,standard_e104i_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+norwayeast,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v7 standard_f8amds_v7
+norwayeast,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+norwayeast,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+norwayeast,e|s|6,standard_e16s_v6,DENY,standard_e16as_v7 standard_f8ams_v7
+norwayeast,e|s|7,standard_e16s_v7,ALLOW,
+norwayeast,e||3,standard_e16_v3,DENY,standard_e16ads_v7 standard_f8amds_v7
+norwayeast,e||4,standard_e16_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+norwayeast,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+norwayeast,f|s|2,standard_f16s_v2,ALLOW,
+norwaywest,a||2,standard_a8_v2,ALLOW,
+norwaywest,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+norwaywest,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+norwaywest,b|ts|2,standard_b2ts_v2,ALLOW,
+norwaywest,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v6
+norwaywest,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v6
+norwaywest,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v6
+norwaywest,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v6
+norwaywest,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v6
+norwaywest,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v6
+norwaywest,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v6 standard_d16alds_v6
+norwaywest,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v6
+norwaywest,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v6 standard_d16als_v6 standard_f8als_v6
+norwaywest,d|ls|6,standard_d16ls_v6,DENY,standard_d16als_v6 standard_d16als_v6
+norwaywest,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v6
+norwaywest,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v6 standard_f8as_v6
+norwaywest,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v6
+norwaywest,d|s|6,standard_d16s_v6,DENY,standard_d16as_v6
+norwaywest,d||2,standard_d4_v2,ALLOW,
+norwaywest,d||3,standard_d16_v3,DENY,standard_d16ads_v6
+norwaywest,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v6 standard_f8as_v6
+norwaywest,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v6
+norwaywest,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v6
+norwaywest,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v6
+norwaywest,e|ds|6,standard_e16ds_v6,ALLOW,
+norwaywest,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v6
+norwaywest,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v6
+norwaywest,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v6 standard_e48ads_v6
+norwaywest,e|ids|5,standard_e104ids_v5,DENY,standard_e112iads_v5
+norwaywest,e|ids|6,standard_e192ids_v6,ALLOW,
+norwaywest,e|id|5,standard_e104id_v5,DENY,standard_e112iads_v5
+norwaywest,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v6
+norwaywest,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v6
+norwaywest,e|is|5,standard_e104is_v5,DENY,standard_e112ias_v5 standard_f64ams_v6
+norwaywest,e|is|6,standard_e192is_v6,ALLOW,
+norwaywest,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v6
+norwaywest,e|i|5,standard_e104i_v5,DENY,standard_e112ias_v5 standard_f64ams_v6
+norwaywest,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v6
+norwaywest,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v6
+norwaywest,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v6
+norwaywest,e|s|6,standard_e16s_v6,DENY,standard_e16as_v6
+norwaywest,e||3,standard_e16_v3,DENY,standard_e16ads_v6
+norwaywest,e||4,standard_e16_v4,DENY,standard_e16ads_v6
+norwaywest,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v6
+norwaywest,f|s|2,standard_f16s_v2,ALLOW,
+polandcentral,a||2,standard_a8_v2,ALLOW,
+polandcentral,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+polandcentral,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+polandcentral,b|ts|2,standard_b2ts_v2,ALLOW,
+polandcentral,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v7 standard_f4ads_v7
+polandcentral,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+polandcentral,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+polandcentral,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v7 standard_f8ads_v7
+polandcentral,d|ds|7,standard_d16ds_v7,ALLOW,
+polandcentral,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+polandcentral,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+polandcentral,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v7 standard_f8alds_v7
+polandcentral,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+polandcentral,d|lds|7,standard_d16lds_v7,ALLOW,
+polandcentral,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v7 standard_f8als_v7
+polandcentral,d|ls|6,standard_d16ls_v6,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+polandcentral,d|ls|7,standard_d16ls_v7,ALLOW,
+polandcentral,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+polandcentral,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+polandcentral,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+polandcentral,d|s|6,standard_d16s_v6,DENY,standard_d16as_v7 standard_f8as_v7
+polandcentral,d|s|7,standard_d16s_v7,ALLOW,
+polandcentral,d||2,standard_d4_v2,ALLOW,
+polandcentral,d||3,standard_d16_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+polandcentral,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+polandcentral,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+polandcentral,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+polandcentral,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+polandcentral,e|ds|6,standard_e16ds_v6,DENY,standard_e16ads_v7 standard_f8amds_v7
+polandcentral,e|ds|7,standard_e16ds_v7,ALLOW,
+polandcentral,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+polandcentral,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+polandcentral,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v7 standard_f48amds_v7
+polandcentral,e|ids|5,standard_e104ids_v5,DENY,standard_e128ads_v7 standard_f64amds_v7
+polandcentral,e|ids|6,standard_e192ids_v6,DENY,standard_e128ads_v7
+polandcentral,e|ids|7,standard_e372ids_v7,ALLOW,
+polandcentral,e|id|5,standard_e104id_v5,DENY,standard_e128ads_v7 standard_f64amds_v7
+polandcentral,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v7 standard_f32amds_v7
+polandcentral,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v7
+polandcentral,e|is|5,standard_e104is_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+polandcentral,e|is|6,standard_e192is_v6,DENY,standard_e128as_v7
+polandcentral,e|is|7,standard_e372is_v7,ALLOW,
+polandcentral,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v7 standard_f32amds_v7
+polandcentral,e|i|5,standard_e104i_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+polandcentral,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v7 standard_f8amds_v7
+polandcentral,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+polandcentral,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+polandcentral,e|s|6,standard_e16s_v6,DENY,standard_e16as_v7 standard_f8ams_v7
+polandcentral,e|s|7,standard_e16s_v7,ALLOW,
+polandcentral,e||3,standard_e16_v3,DENY,standard_e16ads_v7 standard_f8amds_v7
+polandcentral,e||4,standard_e16_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+polandcentral,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+polandcentral,f|s|2,standard_f16s_v2,DENY,standard_f16ads_v7
+qatarcentral,a||2,standard_a8_v2,ALLOW,
+qatarcentral,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+qatarcentral,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+qatarcentral,b|ts|2,standard_b2ts_v2,ALLOW,
+qatarcentral,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v6
+qatarcentral,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v6
+qatarcentral,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v6
+qatarcentral,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v6
+qatarcentral,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v6
+qatarcentral,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v6
+qatarcentral,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v6 standard_d16alds_v6
+qatarcentral,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v6
+qatarcentral,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v6 standard_d16als_v6 standard_f8als_v6
+qatarcentral,d|ls|6,standard_d16ls_v6,DENY,standard_d16als_v6 standard_d16als_v6
+qatarcentral,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v6
+qatarcentral,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v6 standard_f8as_v6
+qatarcentral,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v6
+qatarcentral,d|s|6,standard_d16s_v6,DENY,standard_d16as_v6
+qatarcentral,d||2,standard_d4_v2,ALLOW,
+qatarcentral,d||3,standard_d16_v3,DENY,standard_d16ads_v6
+qatarcentral,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v6 standard_f8as_v6
+qatarcentral,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v6
+qatarcentral,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v6
+qatarcentral,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v6
+qatarcentral,e|ds|6,standard_e16ds_v6,ALLOW,
+qatarcentral,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v6
+qatarcentral,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v6
+qatarcentral,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v6 standard_e48ads_v6
+qatarcentral,e|ids|5,standard_e104ids_v5,DENY,standard_e112iads_v5
+qatarcentral,e|ids|6,standard_e192ids_v6,ALLOW,
+qatarcentral,e|id|5,standard_e104id_v5,DENY,standard_e112iads_v5
+qatarcentral,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v6
+qatarcentral,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v6
+qatarcentral,e|is|5,standard_e104is_v5,DENY,standard_f64ams_v6
+qatarcentral,e|is|6,standard_e192is_v6,ALLOW,
+qatarcentral,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v6
+qatarcentral,e|i|5,standard_e104i_v5,DENY,standard_f64ams_v6
+qatarcentral,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v6
+qatarcentral,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v6
+qatarcentral,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v6
+qatarcentral,e|s|6,standard_e16s_v6,DENY,standard_e16as_v6
+qatarcentral,e||3,standard_e16_v3,DENY,standard_e16ads_v6
+qatarcentral,e||4,standard_e16_v4,DENY,standard_e16ads_v6
+qatarcentral,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v6
+qatarcentral,f|s|2,standard_f16s_v2,ALLOW,
+southafricanorth,a||2,standard_a8_v2,ALLOW,
+southafricanorth,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+southafricanorth,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+southafricanorth,b|ts|2,standard_b2ts_v2,ALLOW,
+southafricanorth,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v7 standard_f4ads_v7
+southafricanorth,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+southafricanorth,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+southafricanorth,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v7 standard_f8ads_v7
+southafricanorth,d|ds|7,standard_d16ds_v7,ALLOW,
+southafricanorth,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+southafricanorth,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+southafricanorth,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+southafricanorth,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+southafricanorth,d|lds|7,standard_d16lds_v7,ALLOW,
+southafricanorth,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+southafricanorth,d|ls|6,standard_d16ls_v6,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+southafricanorth,d|ls|7,standard_d16ls_v7,ALLOW,
+southafricanorth,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+southafricanorth,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+southafricanorth,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+southafricanorth,d|s|6,standard_d16s_v6,DENY,standard_d16as_v7 standard_f8as_v7
+southafricanorth,d|s|7,standard_d16s_v7,ALLOW,
+southafricanorth,d||2,standard_d4_v2,ALLOW,
+southafricanorth,d||3,standard_d16_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+southafricanorth,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+southafricanorth,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+southafricanorth,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+southafricanorth,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+southafricanorth,e|ds|6,standard_e16ds_v6,DENY,standard_e16ads_v7 standard_f8amds_v7
+southafricanorth,e|ds|7,standard_e16ds_v7,ALLOW,
+southafricanorth,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+southafricanorth,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+southafricanorth,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v7 standard_f48amds_v7
+southafricanorth,e|ids|5,standard_e104ids_v5,DENY,standard_e128ads_v7 standard_f64amds_v7
+southafricanorth,e|ids|6,standard_e192ids_v6,DENY,standard_e128ads_v7
+southafricanorth,e|ids|7,standard_e372ids_v7,ALLOW,
+southafricanorth,e|id|5,standard_e104id_v5,DENY,standard_e128ads_v7 standard_f64amds_v7
+southafricanorth,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v7 standard_f32amds_v7
+southafricanorth,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v7
+southafricanorth,e|is|5,standard_e104is_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+southafricanorth,e|is|6,standard_e192is_v6,DENY,standard_e128as_v7
+southafricanorth,e|is|7,standard_e372is_v7,ALLOW,
+southafricanorth,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v7 standard_f32amds_v7
+southafricanorth,e|i|5,standard_e104i_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+southafricanorth,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v7 standard_f8amds_v7
+southafricanorth,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+southafricanorth,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+southafricanorth,e|s|6,standard_e16s_v6,DENY,standard_e16as_v7 standard_f8ams_v7
+southafricanorth,e|s|7,standard_e16s_v7,ALLOW,
+southafricanorth,e||3,standard_e16_v3,DENY,standard_e16ads_v7 standard_f8amds_v7
+southafricanorth,e||4,standard_e16_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+southafricanorth,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+southafricanorth,f|s|2,standard_f16s_v2,DENY,standard_f16ads_v7
+southafricawest,a||2,standard_a8_v2,ALLOW,
+southafricawest,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+southafricawest,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+southafricawest,b|ts|2,standard_b2ts_v2,ALLOW,
+southafricawest,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v6
+southafricawest,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v6
+southafricawest,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v6
+southafricawest,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v6
+southafricawest,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v6
+southafricawest,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v6
+southafricawest,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v6 standard_d16alds_v6
+southafricawest,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v6
+southafricawest,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v6 standard_d16als_v6 standard_f8als_v6
+southafricawest,d|ls|6,standard_d16ls_v6,DENY,standard_d16als_v6 standard_d16als_v6
+southafricawest,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v6
+southafricawest,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v6 standard_f8as_v6
+southafricawest,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v6
+southafricawest,d|s|6,standard_d16s_v6,DENY,standard_d16as_v6
+southafricawest,d||2,standard_d4_v2,ALLOW,
+southafricawest,d||3,standard_d16_v3,DENY,standard_d16ads_v6
+southafricawest,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v6 standard_f8as_v6
+southafricawest,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v6
+southafricawest,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v6
+southafricawest,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v6
+southafricawest,e|ds|6,standard_e16ds_v6,ALLOW,
+southafricawest,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v6
+southafricawest,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v6
+southafricawest,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v6 standard_e48ads_v6
+southafricawest,e|ids|5,standard_e104ids_v5,DENY,standard_e112iads_v5
+southafricawest,e|ids|6,standard_e192ids_v6,ALLOW,
+southafricawest,e|id|5,standard_e104id_v5,DENY,standard_e112iads_v5
+southafricawest,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v6
+southafricawest,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v6
+southafricawest,e|is|5,standard_e104is_v5,DENY,standard_e112ias_v5 standard_f64ams_v6
+southafricawest,e|is|6,standard_e192is_v6,ALLOW,
+southafricawest,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v6
+southafricawest,e|i|5,standard_e104i_v5,DENY,standard_e112ias_v5 standard_f64ams_v6
+southafricawest,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v6
+southafricawest,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v6
+southafricawest,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v6
+southafricawest,e|s|6,standard_e16s_v6,DENY,standard_e16as_v6
+southafricawest,e||3,standard_e16_v3,DENY,standard_e16ads_v6
+southafricawest,e||4,standard_e16_v4,DENY,standard_e16ads_v6
+southafricawest,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v6
+southafricawest,f|s|2,standard_f16s_v2,ALLOW,
+southcentralus,a||2,standard_a8_v2,ALLOW,
+southcentralus,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+southcentralus,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+southcentralus,b|ts|2,standard_b2ts_v2,ALLOW,
+southcentralus,dc|ds|3,standard_dc16ds_v3,DENY,standard_ec16ads_v6
+southcentralus,dc|s|2,standard_dc4s_v2,ALLOW,
+southcentralus,dc|s|3,standard_dc16s_v3,DENY,standard_ec16as_v6
+southcentralus,dc||2,standard_dc8_v2,ALLOW,
+southcentralus,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v7 standard_f4ads_v7
+southcentralus,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+southcentralus,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+southcentralus,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v7 standard_f8ads_v7
+southcentralus,d|ds|7,standard_d16ds_v7,ALLOW,
+southcentralus,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+southcentralus,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+southcentralus,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+southcentralus,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+southcentralus,d|lds|7,standard_d16lds_v7,ALLOW,
+southcentralus,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+southcentralus,d|ls|6,standard_d16ls_v6,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+southcentralus,d|ls|7,standard_d16ls_v7,ALLOW,
+southcentralus,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+southcentralus,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+southcentralus,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+southcentralus,d|s|6,standard_d16s_v6,DENY,standard_d16as_v7 standard_f8as_v7
+southcentralus,d|s|7,standard_d16s_v7,ALLOW,
+southcentralus,d||2,standard_d4_v2,ALLOW,
+southcentralus,d||3,standard_d16_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+southcentralus,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+southcentralus,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+southcentralus,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+southcentralus,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+southcentralus,e|ds|6,standard_e16ds_v6,DENY,standard_e16ads_v7 standard_f8amds_v7
+southcentralus,e|ds|7,standard_e16ds_v7,ALLOW,
+southcentralus,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+southcentralus,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+southcentralus,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v7 standard_f48amds_v7
+southcentralus,e|ids|5,standard_e104ids_v5,DENY,standard_e128ads_v7 standard_f64amds_v7
+southcentralus,e|ids|6,standard_e192ids_v6,DENY,standard_e128ads_v7
+southcentralus,e|ids|7,standard_e372ids_v7,ALLOW,
+southcentralus,e|id|5,standard_e104id_v5,DENY,standard_e128ads_v7 standard_f64amds_v7
+southcentralus,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v7 standard_f32amds_v7
+southcentralus,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v7 standard_f48amds_v7
+southcentralus,e|is|5,standard_e104is_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+southcentralus,e|is|6,standard_e192is_v6,DENY,standard_e128as_v7
+southcentralus,e|is|7,standard_e372is_v7,ALLOW,
+southcentralus,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v7 standard_f32amds_v7
+southcentralus,e|i|5,standard_e104i_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+southcentralus,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v7 standard_f8amds_v7
+southcentralus,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+southcentralus,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+southcentralus,e|s|6,standard_e16s_v6,DENY,standard_e16as_v7 standard_f8ams_v7
+southcentralus,e|s|7,standard_e16s_v7,ALLOW,
+southcentralus,e||3,standard_e16_v3,DENY,standard_e16ads_v7 standard_f8amds_v7
+southcentralus,e||4,standard_e16_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+southcentralus,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+southcentralus,f|s|2,standard_f16s_v2,DENY,standard_f16ads_v7 standard_f8ads_v7
+southeastasia,a||2,standard_a8_v2,ALLOW,
+southeastasia,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+southeastasia,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+southeastasia,b|ts|2,standard_b2ts_v2,ALLOW,
+southeastasia,dc|ds|3,standard_dc16ds_v3,DENY,standard_ec16ads_v5 standard_ec16ads_v6
+southeastasia,dc|s|2,standard_dc4s_v2,ALLOW,
+southeastasia,dc|s|3,standard_dc16s_v3,DENY,standard_ec16as_v5 standard_ec16as_v6
+southeastasia,dc||2,standard_dc8_v2,ALLOW,
+southeastasia,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v7 standard_f4ads_v7
+southeastasia,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+southeastasia,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+southeastasia,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v7 standard_f8ads_v7
+southeastasia,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+southeastasia,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+southeastasia,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v7 standard_f8alds_v7
+southeastasia,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+southeastasia,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v7 standard_f8als_v7
+southeastasia,d|ls|6,standard_d16ls_v6,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+southeastasia,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+southeastasia,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+southeastasia,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+southeastasia,d|s|6,standard_d16s_v6,DENY,standard_d16as_v7 standard_f8as_v7
+southeastasia,d||2,standard_d4_v2,ALLOW,
+southeastasia,d||3,standard_d16_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+southeastasia,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+southeastasia,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+southeastasia,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+southeastasia,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+southeastasia,e|ds|6,standard_e16ds_v6,DENY,standard_e16ads_v7 standard_f8amds_v7
+southeastasia,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+southeastasia,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+southeastasia,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v7 standard_f48amds_v7
+southeastasia,e|ids|5,standard_e104ids_v5,DENY,standard_e112iads_v5 standard_e128ads_v7 standard_f64amds_v7
+southeastasia,e|ids|6,standard_e192ids_v6,DENY,standard_e128ads_v7
+southeastasia,e|id|5,standard_e104id_v5,DENY,standard_e112iads_v5 standard_e128ads_v7 standard_f64amds_v7
+southeastasia,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v7 standard_f32amds_v7
+southeastasia,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v7
+southeastasia,e|is|5,standard_e104is_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+southeastasia,e|is|6,standard_e192is_v6,DENY,standard_e128as_v7
+southeastasia,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v7 standard_f32amds_v7
+southeastasia,e|i|5,standard_e104i_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+southeastasia,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+southeastasia,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+southeastasia,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+southeastasia,e|s|6,standard_e16s_v6,DENY,standard_e16as_v7 standard_f8ams_v7
+southeastasia,e||3,standard_e16_v3,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+southeastasia,e||4,standard_e16_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+southeastasia,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+southeastasia,f|s|2,standard_f16s_v2,ALLOW,
+southindia,a||2,standard_a8_v2,ALLOW,
+southindia,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+southindia,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+southindia,b|ts|2,standard_b2ts_v2,ALLOW,
+southindia,dc|ds|3,standard_dc16ds_v3,DENY,standard_ec16ads_v6
+southindia,dc|s|3,standard_dc16s_v3,DENY,standard_ec16as_v6
+southindia,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v6
+southindia,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v6
+southindia,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v6
+southindia,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v6
+southindia,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v6
+southindia,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v6
+southindia,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v6 standard_d16alds_v6
+southindia,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v6
+southindia,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v6 standard_d16als_v6 standard_f8als_v6
+southindia,d|ls|6,standard_d16ls_v6,DENY,standard_d16als_v6 standard_d16als_v6
+southindia,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v6
+southindia,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v6 standard_f8as_v6
+southindia,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v6
+southindia,d|s|6,standard_d16s_v6,DENY,standard_d16as_v6
+southindia,d||2,standard_d4_v2,ALLOW,
+southindia,d||3,standard_d16_v3,DENY,standard_d16ads_v6
+southindia,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v6 standard_f8as_v6
+southindia,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v6
+southindia,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v6
+southindia,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v6
+southindia,e|ds|6,standard_e16ds_v6,ALLOW,
+southindia,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v6
+southindia,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v6
+southindia,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v6 standard_e48ads_v6
+southindia,e|ids|5,standard_e104ids_v5,DENY,standard_e112iads_v5
+southindia,e|ids|6,standard_e192ids_v6,ALLOW,
+southindia,e|id|5,standard_e104id_v5,DENY,standard_e112iads_v5
+southindia,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v6
+southindia,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v6
+southindia,e|is|5,standard_e104is_v5,DENY,standard_e112ias_v5 standard_f64ams_v6
+southindia,e|is|6,standard_e192is_v6,ALLOW,
+southindia,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v6
+southindia,e|i|5,standard_e104i_v5,DENY,standard_e112ias_v5 standard_f64ams_v6
+southindia,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v6
+southindia,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v6
+southindia,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v6
+southindia,e|s|6,standard_e16s_v6,DENY,standard_e16as_v6
+southindia,e||3,standard_e16_v3,DENY,standard_e16ads_v6
+southindia,e||4,standard_e16_v4,DENY,standard_e16ads_v6
+southindia,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v6
+southindia,f|s|2,standard_f16s_v2,ALLOW,
+spaincentral,a||2,standard_a8_v2,ALLOW,
+spaincentral,b|ls|2,standard_b16ls_v2,ALLOW,
+spaincentral,b|s|2,standard_b16s_v2,ALLOW,
+spaincentral,b|ts|2,standard_b2ts_v2,ALLOW,
+spaincentral,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v7 standard_f4ads_v7
+spaincentral,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+spaincentral,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+spaincentral,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v7 standard_f8ads_v7
+spaincentral,d|ds|7,standard_d16ds_v7,ALLOW,
+spaincentral,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+spaincentral,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+spaincentral,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v7 standard_f8alds_v7
+spaincentral,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+spaincentral,d|lds|7,standard_d16lds_v7,ALLOW,
+spaincentral,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+spaincentral,d|ls|6,standard_d16ls_v6,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+spaincentral,d|ls|7,standard_d16ls_v7,ALLOW,
+spaincentral,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+spaincentral,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+spaincentral,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+spaincentral,d|s|6,standard_d16s_v6,DENY,standard_d16as_v7 standard_f8as_v7
+spaincentral,d|s|7,standard_d16s_v7,ALLOW,
+spaincentral,d||2,standard_d4_v2,ALLOW,
+spaincentral,d||3,standard_d16_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+spaincentral,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+spaincentral,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+spaincentral,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+spaincentral,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+spaincentral,e|ds|6,standard_e16ds_v6,DENY,standard_e16ads_v7 standard_f8amds_v7
+spaincentral,e|ds|7,standard_e16ds_v7,ALLOW,
+spaincentral,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+spaincentral,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+spaincentral,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v7 standard_f48amds_v7
+spaincentral,e|ids|5,standard_e104ids_v5,DENY,standard_e128ads_v7 standard_f64amds_v7
+spaincentral,e|ids|6,standard_e192ids_v6,DENY,standard_e128ads_v7
+spaincentral,e|ids|7,standard_e372ids_v7,ALLOW,
+spaincentral,e|id|5,standard_e104id_v5,DENY,standard_e128ads_v7 standard_f64amds_v7
+spaincentral,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v7
+spaincentral,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v7
+spaincentral,e|is|5,standard_e104is_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+spaincentral,e|is|6,standard_e192is_v6,DENY,standard_e128as_v7
+spaincentral,e|is|7,standard_e372is_v7,ALLOW,
+spaincentral,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v7
+spaincentral,e|i|5,standard_e104i_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+spaincentral,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v7 standard_f8amds_v7
+spaincentral,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+spaincentral,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+spaincentral,e|s|6,standard_e16s_v6,DENY,standard_e16as_v7 standard_f8ams_v7
+spaincentral,e|s|7,standard_e16s_v7,ALLOW,
+spaincentral,e||3,standard_e16_v3,DENY,standard_e16ads_v7 standard_f8amds_v7
+spaincentral,e||4,standard_e16_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+spaincentral,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+spaincentral,f|s|2,standard_f16s_v2,DENY,standard_f16ads_v7
+swedencentral,a||2,standard_a8_v2,ALLOW,
+swedencentral,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+swedencentral,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+swedencentral,b|ts|2,standard_b2ts_v2,ALLOW,
+swedencentral,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v7 standard_f4ads_v7
+swedencentral,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+swedencentral,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+swedencentral,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v7 standard_f8ads_v7
+swedencentral,d|ds|7,standard_d16ds_v7,ALLOW,
+swedencentral,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+swedencentral,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+swedencentral,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+swedencentral,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+swedencentral,d|lds|7,standard_d16lds_v7,ALLOW,
+swedencentral,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+swedencentral,d|ls|6,standard_d16ls_v6,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+swedencentral,d|ls|7,standard_d16ls_v7,ALLOW,
+swedencentral,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+swedencentral,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+swedencentral,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+swedencentral,d|s|6,standard_d16s_v6,DENY,standard_d16as_v7 standard_f8as_v7
+swedencentral,d|s|7,standard_d16s_v7,ALLOW,
+swedencentral,d||2,standard_d4_v2,ALLOW,
+swedencentral,d||3,standard_d16_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+swedencentral,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+swedencentral,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+swedencentral,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+swedencentral,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+swedencentral,e|ds|6,standard_e16ds_v6,DENY,standard_e16ads_v7 standard_f8amds_v7
+swedencentral,e|ds|7,standard_e16ds_v7,ALLOW,
+swedencentral,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+swedencentral,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+swedencentral,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v7 standard_f48amds_v7
+swedencentral,e|ids|5,standard_e104ids_v5,DENY,standard_e128ads_v7 standard_f64amds_v7
+swedencentral,e|ids|6,standard_e192ids_v6,DENY,standard_e128ads_v7
+swedencentral,e|ids|7,standard_e372ids_v7,ALLOW,
+swedencentral,e|id|5,standard_e104id_v5,DENY,standard_e128ads_v7 standard_f64amds_v7
+swedencentral,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v7 standard_f32amds_v7
+swedencentral,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v7
+swedencentral,e|is|5,standard_e104is_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+swedencentral,e|is|6,standard_e192is_v6,DENY,standard_e128as_v7
+swedencentral,e|is|7,standard_e372is_v7,ALLOW,
+swedencentral,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v7 standard_f32amds_v7
+swedencentral,e|i|5,standard_e104i_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+swedencentral,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v7 standard_f8amds_v7
+swedencentral,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+swedencentral,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+swedencentral,e|s|6,standard_e16s_v6,DENY,standard_e16as_v7 standard_f8ams_v7
+swedencentral,e|s|7,standard_e16s_v7,ALLOW,
+swedencentral,e||3,standard_e16_v3,DENY,standard_e16ads_v7 standard_f8amds_v7
+swedencentral,e||4,standard_e16_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+swedencentral,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+swedencentral,f|s|2,standard_f16s_v2,DENY,standard_f16ads_v7 standard_f8ads_v7
+switzerlandnorth,a||2,standard_a8_v2,ALLOW,
+switzerlandnorth,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+switzerlandnorth,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+switzerlandnorth,b|ts|2,standard_b2ts_v2,ALLOW,
+switzerlandnorth,dc|ds|3,standard_dc16ds_v3,DENY,standard_ec16ads_v5 standard_ec16ads_v6
+switzerlandnorth,dc|s|3,standard_dc16s_v3,DENY,standard_ec16as_v5 standard_ec16as_v6
+switzerlandnorth,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v7 standard_f4ads_v7
+switzerlandnorth,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+switzerlandnorth,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+switzerlandnorth,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v7 standard_f8ads_v7
+switzerlandnorth,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+switzerlandnorth,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+switzerlandnorth,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+switzerlandnorth,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+switzerlandnorth,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+switzerlandnorth,d|ls|6,standard_d16ls_v6,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+switzerlandnorth,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+switzerlandnorth,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+switzerlandnorth,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+switzerlandnorth,d|s|6,standard_d16s_v6,DENY,standard_d16as_v7 standard_f8as_v7
+switzerlandnorth,d||2,standard_d4_v2,ALLOW,
+switzerlandnorth,d||3,standard_d16_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+switzerlandnorth,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+switzerlandnorth,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+switzerlandnorth,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+switzerlandnorth,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+switzerlandnorth,e|ds|6,standard_e16ds_v6,DENY,standard_e16ads_v7 standard_f8amds_v7
+switzerlandnorth,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+switzerlandnorth,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+switzerlandnorth,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v7 standard_f48amds_v7
+switzerlandnorth,e|ids|5,standard_e104ids_v5,DENY,standard_e112iads_v5 standard_e128ads_v7 standard_f64amds_v7
+switzerlandnorth,e|ids|6,standard_e192ids_v6,DENY,standard_e128ads_v7
+switzerlandnorth,e|id|5,standard_e104id_v5,DENY,standard_e112iads_v5 standard_e128ads_v7 standard_f64amds_v7
+switzerlandnorth,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v7
+switzerlandnorth,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v7
+switzerlandnorth,e|is|5,standard_e104is_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+switzerlandnorth,e|is|6,standard_e192is_v6,DENY,standard_e128as_v7
+switzerlandnorth,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v7
+switzerlandnorth,e|i|5,standard_e104i_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+switzerlandnorth,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v7 standard_f8amds_v7
+switzerlandnorth,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+switzerlandnorth,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+switzerlandnorth,e|s|6,standard_e16s_v6,DENY,standard_e16as_v7 standard_f8ams_v7
+switzerlandnorth,e||3,standard_e16_v3,DENY,standard_e16ads_v7 standard_f8amds_v7
+switzerlandnorth,e||4,standard_e16_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+switzerlandnorth,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+switzerlandnorth,f|s|2,standard_f16s_v2,ALLOW,
+switzerlandwest,a||2,standard_a8_v2,ALLOW,
+switzerlandwest,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+switzerlandwest,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+switzerlandwest,b|ts|2,standard_b2ts_v2,ALLOW,
+switzerlandwest,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v6
+switzerlandwest,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v6
+switzerlandwest,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v6
+switzerlandwest,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v6
+switzerlandwest,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v6
+switzerlandwest,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v6
+switzerlandwest,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v6 standard_d16alds_v6
+switzerlandwest,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v6
+switzerlandwest,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v6 standard_d16als_v6 standard_f8als_v6
+switzerlandwest,d|ls|6,standard_d16ls_v6,DENY,standard_d16als_v6 standard_d16als_v6
+switzerlandwest,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v6
+switzerlandwest,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v6 standard_f8as_v6
+switzerlandwest,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v6
+switzerlandwest,d|s|6,standard_d16s_v6,DENY,standard_d16as_v6
+switzerlandwest,d||2,standard_d4_v2,ALLOW,
+switzerlandwest,d||3,standard_d16_v3,DENY,standard_d16ads_v6
+switzerlandwest,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v6 standard_f8as_v6
+switzerlandwest,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v6
+switzerlandwest,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v6
+switzerlandwest,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v6
+switzerlandwest,e|ds|6,standard_e16ds_v6,ALLOW,
+switzerlandwest,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v6
+switzerlandwest,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v6
+switzerlandwest,e|ids|4,standard_e80ids_v4,DENY,standard_e112iads_v5 standard_e96ads_v6 standard_e48ads_v6
+switzerlandwest,e|ids|5,standard_e104ids_v5,DENY,standard_e112iads_v5
+switzerlandwest,e|ids|6,standard_e192ids_v6,ALLOW,
+switzerlandwest,e|id|5,standard_e104id_v5,DENY,standard_e112iads_v5
+switzerlandwest,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v6
+switzerlandwest,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v6
+switzerlandwest,e|is|5,standard_e104is_v5,DENY,standard_e112ias_v5 standard_f64ams_v6
+switzerlandwest,e|is|6,standard_e192is_v6,ALLOW,
+switzerlandwest,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v6
+switzerlandwest,e|i|5,standard_e104i_v5,DENY,standard_e112ias_v5 standard_f64ams_v6
+switzerlandwest,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v6
+switzerlandwest,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v6
+switzerlandwest,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v6
+switzerlandwest,e|s|6,standard_e16s_v6,DENY,standard_e16as_v6
+switzerlandwest,e||3,standard_e16_v3,DENY,standard_e16ads_v6
+switzerlandwest,e||4,standard_e16_v4,DENY,standard_e16ads_v6
+switzerlandwest,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v6
+switzerlandwest,f|s|2,standard_f16s_v2,ALLOW,
+uaecentral,a||2,standard_a8_v2,ALLOW,
+uaecentral,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+uaecentral,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+uaecentral,b|ts|2,standard_b2ts_v2,ALLOW,
+uaecentral,dc|ds|3,standard_dc16ds_v3,DENY,standard_ec16ads_v6
+uaecentral,dc|s|3,standard_dc16s_v3,DENY,standard_ec16as_v6
+uaecentral,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v6
+uaecentral,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v6
+uaecentral,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v6
+uaecentral,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v6
+uaecentral,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v6
+uaecentral,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v6
+uaecentral,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v6 standard_d16alds_v6
+uaecentral,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v6
+uaecentral,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v6 standard_d16als_v6 standard_f8als_v6
+uaecentral,d|ls|6,standard_d16ls_v6,DENY,standard_d16als_v6 standard_d16als_v6
+uaecentral,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v6
+uaecentral,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v6 standard_f8as_v6
+uaecentral,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v6
+uaecentral,d|s|6,standard_d16s_v6,DENY,standard_d16as_v6
+uaecentral,d||2,standard_d4_v2,ALLOW,
+uaecentral,d||3,standard_d16_v3,DENY,standard_d16ads_v6
+uaecentral,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v6 standard_f8as_v6
+uaecentral,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v6
+uaecentral,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v6
+uaecentral,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v6
+uaecentral,e|ds|6,standard_e16ds_v6,ALLOW,
+uaecentral,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v6
+uaecentral,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v6
+uaecentral,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v6 standard_e48ads_v6
+uaecentral,e|ids|5,standard_e104ids_v5,DENY,standard_e112iads_v5
+uaecentral,e|ids|6,standard_e192ids_v6,ALLOW,
+uaecentral,e|id|5,standard_e104id_v5,DENY,standard_e112iads_v5
+uaecentral,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v6
+uaecentral,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v6
+uaecentral,e|is|5,standard_e104is_v5,DENY,standard_e112ias_v5 standard_f64ams_v6
+uaecentral,e|is|6,standard_e192is_v6,ALLOW,
+uaecentral,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v6
+uaecentral,e|i|5,standard_e104i_v5,DENY,standard_e112ias_v5 standard_f64ams_v6
+uaecentral,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v6
+uaecentral,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v6
+uaecentral,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v6
+uaecentral,e|s|6,standard_e16s_v6,DENY,standard_e16as_v6
+uaecentral,e||3,standard_e16_v3,DENY,standard_e16ads_v6
+uaecentral,e||4,standard_e16_v4,DENY,standard_e16ads_v6
+uaecentral,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v6
+uaecentral,f|s|2,standard_f16s_v2,ALLOW,
+uaenorth,a||2,standard_a8_v2,ALLOW,
+uaenorth,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+uaenorth,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+uaenorth,b|ts|2,standard_b2ts_v2,ALLOW,
+uaenorth,dc|ds|3,standard_dc16ds_v3,DENY,standard_ec16ads_v6
+uaenorth,dc|s|3,standard_dc16s_v3,DENY,standard_ec16as_v6
+uaenorth,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v7 standard_f4ads_v7
+uaenorth,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+uaenorth,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+uaenorth,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v7 standard_f8ads_v7
+uaenorth,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+uaenorth,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+uaenorth,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+uaenorth,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+uaenorth,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+uaenorth,d|ls|6,standard_d16ls_v6,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+uaenorth,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+uaenorth,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+uaenorth,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+uaenorth,d|s|6,standard_d16s_v6,DENY,standard_d16as_v7 standard_f8as_v7
+uaenorth,d||2,standard_d4_v2,ALLOW,
+uaenorth,d||3,standard_d16_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+uaenorth,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+uaenorth,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+uaenorth,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+uaenorth,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+uaenorth,e|ds|6,standard_e16ds_v6,DENY,standard_e16ads_v7 standard_f8amds_v7
+uaenorth,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+uaenorth,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+uaenorth,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v7 standard_f48amds_v7
+uaenorth,e|ids|5,standard_e104ids_v5,DENY,standard_e128ads_v7 standard_f64amds_v7
+uaenorth,e|ids|6,standard_e192ids_v6,DENY,standard_e128ads_v7
+uaenorth,e|id|5,standard_e104id_v5,DENY,standard_e128ads_v7 standard_f64amds_v7
+uaenorth,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v7 standard_f32amds_v7
+uaenorth,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v7
+uaenorth,e|is|5,standard_e104is_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+uaenorth,e|is|6,standard_e192is_v6,DENY,standard_e128as_v7
+uaenorth,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v7 standard_f32amds_v7
+uaenorth,e|i|5,standard_e104i_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+uaenorth,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v7 standard_f8amds_v7
+uaenorth,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+uaenorth,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+uaenorth,e|s|6,standard_e16s_v6,DENY,standard_e16as_v7 standard_f8ams_v7
+uaenorth,e||3,standard_e16_v3,DENY,standard_e16ads_v7 standard_f8amds_v7
+uaenorth,e||4,standard_e16_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+uaenorth,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+uaenorth,f|s|2,standard_f16s_v2,DENY,standard_f16ads_v7
+uksouth,a||2,standard_a8_v2,ALLOW,
+uksouth,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+uksouth,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+uksouth,b|ts|2,standard_b2ts_v2,ALLOW,
+uksouth,dc|ds|3,standard_dc16ds_v3,DENY,standard_ec16ads_v5 standard_ec16ads_v6
+uksouth,dc|s|2,standard_dc4s_v2,ALLOW,
+uksouth,dc|s|3,standard_dc16s_v3,DENY,standard_ec16as_v5 standard_ec16as_v6
+uksouth,dc||2,standard_dc8_v2,ALLOW,
+uksouth,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v7 standard_f4ads_v7
+uksouth,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+uksouth,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+uksouth,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v7 standard_f8ads_v7
+uksouth,d|ds|7,standard_d16ds_v7,ALLOW,
+uksouth,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+uksouth,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+uksouth,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+uksouth,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+uksouth,d|lds|7,standard_d16lds_v7,ALLOW,
+uksouth,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+uksouth,d|ls|6,standard_d16ls_v6,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+uksouth,d|ls|7,standard_d16ls_v7,ALLOW,
+uksouth,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+uksouth,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+uksouth,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+uksouth,d|s|6,standard_d16s_v6,DENY,standard_d16as_v7 standard_f8as_v7
+uksouth,d|s|7,standard_d16s_v7,ALLOW,
+uksouth,d||2,standard_d4_v2,ALLOW,
+uksouth,d||3,standard_d16_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+uksouth,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+uksouth,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+uksouth,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+uksouth,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+uksouth,e|ds|6,standard_e16ds_v6,DENY,standard_e16ads_v7 standard_f8amds_v7
+uksouth,e|ds|7,standard_e16ds_v7,ALLOW,
+uksouth,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+uksouth,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+uksouth,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v7 standard_f48amds_v7
+uksouth,e|ids|5,standard_e104ids_v5,DENY,standard_e112iads_v5 standard_e128ads_v7 standard_f64amds_v7
+uksouth,e|ids|6,standard_e192ids_v6,DENY,standard_e128ads_v7
+uksouth,e|ids|7,standard_e372ids_v7,ALLOW,
+uksouth,e|id|5,standard_e104id_v5,DENY,standard_e112iads_v5 standard_e128ads_v7 standard_f64amds_v7
+uksouth,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v7 standard_f32amds_v7
+uksouth,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v7
+uksouth,e|is|5,standard_e104is_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+uksouth,e|is|6,standard_e192is_v6,DENY,standard_e128as_v7
+uksouth,e|is|7,standard_e372is_v7,ALLOW,
+uksouth,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v7 standard_f32amds_v7
+uksouth,e|i|5,standard_e104i_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+uksouth,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+uksouth,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+uksouth,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+uksouth,e|s|6,standard_e16s_v6,DENY,standard_e16as_v7 standard_f8ams_v7
+uksouth,e|s|7,standard_e16s_v7,ALLOW,
+uksouth,e||3,standard_e16_v3,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+uksouth,e||4,standard_e16_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+uksouth,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+uksouth,f|s|2,standard_f16s_v2,DENY,standard_f16ads_v7 standard_f8ads_v7
+ukwest,a||2,standard_a8_v2,ALLOW,
+ukwest,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+ukwest,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+ukwest,b|ts|2,standard_b2ts_v2,ALLOW,
+ukwest,dc|s|2,standard_dc4s_v2,ALLOW,
+ukwest,dc||2,standard_dc8_v2,ALLOW,
+ukwest,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v6
+ukwest,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v6
+ukwest,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v6
+ukwest,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v6
+ukwest,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v6
+ukwest,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v6
+ukwest,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v6 standard_d16alds_v6
+ukwest,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v6
+ukwest,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v6 standard_d16als_v6 standard_f8als_v6
+ukwest,d|ls|6,standard_d16ls_v6,DENY,standard_d16als_v6 standard_d16als_v6
+ukwest,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v6
+ukwest,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v6 standard_f8as_v6
+ukwest,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v6
+ukwest,d|s|6,standard_d16s_v6,DENY,standard_d16as_v6
+ukwest,d||2,standard_d4_v2,ALLOW,
+ukwest,d||3,standard_d16_v3,DENY,standard_d16ads_v6
+ukwest,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v6 standard_f8as_v6
+ukwest,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v6
+ukwest,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v6
+ukwest,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v6
+ukwest,e|ds|6,standard_e16ds_v6,ALLOW,
+ukwest,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v6
+ukwest,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v6
+ukwest,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v6 standard_e48ads_v6
+ukwest,e|ids|5,standard_e104ids_v5,ALLOW,
+ukwest,e|ids|6,standard_e192ids_v6,ALLOW,
+ukwest,e|id|5,standard_e104id_v5,ALLOW,
+ukwest,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v6
+ukwest,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v6
+ukwest,e|is|5,standard_e104is_v5,DENY,standard_f64ams_v6
+ukwest,e|is|6,standard_e192is_v6,ALLOW,
+ukwest,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v6
+ukwest,e|i|5,standard_e104i_v5,DENY,standard_f64ams_v6
+ukwest,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v6
+ukwest,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v6
+ukwest,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v6
+ukwest,e|s|6,standard_e16s_v6,DENY,standard_e16as_v6
+ukwest,e||3,standard_e16_v3,DENY,standard_e16ads_v6
+ukwest,e||4,standard_e16_v4,DENY,standard_e16ads_v6
+ukwest,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v6
+ukwest,f|s|2,standard_f16s_v2,ALLOW,
+westcentralus,a||2,standard_a8_v2,ALLOW,
+westcentralus,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+westcentralus,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+westcentralus,b|ts|2,standard_b2ts_v2,ALLOW,
+westcentralus,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v6
+westcentralus,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v6
+westcentralus,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v6
+westcentralus,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v6
+westcentralus,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v6
+westcentralus,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v6
+westcentralus,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v6 standard_d16alds_v6
+westcentralus,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v6
+westcentralus,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v6 standard_d16als_v6 standard_f8als_v6
+westcentralus,d|ls|6,standard_d16ls_v6,DENY,standard_d16als_v6 standard_d16als_v6
+westcentralus,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v6
+westcentralus,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v6 standard_f8as_v6
+westcentralus,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v6
+westcentralus,d|s|6,standard_d16s_v6,DENY,standard_d16as_v6
+westcentralus,d||2,standard_d4_v2,ALLOW,
+westcentralus,d||3,standard_d16_v3,DENY,standard_d16ads_v6
+westcentralus,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v6 standard_f8as_v6
+westcentralus,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v6
+westcentralus,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v6
+westcentralus,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v6
+westcentralus,e|ds|6,standard_e16ds_v6,ALLOW,
+westcentralus,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v6
+westcentralus,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v6
+westcentralus,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v6 standard_e48ads_v6
+westcentralus,e|ids|5,standard_e104ids_v5,DENY,standard_e112iads_v5
+westcentralus,e|ids|6,standard_e192ids_v6,ALLOW,
+westcentralus,e|id|5,standard_e104id_v5,DENY,standard_e112iads_v5
+westcentralus,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v6
+westcentralus,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v6
+westcentralus,e|is|5,standard_e104is_v5,DENY,standard_f64ams_v6
+westcentralus,e|is|6,standard_e192is_v6,ALLOW,
+westcentralus,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v6
+westcentralus,e|i|5,standard_e104i_v5,DENY,standard_f64ams_v6
+westcentralus,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v6
+westcentralus,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v6
+westcentralus,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v6
+westcentralus,e|s|6,standard_e16s_v6,DENY,standard_e16as_v6
+westcentralus,e||3,standard_e16_v3,DENY,standard_e16ads_v6
+westcentralus,e||4,standard_e16_v4,DENY,standard_e16ads_v6
+westcentralus,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v6
+westcentralus,f|s|2,standard_f16s_v2,ALLOW,
+westeurope,a||2,standard_a8_v2,ALLOW,
+westeurope,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+westeurope,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+westeurope,b|ts|2,standard_b2ts_v2,ALLOW,
+westeurope,dc|ds|3,standard_dc16ds_v3,DENY,standard_ec16ads_v5 standard_ec16ads_v6
+westeurope,dc|eds|6,standard_dc16eds_v6,DENY,standard_dc16ads_v6
+westeurope,dc|es|6,standard_dc16es_v6,DENY,standard_dc16as_v6
+westeurope,dc|s|2,standard_dc4s_v2,ALLOW,
+westeurope,dc|s|3,standard_dc16s_v3,DENY,standard_ec16as_v5 standard_ec16as_v6
+westeurope,dc||2,standard_dc8_v2,ALLOW,
+westeurope,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v7 standard_f4ads_v7
+westeurope,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+westeurope,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+westeurope,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v7 standard_f8ads_v7
+westeurope,d|ds|7,standard_d16ds_v7,ALLOW,
+westeurope,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+westeurope,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+westeurope,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v7 standard_f8alds_v7
+westeurope,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+westeurope,d|lds|7,standard_d16lds_v7,ALLOW,
+westeurope,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v7 standard_f8als_v7
+westeurope,d|ls|6,standard_d16ls_v6,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+westeurope,d|ls|7,standard_d16ls_v7,ALLOW,
+westeurope,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+westeurope,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+westeurope,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+westeurope,d|s|6,standard_d16s_v6,DENY,standard_d16as_v7 standard_f8as_v7
+westeurope,d|s|7,standard_d16s_v7,ALLOW,
+westeurope,d||2,standard_d4_v2,ALLOW,
+westeurope,d||3,standard_d16_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+westeurope,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+westeurope,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+westeurope,ec|eds|6,standard_ec16eds_v6,DENY,standard_ec16ads_v6
+westeurope,ec|es|6,standard_ec16es_v6,DENY,standard_ec16as_v6
+westeurope,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+westeurope,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+westeurope,e|ds|6,standard_e16ds_v6,DENY,standard_e16ads_v7 standard_f8amds_v7
+westeurope,e|ds|7,standard_e16ds_v7,ALLOW,
+westeurope,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+westeurope,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+westeurope,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v7 standard_f48amds_v7
+westeurope,e|ids|5,standard_e104ids_v5,DENY,standard_e128ads_v7 standard_f64amds_v7
+westeurope,e|ids|6,standard_e192ids_v6,DENY,standard_e128ads_v7
+westeurope,e|ids|7,standard_e372ids_v7,ALLOW,
+westeurope,e|id|5,standard_e104id_v5,DENY,standard_e128ads_v7 standard_f64amds_v7
+westeurope,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v7 standard_f32amds_v7
+westeurope,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v7
+westeurope,e|is|5,standard_e104is_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+westeurope,e|is|6,standard_e192is_v6,DENY,standard_e128as_v7
+westeurope,e|is|7,standard_e372is_v7,ALLOW,
+westeurope,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v7 standard_f32amds_v7
+westeurope,e|i|5,standard_e104i_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+westeurope,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+westeurope,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+westeurope,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+westeurope,e|s|6,standard_e16s_v6,DENY,standard_e16as_v7 standard_f8ams_v7
+westeurope,e|s|7,standard_e16s_v7,ALLOW,
+westeurope,e||3,standard_e16_v3,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+westeurope,e||4,standard_e16_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+westeurope,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+westeurope,f|s|2,standard_f16s_v2,DENY,standard_f16ads_v7
+westindia,a||2,standard_a8_v2,ALLOW,
+westindia,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+westindia,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+westindia,b|ts|2,standard_b2ts_v2,ALLOW,
+westindia,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v6
+westindia,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v6
+westindia,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v6
+westindia,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v6
+westindia,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v6
+westindia,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v6
+westindia,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v6 standard_d16alds_v6
+westindia,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v6
+westindia,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v6 standard_d16als_v6 standard_f8als_v6
+westindia,d|ls|6,standard_d16ls_v6,DENY,standard_d16als_v6 standard_d16als_v6
+westindia,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v6
+westindia,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v6 standard_f8as_v6
+westindia,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v6
+westindia,d|s|6,standard_d16s_v6,DENY,standard_d16as_v6
+westindia,d||2,standard_d4_v2,ALLOW,
+westindia,d||3,standard_d16_v3,DENY,standard_d16ads_v6
+westindia,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v6 standard_f8as_v6
+westindia,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v6
+westindia,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v6
+westindia,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v6
+westindia,e|ds|6,standard_e16ds_v6,ALLOW,
+westindia,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v6
+westindia,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v6
+westindia,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v6 standard_e48ads_v6
+westindia,e|ids|5,standard_e104ids_v5,DENY,standard_e112iads_v5
+westindia,e|ids|6,standard_e192ids_v6,ALLOW,
+westindia,e|id|5,standard_e104id_v5,DENY,standard_e112iads_v5
+westindia,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v6
+westindia,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v6
+westindia,e|is|5,standard_e104is_v5,DENY,standard_f64ams_v6
+westindia,e|is|6,standard_e192is_v6,ALLOW,
+westindia,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v6
+westindia,e|i|5,standard_e104i_v5,DENY,standard_f64ams_v6
+westindia,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v6
+westindia,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v6
+westindia,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v6
+westindia,e|s|6,standard_e16s_v6,DENY,standard_e16as_v6
+westindia,e||3,standard_e16_v3,DENY,standard_e16ads_v6
+westindia,e||4,standard_e16_v4,DENY,standard_e16ads_v6
+westindia,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v6
+westindia,f|s|2,standard_f16s_v2,ALLOW,
+westus2,a||2,standard_a8_v2,ALLOW,
+westus2,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+westus2,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+westus2,b|ts|2,standard_b2ts_v2,ALLOW,
+westus2,dc|ds|3,standard_dc16ds_v3,DENY,standard_ec16ads_v6
+westus2,dc|s|2,standard_dc4s_v2,ALLOW,
+westus2,dc|s|3,standard_dc16s_v3,DENY,standard_ec16as_v6
+westus2,dc||2,standard_dc8_v2,ALLOW,
+westus2,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v7 standard_f4ads_v7
+westus2,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+westus2,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+westus2,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v7 standard_f8ads_v7
+westus2,d|ds|7,standard_d16ds_v7,ALLOW,
+westus2,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+westus2,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+westus2,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+westus2,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+westus2,d|lds|7,standard_d16lds_v7,ALLOW,
+westus2,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+westus2,d|ls|6,standard_d16ls_v6,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+westus2,d|ls|7,standard_d16ls_v7,ALLOW,
+westus2,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+westus2,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+westus2,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+westus2,d|s|6,standard_d16s_v6,DENY,standard_d16as_v7 standard_f8as_v7
+westus2,d|s|7,standard_d16s_v7,ALLOW,
+westus2,d||2,standard_d4_v2,ALLOW,
+westus2,d||3,standard_d16_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+westus2,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+westus2,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+westus2,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+westus2,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+westus2,e|ds|6,standard_e16ds_v6,DENY,standard_e16ads_v7 standard_f8amds_v7
+westus2,e|ds|7,standard_e16ds_v7,ALLOW,
+westus2,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+westus2,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+westus2,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v7 standard_f48amds_v7
+westus2,e|ids|5,standard_e104ids_v5,DENY,standard_e128ads_v7 standard_f64amds_v7
+westus2,e|ids|6,standard_e192ids_v6,DENY,standard_e128ads_v7
+westus2,e|ids|7,standard_e372ids_v7,ALLOW,
+westus2,e|id|5,standard_e104id_v5,DENY,standard_e128ads_v7 standard_f64amds_v7
+westus2,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v7 standard_f32amds_v7
+westus2,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v7
+westus2,e|is|5,standard_e104is_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+westus2,e|is|6,standard_e192is_v6,DENY,standard_e128as_v7
+westus2,e|is|7,standard_e372is_v7,ALLOW,
+westus2,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v7 standard_f32amds_v7
+westus2,e|i|5,standard_e104i_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+westus2,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v7 standard_f8amds_v7
+westus2,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+westus2,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+westus2,e|s|6,standard_e16s_v6,DENY,standard_e16as_v7 standard_f8ams_v7
+westus2,e|s|7,standard_e16s_v7,ALLOW,
+westus2,e||3,standard_e16_v3,DENY,standard_e16ads_v7 standard_f8amds_v7
+westus2,e||4,standard_e16_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+westus2,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+westus2,f|s|2,standard_f16s_v2,DENY,standard_f16ads_v7
+westus3,a||2,standard_a8_v2,ALLOW,
+westus3,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+westus3,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+westus3,b|ts|2,standard_b2ts_v2,ALLOW,
+westus3,dc|eds|6,standard_dc16eds_v6,DENY,standard_dc16ads_v6
+westus3,dc|es|6,standard_dc16es_v6,DENY,standard_dc16as_v6
+westus3,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v7 standard_f4ads_v7
+westus3,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+westus3,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+westus3,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v7 standard_f8ads_v7
+westus3,d|ds|7,standard_d16ds_v7,ALLOW,
+westus3,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+westus3,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+westus3,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+westus3,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+westus3,d|lds|7,standard_d16lds_v7,ALLOW,
+westus3,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+westus3,d|ls|6,standard_d16ls_v6,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+westus3,d|ls|7,standard_d16ls_v7,ALLOW,
+westus3,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+westus3,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+westus3,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+westus3,d|s|6,standard_d16s_v6,DENY,standard_d16as_v7 standard_f8as_v7
+westus3,d|s|7,standard_d16s_v7,ALLOW,
+westus3,d||2,standard_d4_v2,ALLOW,
+westus3,d||3,standard_d16_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+westus3,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+westus3,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+westus3,ec|eds|6,standard_ec16eds_v6,DENY,standard_ec16ads_v6
+westus3,ec|es|6,standard_ec16es_v6,DENY,standard_ec16as_v6
+westus3,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+westus3,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+westus3,e|ds|6,standard_e16ds_v6,DENY,standard_e16ads_v7 standard_f8amds_v7
+westus3,e|ds|7,standard_e16ds_v7,ALLOW,
+westus3,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+westus3,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+westus3,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v7 standard_f48amds_v7
+westus3,e|ids|5,standard_e104ids_v5,DENY,standard_e128ads_v7 standard_f64amds_v7
+westus3,e|ids|6,standard_e192ids_v6,DENY,standard_e128ads_v7
+westus3,e|ids|7,standard_e372ids_v7,ALLOW,
+westus3,e|id|5,standard_e104id_v5,DENY,standard_e128ads_v7 standard_f64amds_v7
+westus3,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v7 standard_f32amds_v7
+westus3,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v7
+westus3,e|is|5,standard_e104is_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+westus3,e|is|6,standard_e192is_v6,DENY,standard_e128as_v7
+westus3,e|is|7,standard_e372is_v7,ALLOW,
+westus3,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v7 standard_f32amds_v7
+westus3,e|i|5,standard_e104i_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+westus3,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v7 standard_f8amds_v7
+westus3,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+westus3,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+westus3,e|s|6,standard_e16s_v6,DENY,standard_e16as_v7 standard_f8ams_v7
+westus3,e|s|7,standard_e16s_v7,ALLOW,
+westus3,e||3,standard_e16_v3,DENY,standard_e16ads_v7 standard_f8amds_v7
+westus3,e||4,standard_e16_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+westus3,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+westus3,f|s|2,standard_f16s_v2,DENY,standard_f16ads_v7
+westus,a||2,standard_a8_v2,ALLOW,
+westus,b|ls|2,standard_b16ls_v2,DENY,standard_b16als_v2
+westus,b|s|2,standard_b16s_v2,DENY,standard_b16as_v2
+westus,b|ts|2,standard_b2ts_v2,ALLOW,
+westus,dc|ds|3,standard_dc16ds_v3,DENY,standard_ec16ads_v5 standard_ec16ads_v6
+westus,dc|eds|6,standard_dc16eds_v6,DENY,standard_dc16ads_v6
+westus,dc|es|6,standard_dc16es_v6,DENY,standard_dc16as_v6
+westus,dc|s|2,standard_dc4s_v2,ALLOW,
+westus,dc|s|3,standard_dc16s_v3,DENY,standard_ec16as_v5 standard_ec16as_v6
+westus,dc||2,standard_dc8_v2,ALLOW,
+westus,ds||2,standard_ds4_v2,DENY,standard_d8ads_v5 standard_d8ads_v7 standard_f4ads_v7
+westus,d|ds|4,standard_d16ds_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+westus,d|ds|5,standard_d16ds_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+westus,d|ds|6,standard_d16ds_v6,DENY,standard_d16ads_v7 standard_f8ads_v7
+westus,d|ds|7,standard_d16ds_v7,ALLOW,
+westus,d|d|4,standard_d16d_v4,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+westus,d|d|5,standard_d16d_v5,DENY,standard_d16ads_v5 standard_d16ads_v7 standard_f8ads_v7
+westus,d|lds|5,standard_d16lds_v5,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+westus,d|lds|6,standard_d16lds_v6,DENY,standard_d16alds_v6 standard_d16alds_v7 standard_f8alds_v7
+westus,d|lds|7,standard_d16lds_v7,ALLOW,
+westus,d|ls|5,standard_d16ls_v5,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+westus,d|ls|6,standard_d16ls_v6,DENY,standard_d16als_v6 standard_d16als_v7 standard_f8als_v7
+westus,d|ls|7,standard_d16ls_v7,ALLOW,
+westus,d|s|3,standard_d16s_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+westus,d|s|4,standard_d16s_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+westus,d|s|5,standard_d16s_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+westus,d|s|6,standard_d16s_v6,DENY,standard_d16as_v7 standard_f8as_v7
+westus,d|s|7,standard_d16s_v7,ALLOW,
+westus,d||2,standard_d4_v2,ALLOW,
+westus,d||3,standard_d16_v3,DENY,standard_d16ads_v7 standard_f8ads_v7
+westus,d||4,standard_d16_v4,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+westus,d||5,standard_d16_v5,DENY,standard_d16as_v5 standard_d16as_v7 standard_f8as_v7
+westus,ec|eds|6,standard_ec16eds_v6,DENY,standard_ec16ads_v6
+westus,ec|es|6,standard_ec16es_v6,DENY,standard_ec16as_v6
+westus,e|ds|4,standard_e16ds_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+westus,e|ds|5,standard_e16ds_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+westus,e|ds|6,standard_e16ds_v6,DENY,standard_e16ads_v7 standard_f8amds_v7
+westus,e|ds|7,standard_e16ds_v7,ALLOW,
+westus,e|d|4,standard_e16d_v4,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+westus,e|d|5,standard_e16d_v5,DENY,standard_e16ads_v5 standard_e16ads_v7 standard_f8amds_v7
+westus,e|ids|4,standard_e80ids_v4,DENY,standard_e96ads_v7 standard_f48amds_v7
+westus,e|ids|5,standard_e104ids_v5,DENY,standard_e128ads_v7 standard_f64amds_v7
+westus,e|ids|6,standard_e192ids_v6,DENY,standard_e128ads_v7
+westus,e|ids|7,standard_e372ids_v7,ALLOW,
+westus,e|id|5,standard_e104id_v5,DENY,standard_e128ads_v7 standard_f64amds_v7
+westus,e|is|3,standard_e64is_v3,DENY,standard_e64ads_v7
+westus,e|is|4,standard_e80is_v4,DENY,standard_e96ads_v7
+westus,e|is|5,standard_e104is_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+westus,e|is|6,standard_e192is_v6,DENY,standard_e128as_v7
+westus,e|is|7,standard_e372is_v7,ALLOW,
+westus,e|i|3,standard_e64i_v3,DENY,standard_e64ads_v7
+westus,e|i|5,standard_e104i_v5,DENY,standard_e128as_v7 standard_f64ams_v7
+westus,e|s|3,standard_e16s_v3,DENY,standard_e16ads_v7 standard_f8amds_v7
+westus,e|s|4,standard_e16s_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+westus,e|s|5,standard_e16s_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+westus,e|s|6,standard_e16s_v6,DENY,standard_e16as_v7 standard_f8ams_v7
+westus,e|s|7,standard_e16s_v7,ALLOW,
+westus,e||3,standard_e16_v3,DENY,standard_e16ads_v7 standard_f8amds_v7
+westus,e||4,standard_e16_v4,DENY,standard_e16ads_v7 standard_f8amds_v7
+westus,e||5,standard_e16_v5,DENY,standard_e16as_v5 standard_e16as_v7 standard_f8ams_v7
+westus,f|s|2,standard_f16s_v2,DENY,standard_f16ads_v7 standard_f8ads_v7

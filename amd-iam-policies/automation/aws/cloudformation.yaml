@@ -1,0 +1,291 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: >-
+  Weekly regeneration of the AMD IAM policy pack from the AMD CCA API.
+  Lambda (python3.13) on an EventBridge schedule, CCA token in Secrets Manager,
+  artifacts versioned in S3, SNS notification only when a policy actually
+  changes. Creates no IAM/Organizations policy and changes no enforcement -
+  it produces reviewed artifacts, nothing more.
+
+Parameters:
+  CodeS3Bucket:
+    Type: String
+    Description: S3 bucket holding the deployment zip (see README step 2).
+  CodeS3Key:
+    Type: String
+    Default: amd-iam-policies/lambda.zip
+    Description: Key of the deployment zip within CodeS3Bucket.
+  CcaSecretArn:
+    Type: String
+    Description: >-
+      ARN of an existing Secrets Manager secret holding the CCA JWT. Either a
+      bare token or {"CCA_API_KEY":"..."}. Create it OUTSIDE this template -
+      a secret value passed as a CloudFormation parameter is recorded in the
+      stack's parameter history and visible to anyone with DescribeStacks.
+  NotificationEmail:
+    Type: String
+    Default: ''
+    Description: Optional. Address subscribed to the change notifications.
+  ScheduleExpression:
+    Type: String
+    Default: 'cron(0 7 ? * MON *)'
+    Description: >-
+      Weekly, Mondays 07:00 UTC. A full sweep is ~4,100 CCA probes and takes
+      about a minute, so the timing is not load-sensitive.
+  Clouds:
+    Type: String
+    Default: 'AWS,AZURE,GCP,OCI'
+    Description: Restrict the sweep. Leave all four unless you only care about one.
+  ArtifactRetentionDays:
+    Type: Number
+    Default: 730
+    Description: How long noncurrent artifact versions are kept in S3.
+  SchedulerType:
+    Type: String
+    Default: EventBridgeScheduler
+    AllowedValues: [EventBridgeScheduler, EventsRule]
+    Description: >-
+      EventBridge Scheduler is preferred (real retry policy, no resource-based
+      permission needed) but is NOT available in every partition - notably
+      GovCloud, China, ca-west-1, il-central-1 and ap-southeast-5. Set
+      EventsRule in those regions; it is a classic CloudWatch Events rule and
+      takes the same cron() expression.
+
+Conditions:
+  HasEmail: !Not [!Equals [!Ref NotificationEmail, '']]
+  UseScheduler: !Equals [!Ref SchedulerType, EventBridgeScheduler]
+  UseEventsRule: !Equals [!Ref SchedulerType, EventsRule]
+
+Resources:
+
+  ArtifactBucket:
+    Type: AWS::S3::Bucket
+    # Retain: the bucket holds the audit trail of what the policy looked like
+    # on any given week. Deleting the stack should not destroy that history.
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      VersioningConfiguration:
+        Status: Enabled
+      LifecycleConfiguration:
+        Rules:
+          - Id: ExpireNoncurrent
+            Status: Enabled
+            NoncurrentVersionExpirationInDays: !Ref ArtifactRetentionDays
+          - Id: AbortIncompleteUploads
+            Status: Enabled
+            AbortIncompleteMultipartUpload:
+              DaysAfterInitiation: 7
+
+  ArtifactBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref ArtifactBucket
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: DenyInsecureTransport
+            Effect: Deny
+            Principal: '*'
+            Action: 's3:*'
+            Resource:
+              - !GetAtt ArtifactBucket.Arn
+              - !Sub '${ArtifactBucket.Arn}/*'
+            Condition:
+              Bool:
+                'aws:SecureTransport': 'false'
+
+  NotificationTopic:
+    Type: AWS::SNS::Topic
+    Properties:
+      DisplayName: AMD IAM policy changes
+
+  NotificationSubscription:
+    Type: AWS::SNS::Subscription
+    Condition: HasEmail
+    Properties:
+      TopicArn: !Ref NotificationTopic
+      Protocol: email
+      Endpoint: !Ref NotificationEmail
+
+  LogGroup:
+    Type: AWS::Logs::LogGroup
+    # Logs are reconstructable from the next run; deleting with the stack is
+    # the right default here, and declaring it keeps cfn-lint's stateful
+    # resource check satisfied rather than silently inheriting the default.
+    DeletionPolicy: Delete
+    UpdateReplacePolicy: Delete
+    Properties:
+      LogGroupName: !Sub '/aws/lambda/${AWS::StackName}-generate'
+      RetentionInDays: 90
+
+  FunctionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal: {Service: lambda.amazonaws.com}
+            Action: 'sts:AssumeRole'
+      Policies:
+        - PolicyName: amd-iam-policies-runner
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              # Scoped to this function's own log group rather than
+              # AWSLambdaBasicExecutionRole, which grants logs:* on every
+              # group in the account.
+              - Effect: Allow
+                Action: ['logs:CreateLogStream', 'logs:PutLogEvents']
+                Resource: !Sub '${LogGroup.Arn}:*'
+              - Effect: Allow
+                Action: 'secretsmanager:GetSecretValue'
+                Resource: !Ref CcaSecretArn
+              - Effect: Allow
+                Action: ['s3:GetObject', 's3:PutObject']
+                Resource: !Sub '${ArtifactBucket.Arn}/*'
+              - Effect: Allow
+                Action: 'sns:Publish'
+                Resource: !Ref NotificationTopic
+
+  GenerateFunction:
+    Type: AWS::Lambda::Function
+    DependsOn: LogGroup
+    Properties:
+      FunctionName: !Sub '${AWS::StackName}-generate'
+      Description: Re-derive AMD IAM policies from the AMD CCA API
+      Runtime: python3.13
+      Handler: runner.lambda_handler
+      Role: !GetAtt FunctionRole.Arn
+      # A full four-cloud sweep measured ~48s wall clock, almost all of it
+      # waiting on CCA. 300s leaves room for a slow API day without letting a
+      # hung call burn 15 minutes.
+      Timeout: 300
+      # Memory is not the constraint; CPU share is, and it also governs network
+      # throughput. 512 MB is comfortably above the ~2.5 MB snapshot plus the
+      # ~200 KB Azure definition held in memory.
+      MemorySize: 512
+      Architectures: [arm64]
+      Code:
+        S3Bucket: !Ref CodeS3Bucket
+        S3Key: !Ref CodeS3Key
+      Environment:
+        Variables:
+          CCA_SECRET_ID: !Ref CcaSecretArn
+          ARTIFACT_BUCKET: !Ref ArtifactBucket
+          ARTIFACT_PREFIX: amd-iam-policies
+          NOTIFY_TOPIC_ARN: !Ref NotificationTopic
+          CLOUDS: !Ref Clouds
+
+  # EventBridge Scheduler rather than a classic Events rule: it has a real
+  # retry policy and does not need a resource-based permission on the target.
+  SchedulerRole:
+    Type: AWS::IAM::Role
+    Condition: UseScheduler
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal: {Service: scheduler.amazonaws.com}
+            Action: 'sts:AssumeRole'
+            Condition:
+              StringEquals:
+                'aws:SourceAccount': !Ref AWS::AccountId
+      Policies:
+        - PolicyName: invoke-generate
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action: 'lambda:InvokeFunction'
+                Resource: !GetAtt GenerateFunction.Arn
+
+  WeeklySchedule:
+    Type: AWS::Scheduler::Schedule
+    Condition: UseScheduler
+    Metadata:
+      cfn-lint:
+        config:
+          # cfn-lint does not evaluate Conditions, so it reports this type as
+          # missing in GovCloud/China/ca-west-1/il-central-1/ap-southeast-5
+          # even though SchedulerType=EventsRule removes it there. The
+          # WeeklyEventsRule below is the supported path in those regions.
+          ignore_checks: [E3006]
+    Properties:
+      Name: !Sub '${AWS::StackName}-weekly'
+      Description: Weekly AMD CCA policy regeneration
+      ScheduleExpression: !Ref ScheduleExpression
+      ScheduleExpressionTimezone: UTC
+      FlexibleTimeWindow: {Mode: 'OFF'}
+      State: ENABLED
+      Target:
+        Arn: !GetAtt GenerateFunction.Arn
+        RoleArn: !GetAtt SchedulerRole.Arn
+        RetryPolicy:
+          MaximumRetryAttempts: 2
+          MaximumEventAgeInSeconds: 3600
+
+  # Fallback path for partitions without EventBridge Scheduler.
+  WeeklyEventsRule:
+    Type: AWS::Events::Rule
+    Condition: UseEventsRule
+    Properties:
+      Name: !Sub '${AWS::StackName}-weekly'
+      Description: Weekly AMD CCA policy regeneration
+      ScheduleExpression: !Ref ScheduleExpression
+      State: ENABLED
+      Targets:
+        - Id: generate
+          Arn: !GetAtt GenerateFunction.Arn
+
+  WeeklyEventsRulePermission:
+    Type: AWS::Lambda::Permission
+    Condition: UseEventsRule
+    Properties:
+      FunctionName: !GetAtt GenerateFunction.Arn
+      Action: 'lambda:InvokeFunction'
+      Principal: events.amazonaws.com
+      SourceArn: !GetAtt WeeklyEventsRule.Arn
+
+  # Without this, a failing weekly job is silent: the only signal is an absence
+  # of change notifications, which looks exactly like a healthy no-change week.
+  FailureAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmName: !Sub '${AWS::StackName}-generate-failed'
+      AlarmDescription: The weekly AMD policy regeneration raised an error.
+      Namespace: AWS/Lambda
+      MetricName: Errors
+      Dimensions:
+        - Name: FunctionName
+          Value: !Ref GenerateFunction
+      Statistic: Sum
+      Period: 86400
+      EvaluationPeriods: 1
+      Threshold: 0
+      ComparisonOperator: GreaterThanThreshold
+      TreatMissingData: notBreaching
+      AlarmActions: [!Ref NotificationTopic]
+
+Outputs:
+  ArtifactBucketName:
+    Description: Where generated policies land (current/ and history/<date>/)
+    Value: !Ref ArtifactBucket
+  FunctionName:
+    Value: !Ref GenerateFunction
+  TopicArn:
+    Description: Subscribe more endpoints here to receive change notifications
+    Value: !Ref NotificationTopic
+  ManualInvoke:
+    Description: Run it now instead of waiting for Monday
+    Value: !Sub 'aws lambda invoke --function-name ${GenerateFunction} /dev/stdout'

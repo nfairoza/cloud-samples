@@ -1,0 +1,13 @@
+name: organizations/ORGANIZATION_ID/customConstraints/custom.denyC4StandardWhereAmdAvailable
+resourceTypes:
+  - compute.googleapis.com/Instance
+methodTypes:
+  - CREATE
+condition: "(resource.machineType.contains('/c4-standard-')) && !(resource.zone.contains('/asia-southeast3-') || resource.zone.contains('/europe-west10-'))"
+actionType: DENY
+displayName: Deny c4-standard where an AMD equivalent exists
+description: >-
+  Blocks creation of Intel machine types only where AMD CCA confirms an AMD EPYC
+  equivalent is available in that region. Machine types with no AMD counterpart,
+  and regions where AMD is not offered, are not affected. ARM (Axion) is not
+  affected. Existing instances continue to run. Derived from AMD CCA on 2026-10-21.

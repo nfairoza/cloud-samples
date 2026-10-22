@@ -1,0 +1,13 @@
+name: organizations/ORGANIZATION_ID/customConstraints/custom.denyIntelWhereAmdAvailable
+resourceTypes:
+  - compute.googleapis.com/Instance
+methodTypes:
+  - CREATE
+condition: "(resource.machineType.contains('/c2-standard-') || resource.machineType.contains('/c3-highcpu-') || resource.machineType.contains('/c3-highmem-') || resource.machineType.contains('/c3-standard-') || resource.machineType.contains('/e2-highcpu-') || resource.machineType.contains('/e2-highmem-') || resource.machineType.endsWith('/e2-medium') || resource.machineType.endsWith('/e2-small') || resource.machineType.contains('/e2-standard-') || resource.machineType.contains('/n1-highcpu-') || resource.machineType.contains('/n1-highmem-') || resource.machineType.contains('/n1-standard-') || resource.machineType.contains('/n2-highcpu-') || resource.machineType.contains('/n2-highmem-') || resource.machineType.contains('/n2-standard-'))"
+actionType: DENY
+displayName: Deny Intel machine types where an AMD equivalent exists
+description: >-
+  Blocks creation of Intel machine types only where AMD CCA confirms an AMD EPYC
+  equivalent is available in that region. Machine types with no AMD counterpart,
+  and regions where AMD is not offered, are not affected. ARM (Axion) is not
+  affected. Existing instances continue to run. Derived from AMD CCA on 2026-10-21.
