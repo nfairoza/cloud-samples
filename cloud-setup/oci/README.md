@@ -4,6 +4,8 @@ Installs and configures the **OCI CLI (`oci`)** on a Linux workstation or OCI co
 
 The script uses **Oracle's `install.sh` wrapper**, which puts the CLI in its own virtualenv — and pulls a private Python if the system one is too old — rather than installing into system site-packages. On Oracle Linux you can use the distro package instead with `--dnf`.
 
+> **Don't want to run a script?** [**manual-setup.md**](manual-setup.md) walks through the same thing by hand — install the CLI, generate an API signing key and upload it in the Console (or set up a dynamic group + policy for instance principals), write the config, and verify. Use it on a locked-down machine, on Windows, or when you'd rather see exactly what's happening.
+
 ## Quick start
 
 On a workstation — install, generate an API signing key, and write the config:

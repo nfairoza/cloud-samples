@@ -6,14 +6,22 @@ This is the first thing to run before anything else in this repo. Most other fol
 
 ## Pick your cloud
 
-| Cloud | Folder | CLI | Install source | Preferred auth on an instance |
-|-------|--------|-----|----------------|-------------------------------|
-| **AWS** | [`aws/`](aws/) | `aws` (v2) | Official zip installer, optional PGP verify | IAM role via IMDS |
-| **Azure** | [`azure/`](azure/) | `az` | Microsoft package repo | Managed identity |
-| **GCP** | [`gcp/`](gcp/) | `gcloud` | Google package repo | Attached service account via metadata |
-| **OCI** | [`oci/`](oci/) | `oci` | Oracle `install.sh` (own virtualenv) | Instance principal |
+| Cloud | Folder | CLI | Scripted | By hand | Preferred auth on an instance |
+|-------|--------|-----|----------|---------|-------------------------------|
+| **AWS** | [`aws/`](aws/) | `aws` (v2) | [`startup.sh`](aws/startup.sh) | [manual-setup](aws/manual-setup.md) | IAM role via IMDS |
+| **Azure** | [`azure/`](azure/) | `az` | [`startup.sh`](azure/startup.sh) | [manual-setup](azure/manual-setup.md) | Managed identity |
+| **GCP** | [`gcp/`](gcp/) | `gcloud` | [`startup.sh`](gcp/startup.sh) | [manual-setup](gcp/manual-setup.md) | Attached service account |
+| **OCI** | [`oci/`](oci/) | `oci` | [`startup.sh`](oci/startup.sh) | [manual-setup](oci/manual-setup.md) | Instance principal |
 
 > Each folder's README covers prerequisites, every flag, the authentication options ranked by preference, and how to verify the install.
+
+## Two ways to do this
+
+**Run the script** — one command, installs and authenticates, verifies itself. Start here if you can.
+
+**Do it by hand** — every folder has a `manual-setup.md` covering the same ground step by step: install the CLI on Linux/macOS/Windows, create the credential **in the cloud's web console** (IAM user, service principal, service account, API key — with the exact click path), configure the CLI, verify, and fix the common errors. Use it when you're on a locked-down machine, not on Linux, need to hand the Console steps to someone else, or just want to see what the script is doing before you trust it.
+
+Both end in the same place. The manual guides also cover the Console-side work the scripts *can't* do for you — creating an IAM role, enabling a managed identity, uploading an OCI public key, granting roles.
 
 ## Same shape everywhere
 
@@ -67,14 +75,28 @@ Each is handled in the script, documented in the folder README, and worth knowin
 - **OCI: file permissions are enforced.** The CLI refuses to use a `~/.oci/config` or key file that's group- or world-readable. The script chmods them for you.
 - **AWS: `gpg` exits 0 on an expired signing key.** It reports `EXPKEYSIG` instead of `GOODSIG`, so checking `$?` alone silently accepts it. `--verify` parses the status output instead.
 
+## Using this with cloud-instance-manager
+
+The `cloud-instance-manager` skill drives these CLIs to launch, tag, inventory, and sweep instances. It supports **AWS, GCP, and Azure** (not OCI).
+
+Set the CLI up first — scripted or by hand — then:
+
+```bash
+cd ~/.claude/skills/cloud-instance-manager
+cp config.example.yaml config.yaml     # set owner, project/subscription, SSH key
+python scripts/manager.py doctor
+```
+
+`doctor` checks each enabled cloud's CLI and credentials and tells you exactly what's missing. Each `manual-setup.md` ends with an appendix listing what that skill needs beyond a basic login — the SSH key pair, the specific IAM actions, and the APIs to enable.
+
 ## Files
 
 ```
 cloud-setup/
-  aws/    startup.sh - AWS CLI v2, zip installer, optional PGP verify, profiles
-  azure/  startup.sh - az from the Microsoft repo, device-code / managed identity / SP
-  gcp/    startup.sh - gcloud from the Google repo, user / SA / ADC login
-  oci/    startup.sh - oci via Oracle's installer, API key setup or instance principal
+  aws/    startup.sh + manual-setup.md - AWS CLI v2, zip installer, optional PGP verify
+  azure/  startup.sh + manual-setup.md - az from the Microsoft repo, device code / MI / SP
+  gcp/    startup.sh + manual-setup.md - gcloud from the Google repo, user / SA / ADC
+  oci/    startup.sh + manual-setup.md - oci via Oracle's installer, API key or instance principal
 ```
 
 Every folder has its own README with the full flag reference and examples.

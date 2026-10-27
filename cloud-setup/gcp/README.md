@@ -4,6 +4,8 @@ Installs and configures the **Google Cloud CLI (`gcloud`)** on a Linux workstati
 
 The script installs from **Google's package repository** by default, so upgrades arrive with your normal `apt upgrade` / `dnf update`. If you need `gcloud components install`, use `--archive` instead — see the note below.
 
+> **Don't want to run a script?** [**manual-setup.md**](manual-setup.md) walks through the same thing by hand — install the CLI, create a service account or attach one to a VM in the Console, grant IAM roles, set up ADC, and verify. Use it on a locked-down machine, on Windows/macOS, or when you'd rather see exactly what's happening.
+
 ## Quick start
 
 ```bash

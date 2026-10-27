@@ -4,6 +4,8 @@ Installs and configures the **Azure CLI (`az`)** on a Linux workstation or Azure
 
 The script installs from **Microsoft's package repository**, not the `aka.ms/InstallAzureCLIDeb` one-liner. The repo path means upgrades arrive with your normal `apt upgrade` / `dnf update`, and the packages bundle their own Python runtime so the CLI never fights the system Python. The one-liner is still available with `--script` for throwaway containers and CI images.
 
+> **Don't want to run a script?** [**manual-setup.md**](manual-setup.md) walks through the same thing by hand — install the CLI, enable a managed identity or register a service principal in the Portal, assign a role, configure the CLI, and verify. Use it on a locked-down machine, on Windows/macOS, or when you'd rather see exactly what's happening.
+
 ## Quick start
 
 ```bash

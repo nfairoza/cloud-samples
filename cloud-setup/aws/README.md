@@ -4,6 +4,8 @@ Installs and configures the **AWS CLI v2** on a Linux workstation or EC2 instanc
 
 The script installs from the official AWS zip installer rather than a distro package — `apt`/`yum` ship v1 or a stale v2, and the AWS docs' own instructions use the zip. It can optionally verify the installer's PGP signature and write a named profile.
 
+> **Don't want to run a script?** [**manual-setup.md**](manual-setup.md) walks through the same thing by hand — install the CLI, create an IAM user or role in the Console, upload/copy the credential, configure the CLI, and verify. Use it on a locked-down machine, on Windows/macOS, or when you'd rather see exactly what's happening.
+
 ## Quick start
 
 ```bash
