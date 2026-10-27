@@ -287,13 +287,15 @@ az vm list-sizes --location eastus --output table | head
 | `AuthorizationFailed` | Authenticated fine, but no role assignment covers that action/scope. See [§5](#5-permissions-you-actually-need). |
 | `ManagedIdentityCredential authentication unavailable` | `--identity` off an Azure VM, or identity not enabled on it. |
 | `AADSTS7000215: Invalid client secret` | Wrong secret, or expired. Check you copied *Value*, not *Secret ID*. |
-| `SSLError` / certificate failure | Proxy intercepting TLS — see below. |
+| `SSLError` / certificate failure | Trust-store problem — see below. |
 
-**Corporate proxy.** `az` reads `HTTP_PROXY` / `HTTPS_PROXY` from the environment. For TLS interception, point it at your company CA bundle:
+**Corporate proxy and TLS.** `az` reads `HTTP_PROXY` / `HTTPS_PROXY` from the environment. For certificate failures, `az` is Python/requests-based, so it reads `REQUESTS_CA_BUNDLE`:
 
 ```bash
-export REQUESTS_CA_BUNDLE=/path/to/corporate-ca-bundle.pem
+export REQUESTS_CA_BUNDLE="$HOME/ca-certs/combined-ca-bundle.pem"
 ```
+
+That file needs the public roots **and** your corporate CA. Pointing it at an exported site chain replaces the public roots and breaks every Azure endpoint at once — [`../corporate-tls.md`](../corporate-tls.md) explains how to tell the two cases apart, and [`../make-ca-bundle.sh`](../make-ca-bundle.sh) builds a bundle that covers both.
 
 If your `sudo` doesn't preserve the environment, install with `sudo -E`.
 

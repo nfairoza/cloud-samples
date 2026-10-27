@@ -305,7 +305,22 @@ gcloud config set proxy/type http
 gcloud config set proxy/address proxy.corp.example.com
 gcloud config set proxy/port 3128
 ```
-For TLS interception: `gcloud config set core/custom_ca_certs_file /path/to/ca-bundle.pem`
+**Certificate failures.** `gcloud` ignores `SSL_CERT_FILE` and `REQUESTS_CA_BUNDLE` — it needs its own setting:
+
+```bash
+gcloud config set core/custom_ca_certs_file "$HOME/ca-certs/combined-ca-bundle.pem"
+```
+
+The env-var equivalent is `CLOUDSDK_CORE_CUSTOM_CA_CERTS_FILE`, and it outranks the config value. This catches people who fixed the other three CLIs with environment variables and can't work out why only `gcloud` still fails.
+
+Two follow-on gotchas:
+
+- **The setting is per-configuration.** Create a new `gcloud` configuration and you have to set it again.
+- **`gsutil` and `bq` don't inherit it.** They're separate tools with their own vendored bundles — `gsutil` takes `Boto:ca_certificates_file`, `bq` takes `--ca_certificates_file`.
+
+A bundle containing *only* your corporate root is the usual second mistake: any domain the proxy bypasses is negotiated directly with Google, which needs the public roots too. Build one file with both — see [`../corporate-tls.md`](../corporate-tls.md) and [`../make-ca-bundle.sh`](../make-ca-bundle.sh).
+
+Check which value is actually live with `gcloud config get core/custom_ca_certs_file`. A bad path errors out rather than failing silently, so no error plus continuing failures means the path is fine and the bundle's contents are incomplete.
 
 ---
 

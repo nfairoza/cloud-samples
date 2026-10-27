@@ -257,16 +257,35 @@ aws ec2 describe-regions --output table
 | `SignatureDoesNotMatch` | Secret key is wrong — usually a copy/paste that clipped a character or picked up whitespace. |
 | `ExpiredToken` | SSO session ended. `aws sso login --profile <name>`. |
 | `AccessDenied` on a specific call | Credentials are **fine**; the identity lacks that permission. See [§5](#5-permissions-you-actually-need). |
-| `SSL: CERTIFICATE_VERIFY_FAILED` | A proxy or VPN is intercepting TLS. See below. |
+| `SSL: CERTIFICATE_VERIFY_FAILED` | A trust-store problem, not a credential problem. See below. |
 | `You must specify a region` | No default region. Add one to the profile or pass `--region`. |
 
-**Corporate proxy / TLS interception.** If your network inspects TLS, the CLI rejects the substituted certificate. Point it at your company's CA bundle:
+**`CERTIFICATE_VERIFY_FAILED`.** Two different causes produce this identical message, so check which one you have before changing anything:
 
 ```bash
-export AWS_CA_BUNDLE=/path/to/corporate-ca-bundle.pem
+echo | openssl s_client -connect sts.us-east-2.amazonaws.com:443 \
+    -servername sts.us-east-2.amazonaws.com 2>/dev/null \
+  | openssl x509 -noout -issuer
 ```
 
-Get the bundle from your IT team. Do **not** work around this with `--no-verify-ssl` — that disables certificate checking entirely for every call.
+If the issuer is **Amazon**, nothing is intercepting you — your CA bundle is simply missing the public roots, usually because `AWS_CA_BUNDLE` or `SSL_CERT_FILE` points at an exported site chain instead of a root store. That **replaces** the public roots rather than adding to them. Count what's in the file you're pointing at:
+
+```bash
+grep -c "BEGIN CERTIFICATE" "$AWS_CA_BUNDLE"
+```
+
+A real bundle has 100+ certificates; a site chain has about three. If the issuer is **your employer**, a proxy is re-signing traffic and you need the corporate root in your bundle.
+
+Either way the fix is one bundle holding both — see [`../corporate-tls.md`](../corporate-tls.md) and [`../make-ca-bundle.sh`](../make-ca-bundle.sh):
+
+```bash
+../make-ca-bundle.sh --corp-cert corp-root.pem
+export AWS_CA_BUNDLE="$HOME/ca-certs/combined-ca-bundle.pem"
+```
+
+`AWS_CA_BUNDLE` in the environment **overrides** `ca_bundle` in `~/.aws/config`, so a stale variable makes a correct config file look broken. Check both.
+
+Do **not** work around this with `--no-verify-ssl` or `verify_ssl = false` — that disables certificate checking for every call, on the connection your credentials travel over.
 
 ---
 

@@ -270,6 +270,14 @@ oci compute shape list --compartment-id <COMPARTMENT_OCID> --output table
 
 **Corporate proxy:** `export HTTPS_PROXY=http://proxy.corp.example.com:3128`
 
+**Certificate failures.** The OCI CLI is Python/requests-based, so it reads `REQUESTS_CA_BUNDLE`:
+
+```bash
+export REQUESTS_CA_BUNDLE="$HOME/ca-certs/combined-ca-bundle.pem"
+```
+
+The bundle must hold the public roots **and** your corporate CA — see [`../corporate-tls.md`](../corporate-tls.md) and [`../make-ca-bundle.sh`](../make-ca-bundle.sh).
+
 ---
 
 ## 5. Permissions you actually need

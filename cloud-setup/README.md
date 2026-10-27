@@ -75,6 +75,18 @@ Each is handled in the script, documented in the folder README, and worth knowin
 - **OCI: file permissions are enforced.** The CLI refuses to use a `~/.oci/config` or key file that's group- or world-readable. The script chmods them for you.
 - **AWS: `gpg` exits 0 on an expired signing key.** It reports `EXPKEYSIG` instead of `GOODSIG`, so checking `$?` alone silently accepts it. `--verify` parses the status output instead.
 
+## On a corporate laptop: `CERTIFICATE_VERIFY_FAILED`
+
+If every CLI fails TLS verification against its own control plane, that's a trust-store problem, not a credential problem. [**corporate-tls.md**](corporate-tls.md) covers how to tell an intercepting proxy apart from a plain missing-root (they look identical and have different fixes), and [`make-ca-bundle.sh`](make-ca-bundle.sh) builds one bundle that satisfies both public endpoints and internal sites:
+
+```bash
+./make-ca-bundle.sh --corp-cert corp-root.pem
+```
+
+The usual cause is a `SSL_CERT_FILE` or `AWS_CA_BUNDLE` pointing at an exported *site chain* rather than a root store — that **replaces** the public roots instead of adding to them, so every cloud endpoint starts failing at once. `grep -c "BEGIN CERTIFICATE"` on the file you're pointing at: a real bundle has 100+, a site chain has about three.
+
+Whatever you do, don't reach for `verify_ssl = false` or `--no-verify-ssl`. That silences the error and leaves your cloud credentials crossing an unverified connection.
+
 ## Using this with cloud-instance-manager
 
 The `cloud-instance-manager` skill drives these CLIs to launch, tag, inventory, and sweep instances. It supports **AWS, GCP, and Azure** (not OCI).
@@ -93,6 +105,8 @@ python scripts/manager.py doctor
 
 ```
 cloud-setup/
+  corporate-tls.md    CERTIFICATE_VERIFY_FAILED on a managed laptop - diagnose and fix
+  make-ca-bundle.sh   build one CA bundle: public roots + corporate CAs
   aws/    startup.sh + manual-setup.md - AWS CLI v2, zip installer, optional PGP verify
   azure/  startup.sh + manual-setup.md - az from the Microsoft repo, device code / MI / SP
   gcp/    startup.sh + manual-setup.md - gcloud from the Google repo, user / SA / ADC
