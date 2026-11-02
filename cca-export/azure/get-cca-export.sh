@@ -79,7 +79,10 @@ if [ "$RUNNING_ONLY" = "true" ]; then
 fi
 
 # ---- 6. Resource Graph (KQL) query ------------------------------------------
-# Standalone VMs only. VM Scale Set instances are NOT included (see README).
+# Standalone VMs, plus Flexible-orchestration scale set instances: Flexible
+# provisions real microsoft.compute/virtualmachines resources, so they are
+# already picked up here. Uniform scale sets are handled by the second query
+# below (see README).
 KQL="Resources
 | where type =~ 'microsoft.compute/virtualmachines'
 | extend size = tostring(properties.hardwareProfile.vmSize)
@@ -100,11 +103,45 @@ if [ "$TOTAL_RECORDS" -gt 1000 ]; then
     echo "         returned. See README.md > Troubleshooting for paging."
 fi
 
+# ---- 6b. Resource Graph (KQL) query - Uniform VM Scale Sets -----------------
+# Filtering to orchestrationMode == 'Uniform' avoids double-counting Flexible
+# sets, whose instances are real standard VMs and are already counted by the
+# query above. The Uniform instance count comes from the scale set's
+# sku.capacity. Uniform does not expose per-instance Spot state here, so these
+# rows are reported as On-Demand. Hours are still the count x HOURS_PER_MONTH
+# estimate, same caveat as the VM rows.
+KQL_VMSS="Resources
+| where type =~ 'microsoft.compute/virtualmachinescalesets'
+| where tostring(properties.orchestrationMode) =~ 'Uniform'
+| extend size = tostring(sku.name)
+| extend capacity = toint(sku.capacity)
+| where isnotnull(capacity) and capacity > 0
+| summarize Quantity = sum(capacity) by location, size
+| project Region = location, Size = size, Quantity
+| order by Size asc, Region asc"
+
+echo "Running Resource Graph query (Uniform scale sets)..."
+RESULT_VMSS=$(az graph query -q "$KQL_VMSS" "${SCOPE_ARGS[@]}" --first 1000 -o json)
+
+TOTAL_RECORDS_VMSS=$(echo "$RESULT_VMSS" | jq -r '.totalRecords // 0')
+if [ "$TOTAL_RECORDS_VMSS" -gt 1000 ]; then
+    echo "WARNING: $TOTAL_RECORDS_VMSS grouped scale set rows found; only the first 1000"
+    echo "         were returned. See README.md > Troubleshooting for paging."
+fi
+
 # ---- 7. Write CSV in the exact CCA template column order ---------------------
 echo "Cloud,Region,Size,Quantity,Total number of hours per month,Pricing Model" > "$OUTPUT_FILE"
 echo "$RESULT" | jq -r --argjson hpm "$HOURS_PER_MONTH" '
     .data[]
     | [ "Azure", .Region, .Size, .Quantity, (.Quantity * $hpm), .pricing ]
+    | @csv
+' >> "$OUTPUT_FILE"
+
+# Uniform scale set rows. Pricing Model is hardcoded to On-Demand because
+# Uniform does not expose per-instance Spot state in Resource Graph.
+echo "$RESULT_VMSS" | jq -r --argjson hpm "$HOURS_PER_MONTH" '
+    .data[]
+    | [ "Azure", .Region, .Size, .Quantity, (.Quantity * $hpm), "On-Demand" ]
     | @csv
 ' >> "$OUTPUT_FILE"
 

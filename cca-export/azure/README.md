@@ -1,6 +1,6 @@
 # Azure CCA Export
 
-Extracts your Azure Virtual Machine inventory and formats it for the **Cloud Cost Assessment (CCA) Portfolio Template** so it can be pasted straight into `AWS_AZURE_GCP.xlsx`.
+Extracts your Azure Virtual Machine inventory (including VM Scale Set instances) and formats it for the **Cloud Cost Assessment (CCA) Portfolio Template** so it can be pasted straight into `AWS_AZURE_GCP.xlsx`.
 
 > **Real billing data is the recommended path.** `get-cca-export.sh` reads Azure Resource Graph — a fast **point-in-time snapshot** whose hours are only an *estimate* (count × 730). For accurate numbers (real metered hours + the VMs that actually ran during the month), use a **Cost Management billing export** — see [Advanced: billing-accurate hours](#advanced-billing-accurate-hours). Use the snapshot script only when you can't get billing access.
 
@@ -186,7 +186,8 @@ Azure's **Resource Graph Explorer** runs the same query in the browser — the f
 - **This is a point-in-time snapshot, not the month.** Resource Graph returns the VMs that exist *at the instant you run it* — a VM deleted before you run it is invisible, and one created today is counted as if it ran all month. For the real set of VMs that ran during the month, use billing ([Advanced](#advanced-billing-accurate-hours)).
 - **Hours are estimated.** Inventory has no metered runtime, so hours = `count x 730` (assumes 24/7). For exact hours use the [Advanced](#advanced-billing-accurate-hours) approach.
 - **Reserved Instances / Savings Plans are invisible here.** They are billing constructs, not VM properties, so reserved VMs show as `On-Demand`. Spot VMs *are* detected (`properties.priority == 'Spot'`).
-- **VM Scale Sets (VMSS) are excluded.** Only standalone `microsoft.compute/virtualmachines` are counted. If you use VMSS heavily, tell me and I'll add `microsoft.compute/virtualmachinescalesets` handling.
+- **VM Scale Sets (VMSS) are included — both orchestration modes.** **Flexible** scale sets provision real standard VMs, so their instances already appear as `microsoft.compute/virtualmachines` and are counted by the main query (the same way an AWS Auto Scaling Group simply gives you EC2 instances). **Uniform** scale sets do not expose their instances as standalone VM resources, so a second query reads `microsoft.compute/virtualmachinescalesets` and takes the instance count from `sku.capacity`; it is filtered to `orchestrationMode == 'Uniform'` so Flexible sets are not double-counted. Uniform rows are reported as `On-Demand` because Uniform does not expose per-instance Spot state here.
+- **PaaS services are intentionally out of scope.** This export covers VM and scale set inventory only — no PaaS resource types (AKS control plane, App Service, Databricks, HDInsight, etc.) and no CPU utilization data. Each PaaS service needs its own query with its own SKU/sizing logic, which is outside what this generic VM export does.
 - **1000-row cap.** Resource Graph returns up to 1000 grouped rows per page. The script warns if you exceed it (very unlikely for grouped output).
 
 ---
@@ -226,7 +227,7 @@ If you want, I can turn either option into a full script once you confirm your s
 |---------|-----|
 | `You are not logged in` | Run `az login`. |
 | `'jq' is not installed` | Install jq (see Prerequisites). |
-| Empty CSV (header only) | You may have no standalone VMs in scope, or all are VMSS. Try `RUNNING_ONLY="false"` and confirm with `az vm list -o table`. |
+| Empty CSV (header only) | You may have no VMs or scale sets in scope. Try `RUNNING_ONLY="false"` and confirm with `az vm list -o table`. |
 | Wrong subscription | Set `SUBSCRIPTION_ID`, or run `az account set --subscription <id>`. |
 | `1000 grouped rows` warning | Contact me to add `--skip-token` paging; rarely needed for grouped data. |
 | Region shows unexpected value | ARG returns Azure short codes; verify against Sheet2 of the template. |
